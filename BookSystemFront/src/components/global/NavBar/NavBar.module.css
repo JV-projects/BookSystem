@@ -1,0 +1,11 @@
+.navbar{
+    width: 100vw;
+}
+
+.nav_content{
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
