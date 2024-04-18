@@ -1,4 +1,4 @@
-import NavBar from "../components/global/NavBar/NavBar";
+import Header from "../components/global/Header";
 import Select from "../components/global/Select/Select";
 
 function Gerenciamento() {
@@ -19,7 +19,7 @@ function Gerenciamento() {
 
     return(
         <>
-            <NavBar/>
+            <Header/>
             <div>Gerenciamento</div>
             <Select selected="Pesquisar por" options={pesquisar}/>
             <Select selected="Ordenar por" options={ordenar}/>

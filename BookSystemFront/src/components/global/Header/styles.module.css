@@ -1,17 +1,12 @@
-.navbar{
-    width: 100vw;
+.header{
+    align-items: end;
+    width: 100%;
     background-color: #fff;
     border-bottom: 1px solid #ebebeb;
-    padding-bottom: 10px;
-}
-
-.nav_content{
-    width: 1280px;
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
     display: flex;
     justify-content: space-between;
-    align-items: end;
-    margin: auto;
-    height: 70px;
 }
 
 .logo{
@@ -24,18 +19,15 @@
 
 .ul{
    display: flex;
-   gap: 20px;
-   position: relative;
+   gap: 1.25rem;
 }
 
 .ul a{
-    position: relative;
     width: calc(100% / 2);
     color: #303030;
     text-decoration: none;
-    padding: 6px;
-    border-radius: 4px;
-    font-size: 15px;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
     z-index: 1;
 }
 
@@ -49,7 +41,7 @@
     bottom: 0;
     width: calc(100% / 2);
     left: 0;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     transition: 0.2s all;
 }
 
