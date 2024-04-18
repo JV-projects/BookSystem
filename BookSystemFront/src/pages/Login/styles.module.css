@@ -20,8 +20,33 @@
     gap: 0.5rem;
 }
 
+.input {
+    background-color: var(--secondary-background-color);
+}
+
+.link {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.primaryButton {
+    background-color: var(--primary-highlight-color);
+    color: var(--primary-background-color);
+    font-weight: bold;
+}
+
 .input, .primaryButton {
+    border: none;
+    border-radius: 0.125rem;
     padding: 0.5rem;
+}
+
+.input, .link, .primaryButton {
+    font-size: 0.875rem;
 }
 
 .container, .contentArea, .form, .label {

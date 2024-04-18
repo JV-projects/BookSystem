@@ -1,5 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Oxygen:300,regular,700);
 
+:root {
+    --border-color: #e4e4e4;
+    --link-color: #3882f6;
+    --primary-background-color: #fff;
+    --primary-highlight-color: #a997df;
+    --secondary-background-color: #f0f0f0;
+    --secondary-highlight-color: #a5cbc3;
+    --text-color: #656565;
+}
+
 * {
     margin: 0px;
     padding: 0px;
