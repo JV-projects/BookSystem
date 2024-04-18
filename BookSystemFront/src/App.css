@@ -3,10 +3,11 @@
 :root {
     --border-color: #e4e4e4;
     --link-color: #3882f6;
-    --primary-background-color: #fff;
+    --primary-background-color: #fafafa;
     --primary-highlight-color: #a997df;
     --secondary-background-color: #f0f0f0;
     --secondary-highlight-color: #a5cbc3;
+    --tertiary-highlight-color: #3882f6;
     --text-color: #656565;
 }
 
@@ -18,7 +19,7 @@
 }
 
 body{
-    background-color: #fafafa;
+    background-color: var(--primary-background-color);
 }
 
 ul {
