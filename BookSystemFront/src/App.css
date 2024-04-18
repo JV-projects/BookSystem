@@ -3,9 +3,14 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
     font-family: 'Oxygen', sans-serif;
 }
 
 body{
     background-color: #fafafa;
+}
+
+ul {
+    list-style: none;
 }

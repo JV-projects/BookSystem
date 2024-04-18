@@ -20,7 +20,6 @@ function App() {
         <Route path="/acessibilidade" element={<Acessibilidade/>} />
         <Route path="/criar" element={<Criar/>} />
         <Route path="/editar" element={<Editar/>} />
-        
       </Routes>
     </BrowserRouter>
   )

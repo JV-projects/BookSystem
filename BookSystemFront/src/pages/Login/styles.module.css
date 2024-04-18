@@ -1,0 +1,30 @@
+.container {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.contentArea {
+    align-items: center;
+    max-width: 16rem;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.form {
+    gap: 1rem;
+    width: 100%;
+}
+
+.label {
+    gap: 0.5rem;
+}
+
+.input, .primaryButton {
+    padding: 0.5rem;
+}
+
+.container, .contentArea, .form, .label {
+    display: flex;
+    flex-direction: column;
+}
