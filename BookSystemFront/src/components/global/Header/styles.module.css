@@ -1,4 +1,4 @@
-.header{
+.header {
     align-items: end;
     width: 100%;
     background-color: #fff;
@@ -9,34 +9,35 @@
     justify-content: space-between;
 }
 
-.logo{
+.logo {
     width: 100px;
 }
 
-.logo img{
+.logo img {
     width: 100%;
 }
 
-.ul{
+.ul {
     position: relative;
     display: flex;
     gap: 1.25rem;
 }
 
-.ul a{
+.ul a {
     width: calc(100% / 2);
     color: #303030;
     text-decoration: none;
-    padding: 0.25rem;
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
     border-radius: 0.25rem;
     z-index: 1;
 }
 
-.ul a:hover{
+.ul a:hover {
     color: #000;
 }
 
-.bg{
+.bg {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -47,12 +48,12 @@
 }
 
 
-.ul a:hover:nth-child(1) ~ .bg{
+.ul a:hover:nth-child(1) ~ .bg {
     background-color: #f1f1f1;
     left: 0;
 } 
 
-.ul a:hover:nth-child(2) ~ .bg{
+.ul a:hover:nth-child(2) ~ .bg {
     background-color: #f1f1f1;
     left: calc(100% / 1.85);
 } 

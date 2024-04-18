@@ -1,4 +1,5 @@
 import Header from "../components/global/Header";
+import Footer from "../components/global/Footer";
 import Select from "../components/global/Select/Select";
 
 function Gerenciamento() {
@@ -23,6 +24,7 @@ function Gerenciamento() {
             <div>Gerenciamento</div>
             <Select selected="Pesquisar por" options={pesquisar}/>
             <Select selected="Ordenar por" options={ordenar}/>
+            <Footer/>
         </>
     )
 }
