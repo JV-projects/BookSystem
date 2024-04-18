@@ -1,0 +1,58 @@
+.container {
+    gap: 1.5rem;
+    height: 100%;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.contentArea {
+    gap: 1rem;
+}
+
+.container, .contentArea, .cardsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonsArea {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input {
+    background-color: var(--secondary-background-color);
+}
+
+.primaryButton {
+    background-color: var(--primary-highlight-color);
+    color: var(--primary-background-color);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.primaryButton:disabled {
+    opacity: 50%;
+}
+
+.input, .primaryButton {
+    border: none;
+    border-radius: 0.125rem;
+    font-size: 0.875rem;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+}
+
+.line {
+    background-color: var(--border-color);
+    content: "";
+    height: 1px;
+}
+
+.cardsContainer {
+    gap: 0.75rem;
+}

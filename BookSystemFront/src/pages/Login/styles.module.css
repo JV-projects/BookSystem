@@ -37,6 +37,7 @@
 .primaryButton {
     background-color: var(--primary-highlight-color);
     color: var(--primary-background-color);
+    cursor: pointer;
     font-weight: bold;
 }
 

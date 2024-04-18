@@ -4,7 +4,7 @@
     background-color: #fff;
     border-bottom: 1px solid #ebebeb;
     padding-block: 0.75rem;
-    padding-inline: 1rem;
+    padding-inline: 2rem;
     display: flex;
     justify-content: space-between;
 }
@@ -23,13 +23,16 @@
     gap: 1.25rem;
 }
 
-.ul a {
+.selectedPage {
+    border-bottom: 2px solid var(--primary-highlight-color);
+}
+
+.page, .selectedPage {
     width: calc(100% / 2);
     color: #303030;
     text-decoration: none;
     padding-block: 0.25rem;
     padding-inline: 0.5rem;
-    border-radius: 0.25rem;
     z-index: 1;
 }
 

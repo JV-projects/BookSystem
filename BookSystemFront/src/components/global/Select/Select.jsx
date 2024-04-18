@@ -1,17 +1,13 @@
-function Select(props){
-    return(
-        <>
-        <select name="searchFor">
-            <option selected disabled>{props.selected}</option>
-            {
-                props.options.map((prop)=> {
-                    return(
-                        <option value={prop.value}>{prop.text}</option>
-                    )
-                })
-            }
+const Select = (props) => {
+    return (
+        <select>
+            <option value="" selected disabled>{props.selected}</option>
+            {props.options.map((option, i)=> {
+                return (
+                    <option key={i} value={option.value}>{option.text}</option>
+                )
+            })}
         </select>
-        </>
     )
 }
 

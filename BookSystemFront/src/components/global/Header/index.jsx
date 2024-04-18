@@ -7,8 +7,8 @@ const Header = () => {
         <header className={styles.header}>
             <img className={styles.logo} src={logo} alt="Logo"/>
             <ul className={styles.ul}>
-                <Link to="/gerenciamento">Gerenciamento</Link>
-                <Link to="/historico">Empréstimos</Link>
+                <Link className={window.location.pathname == "/gerenciamento" ? styles.selectedPage : styles.page} to="/gerenciamento">Gerenciamento</Link>
+                <Link className={window.location.pathname == "/historico" ? styles.selectedPage : styles.page} to="/historico">Empréstimos</Link>
                 <span className={styles.bg}/>
             </ul>
             <div>Ícone</div>
