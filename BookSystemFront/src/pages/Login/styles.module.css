@@ -43,7 +43,8 @@
 .input, .primaryButton {
     border: none;
     border-radius: 0.125rem;
-    padding: 0.5rem;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
 }
 
 .input, .link, .primaryButton {
