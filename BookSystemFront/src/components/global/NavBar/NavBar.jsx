@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import logo from "../../../../public/assets/images/logo.svg"
+import logo from "/assets/images/logo.svg"
 import estilo from './NavBar.module.css'
 
 function NavBar(){
@@ -7,12 +7,13 @@ function NavBar(){
         <nav className={estilo.navbar}>
             <div className={estilo.nav_content}>
 
-                <div className="logo">
+                <div className={estilo.logo}>
                     <img src={logo} alt="Logo do sistema BookSystem" />
                 </div>
-                <ul>
+                <ul className={estilo.ul}>
                     <Link to="/gerenciamento">Gerenciamento</Link>
                     <Link to="/historico">Empréstimos</Link>
+                    <div className={estilo.bg}></div>
                 </ul>
                 <div className="conta">icone</div>
             </div>
