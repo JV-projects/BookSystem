@@ -81,6 +81,11 @@ const Home = () => {
                                         <p className={styles.paragraph}>Ano: {item.year}</p>
                                     </div>
                                     <div className={styles.buttonsArea}>
+                                        {item.tags.map((tag) => (
+                                            <div className={styles.tag}>
+                                                {tag}
+                                            </div>
+                                        ))}
                                         <div className={styles.tag}>
                                             Literatura estrangeira
                                         </div>
