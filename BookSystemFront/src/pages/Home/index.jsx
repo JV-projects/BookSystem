@@ -7,7 +7,12 @@ const Home = () => {
     const [selected, isSelected] = useState(false)
     const data = [
         {
-            
+            title: "Orgulho e Preconceito",
+            author: "Jane Austen",
+            publisher: "Martin Claret",
+            year: "2012",
+            tags: ["Literatura estrangeira", "Romance"],
+            availability: 0
         }
     ]
 
@@ -48,7 +53,7 @@ const Home = () => {
                             Fazer empréstimo
                         </button>
                         <div className={styles.buttonsArea}>
-                            <button className={styles.primaryButton} disabled={!selected}>
+                            <button className={styles.primaryButton}>
                                 Criar
                             </button>
                             <button className={styles.primaryButton} disabled={!selected}>
@@ -64,15 +69,29 @@ const Home = () => {
                     </div>
                     <div className={styles.cardsContainer}>
                         {data.map((item, i) => (
-                            <div className={styles.card} key={i}>
-                                <img src=""/>
+                            <div className={styles.cardContainer} key={i}>
                                 <div>
-                                    <h2></h2>
-                                    <div className={styles.buttonsArea}></div>
-                                    <div className={styles.buttonsArea}></div>
+                                <img className={styles.cardImage} src=""/>
+                                </div>
+                                <div className={styles.cardContentArea}>
+                                    <h2 className={styles.secondaryTitle}>{item.title}</h2>
+                                    <div className={styles.buttonsArea}>
+                                        <p className={styles.paragraph}>Autor: {item.author}</p>
+                                        <p className={styles.paragraph}>Editora: {item.publisher}</p>
+                                        <p className={styles.paragraph}>Ano: {item.year}</p>
+                                    </div>
+                                    <div className={styles.buttonsArea}>
+                                        <div className={styles.tag}>
+                                            Literatura estrangeira
+                                        </div>
+                                        <div className={styles.tag}>
+                                            Romance
+                                        </div>
+                                    </div>
                                 </div>
                                 <div>
-                                    
+                                    {item.availability == 0 && <div className={styles.unavailableStatus}>Indisponível</div>}
+                                    {item.availability == 1 && <div className={styles.availableStatus}>Disponível</div>}  
                                 </div>
                             </div>
                         ))}

@@ -6,7 +6,9 @@ const PageStructure = ({ children }) => {
     return(
         <div className={styles.container}>
             <Header/>
-            {children}
+            <div className={styles.contentArea}>
+                {children}
+            </div>
             <Footer/>
         </div>
     )

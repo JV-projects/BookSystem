@@ -2,11 +2,16 @@
 
 :root {
     --border-color: #e4e4e4;
+    --green: #d4f5d9;
+    --green-border: #86d492;
     --link-color: #3882f6;
     --primary-background-color: #fafafa;
     --primary-highlight-color: #a997df;
+    --red: #ffdcdc;
+    --red-border: #e3a7a7;
     --secondary-background-color: #f0f0f0;
     --secondary-highlight-color: #a5cbc3;
+    --tertiary-background-color: #fff;
     --tertiary-highlight-color: #3882f6;
     --text-color: #656565;
 }
