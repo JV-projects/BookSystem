@@ -18,8 +18,9 @@
 }
 
 .ul{
-   display: flex;
-   gap: 1.25rem;
+    position: relative;
+    display: flex;
+    gap: 1.25rem;
 }
 
 .ul a{
