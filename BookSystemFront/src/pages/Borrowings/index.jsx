@@ -1,6 +1,7 @@
 import styles from './styles.module.css'
 import PageStructure from '../../components/global/PageStructure'
 import Select from '../../components/global/Select/Select'
+import Button from '../../components/global/Button'
 
 const Borrowings = () => {
     let pesquisar = [
@@ -25,9 +26,9 @@ const Borrowings = () => {
                     <div className={styles.buttonsContainer}>
                         <div className={styles.buttonsArea}>
                             <input className={styles.input} placeholder='Pesquisar'/>
-                            <button className={styles.primaryButton}>
+                            <Button>
 
-                            </button>
+                            </Button>
                         </div>
                         <div className={styles.buttonsArea}>
                             <Select selected="Pesquisar por" options={pesquisar}/>
