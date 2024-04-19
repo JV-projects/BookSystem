@@ -48,15 +48,53 @@
     overflow-y: auto;
 }
 
-.container, .contentArea, .cardsContainer {
-    display: flex;
-    flex-direction: column;
-}
-
 .cardContainer {
+    align-items: center;
     background-color: var(--tertiary-background-color);
     border: 1px solid var(--border-color);
     display: flex;
     gap: 0.75rem;
+    justify-content: space-between;
     padding: 1rem;
+}
+
+.paragraph {
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.textArea {
+    gap: 0.5rem;
+}
+
+.container, .contentArea, .cardsContainer, .textArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondaryTitle {
+    font-size: 1rem;
+}
+
+.pendingStatus {
+    background-color: var(--orange);
+    border: 1px solid var(--orange-border);
+}
+
+.returnedStatus {
+    background-color: var(--green);
+    border: 1px solid var(--green-border);
+}
+
+.notReturnedStatus {
+    background-color: var(--red);
+    border: 1px solid var(--red-border);
+}
+
+.pendingStatus, .returnedStatus, .notReturnedStatus {
+    color: var(--text-color);
+    border-radius: 0.125rem;
+    font-size: 0.875rem;
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
 }
