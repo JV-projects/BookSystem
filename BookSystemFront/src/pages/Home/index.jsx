@@ -39,7 +39,7 @@ const Home = () => {
                         <div className={styles.buttonsArea}>
                             <input className={styles.input} placeholder='Pesquisar'/>
                             <button className={styles.primaryButton}>
-
+                                <span class="material-symbols-outlined">search</span>
                             </button>
                         </div>
                         <div className={styles.buttonsArea}>
@@ -71,27 +71,25 @@ const Home = () => {
                         {data.map((item, i) => (
                             <div className={styles.cardContainer} key={i}>
                                 <div>
-                                <img className={styles.cardImage} src=""/>
+                                    <img className={styles.cardImage} src=""/>
                                 </div>
                                 <div className={styles.cardContentArea}>
-                                    <h2 className={styles.secondaryTitle}>{item.title}</h2>
-                                    <div className={styles.buttonsArea}>
-                                        <p className={styles.paragraph}>Autor: {item.author}</p>
-                                        <p className={styles.paragraph}>Editora: {item.publisher}</p>
-                                        <p className={styles.paragraph}>Ano: {item.year}</p>
+                                    <div className={styles.textArea}>
+                                        <h2 className={styles.secondaryTitle}>{item.title}</h2>
+                                        <div className={styles.buttonsArea}>
+                                            <p className={styles.paragraph}>Autor: {item.author}</p>
+                                            <p className={styles.paragraph}>&bull;</p>
+                                            <p className={styles.paragraph}>Editora: {item.publisher}</p>
+                                            <p className={styles.paragraph}>&bull;</p>
+                                            <p className={styles.paragraph}>Ano: {item.year}</p>
+                                        </div>
                                     </div>
                                     <div className={styles.buttonsArea}>
-                                        {item.tags.map((tag) => (
-                                            <div className={styles.tag}>
+                                        {item.tags.map((tag, i) => (
+                                            <div className={styles.tag} key={i}>
                                                 {tag}
                                             </div>
                                         ))}
-                                        <div className={styles.tag}>
-                                            Literatura estrangeira
-                                        </div>
-                                        <div className={styles.tag}>
-                                            Romance
-                                        </div>
                                     </div>
                                 </div>
                                 <div>
