@@ -1,0 +1,117 @@
+.container {
+    gap: 1.5rem;
+    max-width: 67.5rem;
+    width: 100%;
+}
+
+.contentArea {
+    gap: 1.25rem;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonsArea {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input {
+    background-color: var(--secondary-background-color);
+}
+
+.primaryButton {
+    background-color: var(--primary-highlight-color);
+    color: var(--primary-background-color);
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+}
+
+.primaryButton:disabled {
+    opacity: 50%;
+}
+
+.input, .primaryButton {
+    border: none;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+}
+
+.line {
+    background-color: var(--border-color);
+    content: "";
+    height: 1px;
+}
+
+.cardsContainer {
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.cardContainer {
+    background-color: var(--tertiary-background-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.cardImage {
+    aspect-ratio: 4/6;
+    width: 5rem;
+}
+
+.cardContentArea {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cardContentArea, .textArea {
+    gap: 0.5rem;
+}
+
+.container, .contentArea, .cardsContainer, .cardContentArea, .textArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondaryTitle {
+    font-size: 1rem;
+}
+
+.tag {
+    background-color: var(--secondary-background-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.25rem;
+}
+
+.unavailableStatus {
+    background-color: var(--red);
+    border: 1px solid var(--red-border);
+}
+
+.availableStatus {
+    background-color: var(--green);
+    border: 1px solid var(--green-border);
+}
+
+.paragraph, .tag, .unavailableStatus, .availableStatus {
+    color: var(--text-color);
+}
+
+.input, .primaryButton, .tag, .unavailableStatus, .availableStatus {
+    border-radius: 0.125rem;
+}
+
+.input, .primaryButton, .paragraph, .tag, .unavailableStatus, .availableStatus {
+    font-size: 0.875rem;
+}
+
+.tag, .unavailableStatus, .availableStatus {
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
+}

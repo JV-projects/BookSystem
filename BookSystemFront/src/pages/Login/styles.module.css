@@ -1,0 +1,37 @@
+.container {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.contentArea {
+    align-items: center;
+    max-width: 16rem;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.form {
+    gap: 1rem;
+    width: 100%;
+}
+
+.label {
+    gap: 0.5rem;
+}
+
+.link {
+    color: var(--link-color);
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.container, .contentArea, .form, .label {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,8 @@
+.input {
+    background-color: var(--secondary-background-color);
+    border: none;
+    border-radius: 0.125rem;
+    font-size: 0.875rem;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+}

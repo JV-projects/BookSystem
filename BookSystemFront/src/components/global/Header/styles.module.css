@@ -1,0 +1,54 @@
+.header {
+    align-items: end;  
+    background-color: var(--tertiary-background-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    padding-inline: 2rem;
+    width: 100%;
+}
+
+.logo {
+    width: 100px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.ul {
+    position: relative;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.selectedPage {
+    border-bottom: 2px solid var(--primary-highlight-color);
+}
+
+.page, .selectedPage {
+    border-top-left-radius: 0.125rem;
+    border-top-right-radius: 0.125rem;
+    color: var(--text-color);
+    font-size: 0.875rem;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+    text-decoration: none;
+    transition: 0.2s all;
+}
+
+.page:hover, .selectedPage:hover {
+    background-color: var(--secondary-background-color);
+}
+
+.profile {
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+}
+
+.logo, .profile {
+    margin-bottom: 0.75rem;
+}

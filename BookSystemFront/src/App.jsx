@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from "./pages/Login"
-import Gerenciamento from "./pages/Gerenciamento"
+import Home from "./pages/Home"
 import Emprestimo from "./pages/Emprestimo"
-import Historico from "./pages/Historico"
+import Borrowings from "./pages/Borrowings"
 import Acessibilidade from "./pages/Acessibilidade"
 import Criar from "./pages/Criar"
 import Editar from "./pages/Editar"
@@ -14,13 +14,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/gerenciamento" element={<Gerenciamento/>} />
-        <Route path="/historico" element={<Historico/>} />
+        <Route path="/gerenciamento" element={<Home/>} />
+        <Route path="/historico" element={<Borrowings/>} />
         <Route path="/emprestimo" element={<Emprestimo/>} />
         <Route path="/acessibilidade" element={<Acessibilidade/>} />
         <Route path="/criar" element={<Criar/>} />
         <Route path="/editar" element={<Editar/>} />
-        
       </Routes>
     </BrowserRouter>
   )

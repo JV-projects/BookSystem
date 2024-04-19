@@ -1,0 +1,14 @@
+.footer {
+    align-items: center;
+    background-color: var(--primary-highlight-color);
+    display: flex;
+    justify-content: center;
+    padding-block: 0.5rem;
+    padding-inline: 2rem;
+    width: 100%;
+}
+
+.paragraph {
+    color: var(--primary-background-color);
+    font-size: 0.875rem;
+}

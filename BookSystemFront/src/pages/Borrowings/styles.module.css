@@ -1,0 +1,100 @@
+.container {
+    gap: 1.5rem;
+    max-width: 67.5rem;
+    width: 100%;
+}
+
+.contentArea {
+    gap: 1.25rem;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonsArea {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input {
+    background-color: var(--secondary-background-color);
+}
+
+.primaryButton {
+    background-color: var(--primary-highlight-color);
+    color: var(--primary-background-color);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.input, .primaryButton {
+    border: none;
+    border-radius: 0.125rem;
+    font-size: 0.875rem;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+}
+
+.line {
+    background-color: var(--border-color);
+    content: "";
+    height: 1px;
+}
+
+.cardsContainer {
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.cardContainer {
+    align-items: center;
+    background-color: var(--tertiary-background-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.paragraph {
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.textArea {
+    gap: 0.5rem;
+}
+
+.container, .contentArea, .cardsContainer, .textArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondaryTitle {
+    font-size: 1rem;
+}
+
+.pendingStatus {
+    background-color: var(--orange);
+    border: 1px solid var(--orange-border);
+}
+
+.returnedStatus {
+    background-color: var(--green);
+    border: 1px solid var(--green-border);
+}
+
+.notReturnedStatus {
+    background-color: var(--red);
+    border: 1px solid var(--red-border);
+}
+
+.pendingStatus, .returnedStatus, .notReturnedStatus {
+    color: var(--text-color);
+    border-radius: 0.125rem;
+    font-size: 0.875rem;
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
+}
