@@ -1,4 +1,5 @@
 import styles from './styles.module.css'
+import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 
 const Login = () => {
@@ -9,11 +10,11 @@ const Login = () => {
                 <form className={styles.form}>
                     <label className={styles.label}>
                         E-mail
-                        <input className={styles.input} type="text" required/>
+                        <Input type="text" required/>
                     </label>
                     <label className={styles.label}>
                         Senha
-                        <input className={styles.input} type="password" required/>
+                        <Input type="password" required/>
                     </label>
                     <div>
                         <a className={styles.link} href="">Esqueceu a senha?</a>
