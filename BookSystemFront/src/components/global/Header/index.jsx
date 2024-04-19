@@ -11,7 +11,7 @@ const Header = () => {
                 <Link className={window.location.pathname == "/historico" ? styles.selectedPage : styles.page} to="/historico">Empréstimos</Link>
                 <span className={styles.bg}/>
             </ul>
-            <button className={styles.profile}>Ícone</button>
+            <button className={styles.profile}></button>
         </header>
     )
 }

@@ -1,12 +1,12 @@
 .header {
-    align-items: end;
-    width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #ebebeb;
-    padding-top: 0.75rem;
-    padding-inline: 2rem;
+    align-items: end;  
+    background-color: var(--tertiary-background-color);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
+    padding-top: 0.75rem;
+    padding-inline: 2rem;
+    width: 100%;
 }
 
 .logo {
@@ -20,7 +20,6 @@
 .ul {
     position: relative;
     display: flex;
-    gap: 1.25rem;
 }
 
 .selectedPage {
@@ -28,37 +27,24 @@
 }
 
 .page, .selectedPage {
-    width: calc(100% / 2);
-    color: #303030;
-    text-decoration: none;
+    border-top-left-radius: 0.125rem;
+    border-top-right-radius: 0.125rem;
+    color: var(--text-color);
     padding-block: 0.25rem;
     padding-inline: 0.5rem;
-    z-index: 1;
-}
-
-.ul a:hover {
-    color: #000;
-}
-
-.bg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: calc(100% / 2);
-    left: 0;
-    border-radius: 0.125rem;
+    text-decoration: none;
     transition: 0.2s all;
 }
 
+.page:hover, .selectedPage:hover {
+    background-color: var(--secondary-background-color);
+}
 
-.ul a:hover:nth-child(1) ~ .bg {
-    background-color: #f1f1f1;
-    left: 0;
-} 
-
-.ul a:hover:nth-child(2) ~ .bg {
-    background-color: #f1f1f1;
-    left: calc(100% / 1.85);
+.profile {
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
 }
 
 .logo, .profile {
