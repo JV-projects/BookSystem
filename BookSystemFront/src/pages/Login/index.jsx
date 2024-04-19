@@ -1,4 +1,5 @@
 import styles from './styles.module.css'
+import Button from '../../components/global/Button'
 
 const Login = () => {
     return (
@@ -17,7 +18,7 @@ const Login = () => {
                     <div>
                         <a className={styles.link} href="">Esqueceu a senha?</a>
                     </div>
-                    <button className={styles.primaryButton} type="submit">Entrar</button>
+                    <Button type="submit">Entrar</Button>
                 </form>
             </div>
         </div>

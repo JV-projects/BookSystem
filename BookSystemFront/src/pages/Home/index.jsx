@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './styles.module.css'
 import PageStructure from '../../components/global/PageStructure'
 import Select from '../../components/global/Select/Select'
+import Button from '../../components/global/Button'
 
 const Home = () => {
     const [selected, isSelected] = useState(false)
@@ -38,9 +39,9 @@ const Home = () => {
                     <div className={styles.buttonsContainer}>
                         <div className={styles.buttonsArea}>
                             <input className={styles.input} placeholder='Pesquisar'/>
-                            <button className={styles.primaryButton}>
+                            <Button>
                                 <span class="material-symbols-outlined">search</span>
-                            </button>
+                            </Button>
                         </div>
                         <div className={styles.buttonsArea}>
                             <Select selected="Pesquisar por" options={pesquisar}/>
@@ -49,22 +50,22 @@ const Home = () => {
                     </div>
                     <span className={styles.line}/>
                     <div className={styles.buttonsContainer}>
-                        <button className={styles.primaryButton}>
+                        <Button>
                             Fazer empréstimo
-                        </button>
+                        </Button>
                         <div className={styles.buttonsArea}>
-                            <button className={styles.primaryButton}>
+                            <Button>
                                 Criar
-                            </button>
-                            <button className={styles.primaryButton} disabled={!selected}>
+                            </Button>
+                            <Button disabled={!selected}>
                                 Editar
-                            </button>
-                            <button className={styles.primaryButton} disabled={!selected}>
+                            </Button>
+                            <Button disabled={!selected}>
                                 Excluir
-                            </button>
-                            <button className={styles.primaryButton} disabled={!selected}>
+                            </Button>
+                            <Button disabled={!selected}>
                                 Ver detalhes
-                            </button>
+                            </Button>
                         </div>
                     </div>
                     <div className={styles.cardsContainer}>
