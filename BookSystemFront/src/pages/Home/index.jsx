@@ -13,7 +13,7 @@ const Home = () => {
             publisher: "Martin Claret",
             year: "2012",
             tags: ["Literatura estrangeira", "Romance"],
-            availability: 0
+            available: false
         }
     ]
 
@@ -94,8 +94,11 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    {item.availability == 0 && <div className={styles.unavailableStatus}>Indisponível</div>}
-                                    {item.availability == 1 && <div className={styles.availableStatus}>Disponível</div>}  
+                                    {item.available ? 
+                                        <div className={styles.availableStatus}>Disponível</div>
+                                        :
+                                        <div className={styles.unavailableStatus}>Indisponível</div>
+                                    }  
                                 </div>
                             </div>
                         ))}
