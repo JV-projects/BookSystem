@@ -1,6 +1,6 @@
 .container {
     gap: 1.5rem;
-    max-width: 1080px;
+    max-width: 67.5rem;
     width: 100%;
 }
 
@@ -26,6 +26,7 @@
     background-color: var(--primary-highlight-color);
     color: var(--primary-background-color);
     cursor: pointer;
+    display: flex;
     font-weight: bold;
 }
 
@@ -35,8 +36,6 @@
 
 .input, .primaryButton {
     border: none;
-    border-radius: 0.125rem;
-    font-size: 0.875rem;
     padding-block: 0.5rem;
     padding-inline: 0.75rem;
 }
@@ -66,11 +65,15 @@
 }
 
 .cardContentArea {
-    gap: 0.5rem;
+    justify-content: space-between;
     width: 100%;
 }
 
-.container, .contentArea, .cardsContainer, .cardContentArea {
+.cardContentArea, .textArea {
+    gap: 0.5rem;
+}
+
+.container, .contentArea, .cardsContainer, .cardContentArea, .textArea {
     display: flex;
     flex-direction: column;
 }
