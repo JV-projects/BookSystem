@@ -1,0 +1,31 @@
+.container {
+    background-color: var(--tertiary-background-color);
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    padding-inline: 2rem;
+}
+
+.list {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link, .button {
+    color: var(--link-color);
+    font-size: 0.875rem;
+}
+
+.link:hover, .button:hover {
+    text-decoration: underline;
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
