@@ -31,6 +31,7 @@
     border-top-left-radius: 0.125rem;
     border-top-right-radius: 0.125rem;
     color: var(--text-color);
+    font-size: 0.875rem;
     padding-block: 0.25rem;
     padding-inline: 0.5rem;
     text-decoration: none;
