@@ -5,12 +5,7 @@
 }
 
 .contentArea {
-    gap: 1rem;
-}
-
-.container, .contentArea {
-    display: flex;
-    flex-direction: column;
+    gap: 1.25rem;
 }
 
 .buttonsContainer {
@@ -40,4 +35,28 @@
     font-size: 0.875rem;
     padding-block: 0.5rem;
     padding-inline: 0.75rem;
+}
+
+.line {
+    background-color: var(--border-color);
+    content: "";
+    height: 1px;
+}
+
+.cardsContainer {
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.container, .contentArea, .cardsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardContainer {
+    background-color: var(--tertiary-background-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
 }

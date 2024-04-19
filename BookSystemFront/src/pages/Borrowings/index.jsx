@@ -4,6 +4,12 @@ import Select from '../../components/global/Select/Select'
 import Button from '../../components/global/Button'
 
 const Borrowings = () => {
+    const data = [
+        {
+            name: ""
+        }
+    ]
+
     let pesquisar = [
         {value: "titulo", text: "Título"},
         {value: "isbn", text: "ISBN"},
@@ -35,7 +41,13 @@ const Borrowings = () => {
                             <Select selected="Ordenar por" options={ordenar}/>
                         </div>
                     </div>
-                    <div>
+                    <span className={styles.line}/>
+                    <div className={styles.cardsContainer}>
+                        {data.map((item, i) => (
+                            <div className={styles.cardContainer} key={i}>
+                                <p className={styles.paragraph}>{item.name}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
