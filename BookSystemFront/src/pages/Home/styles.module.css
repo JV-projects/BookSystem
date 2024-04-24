@@ -4,114 +4,93 @@
     width: 100%;
 }
 
-.contentArea {
+.areaConteudo {
     gap: 1.25rem;
 }
 
-.buttonsContainer {
+.containerBotoes {
     display: flex;
     justify-content: space-between;
 }
 
-.buttonsArea {
+.areaBotoes {
     display: flex;
     gap: 0.5rem;
 }
 
-.input {
-    background-color: var(--secondary-background-color);
-}
-
-.primaryButton {
-    background-color: var(--primary-highlight-color);
-    color: var(--primary-background-color);
-    cursor: pointer;
-    display: flex;
-    font-weight: bold;
-}
-
-.primaryButton:disabled {
-    opacity: 50%;
-}
-
-.input, .primaryButton {
-    border: none;
-    padding-block: 0.5rem;
-    padding-inline: 0.75rem;
-}
-
-.line {
+.linha {
     background-color: var(--border-color);
     content: "";
     height: 1px;
 }
 
-.cardsContainer {
+.containerCartoes {
     gap: 1rem;
     overflow-y: auto;
 }
 
-.cardContainer {
-    background-color: var(--tertiary-background-color);
+.cartaoNaoSelecionado {
     border: 1px solid var(--border-color);
+}
+
+.cartaoSelecionado {
+    border: 1px solid var(--primary-highlight-color);
+}
+
+.cartaoNaoSelecionado, .cartaoSelecionado {
+    background-color: var(--tertiary-background-color);
     display: flex;
     gap: 0.75rem;
     padding: 1rem;
 }
 
-.cardImage {
+.imagemCartao {
     aspect-ratio: 4/6;
     width: 5rem;
 }
 
-.cardContentArea {
+.areaConteudoCartao {
     justify-content: space-between;
     width: 100%;
 }
 
-.cardContentArea, .textArea {
+.areaConteudoCartao, .areaTexto {
     gap: 0.5rem;
 }
 
-.container, .contentArea, .cardsContainer, .cardContentArea, .textArea {
+.container, .areaConteudo, .containerCartoes, .areaConteudoCartao, .areaTexto {
     display: flex;
     flex-direction: column;
 }
 
-.secondaryTitle {
+.tituloSecundario {
     font-size: 1rem;
 }
 
-.tag {
+.assunto {
     background-color: var(--secondary-background-color);
     border: 1px solid var(--border-color);
     display: flex;
     gap: 0.25rem;
 }
 
-.unavailableStatus {
+.statusIndisponivel {
     background-color: var(--red);
     border: 1px solid var(--red-border);
 }
 
-.availableStatus {
+.statusDisponivel {
     background-color: var(--green);
     border: 1px solid var(--green-border);
 }
 
-.paragraph, .tag, .unavailableStatus, .availableStatus {
+.paragrafo, .assunto, .statusIndisponivel, .statusDisponivel {
     color: var(--text-color);
-}
-
-.input, .primaryButton, .tag, .unavailableStatus, .availableStatus {
-    border-radius: 0.125rem;
-}
-
-.input, .primaryButton, .paragraph, .tag, .unavailableStatus, .availableStatus {
     font-size: 0.875rem;
 }
 
-.tag, .unavailableStatus, .availableStatus {
+.assunto, .statusIndisponivel, .statusDisponivel {
+    border-radius: 0.125rem;
     padding-block: 0.25rem;
     padding-inline: 0.5rem;
 }

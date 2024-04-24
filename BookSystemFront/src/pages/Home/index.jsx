@@ -1,103 +1,127 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
-import PageStructure from '../../components/global/PageStructure'
+import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select/Select'
+import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 
 const Home = () => {
-    const [selected, isSelected] = useState(false)
-    const data = [
+    const [pesquisa, setPesquisa] = useState("")
+    const [selecionado, setSelecionado] = useState(false)
+    const [indiceSelecionado, setIndiceSelecionado] = useState()
+
+    const dados = [
         {
-            title: "Orgulho e Preconceito",
-            author: "Jane Austen",
-            publisher: "Martin Claret",
-            year: "2012",
-            tags: ["Literatura estrangeira", "Romance"],
-            available: false
+            titulo: "Orgulho e Preconceito",
+            autor: "Jane Austen",
+            editora: "Martin Claret",
+            ano: "2012",
+            assuntos: ["Literatura estrangeira", "Romance"],
+            disponivel: false
         }
     ]
 
+    const [lista, setLista] = useState(dados)
+
+    const handlePesquisar = () => {
+        pesquisa.length ? setLista(
+            dados.filter(item => 
+                item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.ano.toLowerCase().includes(pesquisa.toLowerCase())
+            )
+        ) : setLista(dados)
+    }
+
+    const handleSelecionar = (indice) => {
+        if (indiceSelecionado == indice) {
+            setSelecionado(!selecionado)
+        }
+        setIndiceSelecionado(indice)
+    }
+
     let pesquisar = [
-        {value: "titulo", text: "Título"},
-        {value: "isbn", text: "ISBN"},
-        {value: "autor", text: "Autor"},
-        {value: "editora", text: "Editora"},
-        {value: "assunto", text: "Assunto"}
+        {valor: "titulo", texto: "Título"},
+        {valor: "isbn", texto: "ISBN"},
+        {valor: "autor", texto: "Autor"},
+        {valor: "editora", texto: "Editora"},
+        {valor: "assunto", texto: "Assunto"}
     ]
 
     let ordenar = [
-        {value: "titulo", text: "Título"},
-        {value: "autor", text: "Autor"},
-        {value: "editora", text: "Editora"}
+        {valor: "titulo", texto: "Título"},
+        {valor: "autor", texto: "Autor"},
+        {valor: "editora", texto: "Editora"}
     ]
 
     return(
-        <PageStructure>
+        <EstruturaPagina>
             <div className={styles.container}>
                 <h1>Gerenciamento</h1>
-                <div className={styles.contentArea}>
-                    <div className={styles.buttonsContainer}>
-                        <div className={styles.buttonsArea}>
-                            <input className={styles.input} placeholder='Pesquisar'/>
-                            <Button>
-                                <span class="material-symbols-outlined">search</span>
+                <div className={styles.areaConteudo}>
+                    <div className={styles.containerBotoes}>
+                        <div className={styles.areaBotoes}>
+                            <Input value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder='Pesquisar'/>
+                            <Button onClick={handlePesquisar}>
+                                <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
-                        <div className={styles.buttonsArea}>
+                        <div className={styles.areaBotoes}>
                             <Select selected="Pesquisar por" options={pesquisar}/>
                             <Select selected="Ordenar por" options={ordenar}/>
                         </div>
                     </div>
-                    <span className={styles.line}/>
-                    <div className={styles.buttonsContainer}>
+                    <span className={styles.linha}/>
+                    <div className={styles.containerBotoes}>
                         <Button>
                             Fazer empréstimo
                         </Button>
-                        <div className={styles.buttonsArea}>
+                        <div className={styles.areaBotoes}>
                             <Button>
                                 Criar
                             </Button>
-                            <Button disabled={!selected}>
+                            <Button disabled={!selecionado}>
                                 Editar
                             </Button>
-                            <Button disabled={!selected}>
+                            <Button disabled={!selecionado}>
                                 Excluir
                             </Button>
-                            <Button disabled={!selected}>
+                            <Button disabled={!selecionado}>
                                 Ver detalhes
                             </Button>
                         </div>
                     </div>
-                    <div className={styles.cardsContainer}>
-                        {data.map((item, i) => (
-                            <div className={styles.cardContainer} key={i}>
+                    <div className={styles.containerCartoes}>
+                        {lista.map((item, i) => (
+                            <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
                                 <div>
-                                    <img className={styles.cardImage} src=""/>
+                                    <img className={styles.imagemCartao} src=""/>
                                 </div>
-                                <div className={styles.cardContentArea}>
-                                    <div className={styles.textArea}>
-                                        <h2 className={styles.secondaryTitle}>{item.title}</h2>
-                                        <div className={styles.buttonsArea}>
-                                            <p className={styles.paragraph}>Autor: {item.author}</p>
-                                            <p className={styles.paragraph}>&bull;</p>
-                                            <p className={styles.paragraph}>Editora: {item.publisher}</p>
-                                            <p className={styles.paragraph}>&bull;</p>
-                                            <p className={styles.paragraph}>Ano: {item.year}</p>
+                                <div className={styles.areaConteudoCartao}>
+                                    <div className={styles.areaTexto}>
+                                        <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
+                                        <div className={styles.areaBotoes}>
+                                            <p className={styles.paragrafo}>Autor: {item.autor}</p>
+                                            <p className={styles.paragrafo}>&bull;</p>
+                                            <p className={styles.paragrafo}>Editora: {item.editora}</p>
+                                            <p className={styles.paragrafo}>&bull;</p>
+                                            <p className={styles.paragrafo}>Ano: {item.ano}</p>
                                         </div>
                                     </div>
-                                    <div className={styles.buttonsArea}>
-                                        {item.tags.map((tag, i) => (
-                                            <div className={styles.tag} key={i}>
-                                                {tag}
+                                    <div className={styles.areaBotoes}>
+                                        {item.assuntos.map((assunto, i) => (
+                                            <div className={styles.assunto} key={i}>
+                                                {assunto}
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                                 <div>
-                                    {item.available ? 
-                                        <div className={styles.availableStatus}>Disponível</div>
+                                    {item.disponivel ? 
+                                        <div className={styles.statusDisponivel}>Disponível</div>
                                         :
-                                        <div className={styles.unavailableStatus}>Indisponível</div>
+                                        <div className={styles.statusIndisponivel}>Indisponível</div>
                                     }  
                                 </div>
                             </div>
@@ -105,7 +129,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </PageStructure>
+        </EstruturaPagina>
     )
 }
 
