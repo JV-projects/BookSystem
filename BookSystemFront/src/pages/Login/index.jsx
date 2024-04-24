@@ -2,7 +2,7 @@ import styles from './styles.module.css'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 
-const Login = () => {
+export default function Login() {
     return (
         <div className={styles.container}>
             <div className={styles.areaConteudo}>
@@ -25,5 +25,3 @@ const Login = () => {
         </div>
     )
 }
-
-export default Login
