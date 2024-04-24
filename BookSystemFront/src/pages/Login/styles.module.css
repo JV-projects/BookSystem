@@ -5,19 +5,19 @@
     padding: 2rem;
 }
 
-.contentArea {
+.areaConteudo {
     align-items: center;
     max-width: 16rem;
     gap: 1.25rem;
     width: 100%;
 }
 
-.form {
+.formulario {
     gap: 1rem;
     width: 100%;
 }
 
-.label {
+.rotulo {
     gap: 0.5rem;
 }
 
@@ -31,7 +31,7 @@
     text-decoration: underline;
 }
 
-.container, .contentArea, .form, .label {
+.container, .areaConteudo, .formulario, .rotulo {
     display: flex;
     flex-direction: column;
 }
