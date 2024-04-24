@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
 
-const BarraAcessibilidade = () => {
+export default function BarraAcessibilidade() {
     return (
         <div className={styles.container}>
             <ul className={styles.lista}>
@@ -18,5 +18,3 @@ const BarraAcessibilidade = () => {
         </div>
     )
 }
-
-export default BarraAcessibilidade
