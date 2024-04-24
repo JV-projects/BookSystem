@@ -2,7 +2,7 @@ import styles from './styles.module.css'
 
 const Button = ({ children, ...rest }) => {
     return (
-        <button className={styles.primaryButton} {...rest}>
+        <button className={styles.botaoPrimario} {...rest}>
             {children}
         </button>
     )

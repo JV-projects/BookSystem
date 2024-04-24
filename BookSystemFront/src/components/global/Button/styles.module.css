@@ -1,4 +1,4 @@
-.primaryButton {
+.botaoPrimario {
     background-color: var(--primary-highlight-color);
     border: none;
     border-radius: 0.125rem;
@@ -7,11 +7,12 @@
     display: flex;
     font-size: 0.875rem;
     font-weight: bold;
+    justify-content: center;
     padding-block: 0.5rem;
     padding-inline: 0.75rem;
 }
 
-.primaryButton:disabled {
+.botaoPrimario:disabled {
     cursor: unset;
     opacity: 50%;
 }
