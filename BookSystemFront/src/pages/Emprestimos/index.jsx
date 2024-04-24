@@ -1,10 +1,10 @@
 import styles from './styles.module.css'
 import EstruturaPagina from '../../components/global/EstruturaPagina'
-import Select from '../../components/global/Select/Select'
+import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 
-const Emprestimos = () => {
+export default function Emprestimos() {
     const dados = [
         {
             nome: "Jackeline Menezes",
@@ -79,5 +79,3 @@ const Emprestimos = () => {
         </EstruturaPagina>
     )
 }
-
-export default Emprestimos
