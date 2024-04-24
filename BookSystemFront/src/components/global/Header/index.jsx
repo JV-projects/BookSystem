@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import logo from '/assets/images/logo.svg'
 import styles from './styles.module.css'
 
-const Header = () => {
+export default function Header() {
     return(
         <header className={styles.header}>
             <img className={styles.logo} src={logo} alt="Logo"/>
@@ -15,5 +15,3 @@ const Header = () => {
         </header>
     )
 }
-
-export default Header
