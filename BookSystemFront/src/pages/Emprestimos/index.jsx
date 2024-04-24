@@ -49,8 +49,8 @@ export default function Emprestimos() {
                             </Button>
                         </div>
                         <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" options={pesquisar}/>
-                            <Select selected="Ordenar por" options={ordenar}/>
+                            <Select selected="Pesquisar por" opcoes={pesquisar}/>
+                            <Select selected="Ordenar por" opcoes={ordenar}/>
                         </div>
                     </div>
                     <span className={styles.linha}/>
