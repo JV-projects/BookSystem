@@ -4,51 +4,32 @@
     width: 100%;
 }
 
-.contentArea {
+.areaConteudo {
     gap: 1.25rem;
 }
 
-.buttonsContainer {
+.containerBotoes {
     display: flex;
     justify-content: space-between;
 }
 
-.buttonsArea {
+.areaBotoes {
     display: flex;
     gap: 0.5rem;
 }
 
-.input {
-    background-color: var(--secondary-background-color);
-}
-
-.primaryButton {
-    background-color: var(--primary-highlight-color);
-    color: var(--primary-background-color);
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.input, .primaryButton {
-    border: none;
-    border-radius: 0.125rem;
-    font-size: 0.875rem;
-    padding-block: 0.5rem;
-    padding-inline: 0.75rem;
-}
-
-.line {
+.linha {
     background-color: var(--border-color);
     content: "";
     height: 1px;
 }
 
-.cardsContainer {
+.containerCartoes {
     gap: 1rem;
     overflow-y: auto;
 }
 
-.cardContainer {
+.cartao {
     align-items: center;
     background-color: var(--tertiary-background-color);
     border: 1px solid var(--border-color);
@@ -58,40 +39,40 @@
     padding: 1rem;
 }
 
-.paragraph {
+.paragrafo {
     color: var(--text-color);
     font-size: 0.875rem;
 }
 
-.textArea {
+.areaTexto {
     gap: 0.5rem;
 }
 
-.container, .contentArea, .cardsContainer, .textArea {
+.container, .areaConteudo, .containerCartoes, .areaTexto {
     display: flex;
     flex-direction: column;
 }
 
-.secondaryTitle {
+.tituloSecundario {
     font-size: 1rem;
 }
 
-.pendingStatus {
+.statusPendente {
     background-color: var(--orange);
     border: 1px solid var(--orange-border);
 }
 
-.returnedStatus {
+.statusDevolvido {
     background-color: var(--green);
     border: 1px solid var(--green-border);
 }
 
-.notReturnedStatus {
+.statusNaoDevolvido {
     background-color: var(--red);
     border: 1px solid var(--red-border);
 }
 
-.pendingStatus, .returnedStatus, .notReturnedStatus {
+.statusPendente, .statusDevolvido, .statusNaoDevolvido {
     color: var(--text-color);
     border-radius: 0.125rem;
     font-size: 0.875rem;
