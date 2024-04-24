@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
 import EstruturaPagina from '../../components/global/EstruturaPagina'
-import Select from '../../components/global/Select/Select'
+import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 
-const Home = () => {
+export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
     const [selecionado, setSelecionado] = useState(false)
     const [indiceSelecionado, setIndiceSelecionado] = useState()
@@ -132,5 +132,3 @@ const Home = () => {
         </EstruturaPagina>
     )
 }
-
-export default Home
