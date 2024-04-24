@@ -8,7 +8,7 @@ const Header = () => {
             <img className={styles.logo} src={logo} alt="Logo"/>
             <ul className={styles.ul}>
                 <Link className={window.location.pathname == "/gerenciamento" ? styles.selectedPage : styles.page} to="/gerenciamento">Gerenciamento</Link>
-                <Link className={window.location.pathname == "/historico" ? styles.selectedPage : styles.page} to="/historico">Empréstimos</Link>
+                <Link className={window.location.pathname == "/emprestimos" ? styles.selectedPage : styles.page} to="/emprestimos">Empréstimos</Link>
                 <span className={styles.bg}/>
             </ul>
             <button className={styles.profile}></button>
