@@ -1,4 +1,4 @@
-const Select = (props) => {
+export default function Select(props) {
     return (
         <select>
             <option value="" selected disabled>{props.selected}</option>
@@ -10,5 +10,3 @@ const Select = (props) => {
         </select>
     )
 }
-
-export default Select
