@@ -39,6 +39,7 @@
 
 .cartaoNaoSelecionado, .cartaoSelecionado {
     background-color: var(--tertiary-background-color);
+    border-radius: 0.25rem;
     display: flex;
     gap: 0.75rem;
     padding: 1rem;
@@ -46,7 +47,7 @@
 
 .imagemCartao {
     aspect-ratio: 4/6;
-    border-radius: 0.125rem;
+    border-radius: 0.25rem;
     width: 5rem;
 }
 
@@ -91,7 +92,7 @@
 }
 
 .assunto, .statusIndisponivel, .statusDisponivel {
-    border-radius: 0.125rem;
+    border-radius: 0.5rem;
     padding-block: 0.25rem;
     padding-inline: 0.5rem;
 }
