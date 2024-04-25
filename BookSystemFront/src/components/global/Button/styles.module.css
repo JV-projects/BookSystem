@@ -1,18 +1,29 @@
 .botaoPrimario {
     background-color: var(--primary-highlight-color);
     border: none;
-    border-radius: 0.125rem;
     color: var(--primary-background-color);
+}
+
+.botaoSecundario {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.botaoPrimario, .botaoSecundario {
+    align-items: center;
+    border-radius: 0.125rem;
     cursor: pointer;
     display: flex;
     font-size: 0.875rem;
     font-weight: bold;
+    gap: 0.5rem;
     justify-content: center;
     padding-block: 0.5rem;
     padding-inline: 0.75rem;
 }
 
-.botaoPrimario:disabled {
+.botaoPrimario:disabled, .botaoSecundario:disabled {
     cursor: unset;
     opacity: 50%;
 }
