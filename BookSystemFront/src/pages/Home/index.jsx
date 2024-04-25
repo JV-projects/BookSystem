@@ -58,7 +58,7 @@ export default function Home() {
     return(
         <EstruturaPagina>
             <div className={styles.container}>
-                <h1>Gerenciamento</h1>
+                <h1 className={styles.tituloPrimario}>Gerenciamento</h1>
                 <div className={styles.areaConteudo}>
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes}>
