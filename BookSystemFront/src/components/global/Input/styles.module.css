@@ -1,6 +1,6 @@
 .input {
     background-color: var(--secondary-background-color);
-    border: none;
+    border: 1px solid var(--border-color);
     border-radius: 0.125rem;
     font-size: 0.875rem;
     padding-block: 0.5rem;
