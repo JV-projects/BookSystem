@@ -46,6 +46,7 @@
 
 .imagemCartao {
     aspect-ratio: 4/6;
+    border-radius: 0.125rem;
     width: 5rem;
 }
 

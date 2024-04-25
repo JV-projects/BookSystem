@@ -79,15 +79,19 @@ export default function Home() {
                         </Button>
                         <div className={styles.areaBotoes}>
                             <Button>
+                                <span className="material-symbols-outlined">add</span>
                                 Criar
                             </Button>
-                            <Button disabled={!selecionado}>
+                            <Button isPrimario={false} disabled={!selecionado}>
+                                <span className="material-symbols-outlined">edit_square</span>
                                 Editar
                             </Button>
-                            <Button disabled={!selecionado}>
+                            <Button isPrimario={false} disabled={!selecionado}>
+                                <span className="material-symbols-outlined">delete</span>
                                 Excluir
                             </Button>
-                            <Button disabled={!selecionado}>
+                            <Button isPrimario={false} disabled={!selecionado}>
+                                <span className="material-symbols-outlined">info</span>
                                 Ver detalhes
                             </Button>
                         </div>
