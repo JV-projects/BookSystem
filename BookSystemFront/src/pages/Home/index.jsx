@@ -18,6 +18,14 @@ export default function Home() {
             ano: "2012",
             assuntos: ["Literatura estrangeira", "Romance"],
             disponivel: false
+        },
+        {
+            titulo: "Java®: Como Programar",
+            autor: "Paul Deitel",
+            editora: "Pearson Universidades",
+            ano: "2016",
+            assuntos: ["Programação"],
+            disponivel: true
         }
     ]
 
