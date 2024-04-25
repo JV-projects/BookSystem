@@ -1,11 +1,9 @@
 import styles from './styles.module.css'
 
-const Button = ({ children, ...rest }) => {
+export default function Button({ children, ...rest }) {
     return (
-        <button className={styles.primaryButton} {...rest}>
+        <button className={styles.botaoPrimario} {...rest}>
             {children}
         </button>
     )
 }
-
-export default Button

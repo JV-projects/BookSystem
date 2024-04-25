@@ -1,19 +1,17 @@
 import styles from './styles.module.css'
-import AcessibilityBar from '../AcessibilityBar'
+import BarraAcessibilidade from '../BarraAcessibilidade'
 import Header from '../Header'
 import Footer from '../Footer'
 
-const PageStructure = ({ children }) => {
+export default function EstruturaPagina({ children }) {
     return(
         <div className={styles.container}>
-            <AcessibilityBar/>
+            <BarraAcessibilidade/>
             <Header/>
-            <div className={styles.contentArea}>
+            <div className={styles.areaConteudo}>
                 {children}
             </div>
             <Footer/>
         </div>
     )
 }
-
-export default PageStructure

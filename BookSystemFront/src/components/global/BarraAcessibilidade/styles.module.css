@@ -2,11 +2,11 @@
     background-color: var(--tertiary-background-color);
     display: flex;
     justify-content: space-between;
-    padding-top: 0.75rem;
+    padding-block: 0.75rem;
     padding-inline: 2rem;
 }
 
-.list {
+.lista {
     display: flex;
     gap: 0.5rem;
 }
@@ -15,17 +15,17 @@
     text-decoration: none;
 }
 
-.link, .button {
+.botao {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.link, .botao {
     color: var(--link-color);
     font-size: 0.875rem;
 }
 
-.link:hover, .button:hover {
+.link:hover, .botao:hover {
     text-decoration: underline;
-}
-
-.button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
 }
