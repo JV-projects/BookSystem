@@ -39,7 +39,7 @@ export default function Emprestimos() {
     return(
         <EstruturaPagina>
             <div className={styles.container}>
-                <h1>Empréstimos</h1>
+                <h1 className={styles.tituloPrimario}>Empréstimos</h1>
                 <div className={styles.areaConteudo}>
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes}>
