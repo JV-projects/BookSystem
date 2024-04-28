@@ -44,7 +44,7 @@ export default function Emprestimos() {
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes}>
                             <Input placeholder='Pesquisar'/>
-                            <Button>
+                            <Button tipoBotao="primario">
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
@@ -73,9 +73,9 @@ export default function Emprestimos() {
                                 {item.status == 0 && <div className={styles.statusPendente}>Em andamento</div>}
                                 {item.status == 1 && <div className={styles.statusDevolvido}>Devolvido</div>}
                                 {item.status == 2 && <div className={styles.statusNaoDevolvido}>Não devolvido</div>}
-                                <Button>
+                                <Button tipoBotao="primario">
                                     <span className="material-symbols-outlined">info</span>
-                                    Ver detalhes
+                                    Detalhes
                                 </Button>
                             </div>
                         ))}
