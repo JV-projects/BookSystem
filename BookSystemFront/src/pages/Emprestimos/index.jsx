@@ -3,6 +3,7 @@ import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
+import Status from '../../components/global/Status'
 
 export default function Emprestimos() {
     const dados = [
@@ -11,14 +12,16 @@ export default function Emprestimos() {
             numeroTelefone: "(11) 98822-8833",
             dataEmprestimo: "21/04/2024",
             dataDevolucao: "21/05/2024",
-            status: 1
+            status: "Concluído",
+            codStatus: 0
         },
         {
             nome: "Yudi Tamashiro",
             numeroTelefone: "(11) 4002-8922",
             dataEmprestimo: "21/04/2024",
             dataDevolucao: "21/05/2024",
-            status: 0
+            status: "Em andamento",
+            codStatus: 1
         }
     ]
 
@@ -70,9 +73,7 @@ export default function Emprestimos() {
                                     <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                     <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                                 </div>
-                                {item.status == 0 && <div className={styles.statusPendente}>Em andamento</div>}
-                                {item.status == 1 && <div className={styles.statusDevolvido}>Devolvido</div>}
-                                {item.status == 2 && <div className={styles.statusNaoDevolvido}>Não devolvido</div>}
+                                <Status mensagem={item.status} status={item.codStatus}/>
                                 <Button>
                                     <span className="material-symbols-outlined">info</span>
                                     Ver detalhes
