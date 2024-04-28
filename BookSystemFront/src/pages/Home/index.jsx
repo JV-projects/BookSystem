@@ -4,6 +4,7 @@ import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
+import Status from '../../components/global/Status'
 
 export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
@@ -17,7 +18,8 @@ export default function Home() {
             editora: "Martin Claret",
             ano: "2012",
             assuntos: ["Literatura estrangeira", "Romance"],
-            disponivel: false
+            disponivel: "Disponível",
+            codStatus : 0
         },
         {
             titulo: "Java®: Como Programar",
@@ -25,7 +27,8 @@ export default function Home() {
             editora: "Pearson Universidades",
             ano: "2016",
             assuntos: ["Programação"],
-            disponivel: true
+            disponivel: "Indisponível",
+            codStatus : 2
         }
     ]
 
@@ -129,13 +132,9 @@ export default function Home() {
                                         ))}
                                     </div>
                                 </div>
-                                <div>
-                                    {item.disponivel ?
-                                        <div className={styles.statusDisponivel}>Disponível</div>
-                                        :
-                                        <div className={styles.statusIndisponivel}>Indisponível</div>
-                                    }
-                                </div>
+
+                                <Status mensagem={item.disponivel} status={item.codStatus}/>  
+
                             </div>
                         ))}
                     </div>
