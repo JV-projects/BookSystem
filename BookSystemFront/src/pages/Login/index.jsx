@@ -19,7 +19,7 @@ export default function Login() {
                     <div>
                         <a className={styles.link} href="">Esqueceu a senha?</a>
                     </div>
-                    <Button type="submit">Entrar</Button>
+                    <Button tipoBotao="primario" type="submit">Entrar</Button>
                 </form>
             </div>
         </div>
