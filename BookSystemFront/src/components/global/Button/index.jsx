@@ -1,8 +1,12 @@
 import styles from './styles.module.css'
 
-export default function Button({ children, ...rest }) {
+export default function Button({ children, isPrimario, ...rest }) {
+    if (isPrimario == null) {
+        isPrimario = true
+    }
+
     return (
-        <button className={styles.botaoPrimario} {...rest}>
+        <button className={isPrimario ? styles.botaoPrimario : styles.botaoSecundario} {...rest}>
             {children}
         </button>
     )

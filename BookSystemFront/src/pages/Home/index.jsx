@@ -18,6 +18,14 @@ export default function Home() {
             ano: "2012",
             assuntos: ["Literatura estrangeira", "Romance"],
             disponivel: false
+        },
+        {
+            titulo: "Java®: Como Programar",
+            autor: "Paul Deitel",
+            editora: "Pearson Universidades",
+            ano: "2016",
+            assuntos: ["Programação"],
+            disponivel: true
         }
     ]
 
@@ -58,7 +66,7 @@ export default function Home() {
     return(
         <EstruturaPagina>
             <div className={styles.container}>
-                <h1>Gerenciamento</h1>
+                <h1 className={styles.tituloPrimario}>Gerenciamento</h1>
                 <div className={styles.areaConteudo}>
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes}>
@@ -79,15 +87,19 @@ export default function Home() {
                         </Button>
                         <div className={styles.areaBotoes}>
                             <Button>
+                                <span className="material-symbols-outlined">add</span>
                                 Criar
                             </Button>
-                            <Button disabled={!selecionado}>
+                            <Button isPrimario={false} disabled={!selecionado}>
+                                <span className="material-symbols-outlined">edit_square</span>
                                 Editar
                             </Button>
-                            <Button disabled={!selecionado}>
+                            <Button isPrimario={false} disabled={!selecionado}>
+                                <span className="material-symbols-outlined">delete</span>
                                 Excluir
                             </Button>
-                            <Button disabled={!selecionado}>
+                            <Button isPrimario={false} disabled={!selecionado}>
+                                <span className="material-symbols-outlined">info</span>
                                 Ver detalhes
                             </Button>
                         </div>

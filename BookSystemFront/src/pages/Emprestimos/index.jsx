@@ -39,7 +39,7 @@ export default function Emprestimos() {
     return(
         <EstruturaPagina>
             <div className={styles.container}>
-                <h1>Empréstimos</h1>
+                <h1 className={styles.tituloPrimario}>Empréstimos</h1>
                 <div className={styles.areaConteudo}>
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes}>
@@ -58,19 +58,25 @@ export default function Emprestimos() {
                         {dados.map((item, i) => (
                             <div className={styles.cartao} key={i}>
                                 <p className={styles.paragrafo}>{item.nome}</p>
-                                <p className={styles.paragrafo}>{item.numeroTelefone}</p>
+                                <p className={styles.paragrafo}>
+                                    <span className="material-symbols-outlined">call</span>
+                                    {item.numeroTelefone}
+                                </p>
                                 <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>dados de retirada</h2>
+                                    <h2 className={styles.tituloSecundario}>Data de retirada</h2>
                                     <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
                                 </div>
                                 <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>dados de devolução</h2>
+                                    <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                     <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                                 </div>
                                 {item.status == 0 && <div className={styles.statusPendente}>Em andamento</div>}
                                 {item.status == 1 && <div className={styles.statusDevolvido}>Devolvido</div>}
                                 {item.status == 2 && <div className={styles.statusNaoDevolvido}>Não devolvido</div>}
-                                <Button>Ver detalhes</Button>
+                                <Button>
+                                    <span className="material-symbols-outlined">info</span>
+                                    Ver detalhes
+                                </Button>
                             </div>
                         ))}
                     </div>
