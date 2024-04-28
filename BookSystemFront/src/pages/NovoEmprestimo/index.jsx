@@ -22,7 +22,7 @@ export default function NovoEmprestimo(props) {
 
 							<div className={styles.barraPesquisa}>
 								<Input placeholder="CPF" />
-								<Button>
+								<Button tipoBotao="primario">
 									<span className="material-symbols-outlined">search</span>
 								</Button>
 							</div>
@@ -43,6 +43,10 @@ export default function NovoEmprestimo(props) {
 							</div>
 
 							{/* Livro */}
+
+							<h3>
+								Buscar por mais livros
+							</h3>
 							<p>Insira o ISBN do Livro</p>
 							<div className={styles.barraPesquisa}>
 								<Input placeholder="ISBN" />
@@ -56,7 +60,7 @@ export default function NovoEmprestimo(props) {
 									<p>Java 8: Como Programar</p>
 									<p>Paul Deitel</p>
 								</div>
-								<Button>
+								<Button tipoBotao="terciarioConfirma">
 									Adicionar
 								</Button>
 							</div>
@@ -75,7 +79,7 @@ export default function NovoEmprestimo(props) {
 										<p>Java 8: Como Programar</p>
 										<p>Paul Deitel</p>
 									</div>
-									<Button>
+									<Button tipoBotao="terciarioCancela">
 										Remover
 									</Button>
 								</div>
@@ -84,7 +88,7 @@ export default function NovoEmprestimo(props) {
 										<p>Java 8: Como Programar</p>
 										<p>Paul Deitel</p>
 									</div>
-									<Button>
+									<Button tipoBotao="terciarioCancela">
 										Remover
 									</Button>
 								</div> 
@@ -102,10 +106,10 @@ export default function NovoEmprestimo(props) {
 							</div>
 
 							<div className={styles.containerBotoes}>
-								<Button>
+								<Button tipoBotao="terciarioCancela">
 									Cancelar
 								</Button>
-								<Button>
+								<Button tipoBotao="terciarioConfirma">
 									Finalizar
 								</Button>
 							</div>
