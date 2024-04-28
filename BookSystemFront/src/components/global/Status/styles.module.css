@@ -1,0 +1,26 @@
+.statusDevolvido {
+    background-color: var(--green);
+    border: 1px solid var(--green-border);
+}
+
+.statusPendente {
+    background-color: var(--orange);
+    border: 1px solid var(--orange-border);
+}
+
+.statusNaoDevolvido {
+    background-color: var(--red);
+    border: 1px solid var(--red-border);
+}
+
+.statusPendente, .statusDevolvido, .statusNaoDevolvido {
+    color: var(--text-color);
+    max-width: 7.5rem;
+    width: 100%;
+    height: min-content;
+    text-align: center;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
+}
