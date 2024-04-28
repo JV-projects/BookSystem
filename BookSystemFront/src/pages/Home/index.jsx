@@ -33,7 +33,7 @@ export default function Home() {
 
     const handlePesquisar = () => {
         pesquisa.length ? setLista(
-            dados.filter(item => 
+            dados.filter(item =>
                 item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
@@ -50,57 +50,57 @@ export default function Home() {
     }
 
     let pesquisar = [
-        {valor: "titulo", texto: "Título"},
-        {valor: "isbn", texto: "ISBN"},
-        {valor: "autor", texto: "Autor"},
-        {valor: "editora", texto: "Editora"},
-        {valor: "assunto", texto: "Assunto"}
+        { valor: "titulo", texto: "Título" },
+        { valor: "isbn", texto: "ISBN" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" },
+        { valor: "assunto", texto: "Assunto" }
     ]
 
     let ordenar = [
-        {valor: "titulo", texto: "Título"},
-        {valor: "autor", texto: "Autor"},
-        {valor: "editora", texto: "Editora"}
+        { valor: "titulo", texto: "Título" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" }
     ]
 
-    return(
+    return (
         <EstruturaPagina>
             <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Gerenciamento</h1>
                 <div className={styles.areaConteudo}>
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes}>
-                            <Input value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder='Pesquisar'/>
-                            <Button onClick={handlePesquisar}>
+                            <Input value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder='Pesquisar' />
+                            <Button tipoBotao="primario" onClick={handlePesquisar}>
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
                         <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" opcoes={pesquisar}/>
-                            <Select selected="Ordenar por" opcoes={ordenar}/>
+                            <Select selected="Pesquisar por" opcoes={pesquisar} />
+                            <Select selected="Ordenar por" opcoes={ordenar} />
                         </div>
                     </div>
-                    <span className={styles.linha}/>
+                    <span className={styles.linha} />
                     <div className={styles.containerBotoes}>
-                        <Button>
-                            Fazer empréstimo
+
+                        <Button tipoBotao="primario">
+                            <a href="/novoemprestimo">
+                                Novo empréstimo
+                            </a>
                         </Button>
+
                         <div className={styles.areaBotoes}>
-                            <Button>
-                                <span className="material-symbols-outlined">add</span>
+                            <Button icone="add" tipoBotao="primario">
                                 Criar
                             </Button>
-                            <Button isPrimario={false} disabled={!selecionado}>
-                                <span className="material-symbols-outlined">edit_square</span>
+                            <Button tipoBotao="secundario" icone="info" disabled={!selecionado}>
+                                Detalhes
+                            </Button>
+                            <Button tipoBotao="secundario" icone="edit_square" disabled={!selecionado}>
                                 Editar
                             </Button>
-                            <Button isPrimario={false} disabled={!selecionado}>
-                                <span className="material-symbols-outlined">delete</span>
+                            <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
                                 Excluir
-                            </Button>
-                            <Button isPrimario={false} disabled={!selecionado}>
-                                <span className="material-symbols-outlined">info</span>
-                                Ver detalhes
                             </Button>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ export default function Home() {
                         {lista.map((item, i) => (
                             <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
                                 <div>
-                                    <img className={styles.imagemCartao} src=""/>
+                                    <img className={styles.imagemCartao} src="" />
                                 </div>
                                 <div className={styles.areaConteudoCartao}>
                                     <div className={styles.areaTexto}>
@@ -130,11 +130,11 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div>
-                                    {item.disponivel ? 
+                                    {item.disponivel ?
                                         <div className={styles.statusDisponivel}>Disponível</div>
                                         :
                                         <div className={styles.statusIndisponivel}>Indisponível</div>
-                                    }  
+                                    }
                                 </div>
                             </div>
                         ))}
