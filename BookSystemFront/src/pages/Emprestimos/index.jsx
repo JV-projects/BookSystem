@@ -47,7 +47,7 @@ export default function Emprestimos() {
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes}>
                             <Input placeholder='Pesquisar'/>
-                            <Button>
+                            <Button tipoBotao="primario">
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
@@ -73,10 +73,12 @@ export default function Emprestimos() {
                                     <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                     <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                                 </div>
+
                                 <Status mensagem={item.status} status={item.codStatus}/>
                                 <Button>
+
                                     <span className="material-symbols-outlined">info</span>
-                                    Ver detalhes
+                                    Detalhes
                                 </Button>
                             </div>
                         ))}

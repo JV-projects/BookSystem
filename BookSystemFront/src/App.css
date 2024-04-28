@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Oxygen:300,regular,700);
-
+@import url(https://fonts.googleapis.com/css?family=EB+Garamond:regular,500,600,700,800,italic,500italic,600italic,700italic,800italic);
 :root {
     --border-color: #e4e4e4;
     --green: #d4f5d9;
@@ -16,6 +16,7 @@
     --tertiary-background-color: #fff;
     --tertiary-highlight-color: #3882f6;
     --primary-text-color: #171717;
+    --seconday-text-color: #fff;
     --text-color: #656565;
 }
 

@@ -5,7 +5,7 @@
 }
 
 .titulo{
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--primary-text-color);
 }
 
@@ -31,8 +31,14 @@
 } 
 
 .areaBusca p{
-    font-size: 0.9rem;
+    font-size: 0.99rem;
     color: var(--primary-text-color);
+}
+
+.areaBusca h3{
+    margin-bottom: 0.5rem;
+    max-width: 26.5rem;
+    width: 100%;
 }
 
 .barraPesquisa{
@@ -49,7 +55,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0.9rem;
 }
 
 .dadosUsuario p{
