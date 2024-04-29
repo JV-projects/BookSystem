@@ -5,6 +5,7 @@
     display: flex;
     font-size: 0.875rem;
     position: relative;
+    color: var(--text-color);
 }
 
 .select {
@@ -16,7 +17,14 @@
     padding-right: 2.5rem;
     width: 100%;
     z-index: 1;
+    color: var(--primary-text-color);
 }
+
+.select option {
+    color: var(--primary-text-color);
+    background-color: var(--primary-background-color);
+}
+
 
 .icon {
     display: flex;
@@ -24,4 +32,5 @@
     right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
+    color: var(--primary-text-color);
 }
