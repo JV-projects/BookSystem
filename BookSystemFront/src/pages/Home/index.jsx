@@ -4,6 +4,7 @@ import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
+import Status from '../../components/global/Status'
 
 export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
@@ -17,7 +18,8 @@ export default function Home() {
             editora: "Martin Claret",
             ano: "2012",
             assuntos: ["Literatura estrangeira", "Romance"],
-            disponivel: false
+            disponivel: "Disponível",
+            codStatus : 0
         },
         {
             titulo: "Java®: Como Programar",
@@ -25,7 +27,8 @@ export default function Home() {
             editora: "Pearson Universidades",
             ano: "2016",
             assuntos: ["Programação"],
-            disponivel: true
+            disponivel: "Indisponível",
+            codStatus : 2
         }
     ]
 
@@ -33,7 +36,7 @@ export default function Home() {
 
     const handlePesquisar = () => {
         pesquisa.length ? setLista(
-            dados.filter(item => 
+            dados.filter(item =>
                 item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
@@ -50,29 +53,30 @@ export default function Home() {
     }
 
     let pesquisar = [
-        {valor: "titulo", texto: "Título"},
-        {valor: "isbn", texto: "ISBN"},
-        {valor: "autor", texto: "Autor"},
-        {valor: "editora", texto: "Editora"},
-        {valor: "assunto", texto: "Assunto"}
+        { valor: "titulo", texto: "Título" },
+        { valor: "isbn", texto: "ISBN" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" },
+        { valor: "assunto", texto: "Assunto" }
     ]
 
     let ordenar = [
-        {valor: "titulo", texto: "Título"},
-        {valor: "autor", texto: "Autor"},
-        {valor: "editora", texto: "Editora"}
+        { valor: "titulo", texto: "Título" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" }
     ]
 
-    return(
+    return (
         <EstruturaPagina>
             <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Gerenciamento</h1>
                 <div className={styles.areaConteudo}>
+
                     <div className={styles.barraOpcoes}>
                         <div className={styles.containerBotoes}>
                             <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
                                 <Input className={styles.barraPesquisa} value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder='Pesquisar'/>
-                                <Button onClick={handlePesquisar}>
+                                 <Button tipoBotao="primario" onClick={handlePesquisar}>
                                     <span className="material-symbols-outlined">search</span>
                                 </Button>
                             </div>
@@ -84,34 +88,35 @@ export default function Home() {
                         </div>
                         <span className={styles.linha}/>
                         <div className={styles.containerBotoes}>
-                            <Button>
-                                Fazer empréstimo
-                            </Button>
+                            
+                        <Button tipoBotao="primario">
+                            <a href="/novoemprestimo">
+                                Novo empréstimo
+                            </a>
+                        </Button>
+
                             <div className={styles.areaBotoes}>
-                                <Button>
-                                    <span className="material-symbols-outlined">add</span>
-                                    Criar
-                                </Button>
-                                <Button isPrimario={false} disabled={!selecionado}>
-                                    <span className="material-symbols-outlined">edit_square</span>
-                                    Editar
-                                </Button>
-                                <Button isPrimario={false} disabled={!selecionado}>
-                                    <span className="material-symbols-outlined">delete</span>
-                                    Excluir
-                                </Button>
-                                <Button isPrimario={false} disabled={!selecionado}>
-                                    <span className="material-symbols-outlined">info</span>
-                                    Ver detalhes
-                                </Button>
+                            <Button icone="add" tipoBotao="primario">
+                                Criar
+                            </Button>
+                            <Button tipoBotao="secundario" icone="info" disabled={!selecionado}>
+                                Detalhes
+                            </Button>
+                            <Button tipoBotao="secundario" icone="edit_square" disabled={!selecionado}>
+                                Editar
+                            </Button>
+                            <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
+                                Excluir
+                            </Button>
                             </div>
+
                         </div>
                     </div>
                     <div className={styles.containerCartoes}>
                         {lista.map((item, i) => (
                             <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
                                 <div>
-                                    <img className={styles.imagemCartao} src=""/>
+                                    <img className={styles.imagemCartao} src="" />
                                 </div>
                                 <div className={styles.areaConteudoCartao}>
                                     <div className={styles.areaTexto}>
@@ -135,13 +140,9 @@ export default function Home() {
                                         ))}
                                     </div>
                                 </div>
-                                <div>
-                                    {item.disponivel ? 
-                                        <div className={styles.statusDisponivel}>Disponível</div>
-                                        :
-                                        <div className={styles.statusIndisponivel}>Indisponível</div>
-                                    }  
-                                </div>
+
+                                <Status mensagem={item.disponivel} status={item.codStatus}/>  
+
                             </div>
                         ))}
                     </div>

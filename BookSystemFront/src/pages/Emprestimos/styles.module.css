@@ -57,6 +57,7 @@
 }
 
 .paragrafo {
+    width: 150px;
     align-items: center;
     color: var(--text-color);
     display: flex;
