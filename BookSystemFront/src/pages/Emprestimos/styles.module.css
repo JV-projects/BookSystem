@@ -1,5 +1,4 @@
 .container {
-    gap: 1.5rem;
     max-width: 67.5rem;
     padding: 2rem;
     width: 100%;
@@ -9,8 +8,12 @@
     font-size: 1.5rem;
 }
 
-.areaConteudo {
+.barraOpcoes {
+    background-color: var(--primary-background-color);
     gap: 1.25rem;
+    padding-block: 1.5rem;
+    position: sticky;
+    top: 0;
 }
 
 .containerBotoes {
