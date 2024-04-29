@@ -78,6 +78,7 @@ export default function Home() {
                         <div className={styles.areaBotoes}>
                             <Select selected="Pesquisar por" opcoes={pesquisar}/>
                             <Select selected="Ordenar por" opcoes={ordenar}/>
+                            <Input placeholder='Ano'/>
                         </div>
                     </div>
                     <span className={styles.linha}/>
@@ -114,11 +115,11 @@ export default function Home() {
                                     <div className={styles.areaTexto}>
                                         <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
                                         <div className={styles.areaBotoes}>
-                                            <p className={styles.paragrafo}>Autor: {item.autor}</p>
+                                            <p className={styles.paragrafo}>Autor: <span className={styles.destaque}>{item.autor}</span></p>
                                             <p className={styles.paragrafo}>&bull;</p>
-                                            <p className={styles.paragrafo}>Editora: {item.editora}</p>
+                                            <p className={styles.paragrafo}>Editora: <span className={styles.destaque}>{item.editora}</span></p>
                                             <p className={styles.paragrafo}>&bull;</p>
-                                            <p className={styles.paragrafo}>Ano: {item.ano}</p>
+                                            <p className={styles.paragrafo}>Ano: <span className={styles.destaque}>{item.ano}</span></p>
                                         </div>
                                     </div>
                                     <div className={styles.areaBotoes}>
