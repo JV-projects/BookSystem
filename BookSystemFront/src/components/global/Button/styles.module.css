@@ -9,7 +9,7 @@
     height: max-content;
     vertical-align: middle;
     text-decoration: none;
-    color: var(--primary-background-color);
+    color: var(--seconday-text-color);
 }
 
 .primario:not([disabled]):hover{
