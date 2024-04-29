@@ -10,8 +10,8 @@ export default function EstruturaPagina({ children }) {
             <Header/>
             <div className={styles.areaConteudo}>
                 {children}
+                <Footer/>
             </div>
-            <Footer/>
         </div>
     )
 }

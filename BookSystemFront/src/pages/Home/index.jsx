@@ -71,28 +71,31 @@ export default function Home() {
             <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Gerenciamento</h1>
                 <div className={styles.areaConteudo}>
-                    <div className={styles.containerBotoes}>
-                        <div className={styles.areaBotoes}>
-                            <Input value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder='Pesquisar' />
-                            <Button tipoBotao="primario" onClick={handlePesquisar}>
-                                <span className="material-symbols-outlined">search</span>
-                            </Button>
-                        </div>
-                        <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" opcoes={pesquisar} />
-                            <Select selected="Ordenar por" opcoes={ordenar} />
-                        </div>
-                    </div>
-                    <span className={styles.linha} />
-                    <div className={styles.containerBotoes}>
 
+                    <div className={styles.barraOpcoes}>
+                        <div className={styles.containerBotoes}>
+                            <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                                <Input className={styles.barraPesquisa} value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder='Pesquisar'/>
+                                 <Button tipoBotao="primario" onClick={handlePesquisar}>
+                                    <span className="material-symbols-outlined">search</span>
+                                </Button>
+                            </div>
+                            <div className={styles.areaBotoes}>
+                                <Select selected="Pesquisar por" opcoes={pesquisar}/>
+                                <Select selected="Ordenar por" opcoes={ordenar}/>
+                                <Input placeholder='Ano'/>
+                            </div>
+                        </div>
+                        <span className={styles.linha}/>
+                        <div className={styles.containerBotoes}>
+                            
                         <Button tipoBotao="primario">
                             <a href="/novoemprestimo">
                                 Novo empréstimo
                             </a>
                         </Button>
 
-                        <div className={styles.areaBotoes}>
+                            <div className={styles.areaBotoes}>
                             <Button icone="add" tipoBotao="primario">
                                 Criar
                             </Button>
@@ -105,6 +108,8 @@ export default function Home() {
                             <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
                                 Excluir
                             </Button>
+                            </div>
+
                         </div>
                     </div>
                     <div className={styles.containerCartoes}>
@@ -117,11 +122,14 @@ export default function Home() {
                                     <div className={styles.areaTexto}>
                                         <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
                                         <div className={styles.areaBotoes}>
-                                            <p className={styles.paragrafo}>Autor: {item.autor}</p>
-                                            <p className={styles.paragrafo}>&bull;</p>
-                                            <p className={styles.paragrafo}>Editora: {item.editora}</p>
-                                            <p className={styles.paragrafo}>&bull;</p>
-                                            <p className={styles.paragrafo}>Ano: {item.ano}</p>
+                                            <p className={styles.paragrafo}>Autor:</p>
+                                            <span className={styles.destaque}>{item.autor}</span>
+                                            <p className={styles.paragrafo}><span className={styles.linhaHorizontal}/></p>
+                                            <p className={styles.paragrafo}>Editora:</p>
+                                            <span className={styles.destaque}>{item.editora}</span>
+                                            <p className={styles.paragrafo}><span className={styles.linhaHorizontal}/></p>
+                                            <p className={styles.paragrafo}>Ano:</p>
+                                            <span className={styles.destaque}>{item.ano}</span>
                                         </div>
                                     </div>
                                     <div className={styles.areaBotoes}>

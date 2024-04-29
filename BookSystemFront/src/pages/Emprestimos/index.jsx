@@ -44,19 +44,22 @@ export default function Emprestimos() {
             <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Empréstimos</h1>
                 <div className={styles.areaConteudo}>
-                    <div className={styles.containerBotoes}>
-                        <div className={styles.areaBotoes}>
-                            <Input placeholder='Pesquisar'/>
-                            <Button tipoBotao="primario">
+
+                    <div className={styles.barraOpcoes}>
+                        <div className={styles.containerBotoes}>
+                            <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                                <Input className={styles.barraPesquisa} placeholder='Pesquisar'/>
+                                <Button tipoBotao="primario">
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
-                        </div>
-                        <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" opcoes={pesquisar}/>
-                            <Select selected="Ordenar por" opcoes={ordenar}/>
+                            </div>
+                            <div className={styles.areaBotoes}>
+                                <Select selected="Pesquisar por" opcoes={pesquisar}/>
+                                <Select selected="Ordenar por" opcoes={ordenar}/>
+                            </div>
+
                         </div>
                     </div>
-                    <span className={styles.linha}/>
                     <div className={styles.containerCartoes}>
                         {dados.map((item, i) => (
                             <div className={styles.cartao} key={i}>

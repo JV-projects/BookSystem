@@ -1,6 +1,6 @@
 .container {
-    gap: 1.5rem;
     max-width: 67.5rem;
+    padding: 2rem;
     width: 100%;
 }
 
@@ -8,9 +8,12 @@
     font-size: 1.5rem;
 }
 
-.areaConteudo {
+.barraOpcoes {
+    background-color: var(--primary-background-color);
     gap: 1.25rem;
-    overflow-y: auto;
+    padding-block: 1.5rem;
+    position: sticky;
+    top: 0;
 }
 
 .containerBotoes {
@@ -23,6 +26,15 @@
     gap: 0.5rem;
 }
 
+.areaPesquisa {
+    max-width: 25rem;
+    width: 100%;
+}
+
+.barraPesquisa {
+    width: 100%;
+}
+
 .linha {
     background-color: var(--border-color);
     content: "";
@@ -30,8 +42,7 @@
 }
 
 .containerCartoes {
-    gap: 1rem;
-    overflow-y: auto;
+    gap: 1.25rem;
 }
 
 .cartaoNaoSelecionado {
@@ -65,13 +76,31 @@
     gap: 0.5rem;
 }
 
-.container, .areaConteudo, .containerCartoes, .areaConteudoCartao, .areaTexto {
+.container, .areaConteudo, .barraOpcoes, .containerCartoes, .areaConteudoCartao, .areaTexto {
     display: flex;
     flex-direction: column;
 }
 
 .tituloSecundario {
     font-size: 1rem;
+}
+
+.paragrafo {
+    align-items: center;
+    display: flex;
+}
+
+.destaque {
+    color: var(--highlight-text-color);
+    font-size: 1rem;
+}
+
+.linhaHorizontal {
+    background-color: var(--text-color);
+    content: "";
+    display: flex;
+    height: 1em;
+    width: 1px;
 }
 
 .assunto {
