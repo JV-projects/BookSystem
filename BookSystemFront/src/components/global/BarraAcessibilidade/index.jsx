@@ -1,6 +1,40 @@
 import styles from "./styles.module.css"
+import { CSSGlobalVariables } from "css-global-variables"
 
 export default function BarraAcessibilidade() {
+
+    function handleContraste() {
+        let cssvar = new CSSGlobalVariables()
+
+        console.log(cssvar)
+
+        let chaves = Object.keys(cssvar)
+
+        chaves.forEach(chave => {
+            if (chave.includes("border")) {
+                cssvar[chave] = "#0000ff"
+            }
+
+            if (chave.includes("highlight")) {
+                cssvar[chave] = "#000"
+            }
+
+            if (chave.includes("text")) {
+                cssvar[chave] = "#fff"
+            }
+
+
+            if (chave.includes("background")) {
+                cssvar[chave] = "#000"
+            }
+
+            if (chave.includes("link")) {
+                cssvar[chave] = "#ffff00"
+            }
+
+        });
+    }
+
     return (
         <div className={styles.container}>
             <ul className={styles.lista}>
@@ -10,7 +44,7 @@ export default function BarraAcessibilidade() {
             </ul>
             <ul className={styles.lista}>
                 <li><a className={styles.link} href={"/acessibilidade"}>Acessibilidade</a></li>
-                <li><button className={styles.botao}>Contraste</button></li>
+                <li><button className={styles.botao} onClick={handleContraste}>Contraste</button></li>
                 <li><button className={styles.botao}>Sem contraste</button></li>
                 <li><button className={styles.botao}>A+</button></li>
                 <li><button className={styles.botao}>A-</button></li>
