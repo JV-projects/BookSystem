@@ -42,8 +42,8 @@ export default function Emprestimos() {
                 <h1 className={styles.tituloPrimario}>Empréstimos</h1>
                 <div className={styles.areaConteudo}>
                     <div className={styles.containerBotoes}>
-                        <div className={styles.areaBotoes}>
-                            <Input placeholder='Pesquisar'/>
+                        <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                            <Input className={styles.barraPesquisa} placeholder='Pesquisar'/>
                             <Button>
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
