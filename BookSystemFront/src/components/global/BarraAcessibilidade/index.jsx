@@ -1,18 +1,21 @@
 import styles from "./styles.module.css"
 import { CSSGlobalVariables } from "css-global-variables"
 
+
 export default function BarraAcessibilidade() {
 
-    function handleContraste() {
-        let cssvar = new CSSGlobalVariables()
+    let cssvar = new CSSGlobalVariables()
+    let cssvar2 = new CSSGlobalVariables()
 
-        console.log(cssvar)
+    let chaves = Object.keys(cssvar)
+    let valores = Object.values(cssvar2)
 
-        let chaves = Object.keys(cssvar)
+    function handleContraste(){
+
 
         chaves.forEach(chave => {
             if (chave.includes("border")) {
-                cssvar[chave] = "#0000ff"
+                cssvar[chave] = "#fff"
             }
 
             if (chave.includes("highlight")) {
@@ -32,7 +35,46 @@ export default function BarraAcessibilidade() {
                 cssvar[chave] = "#ffff00"
             }
 
+            if (chave.includes("selected")) {
+                cssvar[chave] = "#0000ff"
+            }
+
         });
+
+
+    }
+
+    function handleSemContraste(){
+        let i = 0;
+
+
+        chaves.forEach(c => {
+
+            cssvar[c] = valores[i]
+
+            i++
+            
+        })
+
+
+    }
+
+    let fonte = 16
+
+    function fonteMais(){
+        
+        if(fonte < 25){
+            document.documentElement.style.fontSize = ++fonte + "px"
+        }
+
+    }
+
+    function fonteMenos(){
+        
+        if(fonte > 14){
+            document.documentElement.style.fontSize = --fonte + "px"
+        }
+
     }
 
     return (
@@ -45,9 +87,9 @@ export default function BarraAcessibilidade() {
             <ul className={styles.lista}>
                 <li><a className={styles.link} href={"/acessibilidade"}>Acessibilidade</a></li>
                 <li><button className={styles.botao} onClick={handleContraste}>Contraste</button></li>
-                <li><button className={styles.botao}>Sem contraste</button></li>
-                <li><button className={styles.botao}>A+</button></li>
-                <li><button className={styles.botao}>A-</button></li>
+                <li><button className={styles.botao} onClick={handleSemContraste}>Sem contraste</button></li>
+                <li><button className={styles.botao} onClick={fonteMais} id="fontemais">A+</button></li>
+                <li><button className={styles.botao} onClick={fonteMenos} id="fontmenos">A-</button></li>
             </ul>
         </div>
     )
