@@ -111,7 +111,7 @@ export default function Home() {
                         {lista.map((item, i) => (
                             // <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
                             <div className={styles.cartaoNaoSelecionado}>
-                                <div>
+                                <div className={styles.areaImagemCartao}>
                                     <img className={styles.imagemCartao} src="" alt="Foto da capa do livro" />
                                 </div>
                                 <div className={styles.areaConteudoCartao}>
