@@ -5,7 +5,7 @@
     display: flex;
     font-size: 0.875rem;
     position: relative;
-    color: var(--text-color);
+    color: var(--tertiary-text-color);
 }
 
 .select {
