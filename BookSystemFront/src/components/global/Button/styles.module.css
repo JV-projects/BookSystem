@@ -68,3 +68,7 @@
     background-color: var(--secondary-background-hover);
     transition: .2s;
 }
+
+.terciarioCancela a {
+    color: var(--red-text-color);
+}
