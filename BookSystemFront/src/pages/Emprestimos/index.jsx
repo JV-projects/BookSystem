@@ -79,9 +79,7 @@ export default function Emprestimos() {
 
                                 <Status mensagem={item.status} status={item.codStatus}/>
                                 <Button>
-
                                     <span className="material-symbols-outlined">info</span>
-                                    Detalhes
                                 </Button>
                             </div>
                         ))}
