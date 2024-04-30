@@ -2,6 +2,7 @@
     max-width: 67.5rem;
     width: 100%;
     gap: 1.5rem;
+    padding: 2rem;
 }
 
 .titulo{
@@ -39,6 +40,7 @@
     margin-bottom: 0.5rem;
     max-width: 26.5rem;
     width: 100%;
+    color: var(--primary-text-color);
 }
 
 .barraPesquisa{
@@ -72,7 +74,7 @@
     display: flex;
     gap: 0.1rem;
     font-size: 1rem;
-    color: var(--text-color)
+    color: var(--tertiary-text-color)
 }
 
 /* --Livro */
@@ -121,6 +123,7 @@
 
 .headerResumo p{
     font-size: 0.9rem;
+    color: var(--primary-text-color);
 }
 
 .itemEmprestimo{
@@ -141,6 +144,7 @@
 
 .itemEmprestimo .infoLivro p{
     font-size: 0.9rem;
+    color: var(--primary-text-color);
 }
 
 .itemEmprestimo button{
@@ -160,11 +164,16 @@
     border: 1px solid var(--border-color);
 }
 
+
 .retirada, .devolucao{
     display: flex;
     gap: 0.5rem;
     align-items: center;
     font-size: 0.9rem;
+}
+
+.retirada label, .devolucao label{
+    color: var(--primary-text-color);
 }
 
 .retirada input, .devolucao input{

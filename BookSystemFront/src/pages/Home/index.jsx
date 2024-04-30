@@ -5,6 +5,7 @@ import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
+import { Link } from "react-router-dom"
 
 export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
@@ -74,7 +75,7 @@ export default function Home() {
                     <div className={styles.barraOpcoes}>
                         <div className={styles.containerBotoes}>
                             <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
-                                <Input className={styles.barraPesquisa} value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} placeholder='Pesquisar'/>
+                                <Input className={styles.barraPesquisa} placeholder='Pesquisar'/>
                                  <Button tipoBotao="primario" onClick={handlePesquisar}>
                                     <span className="material-symbols-outlined">search</span>
                                 </Button>
@@ -87,11 +88,9 @@ export default function Home() {
                         </div>
                         <span className={styles.linha}/>
                         <div className={styles.containerBotoes}>
-                            <Button tipoBotao="primario">
-                                <a href="/novoemprestimo">
-                                    Novo empréstimo
-                                </a>
-                            </Button>
+                        <Button tipoBotao="primario">
+                            <Link to="/novoemprestimo">Novo empréstimo</Link>
+                        </Button>
                             <div className={styles.areaBotoes}>
                                 <Button icone="add" tipoBotao="primario">
                                     Criar
@@ -110,7 +109,8 @@ export default function Home() {
                     </div>
                     <div className={styles.containerCartoes}>
                         {lista.map((item, i) => (
-                            <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+                            // <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+                            <div className={styles.cartaoNaoSelecionado}>
                                 <div>
                                     <img className={styles.imagemCartao} src="" alt="Foto da capa do livro" />
                                 </div>
@@ -136,7 +136,7 @@ export default function Home() {
                                         ))}
                                     </div>
                                 </div>
-                                <Status mensagem={item.disponivel} status={item.codStatus}/>
+                                <Status mensagem={item.disponivel} status={item.codStatus}/>  
                             </div>
                         ))}
                     </div>

@@ -26,20 +26,20 @@ export default function Emprestimos() {
     ]
 
     let pesquisar = [
-        {valor: "titulo", texto: "Título"},
-        {valor: "isbn", texto: "ISBN"},
-        {valor: "autor", texto: "Autor"},
-        {valor: "editora", texto: "Editora"},
-        {valor: "assunto", texto: "Assunto"}
+        { valor: "titulo", texto: "Título" },
+        { valor: "isbn", texto: "ISBN" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" },
+        { valor: "assunto", texto: "Assunto" }
     ]
 
     let ordenar = [
-        {valor: "titulo", texto: "Título"},
-        {valor: "autor", texto: "Autor"},
-        {valor: "editora", texto: "Editora"}
+        { valor: "titulo", texto: "Título" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" }
     ]
 
-    return(
+    return (
         <EstruturaPagina>
             <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Empréstimos</h1>
@@ -47,16 +47,15 @@ export default function Emprestimos() {
                     <div className={styles.barraOpcoes}>
                         <div className={styles.containerBotoes}>
                             <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
-                                <Input className={styles.barraPesquisa} placeholder='Pesquisar'/>
+                                <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                                 <Button tipoBotao="primario">
-                                <span className="material-symbols-outlined">search</span>
-                            </Button>
+                                    <span className="material-symbols-outlined">search</span>
+                                </Button>
                             </div>
                             <div className={styles.areaBotoes}>
-                                <Select selected="Pesquisar por" opcoes={pesquisar}/>
-                                <Select selected="Ordenar por" opcoes={ordenar}/>
+                                <Select selected="Pesquisar por" opcoes={pesquisar} />
+                                <Select selected="Ordenar por" opcoes={ordenar} />
                             </div>
-
                         </div>
                     </div>
                     <div className={styles.containerCartoes}>
@@ -75,7 +74,7 @@ export default function Emprestimos() {
                                     <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                     <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                                 </div>
-                                <Status mensagem={item.status} status={item.codStatus}/>
+                                <Status mensagem={item.status} status={item.codStatus} />
                                 <Button>
                                     <span className="material-symbols-outlined">info</span>
                                 </Button>

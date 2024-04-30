@@ -6,6 +6,7 @@
 
 .tituloPrimario {
     font-size: 1.5rem;
+    color: var(--primary-text-color);
 }
 
 .barraOpcoes {
@@ -50,7 +51,7 @@
 }
 
 .cartaoSelecionado {
-    border: 1px solid var(--primary-highlight-color);
+    border: 1px solid var(--border-selected);
 }
 
 .cartaoNaoSelecionado, .cartaoSelecionado {
@@ -83,6 +84,7 @@
 
 .tituloSecundario {
     font-size: 1.25rem;
+    color: var(--primary-text-color);
 }
 
 .paragrafo {
@@ -91,12 +93,12 @@
 }
 
 .destaque {
-    color: var(--highlight-text-color);
+    color: var(--primary-text-color);
     font-size: 1rem;
 }
 
 .linhaHorizontal {
-    background-color: var(--text-color);
+    background-color: var(--tertiary-text-color);
     content: "";
     display: flex;
     height: 1em;
@@ -111,17 +113,17 @@
 }
 
 .statusIndisponivel {
-    background-color: var(--red);
+    background-color: var(--red-background);
     border: 1px solid var(--red-border);
 }
 
 .statusDisponivel {
-    background-color: var(--green);
+    background-color: var(--green-background);
     border: 1px solid var(--green-border);
 }
 
 .paragrafo, .assunto, .statusIndisponivel, .statusDisponivel {
-    color: var(--text-color);
+    color: var(--tertiary-text-color);
     font-size: 0.875rem;
 }
 

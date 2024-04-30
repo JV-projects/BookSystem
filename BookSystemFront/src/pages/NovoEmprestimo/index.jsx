@@ -2,6 +2,7 @@ import styles from "./styles.module.css"
 import EstruturaPagina from "../../components/global/EstruturaPagina"
 import Button from "../../components/global/Button"
 import Input from "../../components/global/Input"
+import { Link } from "react-router-dom"
 
 export default function NovoEmprestimo(props) {
 
@@ -91,23 +92,23 @@ export default function NovoEmprestimo(props) {
 									<Button tipoBotao="terciarioCancela">
 										Remover
 									</Button>
-								</div> 
+								</div>
 							</div>
 
 							<div className={styles.containerPeriodo}>
 								<div className={styles.retirada}>
 									<label>Retirada</label>
-									<Input placeholder="00/00/0000"/>
+									<Input placeholder="00/00/0000" />
 								</div>
 								<div className={styles.devolucao}>
 									<label>Devolução</label>
-									<Input placeholder="00/00/0000"/>
+									<Input placeholder="00/00/0000" />
 								</div>
 							</div>
 
 							<div className={styles.containerBotoes}>
 								<Button tipoBotao="terciarioCancela">
-									Cancelar
+									<Link to="/gerenciamento">Cancelar</Link>
 								</Button>
 								<Button tipoBotao="terciarioConfirma">
 									Finalizar

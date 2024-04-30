@@ -1,20 +1,20 @@
 .statusDevolvido {
-    background-color: var(--green);
+    background-color: var(--green-background);
     border: 1px solid var(--green-border);
 }
 
 .statusPendente {
-    background-color: var(--orange);
+    background-color: var(--orange-background);
     border: 1px solid var(--orange-border);
 }
 
 .statusNaoDevolvido {
-    background-color: var(--red);
+    background-color: var(--red-background);
     border: 1px solid var(--red-border);
 }
 
 .statusPendente, .statusDevolvido, .statusNaoDevolvido {
-    color: var(--text-color);
+    color: var(--tertiary-text-color);
     max-width: 7.5rem;
     width: 100%;
     height: min-content;
