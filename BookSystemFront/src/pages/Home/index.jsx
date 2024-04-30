@@ -105,8 +105,8 @@ export default function Home() {
                                 <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
                                     Excluir
                                 </Button>
-                                </div>
                             </div>
+                        </div>
                     </div>
                     <div className={styles.containerCartoes}>
                         {lista.map((item, i) => (
