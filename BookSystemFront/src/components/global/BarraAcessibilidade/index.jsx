@@ -71,7 +71,7 @@ export default function BarraAcessibilidade() {
 
     function fonteMenos(){
         
-        if(fonte > 14){
+        if(fonte > 16){
             document.documentElement.style.fontSize = --fonte + "px"
         }
 
