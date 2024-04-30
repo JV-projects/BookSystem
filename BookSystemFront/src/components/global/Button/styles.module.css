@@ -1,6 +1,6 @@
 .primario {
     background-color: var(--primary-highlight-color);
-    border: none;
+    border: 1px solid var(--border-color);
     color: var(--seconday-text-color);
 }
 
@@ -9,22 +9,26 @@
     height: max-content;
     vertical-align: middle;
     text-decoration: none;
-    color: var(--primary-background-color);
+    color: var(--link-color);
 }
 
 .primario:not([disabled]):hover{
-    background-color: #6232CB;
+    background-color: var(--primary-background-hover);
     transition: .2s;
 }
 
 .secundario {
     background-color: transparent;
     border: 1px solid var(--border-color);
-    color: var(--text-color);
+    color: var(--tertiary-text-color);
+}
+
+.secundario a{
+    color: var(--secondary-link-color);
 }
 
 .secundario:not([disabled]):hover{
-    background-color: #ebebeb;
+    background-color: var(--secondary-background-hover);
     color: var(--primary-text-color);
     transition: 0.2s;
 }
@@ -45,22 +49,22 @@
 
 .terciarioConfirma{
     background-color: var(--secondary-highlight-color);
-    border: none;
+    border: 1px solid var(--border-color);
     color: var(--primary-text-color);
 }
 
 .terciarioCancela{
     background-color: transparent;
     border: 1px solid var(--border-color);
-    color: #D95656;
+    color: var(--red-text-color);
 }
 
 .terciarioConfirma:hover{
-    background-color: #769c94;
+    background-color: var(--tertiary-background-hover);
     transition: .2s;
 }
 
 .terciarioCancela:hover{
-    background-color: #ebebeb;
+    background-color: var(--secondary-background-hover);
     transition: .2s;
 }

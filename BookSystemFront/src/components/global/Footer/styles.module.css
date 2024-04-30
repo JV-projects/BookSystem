@@ -10,6 +10,6 @@
 }
 
 .paragraph {
-    color: var(--text-color);
+    color: var(--tertiary-text-color);
     font-size: 0.875rem;
 }

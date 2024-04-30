@@ -23,6 +23,10 @@
     gap: 0.5rem;
 }
 
+.ul a{
+    color: var(--tertiary-link-color);
+}
+
 .selectedPage {
     border-bottom: 2px solid var(--primary-highlight-color);
 }
@@ -30,7 +34,7 @@
 .page, .selectedPage {
     border-top-left-radius: 0.125rem;
     border-top-right-radius: 0.125rem;
-    color: var(--text-color);
+    color: var(--tertiary-text-color);
     font-size: 0.875rem;
     padding-block: 0.5rem;
     padding-inline: 0.75rem;
