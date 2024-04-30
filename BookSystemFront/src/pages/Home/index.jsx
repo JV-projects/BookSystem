@@ -71,7 +71,6 @@ export default function Home() {
             <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Gerenciamento</h1>
                 <div className={styles.areaConteudo}>
-
                     <div className={styles.barraOpcoes}>
                         <div className={styles.containerBotoes}>
                             <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
@@ -88,35 +87,32 @@ export default function Home() {
                         </div>
                         <span className={styles.linha}/>
                         <div className={styles.containerBotoes}>
-                            
-                        <Button tipoBotao="primario">
-                            <a href="/novoemprestimo">
-                                Novo empréstimo
-                            </a>
-                        </Button>
-
+                            <Button tipoBotao="primario">
+                                <a href="/novoemprestimo">
+                                    Novo empréstimo
+                                </a>
+                            </Button>
                             <div className={styles.areaBotoes}>
-                            <Button icone="add" tipoBotao="primario">
-                                Criar
-                            </Button>
-                            <Button tipoBotao="secundario" icone="info" disabled={!selecionado}>
-                                Detalhes
-                            </Button>
-                            <Button tipoBotao="secundario" icone="edit_square" disabled={!selecionado}>
-                                Editar
-                            </Button>
-                            <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
-                                Excluir
-                            </Button>
+                                <Button icone="add" tipoBotao="primario">
+                                    Criar
+                                </Button>
+                                <Button tipoBotao="secundario" icone="info" disabled={!selecionado}>
+                                    Detalhes
+                                </Button>
+                                <Button tipoBotao="secundario" icone="edit_square" disabled={!selecionado}>
+                                    Editar
+                                </Button>
+                                <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
+                                    Excluir
+                                </Button>
+                                </div>
                             </div>
-
-                        </div>
                     </div>
                     <div className={styles.containerCartoes}>
                         {lista.map((item, i) => (
                             <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
                                 <div>
-                                    <img className={styles.imagemCartao} src="" />
+                                    <img className={styles.imagemCartao} src="" alt="Foto da capa do livro" />
                                 </div>
                                 <div className={styles.areaConteudoCartao}>
                                     <div className={styles.areaTexto}>
@@ -140,9 +136,7 @@ export default function Home() {
                                         ))}
                                     </div>
                                 </div>
-
-                                <Status mensagem={item.disponivel} status={item.codStatus}/>  
-
+                                <Status mensagem={item.disponivel} status={item.codStatus}/>
                             </div>
                         ))}
                     </div>
