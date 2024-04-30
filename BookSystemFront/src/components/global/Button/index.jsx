@@ -7,9 +7,8 @@ export default function Button({ children, tipoBotao, ...rest }) {
 
     const defStyle = {
         display: "flex",
-        "align-items": "center",
-        "padding-block": "0.45rem",
-        "padding-inline": "0.75rem",
+        "alignItems": "center",
+        "padding": "0.45rem 0.75rem 0.45rem 0.75rem",
     }
 
     const estilo = Object.values(styles)
