@@ -44,7 +44,6 @@ export default function Emprestimos() {
             <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Empréstimos</h1>
                 <div className={styles.areaConteudo}>
-
                     <div className={styles.barraOpcoes}>
                         <div className={styles.containerBotoes}>
                             <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
@@ -76,7 +75,6 @@ export default function Emprestimos() {
                                     <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                     <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                                 </div>
-
                                 <Status mensagem={item.status} status={item.codStatus}/>
                                 <Button>
                                     <span className="material-symbols-outlined">info</span>
