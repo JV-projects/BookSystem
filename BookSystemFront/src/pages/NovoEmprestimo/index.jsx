@@ -3,6 +3,7 @@ import EstruturaPagina from "../../components/global/EstruturaPagina"
 import Button from "../../components/global/Button"
 import Input from "../../components/global/Input"
 import { Link } from "react-router-dom"
+import TopoPagina from "../../components/global/TopoPagina"
 
 export default function NovoEmprestimo(props) {
 
@@ -10,8 +11,11 @@ export default function NovoEmprestimo(props) {
 		<>
 			<EstruturaPagina>
 				<div className={styles.containerMain}>
-					<h1 className={styles.titulo}>Novo empréstimo</h1>
-					<p className={styles.subtitulo}>Insira as informações para criar um empréstimo</p>
+
+					<TopoPagina
+						titulo="Novo empréstimo"
+						subtitulo="Insira as informações para criar um novo empréstimo" 
+						link='/gerenciamento'/>
 
 					<div className={styles.containerArea}>
 
