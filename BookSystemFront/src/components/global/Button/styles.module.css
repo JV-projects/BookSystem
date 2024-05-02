@@ -33,13 +33,15 @@
     transition: 0.2s;
 }
 
-.primario, .secundario, .terciarioConfirma, .terciarioCancela {
+.primario, .secundario, .terciarioConfirma, .terciarioCancela, .botaoVoltar {
     border-radius: 0.25rem;
     cursor: pointer;
     display: flex;
     font-size: 0.875rem;
     font-weight: 600;
     justify-content: center;
+    padding: 0.45rem 0.75rem 0.45rem 0.75rem;
+    align-items: center;
 }
 
 .primario:disabled, .secundario:disabled {
@@ -72,3 +74,22 @@
 .terciarioCancela a {
     color: var(--red-text-color);
 }
+
+.botaoVoltar {
+    background-color: transparent;
+    border: transparent;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.botaoVoltar:hover {
+    color: var(--primary-highlight-color);
+    background-color: var(--secondary-background-hover);
+    transition: .2s;
+}
+
+.botaoVoltar > span{
+    font-size: 1.8rem;
+} 
+
