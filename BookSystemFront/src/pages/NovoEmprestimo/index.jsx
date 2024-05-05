@@ -7,9 +7,7 @@ import { Link } from "react-router-dom"
 export default function NovoEmprestimo(props) {
 
 	return (
-		<>
 			<EstruturaPagina>
-				<div className={styles.containerMain}>
 					<h1 className={styles.titulo}>Novo empréstimo</h1>
 					<p className={styles.subtitulo}>Insira as informações para criar um empréstimo</p>
 
@@ -119,9 +117,7 @@ export default function NovoEmprestimo(props) {
 
 					</div>
 
-				</div>
 			</EstruturaPagina>
-		</>
 	)
 
 }

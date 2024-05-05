@@ -41,7 +41,6 @@ export default function Emprestimos() {
 
     return (
         <EstruturaPagina>
-            <div className={styles.container}>
                 <h1 className={styles.tituloPrimario}>Empréstimos</h1>
                 <div className={styles.areaConteudo}>
 
@@ -87,7 +86,6 @@ export default function Emprestimos() {
                         ))}
                     </div>
                 </div>
-            </div>
         </EstruturaPagina>
     )
 }
