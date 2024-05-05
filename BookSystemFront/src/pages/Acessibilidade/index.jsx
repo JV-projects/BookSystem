@@ -1,4 +1,3 @@
-import Button from "../../components/global/Button";
 import EstruturaPagina from "../../components/global/EstruturaPagina";
 import style from "./styles.module.css"
 
@@ -42,7 +41,7 @@ function Acessibilidade() {
                 <p>- Jaws for Windows: leitor de tela – vários idiomas;</p>
                 <p>- Virtual Vision: leitor de telas em português do Brasil;</p>
                 <p>- DOSVOX: sistema para deficientes visuais (Windows ou Linux).</p>
-                <p>- Talckback: leitor de tela disponível em smartphones Android.</p>
+                <p>- Talkback: leitor de tela disponível em smartphones Android.</p>
                 <p>Observação: leia no manual do leitor de telas sobre a melhor forma de navegação em páginas web.</p>
 
                 <p>LIBRAS - Língua Brasileira de Sinais</p>
