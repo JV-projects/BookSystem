@@ -1,5 +1,4 @@
 .textoAcessibilidade {
-    padding: 2rem;
     display: flex;
     flex-flow: column wrap;
     gap: 1rem;
@@ -11,5 +10,6 @@
 }
 
 .link {
-    color: var(--secondary-link-color);
+    color: var(--primary-link-color);
+    text-decoration: underline;
 }
