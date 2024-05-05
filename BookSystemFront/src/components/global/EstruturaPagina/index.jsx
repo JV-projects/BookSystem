@@ -4,13 +4,15 @@ import Header from '../Header'
 import Footer from '../Footer'
 
 export default function EstruturaPagina({ children }) {
-    return(
+    return (
         <div className={styles.container}>
-            <BarraAcessibilidade/>
-            <Header/>
+            <BarraAcessibilidade />
+            <Header />
             <div className={styles.areaConteudo}>
-                {children}
-                <Footer/>
+                <div className={styles.conteudo}>
+                    {children}
+                </div>
+                <Footer />
             </div>
         </div>
     )

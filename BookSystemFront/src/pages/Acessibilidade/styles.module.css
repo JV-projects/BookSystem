@@ -1,0 +1,15 @@
+.textoAcessibilidade {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+    color: var(--primary-text-color);
+}
+
+.atalhos {
+    color: var(--tertiary-text-color);
+}
+
+.link {
+    color: var(--primary-link-color);
+    text-decoration: underline;
+}

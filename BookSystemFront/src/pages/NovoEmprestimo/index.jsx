@@ -8,14 +8,11 @@ import TopoPagina from "../../components/global/TopoPagina"
 export default function NovoEmprestimo(props) {
 
 	return (
-		<>
 			<EstruturaPagina>
-				<div className={styles.containerMain}>
 
-					<TopoPagina
-						titulo="Novo empréstimo"
-						subtitulo="Insira as informações para criar um novo empréstimo" 
-						link='/gerenciamento'/>
+					<h1 className={styles.titulo}>Novo empréstimo</h1>
+					<p className={styles.subtitulo}>Insira as informações para criar um empréstimo</p>
+
 
 					<div className={styles.containerArea}>
 
@@ -123,9 +120,7 @@ export default function NovoEmprestimo(props) {
 
 					</div>
 
-				</div>
 			</EstruturaPagina>
-		</>
 	)
 
 }
