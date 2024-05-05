@@ -6,6 +6,7 @@ import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
 import { Link } from "react-router-dom"
+import TopoPagina from '../../components/global/TopoPagina'
 
 export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
@@ -69,7 +70,9 @@ export default function Home() {
 
     return (
         <EstruturaPagina>
-                <h1 className={styles.tituloPrimario}>Gerenciamento</h1>
+                <TopoPagina 
+                titulo="Gerenciamento"/>
+                
                 <div className={styles.barraOpcoes}>
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes + " " + styles.areaPesquisa}>

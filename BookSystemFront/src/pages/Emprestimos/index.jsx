@@ -4,6 +4,7 @@ import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
+import TopoPagina from '../../components/global/TopoPagina'
 
 export default function Emprestimos() {
     const dados = [
@@ -41,7 +42,10 @@ export default function Emprestimos() {
 
     return (
         <EstruturaPagina>
-                <h1 className={styles.tituloPrimario}>Empréstimos</h1>
+                <TopoPagina
+                titulo="Empréstimos"
+                subtitulo="Histórico"
+                />
                 <div className={styles.areaConteudo}>
 
                     <div className={styles.barraOpcoes}>
