@@ -5,12 +5,6 @@ let estiloAplicado;
 
 export default function Button({ children, tipoBotao, ...rest }) {
 
-    const defStyle = {
-        display: "flex",
-        "alignItems": "center",
-        "padding": "0.45rem 0.75rem 0.45rem 0.75rem",
-    }
-
     const estilo = Object.values(styles)
 
 
@@ -23,7 +17,7 @@ export default function Button({ children, tipoBotao, ...rest }) {
     })
 
     return (
-        <button style={defStyle} className={estiloAplicado} {...rest}>
+        <button className={estiloAplicado} {...rest}>
             <span className="material-symbols-outlined">{rest.icone}</span>
             {children}
         </button>
