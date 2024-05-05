@@ -1,18 +1,18 @@
 import styles from "./styles.module.css"
+import { Link } from "react-router-dom"
 import { CSSGlobalVariables } from "css-global-variables"
-
+import { cssVariaveis } from "../../../../public/js/acessibilidade.js"
+import { fonte } from "../../../../public/js/acessibilidade.js"
+import { setFonte } from "../../../../public/js/acessibilidade.js"
 
 export default function BarraAcessibilidade() {
 
     let cssvar = new CSSGlobalVariables()
-    let cssvar2 = new CSSGlobalVariables()
 
     let chaves = Object.keys(cssvar)
-    let valores = Object.values(cssvar2)
+    let valores = Object.values(cssVariaveis)
 
-    function handleContraste(){
-
-
+    function handleContraste() {
         chaves.forEach(chave => {
             if (chave.includes("border")) {
                 cssvar[chave] = "#fff"
@@ -40,11 +40,9 @@ export default function BarraAcessibilidade() {
             }
 
         });
-
-
     }
 
-    function handleSemContraste(){
+    function handleSemContraste() {
         let i = 0;
 
 
@@ -53,26 +51,27 @@ export default function BarraAcessibilidade() {
             cssvar[c] = valores[i]
 
             i++
-            
+
         })
 
 
     }
 
-    let fonte = 16
 
-    function fonteMais(){
-        
-        if(fonte < 25){
-            document.documentElement.style.fontSize = ++fonte + "px"
+    function fonteMais() {
+
+        if (fonte < 25) {
+            setFonte(fonte + 1)
+            document.documentElement.style.fontSize = fonte + "px"
         }
 
     }
 
-    function fonteMenos(){
-        
-        if(fonte > 16){
-            document.documentElement.style.fontSize = --fonte + "px"
+    function fonteMenos() {
+
+        if (fonte > 16) {
+            setFonte(fonte - 1)
+            document.documentElement.style.fontSize = fonte + "px"
         }
 
     }
@@ -85,7 +84,7 @@ export default function BarraAcessibilidade() {
                 <li><a className={styles.link} href="#rodape" accessKey="3" title="ir para o rodapé">Ir para o rodapé [3]</a></li>
             </ul>
             <ul className={styles.lista}>
-                <li><a className={styles.link} href={"/acessibilidade"}>Acessibilidade</a></li>
+                <li><Link className={styles.link} to="/acessibilidade">Acessibilidade</Link></li>
                 <li><button className={styles.botao} onClick={handleContraste}>Contraste</button></li>
                 <li><button className={styles.botao} onClick={handleSemContraste}>Sem contraste</button></li>
                 <li><button className={styles.botao} onClick={fonteMais} id="fontemais">A+</button></li>
