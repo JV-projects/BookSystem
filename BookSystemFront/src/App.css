@@ -25,6 +25,7 @@
     --tertiary-background-color: #fff;
 
     --link-color: #fff;
+    --button-link-color: #7D53DE;
     --secondary-link-color: #656565;
     --tertiary-link-color: #171717;
 
@@ -39,7 +40,8 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Oxygen', sans-serif;  
+    font-family: 'Oxygen', sans-serif; 
+    text-decoration: none; 
 }
 
 body{
@@ -49,3 +51,4 @@ body{
 ul {
     list-style: none;
 }
+
