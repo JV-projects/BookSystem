@@ -1,11 +1,15 @@
 import EstruturaPagina from "../../components/global/EstruturaPagina";
+import TopoPagina from "../../components/global/TopoPagina";
 import style from "./styles.module.css"
-
 
 
 function Acessibilidade() {
     return (
         <EstruturaPagina>
+            <TopoPagina
+            titulo="Acessibilidade"
+            link="/gerenciamento"
+            />
             <div className={style.textoAcessibilidade}>
 
                 <p>Este site foi desenvolvido para que pessoas com deficiência visual, baixa visão, daltonismo, deficiência auditiva e mobilidade reduzida possam navegar por meio de recursos como alto contraste, aumento de fonte, teclas de atalho, tradução para a Língua Brasileira de Sinais e navegação por teclado.</p>
