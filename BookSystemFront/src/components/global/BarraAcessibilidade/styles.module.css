@@ -1,14 +1,14 @@
 .container {
     background-color: var(--tertiary-background-color);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding-block: 0.75rem;
     padding-inline: 2rem;
 }
 
 .lista {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
 }
 
 .link {
@@ -22,6 +22,10 @@
 }
 
 .link, .botao {
-    color: var(--tertiary-text-color);
+    color: var(--secondary-link-color);
     font-size: 0.875rem;
+}
+
+.link:hover, .botao:hover{
+    color: var(--tertiary-link-color);
 }

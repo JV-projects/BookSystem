@@ -37,6 +37,44 @@
     --border-selected: #6232CB;
 }
 
+.coresAcessibilidade {
+    --primary-text-color: #fff;
+    --seconday-text-color: #fff;
+    --tertiary-text-color: #fff;
+
+    --red-text-color: #fff;
+
+    --border-color: #fff;
+    --green-border: #fff;
+    --orange-border: #fff;
+    --red-border: #fff;
+
+    --orange-background: #000;
+    --green-background: #000;
+    --red-background: #000;
+
+    --primary-background-hover: #000;
+    --secondary-background-hover: #000;
+    --tertiary-background-hover: #000;
+
+    --primary-background-color: #000;
+    --secondary-background-color: #000;
+    --tertiary-background-color: #000;
+
+    --primary-link-color: #ffff00;
+    --link-color: #ffff00;
+    --button-link-color: #ffff00;
+    --secondary-link-color: #ffff00;
+    --tertiary-link-color: #ffff00;
+
+    --primary-highlight-color: #000;
+    --secondary-highlight-color: #000;
+    --tertiary-highlight-color: #000;
+
+    --border-selected: #0000ff;
+}
+
+
 * {
     margin: 0px;
     padding: 0px;
