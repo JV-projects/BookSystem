@@ -4,6 +4,7 @@ import Select from '../../components/global/Select'
 import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
+import TopoPagina from '../../components/global/TopoPagina'
 
 export default function Emprestimos() {
     const dados = [
@@ -31,28 +32,44 @@ export default function Emprestimos() {
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" },
         { valor: "assunto", texto: "Assunto" }
+        { valor: "titulo", texto: "Título" },
+        { valor: "isbn", texto: "ISBN" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" },
+        { valor: "assunto", texto: "Assunto" }
     ]
 
     let ordenar = [
         { valor: "titulo", texto: "Título" },
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" }
+        { valor: "titulo", texto: "Título" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" }
     ]
 
     return (
+    return (
         <EstruturaPagina>
-            <div className={styles.container}>
-                <h1 className={styles.tituloPrimario}>Empréstimos</h1>
+                <TopoPagina
+                titulo="Empréstimos"
+                subtitulo="Histórico"
+                />
                 <div className={styles.areaConteudo}>
                     <div className={styles.barraOpcoes}>
                         <div className={styles.containerBotoes}>
                             <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
                                 <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
+                                <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                                 <Button tipoBotao="primario">
+                                    <span className="material-symbols-outlined">search</span>
+                                </Button>
                                     <span className="material-symbols-outlined">search</span>
                                 </Button>
                             </div>
                             <div className={styles.areaBotoes}>
+                                <Select selected="Pesquisar por" opcoes={pesquisar} />
+                                <Select selected="Ordenar por" opcoes={ordenar} />
                                 <Select selected="Pesquisar por" opcoes={pesquisar} />
                                 <Select selected="Ordenar por" opcoes={ordenar} />
                             </div>

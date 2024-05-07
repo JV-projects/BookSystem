@@ -1,0 +1,13 @@
+.container_topo{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.headings{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}

@@ -12,3 +12,11 @@
     justify-content: space-between;
     overflow-y: auto;
 }
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    max-width: 67.5rem;
+    padding: 2rem;
+    width: 100%;
+}

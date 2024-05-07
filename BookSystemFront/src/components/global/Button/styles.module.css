@@ -1,6 +1,7 @@
 .primario {
     background-color: var(--primary-highlight-color);
     border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color);
     color: var(--seconday-text-color);
 }
 
@@ -10,9 +11,11 @@
     vertical-align: middle;
     text-decoration: none;
     color: var(--link-color);
+    color: var(--link-color);
 }
 
 .primario:not([disabled]):hover{
+    background-color: var(--primary-background-hover);
     background-color: var(--primary-background-hover);
     transition: .2s;
 }
@@ -25,21 +28,31 @@
 
 .secundario a{
     color: var(--secondary-link-color);
+    color: var(--tertiary-text-color);
+}
+
+.secundario a{
+    color: var(--secondary-link-color);
 }
 
 .secundario:not([disabled]):hover{
+    background-color: var(--secondary-background-hover);
     background-color: var(--secondary-background-hover);
     color: var(--primary-text-color);
     transition: 0.2s;
 }
 
-.primario, .secundario, .terciarioConfirma, .terciarioCancela {
+.primario, .secundario, .terciarioConfirma, .terciarioCancela, .botaoVoltar {
     border-radius: 0.25rem;
     cursor: pointer;
     display: flex;
     font-size: 0.875rem;
     font-weight: 600;
     justify-content: center;
+    padding: 0.45rem 0.75rem 0.45rem 0.75rem;
+    align-items: center;
+    max-height: 2.5rem;
+    height: 100%;
 }
 
 .primario:disabled, .secundario:disabled {
@@ -50,6 +63,7 @@
 .terciarioConfirma{
     background-color: var(--secondary-highlight-color);
     border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color);
     color: var(--primary-text-color);
 }
 
@@ -57,9 +71,11 @@
     background-color: transparent;
     border: 1px solid var(--border-color);
     color: var(--red-text-color);
+    color: var(--red-text-color);
 }
 
 .terciarioConfirma:hover{
+    background-color: var(--tertiary-background-hover);
     background-color: var(--tertiary-background-hover);
     transition: .2s;
 }

@@ -20,7 +20,7 @@ export default function Home() {
             ano: "2012",
             assuntos: ["Literatura estrangeira", "Romance"],
             disponivel: "Disponível",
-            codStatus : 0
+            codStatus: 0
         },
         {
             titulo: "Java®: Como Programar",
@@ -29,7 +29,7 @@ export default function Home() {
             ano: "2016",
             assuntos: ["Programação"],
             disponivel: "Indisponível",
-            codStatus : 2
+            codStatus: 2
         }
     ]
 
