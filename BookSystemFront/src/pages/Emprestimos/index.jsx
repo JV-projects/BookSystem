@@ -31,7 +31,7 @@ export default function Emprestimos() {
         { valor: "isbn", texto: "ISBN" },
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" },
-        { valor: "assunto", texto: "Assunto" }
+        { valor: "assunto", texto: "Assunto" },
         { valor: "titulo", texto: "Título" },
         { valor: "isbn", texto: "ISBN" },
         { valor: "autor", texto: "Autor" },
@@ -42,62 +42,55 @@ export default function Emprestimos() {
     let ordenar = [
         { valor: "titulo", texto: "Título" },
         { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" }
+        { valor: "editora", texto: "Editora" },
         { valor: "titulo", texto: "Título" },
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" }
     ]
 
     return (
-    return (
         <EstruturaPagina>
-                <TopoPagina
-                titulo="Empréstimos"
-                subtitulo="Histórico"
-                />
-                <div className={styles.areaConteudo}>
-                    <div className={styles.barraOpcoes}>
-                        <div className={styles.containerBotoes}>
-                            <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
-                                <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
-                                <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
-                                <Button tipoBotao="primario">
-                                    <span className="material-symbols-outlined">search</span>
-                                </Button>
-                                    <span className="material-symbols-outlined">search</span>
-                                </Button>
-                            </div>
-                            <div className={styles.areaBotoes}>
-                                <Select selected="Pesquisar por" opcoes={pesquisar} />
-                                <Select selected="Ordenar por" opcoes={ordenar} />
-                                <Select selected="Pesquisar por" opcoes={pesquisar} />
-                                <Select selected="Ordenar por" opcoes={ordenar} />
-                            </div>
+            <TopoPagina titulo="Empréstimos" subtitulo="Histórico"/>
+            <div className={styles.areaConteudo}>
+                <div className={styles.barraOpcoes}>
+                    <div className={styles.containerBotoes}>
+                        <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                            <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
+                            <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
+                            <Button tipoBotao="primario">
+                                <span className="material-symbols-outlined">search</span>
+                            </Button>
+                        </div>
+                        <div className={styles.areaBotoes}>
+                            <Select selected="Pesquisar por" opcoes={pesquisar} />
+                            <Select selected="Ordenar por" opcoes={ordenar} />
+                            <Select selected="Pesquisar por" opcoes={pesquisar} />
+                            <Select selected="Ordenar por" opcoes={ordenar} />
                         </div>
                     </div>
-                    <div className={styles.containerCartoes}>
-                        {dados.map((item, i) => (
-                            <div className={styles.cartao} key={i}>
-                                <p className={styles.paragrafo}>{item.nome}</p>
-                                <p className={styles.paragrafo}>
-                                    <span className="material-symbols-outlined">call</span>
-                                    {item.numeroTelefone}
-                                </p>
-                                <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>Data de retirada</h2>
-                                    <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
-                                </div>
-                                <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>Data de devolução</h2>
-                                    <p className={styles.paragrafo}>{item.dataDevolucao}</p>
-                                </div>
-                                <Status mensagem={item.status} status={item.codStatus} />
-                                <Button>
-                                    <span className="material-symbols-outlined">info</span>
-                                </Button>
+                </div>
+                <div className={styles.containerCartoes}>
+                    {dados.map((item, i) => (
+                        <div className={styles.cartao} key={i}>
+                            <p className={styles.paragrafo}>{item.nome}</p>
+                            <p className={styles.paragrafo}>
+                                <span className="material-symbols-outlined">call</span>
+                                {item.numeroTelefone}
+                            </p>
+                            <div className={styles.areaTexto}>
+                                <h2 className={styles.tituloSecundario}>Data de retirada</h2>
+                                <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
                             </div>
-                        ))}
-                    </div>
+                            <div className={styles.areaTexto}>
+                                <h2 className={styles.tituloSecundario}>Data de devolução</h2>
+                                <p className={styles.paragrafo}>{item.dataDevolucao}</p>
+                            </div>
+                            <Status mensagem={item.status} status={item.codStatus} />
+                            <Button>
+                                <span className="material-symbols-outlined">info</span>
+                            </Button>
+                        </div>
+                    ))}
                 </div>
             </div>
         </EstruturaPagina>
