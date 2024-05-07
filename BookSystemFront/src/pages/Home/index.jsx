@@ -70,82 +70,84 @@ export default function Home() {
 
     return (
         <EstruturaPagina>
-                <TopoPagina 
-                titulo="Gerenciamento"/>
-                
-                <div className={styles.barraOpcoes}>
-                    <div className={styles.containerBotoes}>
-                        <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
-                            <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
-                            <Button tipoBotao="primario" onClick={handlePesquisar}>
-                                <span className="material-symbols-outlined">search</span>
-                            </Button>
-                        </div>
-                        <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" opcoes={pesquisar} />
-                            <Select selected="Ordenar por" opcoes={ordenar} />
-                            <Input placeholder='Ano' />
-                        </div>
-                    </div>
-                    <span className={styles.linha} />
-                    <div className={styles.containerBotoes}>
+            <TopoPagina
+                titulo="Gerenciamento" />
 
-                        <Button tipoBotao="primario">
-                            <Link to="/novoemprestimo">Novo empréstimo</Link>
+            <div className={styles.barraOpcoes}>
+                <div className={styles.containerBotoes}>
+                    <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                        <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
+                        <Button tipoBotao="primario" onClick={handlePesquisar}>
+                            <span className="material-symbols-outlined">search</span>
                         </Button>
+                    </div>
+                    <div className={styles.areaBotoes}>
+                        <Select selected="Pesquisar por" opcoes={pesquisar} />
+                        <Select selected="Ordenar por" opcoes={ordenar} />
+                        <Input placeholder='Ano' />
+                    </div>
+                </div>
+                <span className={styles.linha} />
+                <div className={styles.containerBotoes}>
 
-                        <div className={styles.areaBotoes}>
-                            <Button icone="add" tipoBotao="primario">
+                    <Button tipoBotao="primario">
+                        <Link to="/novoemprestimo">Novo empréstimo</Link>
+                    </Button>
+
+                    <div className={styles.areaBotoes}>
+                        <Link to="/criar">
+                            <Button icone="add" tipoBotao="primario" >
                                 Criar
                             </Button>
-                            <Button tipoBotao="secundario" icone="info" disabled={!selecionado}>
-                                Detalhes
-                            </Button>
-                            <Button tipoBotao="secundario" icone="edit_square" disabled={!selecionado}>
-                                Editar
-                            </Button>
-                            <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
-                                Excluir
-                            </Button>
+                        </Link>
+                        <Button tipoBotao="secundario" icone="info" disabled={!selecionado}>
+                            Detalhes
+                        </Button>
+                        <Button tipoBotao="secundario" icone="edit_square" disabled={!selecionado}>
+                            Editar
+                        </Button>
+                        <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
+                            Excluir
+                        </Button>
+                    </div>
+
+                </div>
+            </div>
+            <div className={styles.containerCartoes}>
+                {lista.map((item, i) => (
+                    // <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+                    <div className={styles.cartaoNaoSelecionado}>
+                        <div>
+                            <img className={styles.imagemCartao} src="" />
                         </div>
+                        <div className={styles.areaConteudoCartao}>
+                            <div className={styles.areaTexto}>
+                                <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
+                                <div className={styles.areaBotoes}>
+                                    <p className={styles.paragrafo}>Autor:</p>
+                                    <span className={styles.destaque}>{item.autor}</span>
+                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    <p className={styles.paragrafo}>Editora:</p>
+                                    <span className={styles.destaque}>{item.editora}</span>
+                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    <p className={styles.paragrafo}>Ano:</p>
+                                    <span className={styles.destaque}>{item.ano}</span>
+                                </div>
+                            </div>
+                            <div className={styles.areaBotoes}>
+                                {item.assuntos.map((assunto, i) => (
+                                    <div className={styles.assunto} key={i}>
+                                        {assunto}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <Status mensagem={item.disponivel} status={item.codStatus} />
 
                     </div>
-                </div>
-                <div className={styles.containerCartoes}>
-                    {lista.map((item, i) => (
-                        // <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
-                        <div className={styles.cartaoNaoSelecionado}>
-                            <div>
-                                <img className={styles.imagemCartao} src="" />
-                            </div>
-                            <div className={styles.areaConteudoCartao}>
-                                <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
-                                    <div className={styles.areaBotoes}>
-                                        <p className={styles.paragrafo}>Autor:</p>
-                                        <span className={styles.destaque}>{item.autor}</span>
-                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                        <p className={styles.paragrafo}>Editora:</p>
-                                        <span className={styles.destaque}>{item.editora}</span>
-                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                        <p className={styles.paragrafo}>Ano:</p>
-                                        <span className={styles.destaque}>{item.ano}</span>
-                                    </div>
-                                </div>
-                                <div className={styles.areaBotoes}>
-                                    {item.assuntos.map((assunto, i) => (
-                                        <div className={styles.assunto} key={i}>
-                                            {assunto}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <Status mensagem={item.disponivel} status={item.codStatus} />
-
-                        </div>
-                    ))}
-                </div>
+                ))}
+            </div>
         </EstruturaPagina>
     )
 }
