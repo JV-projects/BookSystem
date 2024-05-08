@@ -1,0 +1,105 @@
+.containerArea{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)) ;
+    gap: 3rem;
+    margin-top: 3rem;
+    border-radius: 0.25rem
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.form input:focus{
+    border-color: var(--border-selected);
+    transition: 0.2s;
+}
+
+.blocoInput{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-width: 50rem;
+    width: 100%;
+}
+
+.blocoInput2{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    max-width: 50rem;
+    width: 100%;
+}
+
+.blocoInput2 input{
+    width: 100%;
+}
+
+.assunto {
+    background-color: var(--secondary-background-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.25rem;
+}
+
+.form input[type='file']{
+    display: none;
+}
+
+.form label{
+    color: var(--primary-text-color);
+}
+
+.inputFile{
+    display: flex;
+    padding: 1rem;
+    background-color: var(--primary-highlight-color);
+    border: 1px solid var(--border-color);
+    width: min-content;
+    border-radius: 0.25rem;
+    cursor: pointer;  
+}
+
+.inputFile span{
+    color: var(--link-color);
+}
+
+.inputFile:hover{
+    background-color: var(--primary-background-hover);
+    transition: 0.2s;
+}
+
+.imagemArea{
+    display: flex;
+    align-items: center;
+    min-height: 15.2rem;
+}
+
+.imagemArea .blocoInput{
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.imagemArea .imagem{
+    width: 180px;
+    height: 230px;
+}
+
+.imagemArea img{
+    width: 100%;
+}
+
+.areaAssunto{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    width: 100%;
+    min-height: 5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
+}
