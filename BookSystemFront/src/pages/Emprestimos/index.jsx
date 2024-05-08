@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './styles.module.css'
 import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select'
@@ -5,8 +6,12 @@ import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
 import TopoPagina from '../../components/global/TopoPagina'
+import Aside from '../../components/global/Aside'
+import DetalhesEmprestimo from '../../components/global/DetalhesEmprestimo'
 
 export default function Emprestimos() {
+    const [aberto, setAberto] = useState(false)
+
     const dados = [
         {
             nome: "Jackeline Menezes",
@@ -31,10 +36,18 @@ export default function Emprestimos() {
         { valor: "isbn", texto: "ISBN" },
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" },
+        { valor: "assunto", texto: "Assunto" },
+        { valor: "titulo", texto: "Título" },
+        { valor: "isbn", texto: "ISBN" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" },
         { valor: "assunto", texto: "Assunto" }
     ]
 
     let ordenar = [
+        { valor: "titulo", texto: "Título" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" },
         { valor: "titulo", texto: "Título" },
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" }
@@ -42,54 +55,49 @@ export default function Emprestimos() {
 
     return (
         <EstruturaPagina>
-                <TopoPagina
-                titulo="Empréstimos"
-                subtitulo="Histórico"
-                />
-                <div className={styles.areaConteudo}>
-
-                    <div className={styles.barraOpcoes}>
-                        <div className={styles.containerBotoes}>
-                            <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
-                                <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
-                                <Button tipoBotao="primario">
-                                    <span className="material-symbols-outlined">search</span>
-                                </Button>
-                            </div>
-                            <div className={styles.areaBotoes}>
-                                <Select selected="Pesquisar por" opcoes={pesquisar} />
-                                <Select selected="Ordenar por" opcoes={ordenar} />
-                            </div>
-
+            <TopoPagina titulo="Empréstimos" subtitulo="Histórico"/>
+            <div className={styles.areaConteudo}>
+                <div className={styles.barraOpcoes}>
+                    <div className={styles.containerBotoes}>
+                        <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                            <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
+                            <Button tipoBotao="primario">
+                                <span className="material-symbols-outlined">search</span>
+                            </Button>
+                        </div>
+                        <div className={styles.areaBotoes}>
+                            <Select selected="Pesquisar por" opcoes={pesquisar} />
+                            <Select selected="Ordenar por" opcoes={ordenar} />
                         </div>
                     </div>
-                    <div className={styles.containerCartoes}>
-                        {dados.map((item, i) => (
-                            <div className={styles.cartao} key={i}>
-                                <p className={styles.paragrafo}>{item.nome}</p>
-                                <p className={styles.paragrafo}>
-                                    <span className="material-symbols-outlined">call</span>
-                                    {item.numeroTelefone}
-                                </p>
-                                <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>Data de retirada</h2>
-                                    <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
-                                </div>
-                                <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>Data de devolução</h2>
-                                    <p className={styles.paragrafo}>{item.dataDevolucao}</p>
-                                </div>
-
-                                <Status mensagem={item.status} status={item.codStatus} />
-                                <Button>
-
-                                    <span className="material-symbols-outlined">info</span>
-
-                                </Button>
-                            </div>
-                        ))}
-                    </div>
                 </div>
+                <div className={styles.containerCartoes}>
+                    {dados.map((item, i) => (
+                        <div className={styles.cartao} key={i}>
+                            <p className={styles.paragrafo}>{item.nome}</p>
+                            <p className={styles.paragrafo}>
+                                <span className="material-symbols-outlined">call</span>
+                                {item.numeroTelefone}
+                            </p>
+                            <div className={styles.areaTexto}>
+                                <h2 className={styles.tituloSecundario}>Data de retirada</h2>
+                                <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
+                            </div>
+                            <div className={styles.areaTexto}>
+                                <h2 className={styles.tituloSecundario}>Data de devolução</h2>
+                                <p className={styles.paragrafo}>{item.dataDevolucao}</p>
+                            </div>
+                            <Status mensagem={item.status} status={item.codStatus} />
+                            <Button onClick={() => setAberto(true)}>
+                                <span className="material-symbols-outlined">info</span>
+                            </Button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <Aside aberto={aberto} fechar={() => setAberto(false)} titulo={'Detalhes do empréstimo'}>
+                <DetalhesEmprestimo/>
+            </Aside>
         </EstruturaPagina>
     )
 }

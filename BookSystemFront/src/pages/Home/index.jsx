@@ -7,11 +7,15 @@ import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
 import { Link } from "react-router-dom"
 import TopoPagina from '../../components/global/TopoPagina'
+import Modal from '../../components/global/Modal'
+import DetalhesLivro from '../../components/global/DetalhesLivro'
+import ExcluirLivro from '../../components/global/ExcluirLivro'
+import Assunto from '../../components/global/Assunto'
 
 export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
-    const [selecionado, setSelecionado] = useState(false)
-    const [indiceSelecionado, setIndiceSelecionado] = useState()
+    const [indiceSelecionado, setIndiceSelecionado] = useState(null)
+    const [modalSelecionado, setModalSelecionado] = useState(null)
 
     const dados = [
         {
@@ -49,9 +53,10 @@ export default function Home() {
 
     const handleSelecionar = (indice) => {
         if (indiceSelecionado == indice) {
-            setSelecionado(!selecionado)
+            setIndiceSelecionado(null)
+        } else {
+            setIndiceSelecionado(indice)
         }
-        setIndiceSelecionado(indice)
     }
 
     let pesquisar = [
@@ -68,10 +73,18 @@ export default function Home() {
         { valor: "editora", texto: "Editora" }
     ]
 
+    const abrirModal = (acao) => {
+        setModalSelecionado(acao)
+    }
+
+    const fecharModal = () => {
+        setModalSelecionado(null)
+    }
+
     return (
         <EstruturaPagina>
-            <TopoPagina
-                titulo="Gerenciamento" />
+
+            <TopoPagina titulo="Gerenciamento"/>
 
             <div className={styles.barraOpcoes}>
                 <div className={styles.containerBotoes}>
@@ -79,6 +92,7 @@ export default function Home() {
                         <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                         <Button tipoBotao="primario" onClick={handlePesquisar}>
                             <span className="material-symbols-outlined">search</span>
+
                         </Button>
                     </div>
                     <div className={styles.areaBotoes}>
@@ -89,24 +103,20 @@ export default function Home() {
                 </div>
                 <span className={styles.linha} />
                 <div className={styles.containerBotoes}>
-
                     <Button tipoBotao="primario">
                         <Link to="/novoemprestimo">Novo empréstimo</Link>
                     </Button>
-
                     <div className={styles.areaBotoes}>
-                        <Link to="/criar">
-                            <Button icone="add" tipoBotao="primario" >
-                                Criar
-                            </Button>
-                        </Link>
-                        <Button tipoBotao="secundario" icone="info" disabled={!selecionado}>
+                        <Button icone="add" tipoBotao="primario">
+                            Criar
+                        </Button>
+                        <Button tipoBotao="secundario" icone="info" onClick={() => abrirModal('detalhes')} disabled={indiceSelecionado === null}>
                             Detalhes
                         </Button>
-                        <Button tipoBotao="secundario" icone="edit_square" disabled={!selecionado}>
+                        <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
                             Editar
                         </Button>
-                        <Button tipoBotao="secundario" icone="delete" disabled={!selecionado}>
+                        <Button tipoBotao="secundario" icone="delete" onClick={() => abrirModal('excluir')} disabled={indiceSelecionado === null}>
                             Excluir
                         </Button>
                     </div>
@@ -115,8 +125,9 @@ export default function Home() {
             </div>
             <div className={styles.containerCartoes}>
                 {lista.map((item, i) => (
-                    // <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
-                    <div className={styles.cartaoNaoSelecionado}>
+                  
+                    <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+
                         <div>
                             <img className={styles.imagemCartao} src="" />
                         </div>
@@ -136,18 +147,21 @@ export default function Home() {
                             </div>
                             <div className={styles.areaBotoes}>
                                 {item.assuntos.map((assunto, i) => (
-                                    <div className={styles.assunto} key={i}>
-                                        {assunto}
-                                    </div>
+
+                                    <Assunto key={i}>{assunto}</Assunto>
                                 ))}
                             </div>
                         </div>
-
                         <Status mensagem={item.disponivel} status={item.codStatus} />
-
                     </div>
                 ))}
             </div>
+            <Modal aberto={modalSelecionado === 'detalhes'} fechar={fecharModal} titulo={'Detalhes do livro'}>
+                <DetalhesLivro/>
+            </Modal>
+            <Modal aberto={modalSelecionado === 'excluir'} fechar={fecharModal} titulo={'Excluir livro'}>
+                <ExcluirLivro/>
+            </Modal>
         </EstruturaPagina>
     )
 }

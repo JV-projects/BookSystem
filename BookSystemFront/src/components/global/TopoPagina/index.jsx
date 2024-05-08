@@ -22,8 +22,8 @@ export default function TopoPagina({ titulo, subtitulo, link }) {
 function ButtonLink({link}){
     if(link){
         return(
-            <Link to={link}>
-                 <Button icone="arrow_back" tipoBotao="botaoVoltar" />
+            <Link style={{textDecoration: 'none'}} to={link}>
+                <Button icone="arrow_back" tipoBotao="botaoVoltar" />
             </Link>
            
         )
