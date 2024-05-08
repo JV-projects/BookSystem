@@ -3,8 +3,19 @@ import EstruturaPagina from "../../components/global/EstruturaPagina";
 import Input from "../../components/global/Input";
 import TopoPagina from "../../components/global/TopoPagina";
 import styles from './styles.module.css'
+import Select from '../../components/global/Select'
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Criar() {
+
+    const [arquivo, setArquivo] = useState("")
+
+    function handleArquivo(e) {
+        setArquivo(URL.createObjectURL(e.target.files[0]))
+    }
+
+
     return (
         <EstruturaPagina>
             <TopoPagina
@@ -15,62 +26,93 @@ export default function Criar() {
 
             <form className={styles.containerArea}>
 
-                <div className="form-parteUm">
-                    <div className="blocoInput">
-                        <label labelFor="">Título e subtítulo</label>
-                        <Input />
+                <div className={styles.form}>
+                    <div className={styles.blocoInput}>
+                        <label htmlFor="tituloSubtitulo">Título e subtítulo</label>
+                        <Input name="tituloSubtitulo" id="tituloSubtitulo" />
                     </div>
-                    <div className="blocoInput">
-                        <label labelFor="">Autor</label>
-                        <Input />
+                    <div className={styles.blocoInput}>
+                        <label htmlFor="autor">Autor</label>
+                        <Input name="autor" id="autor" />
                     </div>
-                    <div className="blocoInput">
-                        <label labelFor="">Editora</label>
-                        <Input />
+                    <div className={styles.blocoInput}>
+                        <label htmlFor="editora">Editora</label>
+                        <Input name="editora" id="editora" />
                     </div>
 
-                    <div className="blocoInput3">
-                        <div className="blocoInput">
-                            <label labelFor="">Ano</label>
-                            <Input />
+                    <div className={styles.blocoInput2}>
+                        <div className={styles.blocoInput}>
+                            <label htmlFor="ano">Ano</label>
+                            <Input type="number" name="ano" id="ano" />
                         </div>
 
-                        <div className="blocoInput">
-                            <label labelFor="">Edição</label>
-                            <Input />
+                        <div className={styles.blocoInput}>
+                            <label htmlFor="edicao">Edição</label>
+                            <Input type="number" name="edicao" id="edicao" />
                         </div>
 
-                        <div className="blocoInput">
-                            <label labelFor="">N° de páginas</label>
-                            <Input />
+                        <div className={styles.blocoInput}>
+                            <label htmlFor="nPaginas">N° de páginas</label>
+                            <Input type="number" name="nPaginas" id="nPaginas" />
                         </div>
 
                     </div>
+
+                    <div className={styles.blocoInput}>
+                        <label>Assuntos</label>
+                        <div className={styles.blocoInput2}>
+                            <Select name="assuntos" id="assuntos" selected="Selecione um assunto" opcoes={[]} />
+                            <Button tipoBotao="primario">
+                                Adicionar
+                            </Button>
+                        </div>
+                        <div className="areaAssunto">
+                            <div className={styles.assunto}>
+                                Literatura
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div className="form-parteDois">
-                    <div className="blocoInput">
-                        <label labelFor="">Etiqueta</label>
-                        <div className="blocoInput2">
-                            <Input />
+                <div className={styles.form}>
+                    <div className={styles.blocoInput}>
+                        <label htmlFor="etiqueta">Etiqueta</label>
+                        <div className={styles.blocoInput2}>
+                            <Input name="etiqueta" id="etiqueta" />
                             <Button tipoBotao="primario">
                                 Escanear
                             </Button>
                         </div>
 
                     </div>
-                    <div className="blocoInput">
-                        <label labelFor="">ISBN</label>
-                        <Input />
+                    <div className={styles.blocoInput}>
+                        <label htmlFor="isbn">ISBN</label>
+                        <Input name="isbn" id="isbn" />
                     </div>
-                    <div className="blocoInput">
-                        <label labelFor="">Imagem</label>
-                        <Button tipoBotao="primario">Inserir imagem</Button>
+                    <div className={styles.blocoInput2}>
+                        <div className={styles.blocoInput}>
+                            <label>Carregar imagem do livro</label>
+                            <label htmlFor="imagemLivro" className={styles.inputFile}>
+                                <span className="material-symbols-outlined">add_a_photo</span>
+                            </label>
+                            <input className={styles.inputFile} type="file" name="imagemLivro" id="imagemLivro" onChange={(e) => handleArquivo(e)} />
+                        </div>
+                        <div className={styles.blocoInput}>
+                            <img src={arquivo} alt="Imagem do livro que foi carregada" />
+                        </div>
+
                     </div>
 
-                    <div className="blocoInput2">
-                        <Button tipoBotao="terciarioCancela">Cancelar</Button>
-                        <Button tipoBotao="primario">Criar livro</Button>
+                    <div className={styles.blocoInput2}>
+                        <div className={styles.blocoInput}>
+                            <Button tipoBotao="terciarioCancela" type="button">
+                                <Link to="/gerenciamento">Cancelar</Link>
+                            </Button>
+                        </div>
+                        <div className={styles.blocoInput}>
+                            <Button tipoBotao="primario">Criar livro</Button>
+                        </div>
                     </div>
                 </div>
 
