@@ -83,13 +83,16 @@ export default function Home() {
 
     return (
         <EstruturaPagina>
+
             <TopoPagina titulo="Gerenciamento"/>
+
             <div className={styles.barraOpcoes}>
                 <div className={styles.containerBotoes}>
                     <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
                         <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                         <Button tipoBotao="primario" onClick={handlePesquisar}>
                             <span className="material-symbols-outlined">search</span>
+
                         </Button>
                     </div>
                     <div className={styles.areaBotoes}>
@@ -117,11 +120,14 @@ export default function Home() {
                             Excluir
                         </Button>
                     </div>
+
                 </div>
             </div>
             <div className={styles.containerCartoes}>
                 {lista.map((item, i) => (
+                  
                     <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+
                         <div>
                             <img className={styles.imagemCartao} src="" />
                         </div>
@@ -141,6 +147,7 @@ export default function Home() {
                             </div>
                             <div className={styles.areaBotoes}>
                                 {item.assuntos.map((assunto, i) => (
+
                                     <Assunto key={i}>{assunto}</Assunto>
                                 ))}
                             </div>
