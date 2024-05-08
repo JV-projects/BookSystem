@@ -66,7 +66,7 @@ export default function Criar() {
                                 Adicionar
                             </Button>
                         </div>
-                        <div className="areaAssunto">
+                        <div className={styles.areaAssunto}>
                             <div className={styles.assunto}>
                                 Literatura
                             </div>
@@ -90,7 +90,7 @@ export default function Criar() {
                         <label htmlFor="isbn">ISBN</label>
                         <Input name="isbn" id="isbn" />
                     </div>
-                    <div className={styles.blocoInput2}>
+                    <div className={styles.blocoInput2 +" "+ styles.imagemArea}>
                         <div className={styles.blocoInput}>
                             <label>Carregar imagem do livro</label>
                             <label htmlFor="imagemLivro" className={styles.inputFile}>
@@ -98,7 +98,7 @@ export default function Criar() {
                             </label>
                             <input className={styles.inputFile} type="file" name="imagemLivro" id="imagemLivro" onChange={(e) => handleArquivo(e)} />
                         </div>
-                        <div className={styles.blocoInput}>
+                        <div className={styles.blocoInput +" "+ styles.imagem}>
                             <img src={arquivo} alt="Imagem do livro que foi carregada" />
                         </div>
 

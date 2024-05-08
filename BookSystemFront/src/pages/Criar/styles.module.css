@@ -49,9 +49,57 @@
     display: none;
 }
 
+.form label{
+    color: var(--primary-text-color);
+}
+
 .inputFile{
+    display: flex;
     padding: 1rem;
     background-color: var(--primary-highlight-color);
+    border: 1px solid var(--border-color);
     width: min-content;
-    height: min-content;
+    border-radius: 0.25rem;
+    cursor: pointer;  
+}
+
+.inputFile span{
+    color: var(--link-color);
+}
+
+.inputFile:hover{
+    background-color: var(--primary-background-hover);
+    transition: 0.2s;
+}
+
+.imagemArea{
+    display: flex;
+    align-items: center;
+    min-height: 15.2rem;
+}
+
+.imagemArea .blocoInput{
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.imagemArea .imagem{
+    width: 180px;
+    height: 230px;
+}
+
+.imagemArea img{
+    width: 100%;
+}
+
+.areaAssunto{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    width: 100%;
+    min-height: 5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
 }
