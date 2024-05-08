@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.paragrafo {
+    color: var(--tertiary-text-color);
+    font-size: 0.875rem;
+}
+
+.cartao {
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.titulo {
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+
+.destaque {
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+
+.areaBotoes {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.areaBotoes button {
+    width: 100%;
+}

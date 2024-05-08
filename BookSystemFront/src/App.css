@@ -7,9 +7,25 @@
 
     --red-text-color: #D95656;
 
+    --primary-text-color: #171717;
+    --seconday-text-color: #fff;
+    --tertiary-text-color: #656565;
+
+    --red-text-color: #D95656;
+
     --border-color: #e4e4e4;
     --green-border: #86d492;
     --orange-border: #d7bb97;
+    --red-border: #e3a7a7;
+
+    --orange-background: #feddb4;
+    --green-background: #d4f5d9;
+    --red-background: #ffdcdc;
+
+    --primary-background-hover: #6232CB;
+    --secondary-background-hover: #ebebeb;
+    --tertiary-background-hover: #769c94;
+
     --red-border: #e3a7a7;
 
     --orange-background: #feddb4;
@@ -24,9 +40,7 @@
     --secondary-background-color: #f0f0f0;
     --tertiary-background-color: #fff;
 
-    --primary-link-color: #3882f6;
     --link-color: #fff;
-    --button-link-color: #7D53DE;
     --secondary-link-color: #656565;
     --tertiary-link-color: #171717;
 
@@ -35,43 +49,7 @@
     --tertiary-highlight-color: #3882f6;
 
     --border-selected: #6232CB;
-}
-
-.coresAcessibilidade {
-    --primary-text-color: #fff;
-    --seconday-text-color: #fff;
-    --tertiary-text-color: #fff;
-
-    --red-text-color: #fff;
-
-    --border-color: #fff;
-    --green-border: #fff;
-    --orange-border: #fff;
-    --red-border: #fff;
-
-    --orange-background: #000;
-    --green-background: #000;
-    --red-background: #000;
-
-    --primary-background-hover: #000;
-    --secondary-background-hover: #000;
-    --tertiary-background-hover: #000;
-
-    --primary-background-color: #000;
-    --secondary-background-color: #000;
-    --tertiary-background-color: #000;
-
-    --primary-link-color: #ffff00;
-    --link-color: #ffff00;
-    --button-link-color: #ffff00;
-    --secondary-link-color: #ffff00;
-    --tertiary-link-color: #ffff00;
-
-    --primary-highlight-color: #000;
-    --secondary-highlight-color: #000;
-    --tertiary-highlight-color: #000;
-
-    --border-selected: #0000ff;
+    --backdrop-color: #D9D9D950
 }
 
 
@@ -79,8 +57,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Oxygen', sans-serif; 
-    text-decoration: none; 
+    font-family: 'Oxygen', sans-serif;  
 }
 
 body{

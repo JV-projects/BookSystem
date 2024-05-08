@@ -42,8 +42,6 @@
     justify-content: center;
     padding: 0.45rem 0.75rem 0.45rem 0.75rem;
     align-items: center;
-    max-height: 2.5rem;
-    height: 100%;
 }
 
 .primario:disabled, .secundario:disabled {
@@ -81,13 +79,12 @@
     background-color: transparent;
     border: transparent;
     border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
+    padding: 0.25rem;
     color: var(--tertiary-link-color)
 }
 
 .botaoVoltar:hover {
-    color: var(--button-link-color);
+    color: var(--primary-background-hover);
     background-color: var(--secondary-background-hover);
     transition: .2s;
 }
