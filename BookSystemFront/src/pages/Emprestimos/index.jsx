@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './styles.module.css'
 import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select'
@@ -5,8 +6,12 @@ import Input from '../../components/global/Input'
 import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
 import TopoPagina from '../../components/global/TopoPagina'
+import Aside from '../../components/global/Aside'
+import DetalhesEmprestimo from '../../components/global/DetalhesEmprestimo'
 
 export default function Emprestimos() {
+    const [aberto, setAberto] = useState(false)
+
     const dados = [
         {
             nome: "Jackeline Menezes",
@@ -56,14 +61,11 @@ export default function Emprestimos() {
                     <div className={styles.containerBotoes}>
                         <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
                             <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
-                            <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                             <Button tipoBotao="primario">
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
                         <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" opcoes={pesquisar} />
-                            <Select selected="Ordenar por" opcoes={ordenar} />
                             <Select selected="Pesquisar por" opcoes={pesquisar} />
                             <Select selected="Ordenar por" opcoes={ordenar} />
                         </div>
@@ -86,13 +88,16 @@ export default function Emprestimos() {
                                 <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                             </div>
                             <Status mensagem={item.status} status={item.codStatus} />
-                            <Button>
+                            <Button onClick={() => setAberto(true)}>
                                 <span className="material-symbols-outlined">info</span>
                             </Button>
                         </div>
                     ))}
                 </div>
             </div>
+            <Aside aberto={aberto} fechar={() => setAberto(false)} titulo={'Detalhes do empréstimo'}>
+                <DetalhesEmprestimo/>
+            </Aside>
         </EstruturaPagina>
     )
 }
