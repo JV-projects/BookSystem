@@ -3,6 +3,7 @@ import EstruturaPagina from "../../components/global/EstruturaPagina"
 import Button from "../../components/global/Button"
 import Input from "../../components/global/Input"
 import { Link } from "react-router-dom"
+import TopoPagina from "../../components/global/TopoPagina"
 
 export default function NovoEmprestimo(props) {
 
