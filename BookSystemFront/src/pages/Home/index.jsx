@@ -10,6 +10,7 @@ import TopoPagina from '../../components/global/TopoPagina'
 
 export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
+    const [anterior, setAnterior] = useState()
     const [ativo, setAtivo] = useState()
     const [idBotao, setidBotao] = useState(0)
 
@@ -88,8 +89,17 @@ export default function Home() {
 
         console.log(e.target.value)
 
-        if (cartaoClicado.classList.value.includes("cartaoNaoSelecionado")) {
+        
+
+        if (anterior) {
+            anterior.classList.remove(styles.cartaoSelecionado)
+            anterior.classList.add(styles.cartaoNaoSelecionado)
+        }
+
+        if (cartaoClicado.classList.value == styles.cartaoNaoSelecionado) {
             setAtivo(true)
+            setAnterior(e.target)
+            console.log(e.target.value)
             setidBotao(cartaoClicado.value)
             cartaoClicado.classList.remove(cartaoClicado.classList.value)
             cartaoClicado.classList.add(styles.cartaoSelecionado)
@@ -142,9 +152,9 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles.containerCartoes}>
-                    {lista.map((item, i) => (
-                        // <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
-                        <div className={styles.cartaoNaoSelecionado}>
+                    {lista.map((item) => (
+                       
+                        <div className={styles.cartaoNaoSelecionado} value={1} key={item.id} onClick={(e) => handleSelecionado(e)}>
                             <div>
                                 <img className={styles.imagemCartao} src="" />
                             </div>
@@ -163,9 +173,9 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div className={styles.areaBotoes}>
-                                    {item.assuntos.map((assunto, i) => (
-                                        <div className={styles.assunto} key={i}>
-                                            {assunto}
+                                    {item.assuntos.map((assunto) => (
+                                        <div className={styles.assunto} key={assunto.id}>
+                                            {assunto.assunto}
                                         </div>
                                     ))}
                                 </div>
@@ -188,6 +198,8 @@ export default function Home() {
         setIndiceSelecionado(indice)
     } // <div className={selecionado && indiceSelecionado == i ? 
     styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+
+    
 
 
 
