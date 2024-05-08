@@ -1,78 +1,50 @@
 import styles from "./styles.module.css"
-import { CSSGlobalVariables } from "css-global-variables"
-
+import { Link } from "react-router-dom"
+import Cookies from 'js-cookie'
+import { useEffect } from "react"
+import { fonte } from "../../../../public/js/fonte"
+import { setFonte } from "../../../../public/js/fonte"
 
 export default function BarraAcessibilidade() {
 
-    let cssvar = new CSSGlobalVariables()
-    let cssvar2 = new CSSGlobalVariables()
+    //Como a barra de acessibilidade rederiza em várias páginas,
+    //vou usar o useEffect para verificar o cookie
 
-    let chaves = Object.keys(cssvar)
-    let valores = Object.values(cssvar2)
-
-    function handleContraste(){
-
-
-        chaves.forEach(chave => {
-            if (chave.includes("border")) {
-                cssvar[chave] = "#fff"
-            }
-
-            if (chave.includes("highlight")) {
-                cssvar[chave] = "#000"
-            }
-
-            if (chave.includes("text")) {
-                cssvar[chave] = "#fff"
-            }
-
-
-            if (chave.includes("background")) {
-                cssvar[chave] = "#000"
-            }
-
-            if (chave.includes("link")) {
-                cssvar[chave] = "#ffff00"
-            }
-
-            if (chave.includes("selected")) {
-                cssvar[chave] = "#0000ff"
-            }
-
-        });
-
-
-    }
-
-    function handleSemContraste(){
-        let i = 0;
-
-
-        chaves.forEach(c => {
-
-            cssvar[c] = valores[i]
-
-            i++
-            
-        })
-
-
-    }
-
-    let fonte = 16
-
-    function fonteMais(){
-        
-        if(fonte < 25){
-            document.documentElement.style.fontSize = ++fonte + "px"
+    useEffect(() => {
+        const ckContraste = Cookies.get('contraste')
+        //'documentElement' encontra o elemento raiz, ou seja, o <HTML>
+        if(ckContraste === "true"){
+            document.documentElement.classList.add('coresAcessibilidade')
+        }else{
+            document.documentElement.classList.remove('coresAcessibilidade')
         }
 
+}, [])
+
+    function constrate(){
+        document.documentElement.classList.add('coresAcessibilidade')
+        Cookies.set('contraste', true)
     }
 
-    function fonteMenos(){
-        
-        if(fonte > 16){
-            document.documentElement.style.fontSize = --fonte + "px"
+    function semContraste(){
+        document.documentElement.classList.remove('coresAcessibilidade')
+        Cookies.set('contraste', false)
+    }
+
+    
+    function fonteMais() {
+
+        if (fonte < 24) {
+            setFonte(fonte + 2)
+            document.documentElement.style.fontSize = fonte + "px"
+        }
+    }
+
+    function fonteMenos() {
+
+        if (fonte > 16) {
+            setFonte(fonte - 2)
+            document.documentElement.style.fontSize = fonte + "px"
         }
 
     }
@@ -80,16 +52,11 @@ export default function BarraAcessibilidade() {
     return (
         <div className={styles.container}>
             <ul className={styles.lista}>
-                <li><a className={styles.link} href="#conteudo" accessKey="1" title="ir para o conteúdo">Ir para o conteúdo [1]</a></li>
-                <li><a className={styles.link} href="#menu" accessKey="2" title="ir para o menu">Ir para o menu [2]</a></li>
-                <li><a className={styles.link} href="#rodape" accessKey="3" title="ir para o rodapé">Ir para o rodapé [3]</a></li>
-            </ul>
-            <ul className={styles.lista}>
-                <li><a className={styles.link} href={"/acessibilidade"}>Acessibilidade</a></li>
-                <li><button className={styles.botao} onClick={handleContraste}>Contraste</button></li>
-                <li><button className={styles.botao} onClick={handleSemContraste}>Sem contraste</button></li>
-                <li><button className={styles.botao} onClick={fonteMais} id="fontemais">A+</button></li>
-                <li><button className={styles.botao} onClick={fonteMenos} id="fontmenos">A-</button></li>
+                <li><Link className={styles.link} to="/acessibilidade">Acessibilidade</Link></li>
+                <li><button className={styles.botao} onClick={()=> constrate()}>Contraste</button></li>
+                <li><button className={styles.botao} onClick={()=> semContraste()}>Sem contraste</button></li>
+                <li><button className={styles.botao} onClick={()=> fonteMais()}>A+</button></li>
+                <li><button className={styles.botao} onClick={()=> fonteMenos()}>A-</button></li>
             </ul>
         </div>
     )

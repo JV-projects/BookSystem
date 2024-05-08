@@ -22,7 +22,7 @@
 }
 
 .link, .botao {
-    color: var(--tertiary-text-color);
+    color: var(--secondary-link-color);
     font-size: 0.875rem;
 }
 
