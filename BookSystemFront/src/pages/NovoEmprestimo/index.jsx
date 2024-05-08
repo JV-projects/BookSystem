@@ -10,7 +10,7 @@ export default function NovoEmprestimo(props) {
 	return (
 			<EstruturaPagina>
 				<TopoPagina
-				titulo="Novo empŕestimo"
+				titulo="Novo empréstimo"
                 subtitulo="Insira as informações para criar um empréstimo"
                 link="/gerenciamento"/>
 				
