@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: right;
+    left: 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.backdrop {
+    background-color: var(--backdrop-color);
+    height: 100%;
+    width: 100%;
+}
+
+.areaConteudo {
+    background-color: var(--tertiary-background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+    max-width: 25rem;
+    padding: 1.5rem;
+    position: absolute;
+    width: 100%;
+}
+
+.areaTopo {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo {
+    font-size: 1.25rem;
+}
+
+.botao {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--primary-text-color);
+    cursor: pointer;
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
+}
