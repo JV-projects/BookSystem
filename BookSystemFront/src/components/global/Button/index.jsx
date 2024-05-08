@@ -3,31 +3,19 @@ import styles from './styles.module.css'
 let estiloAplicado;
 //(?)
 
-export default function Button({ children, tipoBotao, ...rest }) {
-
-    const defStyle = {
-        display: "flex",
-        "alignItems": "center",
-        "padding": "0.45rem 0.75rem 0.45rem 0.75rem",
-    }
-
+export default function Button({ children, tipoBotao, icone, ...rest }) {
     const estilo = Object.values(styles)
 
-
     estilo.forEach(classe => {
-
         if(classe.includes(tipoBotao)){
             estiloAplicado = classe
         }
-
     })
 
     return (
         <button className={estiloAplicado} {...rest}>
-            <span className="material-symbols-outlined">{rest.icone}</span>
+            <span className="material-symbols-outlined">{icone}</span>
             {children}
         </button>
     )
-
-
 }
