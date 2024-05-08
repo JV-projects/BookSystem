@@ -84,7 +84,7 @@
 }
 
 .botaoVoltar:hover {
-    color: var(--primary-background-hover);
+    color: var(--button-link-color);
     background-color: var(--secondary-background-hover);
     transition: .2s;
 }

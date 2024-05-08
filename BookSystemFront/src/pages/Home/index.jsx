@@ -84,7 +84,7 @@ export default function Home() {
     return (
         <EstruturaPagina>
 
-            <TopoPagina titulo="Gerenciamento"/>
+            <TopoPagina titulo="Gerenciamento" />
 
             <div className={styles.barraOpcoes}>
                 <div className={styles.containerBotoes}>
@@ -108,13 +108,17 @@ export default function Home() {
                     </Button>
                     <div className={styles.areaBotoes}>
                         <Button icone="add" tipoBotao="primario">
-                            Criar
+                            <Link to="/criar">
+                                Criar
+                            </Link>
                         </Button>
                         <Button tipoBotao="secundario" icone="info" onClick={() => abrirModal('detalhes')} disabled={indiceSelecionado === null}>
                             Detalhes
                         </Button>
                         <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
-                            Editar
+                            <Link to="/editar">
+                                Editar
+                            </Link>
                         </Button>
                         <Button tipoBotao="secundario" icone="delete" onClick={() => abrirModal('excluir')} disabled={indiceSelecionado === null}>
                             Excluir
@@ -125,7 +129,7 @@ export default function Home() {
             </div>
             <div className={styles.containerCartoes}>
                 {lista.map((item, i) => (
-                  
+
                     <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
 
                         <div>
@@ -157,10 +161,10 @@ export default function Home() {
                 ))}
             </div>
             <Modal aberto={modalSelecionado === 'detalhes'} fechar={fecharModal} titulo={'Detalhes do livro'}>
-                <DetalhesLivro/>
+                <DetalhesLivro />
             </Modal>
             <Modal aberto={modalSelecionado === 'excluir'} fechar={fecharModal} titulo={'Excluir livro'}>
-                <ExcluirLivro/>
+                <ExcluirLivro />
             </Modal>
         </EstruturaPagina>
     )
