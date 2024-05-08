@@ -139,37 +139,37 @@ export default function Home() {
                         </Button>
                     </div>
 
+                    </div>
                 </div>
-            </div>
-            <div className={styles.containerCartoes}>
-                {lista.map((item) => (
-
-                    <div className={styles.cartaoNaoSelecionado} onClick={(e) => handleSelecionado(e)} value={item.id}>
-                        <div>
-                            <img className={styles.imagemCartao} src="" />
-                        </div>
-                        <div className={styles.areaConteudoCartao}>
-                            <div className={styles.areaTexto}>
-                                <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
+                <div className={styles.containerCartoes}>
+                    {lista.map((item, i) => (
+                        // <div className={selecionado && indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+                        <div className={styles.cartaoNaoSelecionado}>
+                            <div>
+                                <img className={styles.imagemCartao} src="" />
+                            </div>
+                            <div className={styles.areaConteudoCartao}>
+                                <div className={styles.areaTexto}>
+                                    <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
+                                    <div className={styles.areaBotoes}>
+                                        <p className={styles.paragrafo}>Autor:</p>
+                                        <span className={styles.destaque}>{item.autor}</span>
+                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                        <p className={styles.paragrafo}>Editora:</p>
+                                        <span className={styles.destaque}>{item.editora}</span>
+                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                        <p className={styles.paragrafo}>Ano:</p>
+                                        <span className={styles.destaque}>{item.ano}</span>
+                                    </div>
+                                </div>
                                 <div className={styles.areaBotoes}>
-                                    <p className={styles.paragrafo}>Autor:</p>
-                                    <span className={styles.destaque}>{item.autor}</span>
-                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                    <p className={styles.paragrafo}>Editora:</p>
-                                    <span className={styles.destaque}>{item.editora}</span>
-                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                    <p className={styles.paragrafo}>Ano:</p>
-                                    <span className={styles.destaque}>{item.ano}</span>
+                                    {item.assuntos.map((assunto, i) => (
+                                        <div className={styles.assunto} key={i}>
+                                            {assunto}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                            <div className={styles.areaBotoes}>
-                                {item.assuntos.map((assunto) => (
-                                    <div className={styles.assunto}>
-                                      {assunto.assunto}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
 
                         <Status mensagem={item.disponivel} status={item.codStatus} />
 
