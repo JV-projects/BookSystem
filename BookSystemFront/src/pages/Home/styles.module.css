@@ -41,8 +41,14 @@
 }
 
 .cartaoNaoSelecionado {
+    cursor: pointer;
     border: 1px solid var(--border-color);
 }
+
+.cartaoNaoSelecionado > *{
+    cursor: auto;
+}
+
 
 .cartaoSelecionado {
     border: 1px solid var(--border-selected);

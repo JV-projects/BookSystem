@@ -35,6 +35,7 @@
     --tertiary-highlight-color: #3882f6;
 
     --border-selected: #6232CB;
+    --backdrop-color: #35353552;
 }
 
 .coresAcessibilidade {
@@ -89,4 +90,11 @@ body{
 
 ul {
     list-style: none;
+
 }
+
+.material-symbols-outlined {
+    font-size: 1.5rem;
+}
+
+

@@ -13,6 +13,7 @@ export default function Button({ children, tipoBotao, icone, ...rest }) {
     })
 
     return (
+      
         <button className={estiloAplicado} {...rest}>
             <span className="material-symbols-outlined">{icone}</span>
             {children}

@@ -17,47 +17,43 @@ export default function Home() {
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
 
+
     const dados = [
         {
-            titulo: "Orgulho e Preconceito",
-            autor: "Jane Austen",
-            editora: "Martin Claret",
-            ano: "2012",
-            assuntos: ["Literatura estrangeira", "Romance"],
-            disponivel: "Disponível",
-            codStatus: 0
+           "id":1,
+           "titulo":"Orgulho e Preconceito",
+           "autor":"Jane Austen",
+           "editora":"Martin Claret",
+           "ano":"2012",
+           "assuntos":[
+              {
+                 "id":1,
+                 "assunto":"Literatura estrangeira"
+              },
+              {
+                 "id":2,
+                 "assunto":"Romance"
+              }
+           ],
+           "disponivel":"Disponível",
+           "codStatus":0
         },
         {
-            titulo: "Java®: Como Programar",
-            autor: "Paul Deitel",
-            editora: "Pearson Universidades",
-            ano: "2016",
-            assuntos: ["Programação"],
-            disponivel: "Indisponível",
-            codStatus: 2
+           "id":2,
+           "titulo":"Java®: Como Programar",
+           "autor":"Paul Deitel",
+           "editora":"Pearson Universidades",
+           "ano":"2016",
+           "assuntos":[
+              {
+                 "id":3,
+                 "assunto":"Programação"
+              }
+           ],
+           "disponivel":"Indisponível",
+           "codStatus":2
         }
-    ]
-
-    const [lista, setLista] = useState(dados)
-
-    const handlePesquisar = () => {
-        pesquisa.length ? setLista(
-            dados.filter(item =>
-                item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.ano.toLowerCase().includes(pesquisa.toLowerCase())
-            )
-        ) : setLista(dados)
-    }
-
-    const handleSelecionar = (indice) => {
-        if (indiceSelecionado == indice) {
-            setIndiceSelecionado(null)
-        } else {
-            setIndiceSelecionado(indice)
-        }
-    }
+     ]
 
     let pesquisar = [
         { valor: "titulo", texto: "Título" },
@@ -72,6 +68,30 @@ export default function Home() {
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" }
     ]
+
+
+    const [lista, setLista] = useState(dados)
+
+    const handlePesquisar = () => {
+        pesquisa.length ? setLista(
+            dados.filter(item =>
+                item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.ano.toLowerCase().includes(pesquisa.toLowerCase())
+            )
+        ) : setLista(dados)
+    }
+
+
+    const handleSelecionar = (indice) => {
+        if (indiceSelecionado == indice) {
+            setIndiceSelecionado(null)
+        } else {
+            setIndiceSelecionado(indice)
+        }
+    }
+
 
     const abrirModal = (acao) => {
         setModalSelecionado(acao)
@@ -151,7 +171,6 @@ export default function Home() {
                             </div>
                             <div className={styles.areaBotoes}>
                                 {item.assuntos.map((assunto, i) => (
-
                                     <Assunto key={i}>{assunto}</Assunto>
                                 ))}
                             </div>
@@ -166,6 +185,22 @@ export default function Home() {
             <Modal aberto={modalSelecionado === 'excluir'} fechar={fecharModal} titulo={'Excluir livro'}>
                 <ExcluirLivro />
             </Modal>
+
         </EstruturaPagina>
     )
 }
+
+/*
+ const handleSelecionar = (indice) => {
+        if (indiceSelecionado == indice) {
+            setSelecionado(!selecionado)
+        }
+        setIndiceSelecionado(indice)
+    } // <div className={selecionado && indiceSelecionado == i ? 
+    styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+
+    
+
+
+
+*/
