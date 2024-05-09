@@ -7,12 +7,15 @@ import Button from '../../components/global/Button'
 import Status from '../../components/global/Status'
 import { Link } from "react-router-dom"
 import TopoPagina from '../../components/global/TopoPagina'
+import Modal from '../../components/global/Modal'
+import DetalhesLivro from '../../components/global/DetalhesLivro'
+import ExcluirLivro from '../../components/global/ExcluirLivro'
+import Assunto from '../../components/global/Assunto'
 
 export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
-    const [anterior, setAnterior] = useState()
-    const [ativo, setAtivo] = useState()
-    const [idBotao, setidBotao] = useState(0)
+    const [indiceSelecionado, setIndiceSelecionado] = useState(null)
+    const [modalSelecionado, setModalSelecionado] = useState(null)
 
 
     const dados = [
@@ -80,38 +83,28 @@ export default function Home() {
         ) : setLista(dados)
     }
 
-    function handleSelecionado(e) {
-        console.log(e.target)
 
-        const cartaoClicado = e.target
-
-        console.log(typeof cartaoClicado.classList.value)
-
-        console.log(e.target.value)
-
-        
-
-        if (anterior) {
-            anterior.classList.remove(styles.cartaoSelecionado)
-            anterior.classList.add(styles.cartaoNaoSelecionado)
-        }
-
-        if (cartaoClicado.classList.value == styles.cartaoNaoSelecionado) {
-            setAtivo(true)
-            setAnterior(e.target)
-            console.log(e.target.value)
-            setidBotao(cartaoClicado.value)
-            cartaoClicado.classList.remove(cartaoClicado.classList.value)
-            cartaoClicado.classList.add(styles.cartaoSelecionado)
+    const handleSelecionar = (indice) => {
+        if (indiceSelecionado == indice) {
+            setIndiceSelecionado(null)
+        } else {
+            setIndiceSelecionado(indice)
         }
     }
 
-    
+
+    const abrirModal = (acao) => {
+        setModalSelecionado(acao)
+    }
+
+    const fecharModal = () => {
+        setModalSelecionado(null)
+    }
 
     return (
         <EstruturaPagina>
-            <TopoPagina
-                titulo="Gerenciamento" />
+
+            <TopoPagina titulo="Gerenciamento" />
 
             <div className={styles.barraOpcoes}>
                 <div className={styles.containerBotoes}>
@@ -119,6 +112,7 @@ export default function Home() {
                         <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                         <Button tipoBotao="primario" onClick={handlePesquisar}>
                             <span className="material-symbols-outlined">search</span>
+
                         </Button>
                     </div>
                     <div className={styles.areaBotoes}>
@@ -129,63 +123,69 @@ export default function Home() {
                 </div>
                 <span className={styles.linha} />
                 <div className={styles.containerBotoes}>
-
-                    <Button tipoBotao="primario" value={idBotao}>
+                    <Button tipoBotao="primario">
                         <Link to="/novoemprestimo">Novo empréstimo</Link>
                     </Button>
-
                     <div className={styles.areaBotoes}>
                         <Button icone="add" tipoBotao="primario">
-                            Criar
+                            <Link to="/criar">
+                                Criar
+                            </Link>
                         </Button>
-                        <Button tipoBotao="secundario" icone="info" disabled={!ativo} value={idBotao}>
+                        <Button tipoBotao="secundario" icone="info" onClick={() => abrirModal('detalhes')} disabled={indiceSelecionado === null}>
                             Detalhes
                         </Button>
-                        <Button tipoBotao="secundario" icone="edit_square" disabled={!ativo} value={idBotao}>
-                            Editar
+                        <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
+                            <Link to="/editar">
+                                Editar
+                            </Link>
                         </Button>
-                        <Button tipoBotao="secundario" icone="delete" disabled={!ativo} value={idBotao}>
+                        <Button tipoBotao="secundario" icone="delete" onClick={() => abrirModal('excluir')} disabled={indiceSelecionado === null}>
                             Excluir
                         </Button>
                     </div>
 
-                    </div>
                 </div>
-                <div className={styles.containerCartoes}>
-                    {lista.map((item) => (
-                       
-                        <div className={styles.cartaoNaoSelecionado} value={1} key={item.id} onClick={(e) => handleSelecionado(e)}>
-                            <div>
-                                <img className={styles.imagemCartao} src="" />
-                            </div>
-                            <div className={styles.areaConteudoCartao}>
-                                <div className={styles.areaTexto}>
-                                    <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
-                                    <div className={styles.areaBotoes}>
-                                        <p className={styles.paragrafo}>Autor:</p>
-                                        <span className={styles.destaque}>{item.autor}</span>
-                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                        <p className={styles.paragrafo}>Editora:</p>
-                                        <span className={styles.destaque}>{item.editora}</span>
-                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                        <p className={styles.paragrafo}>Ano:</p>
-                                        <span className={styles.destaque}>{item.ano}</span>
-                                    </div>
-                                </div>
+            </div>
+            <div className={styles.containerCartoes}>
+                {lista.map((item, i) => (
+
+                    <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+
+                        <div>
+                            <img className={styles.imagemCartao} src="" />
+                        </div>
+                        <div className={styles.areaConteudoCartao}>
+                            <div className={styles.areaTexto}>
+                                <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
                                 <div className={styles.areaBotoes}>
-                                    {item.assuntos.map((assunto) => (
-                                        <div className={styles.assunto} key={assunto.id}>
-                                            {assunto.assunto}
-                                        </div>
-                                    ))}
+                                    <p className={styles.paragrafo}>Autor:</p>
+                                    <span className={styles.destaque}>{item.autor}</span>
+                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    <p className={styles.paragrafo}>Editora:</p>
+                                    <span className={styles.destaque}>{item.editora}</span>
+                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    <p className={styles.paragrafo}>Ano:</p>
+                                    <span className={styles.destaque}>{item.ano}</span>
                                 </div>
                             </div>
-
+                            <div className={styles.areaBotoes}>
+                                {item.assuntos.map((assunto, i) => (
+                                    <Assunto key={i}>{assunto}</Assunto>
+                                ))}
+                            </div>
+                        </div>
                         <Status mensagem={item.disponivel} status={item.codStatus} />
-
                     </div>
                 ))}
             </div>
+            <Modal aberto={modalSelecionado === 'detalhes'} fechar={fecharModal} titulo={'Detalhes do livro'}>
+                <DetalhesLivro />
+            </Modal>
+            <Modal aberto={modalSelecionado === 'excluir'} fechar={fecharModal} titulo={'Excluir livro'}>
+                <ExcluirLivro />
+            </Modal>
+
         </EstruturaPagina>
     )
 }

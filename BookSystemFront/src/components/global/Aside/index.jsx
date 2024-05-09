@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 import Button from '../Button'
 
-export default function Modal({ aberto, fechar, titulo, children }) {
+export default function Aside({ aberto, fechar, titulo, children }) {
     if (!aberto) return null
 
     return (

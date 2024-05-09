@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.areaTopo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.titulo {
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+
+.destaque {
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+
+.alinhamentoDireita {
+    align-items: end;
+}
+
+.linhaHorizontal {
+    background-color: var(--border-color);
+    content: "";
+    height: 1px;
+}
+
+.areaConteudo {
+    display: flex;
+    gap: 1rem;
+}
+
+.cartao {
+    background-color: var(--primary-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    display: flex;
+    width: 100%;
+}
+
+.areaConteudoCartao {
+    height: 100%;
+    padding: 1rem;
+    width: 100%;
+}
+
+.areaConteudo, .areaTexto, .areaConteudoCartao {
+    flex-direction: column;
+}
+
+.areaTexto, .areaAssuntos, .areaConteudoCartao {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.paragrafo {
+    color: var(--tertiary-text-color);
+    font-size: 0.875rem;
+}
+
+.linhaVertical {
+    background-color: var(--border-color);
+    content: "";
+    width: 1px;
+}

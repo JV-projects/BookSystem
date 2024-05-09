@@ -1,9 +1,8 @@
 .container {
-    align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     left: 0;
-    height: 100%;
+    height: 100vh;
     position: fixed;
     top: 0;
     width: 100%;
@@ -17,11 +16,11 @@
 
 .areaConteudo {
     background-color: var(--tertiary-background-color);
-    border-radius: 0.25rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    max-width: 30rem;
+    height: 100%;
+    max-width: 25rem;
     padding: 1.5rem;
     position: absolute;
     width: 100%;
