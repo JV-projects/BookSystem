@@ -37,11 +37,6 @@ export default function Emprestimos() {
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" },
         { valor: "assunto", texto: "Assunto" },
-        { valor: "titulo", texto: "Título" },
-        { valor: "isbn", texto: "ISBN" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" },
-        { valor: "assunto", texto: "Assunto" }
     ]
 
     let ordenar = [
@@ -58,16 +53,16 @@ export default function Emprestimos() {
             <TopoPagina titulo="Empréstimos" subtitulo="Histórico"/>
             <div className={styles.areaConteudo}>
                 <div className={styles.barraOpcoes}>
-                    <div className={styles.containerBotoes}>
-                        <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                    <div className={styles.containerPesquisa}>
+                        <div className={styles.blocoPesquisa + " " + styles.areaPesquisa}>
                             <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                             <Button tipoBotao="primario">
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
-                        <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" opcoes={pesquisar} />
-                            <Select selected="Ordenar por" opcoes={ordenar} />
+                        <div className={styles.blocoFiltro}>
+                            <Select selected="Filtrar" opcoes={pesquisar} />
+                            <Select selected="Ordenar" opcoes={ordenar} />
                         </div>
                     </div>
                 </div>
