@@ -97,3 +97,16 @@
     padding-block: 0.25rem;
     padding-inline: 0.5rem;
 }
+
+@media (max-width: 900px){
+    .data{
+        display: none;
+    }
+}
+
+
+@media (max-width: 580px) {
+    .tel{
+        display: none;
+    }
+}

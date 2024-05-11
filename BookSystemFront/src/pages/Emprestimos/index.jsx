@@ -75,15 +75,15 @@ export default function Emprestimos() {
                     {dados.map((item, i) => (
                         <div className={styles.cartao} key={i}>
                             <p className={styles.paragrafo}>{item.nome}</p>
-                            <p className={styles.paragrafo}>
+                            <p className={styles.paragrafo + " " + styles.tel}>
                                 <span className="material-symbols-outlined">call</span>
                                 {item.numeroTelefone}
                             </p>
-                            <div className={styles.areaTexto}>
+                            <div className={styles.areaTexto + " " + styles.data}>
                                 <h2 className={styles.tituloSecundario}>Data de retirada</h2>
                                 <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
                             </div>
-                            <div className={styles.areaTexto}>
+                            <div className={styles.areaTexto + " " + styles.data}>
                                 <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                 <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                             </div>
