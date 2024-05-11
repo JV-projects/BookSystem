@@ -99,11 +99,11 @@ export default function NovoEmprestimo(props) {
 							<div className={styles.containerPeriodo}>
 								<div className={styles.retirada}>
 									<label>Retirada</label>
-									<Input placeholder="00/00/0000" />
+									<Input placeholder="00/00/0000" type={"date"}/>
 								</div>
 								<div className={styles.devolucao}>
 									<label>Devolução</label>
-									<Input placeholder="00/00/0000" />
+									<Input placeholder="00/00/0000" type={"date"}/>
 								</div>
 							</div>
 
