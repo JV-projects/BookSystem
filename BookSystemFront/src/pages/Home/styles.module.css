@@ -11,12 +11,27 @@
     top: 0;
 }
 
+.containerPesquisa {
+    display: flex;
+    justify-content: space-between;
+}
+
 .containerBotoes {
     display: flex;
     justify-content: space-between;
 }
 
-.areaBotoes {
+.blocoPesquisa {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.blocoFiltro{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.areaBotoes{
     display: flex;
     gap: 0.5rem;
 }
@@ -27,6 +42,11 @@
 }
 
 .barraPesquisa {
+    width: 100%;
+}
+
+.barraAno {
+    max-width: 5.5rem;
     width: 100%;
 }
 
@@ -142,6 +162,15 @@
 /* Media Query */
 
 @media (max-width: 800px){
+    .containerPesquisa{
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .blocoFiltro{
+        min-height: 2.4rem;
+    }
+
     .cartaoNaoSelecionado .areaBotoes{
         margin-top: 1rem;
     }
@@ -158,6 +187,7 @@
     .action{
         display: none;
     }
+
     .cartaoNaoSelecionado{
         flex-direction: column-reverse;
     }

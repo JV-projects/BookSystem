@@ -107,20 +107,20 @@ export default function Home() {
             <TopoPagina titulo="Gerenciamento" />
 
             <div className={styles.barraOpcoes}>
-                <div className={styles.containerBotoes}>
-                    <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                <div className={styles.containerPesquisa}>
+                    <div className={styles.blocoPesquisa + " " + styles.areaPesquisa}>
                         <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                         <Button tipoBotao="primario" onClick={handlePesquisar}>
                             <span className="material-symbols-outlined">search</span>
 
                         </Button>
                     </div>
-                    <div className={styles.areaBotoes}>
-                        <Select selected="Pesquisar por" opcoes={pesquisar} />
-                        <Select selected="Ordenar por" opcoes={ordenar} />
-                        <Input placeholder='Ano' />
+                    <div className={styles.blocoFiltro}>
+                        <Select selected="Filtrar" opcoes={pesquisar} />
+                        <Select selected="Ordenar" opcoes={ordenar} />
+                        <Input className={styles.barraAno} placeholder='Ano' />
                     </div>
-                </div>
+                </div>  
                 <span className={styles.linha} />
                 <div className={styles.containerBotoes}>
 
