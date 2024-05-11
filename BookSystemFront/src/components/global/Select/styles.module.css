@@ -6,6 +6,7 @@
     font-size: 0.875rem;
     position: relative;
     color: var(--tertiary-text-color);
+    max-width: 8rem;
 }
 
 .select {
