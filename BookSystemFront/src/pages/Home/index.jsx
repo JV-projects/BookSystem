@@ -20,40 +20,40 @@ export default function Home() {
 
     const dados = [
         {
-           "id":1,
-           "titulo":"Orgulho e Preconceito",
-           "autor":"Jane Austen",
-           "editora":"Martin Claret",
-           "ano":"2012",
-           "assuntos":[
-              {
-                 "id":1,
-                 "assunto":"Literatura estrangeira"
-              },
-              {
-                 "id":2,
-                 "assunto":"Romance"
-              }
-           ],
-           "disponivel":"Disponível",
-           "codStatus":0
+            "id": 1,
+            "titulo": "Orgulho e Preconceito",
+            "autor": "Jane Austen",
+            "editora": "Martin Claret",
+            "ano": "2012",
+            "assuntos": [
+                {
+                    "id": 1,
+                    "assunto": "Literatura estrangeira"
+                },
+                {
+                    "id": 2,
+                    "assunto": "Romance"
+                }
+            ],
+            "disponivel": "Disponível",
+            "codStatus": 0
         },
         {
-           "id":2,
-           "titulo":"Java®: Como Programar",
-           "autor":"Paul Deitel",
-           "editora":"Pearson Universidades",
-           "ano":"2016",
-           "assuntos":[
-              {
-                 "id":3,
-                 "assunto":"Programação"
-              }
-           ],
-           "disponivel":"Indisponível",
-           "codStatus":2
+            "id": 2,
+            "titulo": "Java®: Como Programar",
+            "autor": "Paul Deitel",
+            "editora": "Pearson Universidades",
+            "ano": "2016",
+            "assuntos": [
+                {
+                    "id": 3,
+                    "assunto": "Programação"
+                }
+            ],
+            "disponivel": "Indisponível",
+            "codStatus": 2
         }
-     ]
+    ]
 
     let pesquisar = [
         { valor: "titulo", texto: "Título" },
@@ -123,25 +123,30 @@ export default function Home() {
                 </div>
                 <span className={styles.linha} />
                 <div className={styles.containerBotoes}>
-                    <Button tipoBotao="primario">
-                        <Link to="/novoemprestimo">Novo empréstimo</Link>
-                    </Button>
+
+                    <Link to="/novoemprestimo">
+                        <Button tipoBotao="primario">
+                            <p>Novo empréstimo</p>
+                        </Button>
+                    </Link>
+
+
                     <div className={styles.areaBotoes}>
-                        <Button icone="add" tipoBotao="primario">
-                            <Link to="/criar">
-                                Criar
-                            </Link>
-                        </Button>
+                        <Link to="/criar">
+                            <Button icone="add" tipoBotao="primario">
+                                <p className={styles.action}>Criar</p>
+                            </Button>
+                        </Link>
                         <Button tipoBotao="secundario" icone="info" onClick={() => abrirModal('detalhes')} disabled={indiceSelecionado === null}>
-                            Detalhes
+                        <p className={styles.action}>Detalhes</p>
                         </Button>
-                        <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
-                            <Link to="/editar">
-                                Editar
-                            </Link>
-                        </Button>
+                        <Link to="/editar">
+                            <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
+                            <p className={styles.action}>Editar</p>
+                            </Button>
+                        </Link>
                         <Button tipoBotao="secundario" icone="delete" onClick={() => abrirModal('excluir')} disabled={indiceSelecionado === null}>
-                            Excluir
+                        <p className={styles.action}>Excluir</p>
                         </Button>
                     </div>
 
@@ -159,14 +164,27 @@ export default function Home() {
                             <div className={styles.areaTexto}>
                                 <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
                                 <div className={styles.areaBotoes}>
-                                    <p className={styles.paragrafo}>Autor:</p>
-                                    <span className={styles.destaque}>{item.autor}</span>
-                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                    <p className={styles.paragrafo}>Editora:</p>
-                                    <span className={styles.destaque}>{item.editora}</span>
-                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                    <p className={styles.paragrafo}>Ano:</p>
-                                    <span className={styles.destaque}>{item.ano}</span>
+
+                                    <div className={styles.grupoTexto}>
+                                        <p className={styles.paragrafo}>Autor:</p>
+                                        <span className={styles.destaque}>{item.autor}</span>
+
+                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    </div>
+
+                                    <div className={styles.grupoTexto}>
+                                        <p className={styles.paragrafo}>Editora:</p>
+                                        <span className={styles.destaque}>{item.editora}</span>
+
+                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    </div>
+
+                                    <div className={styles.grupoTexto}>
+                                        <p className={styles.paragrafo}>Ano:</p>
+                                        <span className={styles.destaque}>{item.ano}</span>
+                                    </div>
+
+
                                 </div>
                             </div>
                             <div className={styles.areaBotoes}>
