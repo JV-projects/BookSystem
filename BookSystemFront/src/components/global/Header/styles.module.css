@@ -4,8 +4,7 @@
     border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
-    padding-top: 0.75rem;
-    padding-inline: 2rem;
+    padding: 0.75rem 2rem 0rem 2rem;
     width: 100%;
 }
 
@@ -51,8 +50,41 @@
     border: none;
     border-radius: 50%;
     width: 2rem;
+    height: 2rem;
 }
 
 .logo, .profile {
     margin-bottom: 0.75rem;
+}
+
+.headerResponsivo{
+    display: none;
+    flex-direction: column;
+    padding: 0.75rem 2rem 0rem 2rem;
+    background-color: var(--tertiary-background-color);
+    border-bottom: 1px solid var(--border-color);
+    gap: 0.5rem
+}
+
+.headerTop{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerBottom{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 600px) {
+    .headerResponsivo{
+        display: flex;
+    }
+
+    .header{
+        display: none;
+    }
 }
