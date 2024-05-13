@@ -85,7 +85,12 @@
 .imagemCartao {
     aspect-ratio: 4/6;
     border-radius: 0.25rem;
-    width: 5rem;
+    width: auto;
+    height: 120px;
+}
+
+.imagemCartao img{
+    width: 100%;
 }
 
 .areaConteudoCartao {
