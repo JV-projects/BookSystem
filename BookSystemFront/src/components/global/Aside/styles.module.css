@@ -8,6 +8,8 @@
     width: 100%;
 }
 
+
+
 .backdrop {
     background-color: var(--backdrop-color);
     height: 100%;
@@ -34,16 +36,7 @@
 
 .titulo {
     font-size: 1.25rem;
+    color: var(--primary-text-color);
 }
 
-.botao {
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    border-radius: 0.25rem;
-    color: var(--primary-text-color);
-    cursor: pointer;
-    display: flex;
-    font-size: 1.25rem;
-    justify-content: center;
-}
+    
