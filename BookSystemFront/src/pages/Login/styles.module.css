@@ -23,6 +23,7 @@
 
 .rotulo {
     gap: 0.5rem;
+    color: var(--primary-text-color);
 }
 
 .link {
@@ -38,4 +39,8 @@
 .container, .areaConteudo, .formulario, .rotulo {
     display: flex;
     flex-direction: column;
+}
+
+.formulario button{
+    width: 100%;
 }
