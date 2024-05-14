@@ -6,6 +6,10 @@
     border-radius: 0.25rem
 }
 
+.label {
+    font-size: 0.9rem;
+}
+
 .form{
     display: flex;
     flex-direction: column;
@@ -91,7 +95,7 @@
 
 .imagemArea img{
     width: 100%;
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
 }
 
 .areaAssunto{
