@@ -6,6 +6,7 @@ import styles from './styles.module.css'
 import Select from '../../components/global/Select'
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Assunto from "../../components/global/Assunto";
 
 export default function Criar() {
 
@@ -59,17 +60,17 @@ export default function Criar() {
                     </div>
 
                     <div className={styles.blocoInput}>
-                        <label>Assuntos</label>
+                        <label htmlFor="assuntos">Assuntos</label>
                         <div className={styles.blocoInput2}>
-                            <Select name="assuntos" id="assuntos" selected="Selecione um assunto" opcoes={[]} />
+                            <Select name="assuntos" id="assuntos" selected="Selecione" opcoes={[]} />
                             <Button tipoBotao="primario">
                                 Adicionar
                             </Button>
                         </div>
                         <div className={styles.areaAssunto}>
-                            <div className={styles.assunto}>
-                                Literatura
-                            </div>
+                            <Assunto fechavel={true}>
+                                <p>Literatura estrangeira</p>
+                            </Assunto>
                         </div>
                     </div>
 
@@ -99,7 +100,7 @@ export default function Criar() {
                             <input className={styles.inputFile} type="file" name="imagemLivro" id="imagemLivro" onChange={(e) => handleArquivo(e)} />
                         </div>
                         <div className={styles.blocoInput +" "+ styles.imagem}>
-                            <img src={arquivo} alt="Imagem do livro que foi carregada" />
+                            <img src={arquivo} alt="Imagem do livro a ser carregada" />
                         </div>
 
                     </div>
