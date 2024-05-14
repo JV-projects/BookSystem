@@ -157,8 +157,8 @@ export default function Home() {
 
                     <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
 
-                        <div>
-                            <img className={styles.imagemCartao} src="" />
+                        <div className={styles.imagemCartao}>
+                            <img alt={`Foto do livro ${item.titulo}`} />
                         </div>
                         <div className={styles.areaConteudoCartao}>
                             <div className={styles.areaTexto}>
@@ -189,7 +189,7 @@ export default function Home() {
                             </div>
                             <div className={styles.areaBotoes}>
                                 {item.assuntos.map((assunto, i) => (
-                                    <Assunto key={i}>{assunto.assunto}</Assunto>
+                                    <Assunto key={i}><p>{assunto.assunto}</p></Assunto>
                                 ))}
                             </div>
                         </div>

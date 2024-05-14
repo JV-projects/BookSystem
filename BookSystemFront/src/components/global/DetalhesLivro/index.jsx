@@ -14,9 +14,11 @@ export default function DetalhesLivro() {
                 </div>
                 <div className={styles.areaTexto + " " + styles.alinhamentoDireita}>
                     <Status mensagem={"Disponível"} status={0} />
-                    <Button tipoBotao={'primario'}>
-                        <Link to="/novoemprestimo">Novo empréstimo</Link>
-                    </Button>
+                    <Link to="/novoemprestimo">
+                        <Button tipoBotao={'primario'}>
+                            <p>Novo empréstimo</p>
+                        </Button>
+                    </Link>
                 </div>
             </div>
             <span className={styles.linhaHorizontal} />

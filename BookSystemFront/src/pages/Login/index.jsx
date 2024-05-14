@@ -26,13 +26,15 @@ export default function Login() {
                             Senha
                             <Input type="password" />
                         </label>
-                        <Button tipoBotao="primario" type="submit">
-                            <Link to="/gerenciamento">Entrar</Link>
-                        </Button>
+                        <Link to="/gerenciamento">
+                            <Button tipoBotao="primario" type="submit">
+                                Entrar
+                            </Button>
+                        </Link>
                     </form>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }

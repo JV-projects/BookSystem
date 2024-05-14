@@ -1,7 +1,7 @@
 .primario {
     background-color: var(--primary-highlight-color);
     border: 1px solid var(--border-color);
-    color: var(--seconday-text-color);
+    color: var(--secondary-text-color);
 }
 
 .primario a{
@@ -9,7 +9,19 @@
     height: max-content;
     vertical-align: middle;
     text-decoration: none;
+}
+
+/*  Botões links */
+a .primario:nth-child(n){
     color: var(--link-color);
+}
+
+a .secundario:nth-child(n){
+    color: var(--secondary-link-color);
+}
+
+a .terciario:nth-child(n){
+    color: var(--secondary-link-color);
 }
 
 .primario:not([disabled]):hover{
@@ -21,10 +33,6 @@
     background-color: transparent;
     border: 1px solid var(--border-color);
     color: var(--tertiary-text-color);
-}
-
-.secundario a{
-    color: var(--secondary-link-color);
 }
 
 .secundario:not([disabled]):hover{
@@ -43,7 +51,7 @@
     justify-content: center;
     padding: 0.45rem 0.75rem 0.45rem 0.75rem;
     align-items: center;
-    max-height: 3rem;
+    max-height: 2.8rem;
     height: 100%;    
 }
 

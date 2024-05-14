@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=EB+Garamond:regular,500,600,700,800,italic,500italic,600italic,700italic,800italic);
 :root {
     --primary-text-color: #171717;
-    --seconday-text-color: #fff;
+    --secondary-text-color: #fff;
     --tertiary-text-color: #656565;
 
     --red-text-color: #D95656;
@@ -40,7 +40,7 @@
 
 .coresAcessibilidade {
     --primary-text-color: #fff;
-    --seconday-text-color: #fff;
+    --secondary-text-color: #fff;
     --tertiary-text-color: #fff;
 
     --red-text-color: #fff;
