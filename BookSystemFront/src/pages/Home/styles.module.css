@@ -65,9 +65,9 @@
     border: 1px solid var(--border-color);
 }
 
-.cartaoNaoSelecionado > *{
+/* .cartaoNaoSelecionado > *{
     cursor: auto;
-}
+} */
 
 
 .cartaoSelecionado {
@@ -80,6 +80,7 @@
     display: flex;
     gap: 0.75rem;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .imagemCartao {
@@ -91,6 +92,7 @@
 
 .imagemCartao img{
     width: 100%;
+    color: var(--primary-text-color);
 }
 
 .areaConteudoCartao {

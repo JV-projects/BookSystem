@@ -189,7 +189,7 @@ export default function Home() {
                             </div>
                             <div className={styles.areaBotoes}>
                                 {item.assuntos.map((assunto, i) => (
-                                    <Assunto key={i}>{assunto.assunto}</Assunto>
+                                    <Assunto key={i}><p>{assunto.assunto}</p></Assunto>
                                 ))}
                             </div>
                         </div>
