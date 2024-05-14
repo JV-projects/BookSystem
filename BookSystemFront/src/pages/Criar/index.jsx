@@ -53,7 +53,7 @@ export default function Criar() {
                         </div>
 
                         <div className={styles.blocoInput}>
-                            <label htmlFor="nPaginas">N° de páginas</label>
+                            <label className={styles.label} htmlFor="nPaginas">N° de páginas</label>
                             <Input type="number" name="nPaginas" id="nPaginas" />
                         </div>
 
