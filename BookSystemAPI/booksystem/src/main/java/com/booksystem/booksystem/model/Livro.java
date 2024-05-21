@@ -1,19 +1,19 @@
 package com.booksystem.booksystem.model;
 
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 
-@Entity
+
+@Document(collection = "livros")
 public class Livro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
     private String titulo;
 
@@ -21,18 +21,20 @@ public class Livro {
 
     private String editora;
 
-    private Date ano;
+    private int ano;
 
     private int edicao;
 
     private int paginas;
 
-    @Column(unique = true)
+    private List<Assunto> assuntos = new ArrayList<>();
+
     private String etiqueta;
 
-    @Column(unique = true)
     private Long isbn;
     
+    @Field(targetType = FieldType.STRING)
+    private String status;
 
     public Livro(){}
 
@@ -40,26 +42,29 @@ public class Livro {
         String titulo,
         String autor,
         String editora,
-        Date ano,
+        int ano,
         int paginas,
+        List<Assunto> assuntos,
         String etiqueta,
-        Long isbn
+        Long isbn,
+        String status
     ){
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.ano = ano;
         this.paginas = paginas;
+        this.assuntos = assuntos;
         this.etiqueta = etiqueta;
         this.isbn = isbn;
+        this.status = status;
     }
 
-
-    public Long getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -87,11 +92,11 @@ public class Livro {
         this.editora = editora;
     }
 
-    public Date getAno() {
+    public int getAno() {
         return this.ano;
     }
 
-    public void setAno(Date ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 
@@ -111,6 +116,14 @@ public class Livro {
         this.paginas = paginas;
     }
 
+    public List<Assunto> getAssuntos() {
+        return this.assuntos;
+    }
+
+    public void setAssuntos(List<Assunto> assuntos) {
+        this.assuntos = assuntos;
+    }
+
     public String getEtiqueta() {
         return this.etiqueta;
     }
@@ -125,6 +138,16 @@ public class Livro {
 
     public void setIsbn(Long isbn) {
         this.isbn = isbn;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        if(status != null){
+            this.status = status.getStatus();
+        }
     }
 
 
