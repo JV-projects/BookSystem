@@ -35,8 +35,7 @@ export default function Home() {
                     "assunto": "Romance"
                 }
             ],
-            "disponivel": "Disponível",
-            "codStatus": 0
+            "status": "Disponível",
         },
         {
             "id": 2,
@@ -50,8 +49,7 @@ export default function Home() {
                     "assunto": "Programação"
                 }
             ],
-            "disponivel": "Indisponível",
-            "codStatus": 2
+            "status": "Indisponível",
         }
     ]
 
@@ -92,15 +90,6 @@ export default function Home() {
         }
     }
 
-
-    const abrirModal = (acao) => {
-        setModalSelecionado(acao)
-    }
-
-    const fecharModal = () => {
-        setModalSelecionado(null)
-    }
-
     return (
         <EstruturaPagina>
 
@@ -137,7 +126,7 @@ export default function Home() {
                                 <p className={styles.action}>Criar</p>
                             </Button>
                         </Link>
-                        <Button tipoBotao="secundario" icone="info" onClick={() => abrirModal('detalhes')} disabled={indiceSelecionado === null}>
+                        <Button tipoBotao="secundario" icone="info" onClick={() => setModalSelecionado('detalhes')} disabled={indiceSelecionado === null}>
                         <p className={styles.action}>Detalhes</p>
                         </Button>
                         <Link to="/editar">
@@ -145,7 +134,7 @@ export default function Home() {
                             <p className={styles.action}>Editar</p>
                             </Button>
                         </Link>
-                        <Button tipoBotao="secundario" icone="delete" onClick={() => abrirModal('excluir')} disabled={indiceSelecionado === null}>
+                        <Button tipoBotao="secundario" icone="delete" onClick={() => setModalSelecionado('excluir')} disabled={indiceSelecionado === null}>
                         <p className={styles.action}>Excluir</p>
                         </Button>
                     </div>
@@ -193,14 +182,16 @@ export default function Home() {
                                 ))}
                             </div>
                         </div>
-                        <Status mensagem={item.disponivel} status={item.codStatus} />
+                        <Status status={item.status} />
                     </div>
                 ))}
             </div>
-            <Modal aberto={modalSelecionado === 'detalhes'} fechar={fecharModal} titulo={'Detalhes do livro'}>
+            <Modal aberto={modalSelecionado === 'detalhes'} fechar={setModalSelecionado} 
+            backdropClose={setModalSelecionado} titulo={'Detalhes do livro'}>
                 <DetalhesLivro />
             </Modal>
-            <Modal aberto={modalSelecionado === 'excluir'} fechar={fecharModal} titulo={'Excluir livro'}>
+            <Modal aberto={modalSelecionado === 'excluir'} fechar={setModalSelecionado} 
+            backdropClose={setModalSelecionado} titulo={'Excluir livro'}>
                 <ExcluirLivro />
             </Modal>
 

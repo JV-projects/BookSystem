@@ -103,3 +103,7 @@
     border-radius: 0.25rem;
     border: 1px solid var(--border-color);
 }
+
+.label {
+    font-size: 0.9rem;
+}

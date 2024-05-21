@@ -1,19 +1,32 @@
-.statusDevolvido {
+.statusConcluido {
     background-color: var(--green-background);
     border: 1px solid var(--green-border);
 }
 
-.statusPendente {
+.statusDisponivel {
+    background-color: var(--green-background);
+    border: 1px solid var(--green-border);
+}
+
+
+.statusEmandamento {
     background-color: var(--orange-background);
     border: 1px solid var(--orange-border);
 }
 
-.statusNaoDevolvido {
+.statusEmatraso {
     background-color: var(--red-background);
     border: 1px solid var(--red-border);
 }
 
-.statusPendente, .statusDevolvido, .statusNaoDevolvido {
+.statusIndisponivel {
+    background-color: var(--red-background);
+    border: 1px solid var(--red-border);
+}
+
+
+
+.statusConcluido, .statusDisponivel, .statusEmandamento, .statusEmatraso, .statusIndisponivel {
     color: var(--tertiary-text-color);
     max-width: 7.5rem;
     width: 100%;

@@ -5,12 +5,32 @@ import TopoPagina from "../../components/global/TopoPagina";
 import styles from './styles.module.css'
 import Select from '../../components/global/Select'
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Assunto from "../../components/global/Assunto";
+import Modal from "../../components/global/Modal";
+import ModalPorta from "../../components/ModalPorta";
+import ModalScan from "../../components/ModalScan";
+import { arrayToString } from "../../../public/js/scanTag";
 
 export default function Criar() {
 
     const [arquivo, setArquivo] = useState("")
+    const [modalSelecionado, setModalSelecionado] = useState(null)
+    const [porta, setPorta] = useState()
+    const [tipoModal, setTipoModal] = useState("conectar")
+    const [uid, setUid] = useState([])
+
+    let array = []
+
+    console.log(uid)
+    
+    useEffect(() => {
+        if (typeof porta === "object") {
+            setModalSelecionado("escanear")
+            setTipoModal("escanear")
+        } 
+    },[porta])
+
 
     function handleArquivo(e) {
         setArquivo(URL.createObjectURL(e.target.files[0]))
@@ -53,7 +73,7 @@ export default function Criar() {
                         </div>
 
                         <div className={styles.blocoInput}>
-                            <label htmlFor="nPaginas">N° de páginas</label>
+                            <label className={styles.label} htmlFor="nPaginas">N° de páginas</label>
                             <Input type="number" name="nPaginas" id="nPaginas" />
                         </div>
 
@@ -80,8 +100,8 @@ export default function Criar() {
                     <div className={styles.blocoInput}>
                         <label htmlFor="etiqueta">Etiqueta</label>
                         <div className={styles.blocoInput2}>
-                            <Input name="etiqueta" id="etiqueta" />
-                            <Button tipoBotao="primario">
+                            <Input name="etiqueta" id="etiqueta" value={arrayToString(uid)} disabled />
+                            <Button tipoBotao="primario" type="button" onClick={() => setModalSelecionado(tipoModal)}>
                                 Escanear
                             </Button>
                         </div>
@@ -118,6 +138,12 @@ export default function Criar() {
                 </div>
 
             </form>
+            <Modal aberto={modalSelecionado === 'conectar'} fechar={setModalSelecionado} titulo={'Selecione a porta de comunicação'}>
+                <ModalPorta funcao={setPorta} porta={porta}/>
+            </Modal>
+            <Modal aberto={modalSelecionado === 'escanear'} fechar={setModalSelecionado} titulo={'Escanear a Tag RFID'}>
+                <ModalScan porta={porta} dados={setUid}/>
+            </Modal>
         </EstruturaPagina>
     )
 }

@@ -71,7 +71,7 @@ export default function Editar() {
                         </div>
 
                         <div className={styles.blocoInput}>
-                            <label htmlFor="nPaginas">N° de páginas</label>
+                            <label className={styles.label} htmlFor="nPaginas">N° de páginas</label>
                             <Input type="number" name="nPaginas" id="nPaginas" value={livro.nPaginas} />
                         </div>
 
