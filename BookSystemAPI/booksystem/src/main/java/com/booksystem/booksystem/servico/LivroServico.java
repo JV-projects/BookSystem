@@ -3,11 +3,11 @@ package com.booksystem.booksystem.servico;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.booksystem.booksystem.model.ILivroRepository;
 import com.booksystem.booksystem.model.Livro;
+import com.booksystem.booksystem.model.repository.ILivroRepository;
+import com.booksystem.booksystem.servico.interfaces.ILivroServico;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,29 +17,35 @@ public class LivroServico implements ILivroServico{
 
     Logger logger = LogManager.getLogger(this.getClass());
 
-    @Autowired
     ILivroRepository livroRepository;
+
+    public LivroServico(ILivroRepository livroRepository){
+        this.livroRepository = livroRepository;
+    }
 
     @Override
     public List<Livro> consultarLivros() {
         logger.info("|--- Serviço - Consultando livros ----|");
-        List<Livro> livros = livroRepository.findAll();
-
-        return livros;
+        return livroRepository.findAll();
     }
 
     @Override
     public Optional<Livro> consultarPorTitulo(String titulo) {
        logger.info("|--- Serviço - Consultando por título ----|");
-       Optional<Livro> livro = livroRepository.findByTitulo(titulo);
-       
-       return livro;
+       return livroRepository.findByTitulo(titulo);
     }
 
     @Override
-    public void excluirLivro(Long id) {
+    public void excluirLivro(String id) {
         logger.info("|--- Serviço - Excluindo livro ----|");
         livroRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Livro> cadastrarLivro(Livro newLivro) {
+       
+        logger.info("|---- Serviço - Cadastrando livro ----|");
+        return Optional.ofNullable(livroRepository.insert(newLivro));
     }
 
 }
