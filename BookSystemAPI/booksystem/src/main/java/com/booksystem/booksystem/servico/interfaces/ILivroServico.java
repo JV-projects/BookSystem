@@ -7,9 +7,10 @@ import java.util.List;
 import com.booksystem.booksystem.model.Livro;
 
 public interface ILivroServico {
+    
     public List<Livro> consultarLivros();
     public Optional<Livro> cadastrarLivro(Livro livro);
     public Optional<Livro> consultarPorTitulo(String titulo);
-    public String cadastrarImagem(String imagemByte);
     public void excluirLivro(String id);
+
 }

@@ -13,6 +13,8 @@ import com.booksystem.booksystem.servico.interfaces.ILivroServico;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
+
 @Service
 public class LivroServico implements ILivroServico{
 
@@ -20,8 +22,11 @@ public class LivroServico implements ILivroServico{
 
     ILivroRepository livroRepository;
 
-    public LivroServico(ILivroRepository livroRepository){
+    ImagemServico imagemServico;
+
+    public LivroServico(ILivroRepository livroRepository, ImagemServico imagemServico){
         this.livroRepository = livroRepository;
+        this.imagemServico = imagemServico;
     }
 
     @Override
@@ -46,21 +51,27 @@ public class LivroServico implements ILivroServico{
     public Optional<Livro> cadastrarLivro(Livro newLivro) {
         logger.info("|---- Serviço - Cadastrando livro ----|");
         newLivro.setStatus(Status.DISPONIVEL);
-        cadastrarImagem(newLivro.getImagem());
+
+        String imagem = imagemServico.verificarTamanhoImagem(newLivro.getImagem());
+
+        if (imagem != null) {
+            imagemServico.uploadImagem(newLivro.getId(), newLivro.getImagem());
+        }
+
         return Optional.ofNullable(livroRepository.insert(newLivro));
     }
 
-    @Override
-    public String cadastrarImagem(String imagemByte) {
+    // @Override
+    // public String cadastrarImagem(String imagemByte) {
        
-        if(imagemByte.getBytes().length <= 34000){
-            return imagemByte;
-        } else {
-            throw new RuntimeException();
-        }
+    //     if(imagemByte.getBytes().length <= 34000){
+    //         return imagemByte;
+    //     } else {
+    //         throw new RuntimeException();
+    //     }
     
 
-    }
+    // }
 
     
 
