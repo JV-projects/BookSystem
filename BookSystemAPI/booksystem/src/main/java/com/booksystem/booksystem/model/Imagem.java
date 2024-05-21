@@ -1,8 +1,7 @@
 package com.booksystem.booksystem.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import jakarta.persistence.Id;
 
 @Document(collection = "imagens")
 public class Imagem {
@@ -10,14 +9,14 @@ public class Imagem {
     @Id
     private String id;
 
-    private byte[] arquivo; 
+    private String arquivoByte; 
 
-    Imagem(){}
+    public Imagem(){}
 
-    Imagem(byte[] arquivo){
-        this.arquivo = arquivo;
+    public Imagem(String id, String arquivoByte){
+        this.id = id;
+        this.arquivoByte = arquivoByte;
     }
-
 
     public String getId() {
         return this.id;
@@ -27,12 +26,12 @@ public class Imagem {
         this.id = id;
     }
 
-    public byte[] getArquivo() {
-        return this.arquivo;
+    public String getArquivoByte() {
+        return this.arquivoByte;
     }
 
-    public void setArquivo(byte[] arquivo) {
-        this.arquivo = arquivo;
+    public void setArquivoByte(String arquivoByte) {
+        this.arquivoByte = arquivoByte;
     }
 
 }
