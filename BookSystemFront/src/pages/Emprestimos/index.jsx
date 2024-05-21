@@ -11,23 +11,29 @@ import DetalhesEmprestimo from '../../components/global/DetalhesEmprestimo'
 
 export default function Emprestimos() {
     const [aberto, setAberto] = useState(false)
+    
 
     const dados = [
         {
-            nome: "Jackeline Menezes",
-            numeroTelefone: "(11) 98822-8833",
-            dataEmprestimo: "21/04/2024",
-            dataDevolucao: "21/05/2024",
-            status: "Concluído",
-            codStatus: 0
+            "nome": "Jackeline Menezes",
+            "numeroTelefone": "(11) 98822-8833",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Em atraso",
         },
         {
-            nome: "Yudi Tamashiro",
-            numeroTelefone: "(11) 4002-8922",
-            dataEmprestimo: "21/04/2024",
-            dataDevolucao: "21/05/2024",
-            status: "Em andamento",
-            codStatus: 1
+            "nome": "Yudi Tamashiro",
+            "numeroTelefone": "(11) 4002-8922",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Em andamento",
+        },
+        {
+            "nome": "Yudi Tamashiro",
+            "numeroTelefone": "(11) 4002-8922",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Concluído",
         }
     ]
 
@@ -82,7 +88,7 @@ export default function Emprestimos() {
                                 <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                 <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                             </div>
-                            <Status mensagem={item.status} status={item.codStatus} />
+                            <Status status={item.status} />
                             <Button onClick={() => setAberto(true)}>
                                 <span className="material-symbols-outlined">info</span>
                             </Button>

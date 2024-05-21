@@ -98,7 +98,8 @@ document.getElementById('enviar').addEventListener('click', async () => {
 
 
     const textDecoder = new TextDecoderStream();
-    const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+    const readableStreamClosed = 
+    port.readable.pipeTo(textDecoder.writable);
     const reader = textDecoder.readable.getReader();
 
     // Listen to data coming from the serial device.
