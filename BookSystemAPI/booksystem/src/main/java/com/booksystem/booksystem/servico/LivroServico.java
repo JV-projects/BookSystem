@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.booksystem.booksystem.model.Livro;
+import com.booksystem.booksystem.model.Status;
 import com.booksystem.booksystem.model.repository.ILivroRepository;
 import com.booksystem.booksystem.servico.interfaces.ILivroServico;
 
@@ -43,9 +44,24 @@ public class LivroServico implements ILivroServico{
 
     @Override
     public Optional<Livro> cadastrarLivro(Livro newLivro) {
-       
         logger.info("|---- Serviço - Cadastrando livro ----|");
+        newLivro.setStatus(Status.DISPONIVEL);
+        cadastrarImagem(newLivro.getImagem());
         return Optional.ofNullable(livroRepository.insert(newLivro));
     }
+
+    @Override
+    public String cadastrarImagem(String imagemByte) {
+       
+        if(imagemByte.getBytes().length <= 34000){
+            return imagemByte;
+        } else {
+            throw new RuntimeException();
+        }
+    
+
+    }
+
+    
 
 }

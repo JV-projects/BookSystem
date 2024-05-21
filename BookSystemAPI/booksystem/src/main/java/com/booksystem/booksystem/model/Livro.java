@@ -32,11 +32,17 @@ public class Livro {
     private String etiqueta;
 
     private Long isbn;
+
+    private String imagem;
     
     @Field(targetType = FieldType.STRING)
     private String status;
 
     public Livro(){}
+
+    public Livro(String imagem){
+        this.imagem = imagem;
+    }
 
     public Livro(
         String titulo,
@@ -47,6 +53,7 @@ public class Livro {
         List<Assunto> assuntos,
         String etiqueta,
         Long isbn,
+        String imagem,
         String status
     ){
         this.titulo = titulo;
@@ -57,6 +64,7 @@ public class Livro {
         this.assuntos = assuntos;
         this.etiqueta = etiqueta;
         this.isbn = isbn;
+        this.imagem = imagem;
         this.status = status;
     }
 
@@ -140,6 +148,14 @@ public class Livro {
         this.isbn = isbn;
     }
 
+    public String getImagem(){
+        return this.imagem;
+    }
+
+    public void setImagem(String imagem){
+        this.imagem = imagem;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -149,7 +165,5 @@ public class Livro {
             this.status = status.getStatus();
         }
     }
-
-
 
 }
