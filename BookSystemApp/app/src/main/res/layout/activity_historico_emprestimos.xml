@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Histórico de livros"
+            android:layout_marginRight="5dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnConta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@drawable/ic_my_icon"
+            android:background="#00000000" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtPesquisar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:background="@drawable/black"
+        android:backgroundTint="@color/#f0f0f0"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:hint="Pesquisar"
+        android:drawableLeft="@drawable/my_icon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvEmprestimos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="2.0">
+
+        <Button
+            android:id="@+id/btnPaginaLivros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:padding="10dp"
+            android:src="@drawable/ic_my_icon"
+            android:background="#00000000" 
+            android:textColor="#656565" />
+
+        <Button
+            android:id="@+id/btnPaginaEmprestimos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:padding="10dp"
+            android:src="@drawable/ic_my_icon"
+            android:background="#00000000"
+            android:textColor="#7F56D9" />
+    </RelativeLayout>
+</LinearLayout>
