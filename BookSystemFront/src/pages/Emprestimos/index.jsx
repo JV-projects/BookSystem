@@ -11,23 +11,29 @@ import DetalhesEmprestimo from '../../components/global/DetalhesEmprestimo'
 
 export default function Emprestimos() {
     const [aberto, setAberto] = useState(false)
+    
 
     const dados = [
         {
-            nome: "Jackeline Menezes",
-            numeroTelefone: "(11) 98822-8833",
-            dataEmprestimo: "21/04/2024",
-            dataDevolucao: "21/05/2024",
-            status: "Concluído",
-            codStatus: 0
+            "nome": "Jackeline Menezes",
+            "numeroTelefone": "(11) 98822-8833",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Em atraso",
         },
         {
-            nome: "Yudi Tamashiro",
-            numeroTelefone: "(11) 4002-8922",
-            dataEmprestimo: "21/04/2024",
-            dataDevolucao: "21/05/2024",
-            status: "Em andamento",
-            codStatus: 1
+            "nome": "Yudi Tamashiro",
+            "numeroTelefone": "(11) 4002-8922",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Em andamento",
+        },
+        {
+            "nome": "Yudi Tamashiro",
+            "numeroTelefone": "(11) 4002-8922",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Concluído",
         }
     ]
 
@@ -37,11 +43,6 @@ export default function Emprestimos() {
         { valor: "autor", texto: "Autor" },
         { valor: "editora", texto: "Editora" },
         { valor: "assunto", texto: "Assunto" },
-        { valor: "titulo", texto: "Título" },
-        { valor: "isbn", texto: "ISBN" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" },
-        { valor: "assunto", texto: "Assunto" }
     ]
 
     let ordenar = [
@@ -58,16 +59,16 @@ export default function Emprestimos() {
             <TopoPagina titulo="Empréstimos" subtitulo="Histórico"/>
             <div className={styles.areaConteudo}>
                 <div className={styles.barraOpcoes}>
-                    <div className={styles.containerBotoes}>
-                        <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                    <div className={styles.containerPesquisa}>
+                        <div className={styles.blocoPesquisa + " " + styles.areaPesquisa}>
                             <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                             <Button tipoBotao="primario">
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
-                        <div className={styles.areaBotoes}>
-                            <Select selected="Pesquisar por" opcoes={pesquisar} />
-                            <Select selected="Ordenar por" opcoes={ordenar} />
+                        <div className={styles.blocoFiltro}>
+                            <Select selected="Filtrar" opcoes={pesquisar} />
+                            <Select selected="Ordenar" opcoes={ordenar} />
                         </div>
                     </div>
                 </div>
@@ -75,19 +76,19 @@ export default function Emprestimos() {
                     {dados.map((item, i) => (
                         <div className={styles.cartao} key={i}>
                             <p className={styles.paragrafo}>{item.nome}</p>
-                            <p className={styles.paragrafo}>
+                            <p className={styles.paragrafo + " " + styles.tel}>
                                 <span className="material-symbols-outlined">call</span>
                                 {item.numeroTelefone}
                             </p>
-                            <div className={styles.areaTexto}>
+                            <div className={styles.areaTexto + " " + styles.data}>
                                 <h2 className={styles.tituloSecundario}>Data de retirada</h2>
                                 <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
                             </div>
-                            <div className={styles.areaTexto}>
+                            <div className={styles.areaTexto + " " + styles.data}>
                                 <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                 <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                             </div>
-                            <Status mensagem={item.status} status={item.codStatus} />
+                            <Status status={item.status} />
                             <Button onClick={() => setAberto(true)}>
                                 <span className="material-symbols-outlined">info</span>
                             </Button>

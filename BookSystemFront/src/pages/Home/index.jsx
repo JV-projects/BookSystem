@@ -17,47 +17,41 @@ export default function Home() {
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
 
+
     const dados = [
         {
-            titulo: "Orgulho e Preconceito",
-            autor: "Jane Austen",
-            editora: "Martin Claret",
-            ano: "2012",
-            assuntos: ["Literatura estrangeira", "Romance"],
-            disponivel: "Disponível",
-            codStatus: 0
+            "id": 1,
+            "titulo": "Orgulho e Preconceito",
+            "autor": "Jane Austen",
+            "editora": "Martin Claret",
+            "ano": "2012",
+            "assuntos": [
+                {
+                    "id": 1,
+                    "assunto": "Literatura estrangeira"
+                },
+                {
+                    "id": 2,
+                    "assunto": "Romance"
+                }
+            ],
+            "status": "Disponível",
         },
         {
-            titulo: "Java®: Como Programar",
-            autor: "Paul Deitel",
-            editora: "Pearson Universidades",
-            ano: "2016",
-            assuntos: ["Programação"],
-            disponivel: "Indisponível",
-            codStatus: 2
+            "id": 2,
+            "titulo": "Java®: Como Programar",
+            "autor": "Paul Deitel",
+            "editora": "Pearson Universidades",
+            "ano": "2016",
+            "assuntos": [
+                {
+                    "id": 3,
+                    "assunto": "Programação"
+                }
+            ],
+            "status": "Indisponível",
         }
     ]
-
-    const [lista, setLista] = useState(dados)
-
-    const handlePesquisar = () => {
-        pesquisa.length ? setLista(
-            dados.filter(item =>
-                item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.ano.toLowerCase().includes(pesquisa.toLowerCase())
-            )
-        ) : setLista(dados)
-    }
-
-    const handleSelecionar = (indice) => {
-        if (indiceSelecionado == indice) {
-            setIndiceSelecionado(null)
-        } else {
-            setIndiceSelecionado(indice)
-        }
-    }
 
     let pesquisar = [
         { valor: "titulo", texto: "Título" },
@@ -73,51 +67,75 @@ export default function Home() {
         { valor: "editora", texto: "Editora" }
     ]
 
-    const abrirModal = (acao) => {
-        setModalSelecionado(acao)
+
+    const [lista, setLista] = useState(dados)
+
+    const handlePesquisar = () => {
+        pesquisa.length ? setLista(
+            dados.filter(item =>
+                item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.ano.toLowerCase().includes(pesquisa.toLowerCase())
+            )
+        ) : setLista(dados)
     }
 
-    const fecharModal = () => {
-        setModalSelecionado(null)
+
+    const handleSelecionar = (indice) => {
+        if (indiceSelecionado == indice) {
+            setIndiceSelecionado(null)
+        } else {
+            setIndiceSelecionado(indice)
+        }
     }
 
     return (
         <EstruturaPagina>
 
-            <TopoPagina titulo="Gerenciamento"/>
+            <TopoPagina titulo="Gerenciamento" />
 
             <div className={styles.barraOpcoes}>
-                <div className={styles.containerBotoes}>
-                    <div className={styles.areaBotoes + " " + styles.areaPesquisa}>
+                <div className={styles.containerPesquisa}>
+                    <div className={styles.blocoPesquisa + " " + styles.areaPesquisa}>
                         <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
                         <Button tipoBotao="primario" onClick={handlePesquisar}>
                             <span className="material-symbols-outlined">search</span>
 
                         </Button>
                     </div>
-                    <div className={styles.areaBotoes}>
-                        <Select selected="Pesquisar por" opcoes={pesquisar} />
-                        <Select selected="Ordenar por" opcoes={ordenar} />
-                        <Input placeholder='Ano' />
+                    <div className={styles.blocoFiltro}>
+                        <Select selected="Filtrar" opcoes={pesquisar} />
+                        <Select selected="Ordenar" opcoes={ordenar} />
+                        <Input className={styles.barraAno} placeholder='Ano' />
                     </div>
-                </div>
+                </div>  
                 <span className={styles.linha} />
                 <div className={styles.containerBotoes}>
-                    <Button tipoBotao="primario">
-                        <Link to="/novoemprestimo">Novo empréstimo</Link>
-                    </Button>
+
+                    <Link to="/novoemprestimo">
+                        <Button tipoBotao="primario">
+                            <p>Novo empréstimo</p>
+                        </Button>
+                    </Link>
+
+
                     <div className={styles.areaBotoes}>
-                        <Button icone="add" tipoBotao="primario">
-                            Criar
+                        <Link to="/criar">
+                            <Button icone="add" tipoBotao="primario">
+                                <p className={styles.action}>Criar</p>
+                            </Button>
+                        </Link>
+                        <Button tipoBotao="secundario" icone="info" onClick={() => setModalSelecionado('detalhes')} disabled={indiceSelecionado === null}>
+                        <p className={styles.action}>Detalhes</p>
                         </Button>
-                        <Button tipoBotao="secundario" icone="info" onClick={() => abrirModal('detalhes')} disabled={indiceSelecionado === null}>
-                            Detalhes
-                        </Button>
-                        <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
-                            Editar
-                        </Button>
-                        <Button tipoBotao="secundario" icone="delete" onClick={() => abrirModal('excluir')} disabled={indiceSelecionado === null}>
-                            Excluir
+                        <Link to="/editar">
+                            <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
+                            <p className={styles.action}>Editar</p>
+                            </Button>
+                        </Link>
+                        <Button tipoBotao="secundario" icone="delete" onClick={() => setModalSelecionado('excluir')} disabled={indiceSelecionado === null}>
+                        <p className={styles.action}>Excluir</p>
                         </Button>
                     </div>
 
@@ -125,43 +143,73 @@ export default function Home() {
             </div>
             <div className={styles.containerCartoes}>
                 {lista.map((item, i) => (
-                  
+
                     <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
 
-                        <div>
-                            <img className={styles.imagemCartao} src="" />
+                        <div className={styles.imagemCartao}>
+                            <img alt={`Foto do livro ${item.titulo}`} />
                         </div>
                         <div className={styles.areaConteudoCartao}>
                             <div className={styles.areaTexto}>
                                 <h2 className={styles.tituloSecundario}>{item.titulo}</h2>
                                 <div className={styles.areaBotoes}>
-                                    <p className={styles.paragrafo}>Autor:</p>
-                                    <span className={styles.destaque}>{item.autor}</span>
-                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                    <p className={styles.paragrafo}>Editora:</p>
-                                    <span className={styles.destaque}>{item.editora}</span>
-                                    <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
-                                    <p className={styles.paragrafo}>Ano:</p>
-                                    <span className={styles.destaque}>{item.ano}</span>
+
+                                    <div className={styles.grupoTexto}>
+                                        <p className={styles.paragrafo}>Autor:</p>
+                                        <span className={styles.destaque}>{item.autor}</span>
+
+                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    </div>
+
+                                    <div className={styles.grupoTexto}>
+                                        <p className={styles.paragrafo}>Editora:</p>
+                                        <span className={styles.destaque}>{item.editora}</span>
+
+                                        <p className={styles.paragrafo}><span className={styles.linhaHorizontal} /></p>
+                                    </div>
+
+                                    <div className={styles.grupoTexto}>
+                                        <p className={styles.paragrafo}>Ano:</p>
+                                        <span className={styles.destaque}>{item.ano}</span>
+                                    </div>
+
+
                                 </div>
                             </div>
                             <div className={styles.areaBotoes}>
                                 {item.assuntos.map((assunto, i) => (
-
-                                    <Assunto key={i}>{assunto}</Assunto>
+                                    <Assunto key={i}><p>{assunto.assunto}</p></Assunto>
                                 ))}
                             </div>
                         </div>
-                        <Status mensagem={item.disponivel} status={item.codStatus} />
+                        <Status status={item.status} />
                     </div>
                 ))}
             </div>
-            <Modal aberto={modalSelecionado === 'detalhes'} fechar={fecharModal} titulo={'Detalhes do livro'}>
-                <DetalhesLivro/>
+            <Modal aberto={modalSelecionado === 'detalhes'} fechar={setModalSelecionado} 
+            backdropClose={setModalSelecionado} titulo={'Detalhes do livro'}>
+                <DetalhesLivro />
             </Modal>
-            <Modal aberto={modalSelecionado === 'excluir'} fechar={fecharModal} titulo={'Excluir livro'}>
-                <ExcluirLivro/>
+            <Modal aberto={modalSelecionado === 'excluir'} fechar={setModalSelecionado} 
+            backdropClose={setModalSelecionado} titulo={'Excluir livro'}>
+                <ExcluirLivro />
             </Modal>
+
         </EstruturaPagina>
     )
 }
+
+/*
+ const handleSelecionar = (indice) => {
+        if (indiceSelecionado == indice) {
+            setSelecionado(!selecionado)
+        }
+        setIndiceSelecionado(indice)
+    } // <div className={selecionado && indiceSelecionado == i ? 
+    styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+
+    
+
+
+
+*/

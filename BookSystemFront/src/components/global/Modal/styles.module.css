@@ -35,6 +35,7 @@
 
 .titulo {
     font-size: 1.25rem;
+    color: var(--primary-text-color);
 }
 
 .botao {

@@ -1,6 +1,6 @@
 .containerArea{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)) ;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) ;
     gap: 3rem;
     margin-top: 3rem;
     border-radius: 0.25rem
@@ -64,7 +64,7 @@
 }
 
 .inputFile span{
-    color: var(--link-color);
+    color: var(--secondary-text-color);
 }
 
 .inputFile:hover{
@@ -102,4 +102,8 @@
     min-height: 5rem;
     border-radius: 0.25rem;
     border: 1px solid var(--border-color);
+}
+
+.label {
+    font-size: 0.9rem;
 }

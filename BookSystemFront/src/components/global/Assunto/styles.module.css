@@ -9,6 +9,8 @@
     gap: 0.25rem;
     padding-block: 0.25rem;
     padding-inline: 0.5rem;
+    width: fit-content;
+    height: fit-content;
 }
 
 .botao {

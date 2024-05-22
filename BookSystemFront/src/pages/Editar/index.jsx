@@ -7,6 +7,7 @@ import Select from '../../components/global/Select'
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import livro from '/assets/images/livro.jpg'
+import Assunto from "../../components/global/Assunto";
 
 export default function Editar() {
 
@@ -55,23 +56,23 @@ export default function Editar() {
                     </div>
                     <div className={styles.blocoInput}>
                         <label htmlFor="editora">Editora</label>
-                        <Input name="editora" id="editora" value={livro.editora}/>
+                        <Input name="editora" id="editora" value={livro.editora} />
                     </div>
 
                     <div className={styles.blocoInput2}>
                         <div className={styles.blocoInput}>
                             <label htmlFor="ano">Ano</label>
-                            <Input type="number" name="ano" id="ano" value={livro.ano}/>
+                            <Input type="number" name="ano" id="ano" value={livro.ano} />
                         </div>
 
                         <div className={styles.blocoInput}>
                             <label htmlFor="edicao">Edição</label>
-                            <Input type="number" name="edicao" id="edicao" value={livro.edicao}/>
+                            <Input type="number" name="edicao" id="edicao" value={livro.edicao} />
                         </div>
 
                         <div className={styles.blocoInput}>
-                            <label htmlFor="nPaginas">N° de páginas</label>
-                            <Input type="number" name="nPaginas" id="nPaginas" value={livro.nPaginas}/>
+                            <label className={styles.label} htmlFor="nPaginas">N° de páginas</label>
+                            <Input type="number" name="nPaginas" id="nPaginas" value={livro.nPaginas} />
                         </div>
 
                     </div>
@@ -79,15 +80,18 @@ export default function Editar() {
                     <div className={styles.blocoInput}>
                         <label>Assuntos</label>
                         <div className={styles.blocoInput2}>
-                            <Select name="assuntos" id="assuntos" selected="Selecione um assunto" opcoes={[]} />
+                            <Select name="assuntos" id="assuntos" selected="Selecione" opcoes={[]} />
                             <Button tipoBotao="primario">
                                 Adicionar
                             </Button>
                         </div>
                         <div className={styles.areaAssunto}>
-                            <div className={styles.assunto}>
-                                Literatura
-                            </div>
+                            <Assunto fechavel={true}>
+                                <p>Literatura estrangeira</p>
+                            </Assunto>
+                            <Assunto fechavel={true}>
+                                <p>Romance</p>
+                            </Assunto>
                         </div>
                     </div>
 
@@ -106,7 +110,7 @@ export default function Editar() {
                     </div>
                     <div className={styles.blocoInput}>
                         <label htmlFor="isbn">ISBN</label>
-                        <Input name="isbn" id="isbn" value={livro.isbn}/>
+                        <Input name="isbn" id="isbn" value={livro.isbn} />
                     </div>
                     <div className={styles.blocoInput2 + " " + styles.imagemArea}>
                         <div className={styles.blocoInput}>
@@ -117,7 +121,7 @@ export default function Editar() {
                             <input className={styles.inputFile} type="file" name="imagemLivro" id="imagemLivro" onChange={(e) => handleArquivo(e)} />
                         </div>
                         <div className={styles.blocoInput + " " + styles.imagem}>
-                            <img src={arquivo} alt="Imagem do livro que foi carregada" />
+                            <img src={arquivo} alt="Imagem do livro a ser carregada" />
                         </div>
 
                     </div>
