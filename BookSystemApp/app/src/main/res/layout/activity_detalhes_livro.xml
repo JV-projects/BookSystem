@@ -16,14 +16,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="#00000000"
             android:padding="10dp"
             android:src="@drawable/ic_my_icon" />
 
         <TextView
             android:id="@+id/txtTitulo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Detalhes do livro"
             android:textColor="#000000"
             android:textSize="20sp"
