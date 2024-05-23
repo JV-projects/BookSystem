@@ -10,7 +10,7 @@ public interface ILivroServico {
     
     public List<Livro> consultarLivros();
     public Optional<Livro> cadastrarLivro(Livro livro);
-    public Optional<Livro> consultarPorTitulo(String titulo);
+    public List<Livro> consultarPorIsbn(Long isbn);
     public void excluirLivro(String id);
 
 }

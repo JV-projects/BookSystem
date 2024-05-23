@@ -1,11 +1,10 @@
 package com.booksystem.booksystem.model.repository;
 
-import java.util.Optional;
-
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.booksystem.booksystem.model.Livro;
 
 public interface ILivroRepository extends MongoRepository<Livro, String>{
-    Optional<Livro> findByTitulo(String titulo);
+    List<Livro> findByIsbn(Long isbn);
 }

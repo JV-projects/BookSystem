@@ -36,15 +36,9 @@ public class LivroServico implements ILivroServico{
     }
 
     @Override
-    public Optional<Livro> consultarPorTitulo(String titulo) {
-       logger.info("|--- Serviço - Consultando por título ----|");
-       return livroRepository.findByTitulo(titulo);
-    }
-
-    @Override
-    public void excluirLivro(String id) {
-        logger.info("|--- Serviço - Excluindo livro ----|");
-        livroRepository.deleteById(id);
+    public List<Livro> consultarPorIsbn(Long isbn) {
+       logger.info("|--- Serviço - Consultando por ISBN ----|");
+       return livroRepository.findByIsbn(isbn);
     }
 
     @Override
@@ -59,6 +53,12 @@ public class LivroServico implements ILivroServico{
         }
 
         return Optional.ofNullable(livroRepository.insert(newLivro));
+    }
+    
+    @Override
+    public void excluirLivro(String id) {
+        logger.info("|--- Serviço - Excluindo livro ----|");
+        livroRepository.deleteById(id);
     }
 
     // @Override
