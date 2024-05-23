@@ -1,6 +1,8 @@
 package com.booksystem.booksystem.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,6 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Emprestimo {
     @Id
     private String id;
+
+    private List<Livro> itensEmprestimo = new ArrayList<>();
 
     private Date dataRetirada;
     
@@ -20,8 +24,9 @@ public class Emprestimo {
 
     public Emprestimo(){}
 
-    public Emprestimo(String id, Date dataRetirada, Date dataDevolucao, String status, String idUsuario) {
+    public Emprestimo(String id, List<Livro> itensEmprestimo, Date dataRetirada, Date dataDevolucao, String status, String idUsuario) {
         this.id = id;
+        this.itensEmprestimo = itensEmprestimo;
         this.dataRetirada = dataRetirada;
         this.dataDevolucao = dataDevolucao;
         this.status = status;
@@ -35,6 +40,14 @@ public class Emprestimo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public List<Livro> getItensEmprestimo() {
+        return this.itensEmprestimo;
+    }
+
+    public void setItensEmprestimo(List<Livro> itensEmprestimo) {
+        this.itensEmprestimo = itensEmprestimo;
     }
 
     public Date getDataRetirada() {
