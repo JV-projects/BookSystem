@@ -33,6 +33,12 @@ public class APILivroController {
         return ResponseEntity.ok().body(livroServico.consultarLivros());
     }
 
+    @GetMapping("livros")
+    public ResponseEntity<Object> consultarPorIsbn(@RequestBody Long isbn){
+        logger.info("api --> Consultar livro por ISBN");
+        return ResponseEntity.ok().body(livroServico.consultarPorIsbn(isbn));
+    }
+
     @PostMapping("livros")
     public ResponseEntity<Object> cadastrarLivro(@RequestBody Livro livro) {
         logger.info("api --> Cadastrar livro");
