@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.booksystem.booksystem.model.Livro;
 
 public interface ILivroRepository extends MongoRepository<Livro, String>{
-    List<Livro> findByIsbn(Long isbn);
+    List<Livro> findByIsbn(long isbn);
 }
