@@ -11,7 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -33,8 +35,8 @@ public class APILivroController {
         return ResponseEntity.ok().body(livroServico.consultarLivros());
     }
 
-    @GetMapping("livros")
-    public ResponseEntity<Object> consultarPorIsbn(@RequestBody Long isbn){
+    @GetMapping("livro")
+    public ResponseEntity<Object> consultarPorIsbn(@RequestBody long isbn){
         logger.info("api --> Consultar livro por ISBN");
         return ResponseEntity.ok().body(livroServico.consultarPorIsbn(isbn));
     }
@@ -46,7 +48,12 @@ public class APILivroController {
         return ResponseEntity.ok().body(livroServico.cadastrarLivro(livro));
     }
 
+    @PatchMapping("livros")
+    public ResponseEntity<Object> editarLivro(@RequestBody Livro livro){
+        logger.info("api --> Editar livro");
 
+        return ResponseEntity.ok().body(livroServico.editarLivro(livro));
+    }
     
 
 }
