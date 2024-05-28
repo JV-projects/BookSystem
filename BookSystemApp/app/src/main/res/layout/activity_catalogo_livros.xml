@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -27,20 +28,23 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnConta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:padding="10dp"
-                android:src="@drawable/ic_my_icon" />
+                android:src="@drawable/ic_conta"
+                app:tint="#000000" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/txtAviso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_aviso"
+            android:drawableTint="#BDA871"
             android:paddingHorizontal="10dp"
             android:text="Complete seu cadastro para fazer empréstimos!"
             android:textColor="#BDA871"
@@ -52,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="#f0f0f0"
-            android:drawableLeft="@drawable/my_icon"
+            android:drawableLeft="@drawable/ic_pesquisar"
+            android:drawableTint="#828282"
             android:ems="10"
             android:hint="Pesquisar"
             android:inputType="text"
@@ -62,6 +67,7 @@
             android:id="@+id/rcvLivros"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -69,32 +75,43 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#ffffff"
-        android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="5">
+        android:padding="10dp">
 
-        <Button
-            android:id="@+id/btnPaginaLivros"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:background="#00000000"
-            android:padding="10dp"
-            android:textColor="#7F56D9" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0" />
+            <ImageButton
+                android:id="@+id/btnPaginaLivros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:padding="10dp"
+                android:src="@drawable/ic_livro"
+                app:tint="#7F56D9" />
 
-        <Button
-            android:id="@+id/btnPaginaEmprestimos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:background="#00000000"
-            android:padding="10dp"
-            android:textColor="#656565" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnPaginaEmprestimos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:padding="10dp"
+                android:src="@drawable/ic_historico"
+                app:tint="#727272" />
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>
