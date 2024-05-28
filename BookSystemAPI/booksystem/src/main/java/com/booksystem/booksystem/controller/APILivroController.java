@@ -29,8 +29,8 @@ public class APILivroController {
         return ResponseEntity.ok().body(livroServico.consultarLivros());
     }
 
-    @GetMapping(value = "livros", params = {"titulo, ordem"})
-    public ResponseEntity<Object> consultaPorTitulo(@RequestParam String titulo, @RequestParam(required = false) int ordem) {
+    @GetMapping(value = "livros", params = {"titulo", "ordem"})
+    public ResponseEntity<Object> consultaPorTitulo(@RequestParam String titulo, @RequestParam int ordem) {
         logger.info("api --> Consulta por Titulo");
         return ResponseEntity.ok().body(livroServico.consultarPorTitulo(titulo, ordem));
     }

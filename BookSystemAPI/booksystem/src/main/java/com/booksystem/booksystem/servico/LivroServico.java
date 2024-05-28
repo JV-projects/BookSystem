@@ -1,5 +1,6 @@
 package com.booksystem.booksystem.servico;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Service
-public class LivroServico implements ILivroServico{
+public class LivroServico implements ILivroServico {
 
     Logger logger = LogManager.getLogger(this.getClass());
 
@@ -32,7 +33,19 @@ public class LivroServico implements ILivroServico{
     @Override
     public List<Livro> consultarPorTitulo(String titulo, int ordem) {
        logger.info("|--- Serviço - Consultando por título ----|");
-       return livroRepository.findByTitulo(titulo, ordem);
+
+       List<Livro> listaLivrosPorTitulo = null;
+
+       if (ordem == 1) {
+           listaLivrosPorTitulo = livroRepository.findByTituloAsc(titulo);
+           return listaLivrosPorTitulo;
+       } else if (ordem == -1) {
+           listaLivrosPorTitulo = livroRepository.findByTituloDesc(titulo);
+           return listaLivrosPorTitulo;
+       }
+
+       return listaLivrosPorTitulo;
+
     }
 
     @Override
