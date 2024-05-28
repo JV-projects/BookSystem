@@ -2,18 +2,18 @@ package com.booksystem.booksystem.model;
 
 public class Imagem {
 
-    private String arquivoByte; 
+    private String arquivoBase;
 
     public Imagem() {
-        this.arquivoByte = null;
+        this.arquivoBase = null;
     }
 
-    public String getArquivoByte() {
-        return this.arquivoByte;
+    public String getArquivoBase() {
+        return this.arquivoBase;
     }
 
-    public void setArquivoByte(String arquivoByte) {
-        this.arquivoByte = arquivoByte;
+    public void setArquivoBase(String arquivoBase) {
+        this.arquivoBase = arquivoBase;
     }
 
 }

@@ -29,7 +29,7 @@ public class ImagemServico implements IImagemServico {
             return imagemByte;
         }
 
-        logger.info("|---- Serviço - Verificando tamanho da imagem ----|");
+        logger.info("|---- Serviço - Verificando imagem ----|");
 
         if (imagemByte.getBytes().length <= 34000) {
             return imagemByte;
