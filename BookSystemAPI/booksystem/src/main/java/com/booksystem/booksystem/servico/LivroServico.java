@@ -30,9 +30,9 @@ public class LivroServico implements ILivroServico{
     }
 
     @Override
-    public Optional<Livro> consultarPorTitulo(String titulo) {
+    public List<Livro> consultarPorTitulo(String titulo, int ordem) {
        logger.info("|--- Serviço - Consultando por título ----|");
-       return livroRepository.findByTitulo(titulo);
+       return livroRepository.findByTitulo(titulo, ordem);
     }
 
     @Override

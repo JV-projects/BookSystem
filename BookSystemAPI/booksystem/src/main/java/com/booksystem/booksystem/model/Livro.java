@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.index.TextIndexed;
+import org.springframework.data.mongodb.core.mapping.*;
 
 
 @Document(collection = "livros")
@@ -31,7 +33,7 @@ public class Livro {
 
     private String etiqueta;
 
-    private Long isbn;
+    private long isbn;
     
     @Field(targetType = FieldType.STRING)
     private String status;
@@ -39,15 +41,15 @@ public class Livro {
     public Livro(){}
 
     public Livro(
-        String titulo,
-        String autor,
-        String editora,
-        int ano,
-        int paginas,
-        List<Assunto> assuntos,
-        String etiqueta,
-        Long isbn,
-        String status
+            String titulo,
+            String autor,
+            String editora,
+            int ano,
+            int paginas,
+            List<Assunto> assuntos,
+            String etiqueta,
+            long isbn,
+            String status
     ){
         this.titulo = titulo;
         this.autor = autor;
@@ -132,11 +134,11 @@ public class Livro {
         this.etiqueta = etiqueta;
     }
 
-    public Long getIsbn() {
+    public long getIsbn() {
         return this.isbn;
     }
 
-    public void setIsbn(Long isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 

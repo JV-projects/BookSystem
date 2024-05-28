@@ -1,7 +1,6 @@
 package com.booksystem.booksystem.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.booksystem.booksystem.model.Livro;
 import com.booksystem.booksystem.servico.interfaces.ILivroServico;
@@ -11,11 +10,8 @@ import org.apache.logging.log4j.Logger;
 
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("booksystem/api")
 public class APILivroController {
@@ -31,6 +27,12 @@ public class APILivroController {
     public ResponseEntity<Object> consultarLivros(){
         logger.info("api --> Consultar livro");
         return ResponseEntity.ok().body(livroServico.consultarLivros());
+    }
+
+    @GetMapping(value = "livros", params = {"titulo, ordem"})
+    public ResponseEntity<Object> consultaPorTitulo(@RequestParam String titulo, @RequestParam(required = false) int ordem) {
+        logger.info("api --> Consulta por Titulo");
+        return ResponseEntity.ok().body(livroServico.consultarPorTitulo(titulo, ordem));
     }
 
     @PostMapping("livros")

@@ -9,6 +9,6 @@ import com.booksystem.booksystem.model.Livro;
 public interface ILivroServico {
     public List<Livro> consultarLivros();
     public Optional<Livro> cadastrarLivro(Livro livro);
-    public Optional<Livro> consultarPorTitulo(String titulo);
+    public List<Livro> consultarPorTitulo(String titulo, int ordem);
     public void excluirLivro(String id);
 }
