@@ -55,9 +55,9 @@ public class LivroServico implements ILivroServico {
 
         Imagem imagem = newLivro.getImagem();
 
-        if (imagem != null && imagem.getArquivoByte() != null) {
+        if (imagem != null && imagem.getArquivoBase() != null) {
             
-            imagemServico.verificarTamanhoImagem(imagem.getArquivoByte());
+            imagemServico.verificarTamanhoImagem(imagem.getArquivoBase());
 
         }
 
