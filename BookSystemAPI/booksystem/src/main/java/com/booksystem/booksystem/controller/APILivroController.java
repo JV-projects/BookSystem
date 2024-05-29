@@ -3,16 +3,13 @@ package com.booksystem.booksystem.controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.booksystem.booksystem.model.Livro;
-import com.booksystem.booksystem.servico.interfaces.ILivroServico;
-
-import java.util.Optional;
+import com.booksystem.booksystem.service.ILivroServico;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
 import org.springframework.http.ResponseEntity;
-import jakarta.transaction.Transactional;
 
 
 @RestController

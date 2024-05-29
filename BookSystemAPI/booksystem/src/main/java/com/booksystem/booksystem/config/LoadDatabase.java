@@ -1,14 +1,20 @@
-package com.booksystem.booksystem.servico;
+package com.booksystem.booksystem.config;
 
 import com.booksystem.booksystem.model.Imagem;
 import com.booksystem.booksystem.model.Livro;
-import com.booksystem.booksystem.model.repository.ILivroRepository;
+import com.booksystem.booksystem.model.RoleUsuario;
+import com.booksystem.booksystem.model.Usuario;
+import com.booksystem.booksystem.model.UsuarioComum;
+import com.booksystem.booksystem.repository.IAssuntoRepository;
+import com.booksystem.booksystem.repository.ILivroRepository;
+import com.booksystem.booksystem.repository.IUsuarioComumRepository;
+import com.booksystem.booksystem.repository.IUsuarioRepository;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.booksystem.booksystem.model.Assunto;
-import com.booksystem.booksystem.model.repository.IAssuntoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +23,16 @@ import java.util.List;
 public class LoadDatabase{
 
     @Bean
-    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository) {
+    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository, IUsuarioRepository usuarioRepository,
+    IUsuarioComumRepository usuarioComumRepository) {
         return args -> {
+
+            assuntoRepository.deleteAll();
+            livroRepository.deleteAll();
+            usuarioRepository.deleteAll();
+            usuarioComumRepository.deleteAll();
+
+
             List<Assunto> lista = new ArrayList<>();
 
             Assunto literaturaEstrangeira = new Assunto("Literatura estrangeira");
@@ -46,6 +60,20 @@ public class LoadDatabase{
 
             livroRepository.save(livro1);
             livroRepository.save(livro2);
+
+            Usuario usuario = new Usuario("Romeu", "romjulieta@gmail.com", "ABC123", RoleUsuario.USER);
+            Usuario usuario2 = new Usuario("Julieta", "jujulieta@gmail.com", "ABC123", RoleUsuario.USER);
+
+            List<Usuario> usuarios = new ArrayList<>();
+            usuarios.add(usuario);
+            usuarios.add(usuario2);
+
+            UsuarioComum usuarioComum = new UsuarioComum(usuario.getId(), usuario, "12345678900");
+
+            usuarioRepository.saveAll(usuarios);
+            usuarioComumRepository.save(usuarioComum);
+
+
         };
 
     }

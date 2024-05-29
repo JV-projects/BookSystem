@@ -21,8 +21,7 @@ public class Usuario {
     private RoleUsuario role;
 
 
-    public Usuario(String id, String nome, String username, String senha, RoleUsuario role) {
-        this.id = id;
+    public Usuario(String nome, String username, String senha, RoleUsuario role) {
         this.nome = nome;
         this.username = username;
         this.senha = senha;

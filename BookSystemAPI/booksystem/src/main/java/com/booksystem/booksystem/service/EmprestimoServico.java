@@ -1,4 +1,4 @@
-package com.booksystem.booksystem.servico;
+package com.booksystem.booksystem.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.booksystem.booksystem.model.Emprestimo;
-import com.booksystem.booksystem.model.repository.IEmprestimoRepository;
-import com.booksystem.booksystem.servico.interfaces.IEmprestimoServico;
+import com.booksystem.booksystem.repository.IEmprestimoRepository;
 
 public class EmprestimoServico implements IEmprestimoServico{
 
