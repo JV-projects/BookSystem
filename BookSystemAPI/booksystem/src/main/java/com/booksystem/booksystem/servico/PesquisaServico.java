@@ -1,14 +1,25 @@
 package com.booksystem.booksystem.servico;
 
-import com.booksystem.booksystem.model.Livro;
 import com.booksystem.booksystem.servico.interfaces.IPesquisaServico;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+@Service
+public class PesquisaServico implements IPesquisaServico {
 
-public class PesquisaServico<T> implements IPesquisaServico<T> {
     @Override
-    public List<T> OrdemPesquisa(MongoRepository<T, String> repository, int ordem) {
+    public Sort.Direction retornarOrdem(int ordem) {
+        if (ordem == -1) {
+            return Sort.Direction.DESC;
+        } else {
+            return Sort.Direction.ASC;
+        }
+    }
 
+    @Override
+    public <T> Sort sortBuilder(T pesquisa, String filtro, int ordem) {
+        Sort.Direction direction = retornarOrdem(ordem);
+        Sort.Order order = new Sort.Order(direction, filtro);
+        return Sort.by(order);
     }
 }
