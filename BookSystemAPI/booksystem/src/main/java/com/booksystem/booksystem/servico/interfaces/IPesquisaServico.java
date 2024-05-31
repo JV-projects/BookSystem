@@ -1,10 +1,10 @@
 package com.booksystem.booksystem.servico.interfaces;
 
-import com.booksystem.booksystem.model.Livro;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.domain.Sort;
 
-import java.util.List;
+public interface IPesquisaServico {
+    Sort.Direction retornarOrdem(int ordem);
 
-public interface IPesquisaServico<T> {
-     List<T> OrdemPesquisa(MongoRepository<T, String> repository, int ordem);
+    <T> Sort sortBuilder(T pesquisa, String filtro, int ordem);
+
 }
