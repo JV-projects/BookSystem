@@ -1,14 +1,12 @@
 package com.booksystem.booksystem.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.index.CompoundIndex;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.index.TextIndexed;
-import org.springframework.data.mongodb.core.mapping.*;
 
 
 @Document(collection = "livros")
@@ -34,27 +32,30 @@ public class Livro {
     private String etiqueta;
 
     private long isbn;
-    
+
     @Field(targetType = FieldType.STRING)
     private String status;
 
-    public Livro(){}
+    public Livro() {
+    }
 
     public Livro(
             String titulo,
             String autor,
             String editora,
             int ano,
+            int edicao,
             int paginas,
             List<Assunto> assuntos,
             String etiqueta,
             long isbn,
             String status
-    ){
+    ) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.ano = ano;
+        this.edicao = edicao;
         this.paginas = paginas;
         this.assuntos = assuntos;
         this.etiqueta = etiqueta;
@@ -147,11 +148,10 @@ public class Livro {
     }
 
     public void setStatus(Status status) {
-        if(status != null){
+        if (status != null) {
             this.status = status.getStatus();
         }
     }
-
 
 
 }
