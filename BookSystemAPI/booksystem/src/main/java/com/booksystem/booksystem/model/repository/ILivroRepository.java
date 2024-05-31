@@ -1,18 +1,32 @@
 package com.booksystem.booksystem.model.repository;
 
-import java.util.List;
-
-import org.springframework.data.mongodb.repository.MongoRepository;
-
 import com.booksystem.booksystem.model.Livro;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-public interface ILivroRepository extends MongoRepository<Livro, String>{
+import java.util.List;
 
-    @Query(value = "{ 'titulo': { $regex: ?0, $options:'i' } }", sort = "{ titulo: 1 }")
-    List<Livro> findByTituloAsc(String titulo);
+public interface ILivroRepository extends MongoRepository<Livro, String> {
 
-    @Query(value = "{ 'titulo': { $regex: ?0, $options:'i' } }", sort = "{ titulo: -1 }")
-    List<Livro> findByTituloDesc(String titulo);
+    @Query(value = "{ 'titulo': { $regex: ?0, $options:'i' }, ano: ?1 }")
+    List<Livro> findByTitulo(String titulo, int ano, Sort sort);
+
+    @Query(value = "{ 'titulo': { $regex: ?0, $options:'i' } }")
+    List<Livro> findByTitulo(String titulo, Sort sort);
+
+    List<Livro> findByIsbn(long isbn);
+
+    @Query(value = "{ 'autor': { $regex: ?0, $options:'i' }, ano: ?1 }")
+    List<Livro> findByAutor(String autor, int ano, Sort sort);
+
+    @Query(value = "{ 'autor': { $regex: ?0, $options:'i' } }")
+    List<Livro> findByAutor(String autor, Sort sort);
+
+    @Query(value = "{ 'editora': { $regex: ?0, $options:'i' }, ano: ?1}")
+    List<Livro> findByEditora(String editora, int ano, Sort sort);
+
+    @Query(value = "{ 'editora': { $regex: ?0, $options:'i' } }")
+    List<Livro> findByEditora(String editora, Sort sort);
 
 }
