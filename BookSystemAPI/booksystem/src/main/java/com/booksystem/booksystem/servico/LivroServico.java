@@ -1,17 +1,15 @@
 package com.booksystem.booksystem.servico;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.stereotype.Service;
-
 import com.booksystem.booksystem.model.Livro;
 import com.booksystem.booksystem.model.repository.ILivroRepository;
 import com.booksystem.booksystem.servico.interfaces.ILivroServico;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LivroServico implements ILivroServico {
@@ -20,8 +18,11 @@ public class LivroServico implements ILivroServico {
 
     ILivroRepository livroRepository;
 
-    public LivroServico(ILivroRepository livroRepository){
+    PesquisaServico pesquisaServico;
+
+    public LivroServico(ILivroRepository livroRepository, PesquisaServico pesquisaServico) {
         this.livroRepository = livroRepository;
+        this.pesquisaServico = pesquisaServico;
     }
 
     @Override
@@ -31,21 +32,49 @@ public class LivroServico implements ILivroServico {
     }
 
     @Override
-    public List<Livro> consultarPorTitulo(String titulo, int ordem) {
-       logger.info("|--- Serviço - Consultando por título ----|");
+    public List<Livro> consultarPorTitulo(String titulo, int ano, String filtro, int ordem) {
+        logger.info("|--- Serviço - Consultando por título --- |");
 
-       List<Livro> listaLivrosPorTitulo = null;
+        Sort sort = pesquisaServico.sortBuilder(titulo, filtro, ordem);
 
-       if (ordem == 1) {
-           listaLivrosPorTitulo = livroRepository.findByTituloAsc(titulo);
-           return listaLivrosPorTitulo;
-       } else if (ordem == -1) {
-           listaLivrosPorTitulo = livroRepository.findByTituloDesc(titulo);
-           return listaLivrosPorTitulo;
-       }
+        if (ano != 0) {
+            return livroRepository.findByTitulo(titulo, ano, sort);
+        } else {
+            return livroRepository.findByTitulo(titulo, sort);
+        }
+    }
 
-       return listaLivrosPorTitulo;
+    @Override
+    public List<Livro> consultarPorIsbn(long isbn) {
+        logger.info("|--- Serviço - Consultando por ISBN ---|");
 
+        return livroRepository.findByIsbn(isbn);
+    }
+
+    @Override
+    public List<Livro> consultarPorAutor(String autor, int ano, String filtro, int ordem) {
+        logger.info("|--- Serviço - Consultando por autor ---|");
+
+        Sort sort = pesquisaServico.sortBuilder(autor, filtro, ordem);
+
+        if (ano != 0) {
+            return livroRepository.findByAutor(autor, ano, sort);
+        } else {
+            return livroRepository.findByAutor(autor, sort);
+        }
+    }
+
+    @Override
+    public List<Livro> consultarPorEditora(String editora, int ano, String filtro, int ordem) {
+        logger.info("|--- Serviço - Consultando por editora");
+
+        Sort sort = pesquisaServico.sortBuilder(editora, filtro, ordem);
+
+        if (ano != 0) {
+            return livroRepository.findByEditora(editora, ano, sort);
+        } else {
+            return livroRepository.findByEditora(editora, sort);
+        }
     }
 
     @Override
@@ -56,9 +85,10 @@ public class LivroServico implements ILivroServico {
 
     @Override
     public Optional<Livro> cadastrarLivro(Livro newLivro) {
-       
+
         logger.info("|---- Serviço - Cadastrando livro ----|");
-        return Optional.ofNullable(livroRepository.insert(newLivro));
+        return Optional.of(livroRepository.insert(newLivro));
     }
+
 
 }
