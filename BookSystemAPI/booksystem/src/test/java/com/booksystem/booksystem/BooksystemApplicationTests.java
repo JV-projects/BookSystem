@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.booksystem.booksystem.servico.AssuntoServico;
 import com.booksystem.booksystem.model.repository.IAssuntoRepository;
 
+import java.util.List;
+
 @SpringBootTest
 class BooksystemApplicationTests {
 
@@ -24,7 +26,16 @@ class BooksystemApplicationTests {
 
 		as.cadastrarAssunto(assunto);
 
+	}
 
+	@Test
+	void testeConsultaAssunto() {
+
+		AssuntoServico assuntoServico = new AssuntoServico(assuntoRepository);
+
+		List<Assunto> lista = assuntoServico.consultarAssuntos();
+
+		assert(!lista.isEmpty());
 	}
 
 }

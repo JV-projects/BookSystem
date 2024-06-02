@@ -1,5 +1,9 @@
 package com.booksystem.booksystem.servico.interfaces;
 
+import java.util.Optional;
+
+import java.util.List;
+
 import com.booksystem.booksystem.model.Livro;
 
 import java.util.List;
@@ -11,6 +15,8 @@ public interface ILivroServico {
 
     Optional<Livro> cadastrarLivro(Livro livro);
 
+    Optional<Livro> consultarPorId(String id);
+
     List<Livro> consultarPorTitulo(String titulo, int ano, String filtro, int ordem);
 
     List<Livro> consultarPorIsbn(long isbn);
@@ -19,5 +25,10 @@ public interface ILivroServico {
 
     List<Livro> consultarPorEditora(String editora, int ano, String filtro, int ordem);
 
+    Optional<Livro> editarLivro(Livro livro);
+
     void excluirLivro(String id);
+
+
+
 }

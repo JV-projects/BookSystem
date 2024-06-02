@@ -1,8 +1,16 @@
 package com.booksystem.booksystem.servico;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.booksystem.booksystem.model.Imagem;
 import com.booksystem.booksystem.model.Livro;
+import com.booksystem.booksystem.model.Status;
 import com.booksystem.booksystem.model.repository.ILivroRepository;
 import com.booksystem.booksystem.servico.interfaces.ILivroServico;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.data.domain.Sort;
@@ -18,10 +26,13 @@ public class LivroServico implements ILivroServico {
 
     ILivroRepository livroRepository;
 
+    ImagemServico imagemServico;
+
     PesquisaServico pesquisaServico;
 
-    public LivroServico(ILivroRepository livroRepository, PesquisaServico pesquisaServico) {
+    public LivroServico(ILivroRepository livroRepository, PesquisaServico pesquisaServico, ImagemServico imagemServico) {
         this.livroRepository = livroRepository;
+        this.imagemServico = imagemServico;
         this.pesquisaServico = pesquisaServico;
     }
 
@@ -42,6 +53,12 @@ public class LivroServico implements ILivroServico {
         } else {
             return livroRepository.findByTitulo(titulo, sort);
         }
+    }
+
+    public Optional<Livro> consultarPorId(String id) {
+        logger.info("|--- Serviço - Consultando livro por id ----|");
+
+        return livroRepository.findById(id);
     }
 
     @Override
@@ -75,20 +92,54 @@ public class LivroServico implements ILivroServico {
         } else {
             return livroRepository.findByEditora(editora, sort);
         }
+
+    }
+
+    @Override
+    public Optional<Livro> cadastrarLivro(Livro newLivro) {
+        logger.info("|---- Serviço - Cadastrando livro ----|");
+        newLivro.setStatus(Status.DISPONIVEL);
+
+        Imagem imagem = newLivro.getImagem();
+
+        if (imagem != null && imagem.getArquivoBase() != null) {
+
+            imagemServico.verificarTamanhoImagem(imagem.getArquivoBase());
+
+        }
+
+        return Optional.ofNullable(livroRepository.insert(newLivro));
+    }
+
+    @Override
+    public Optional<Livro> editarLivro(Livro newLivro) {
+       logger.info("|---- Serviço - Editando livro ----|");
+
+       return livroRepository.findById(newLivro.getId())
+            .map(livro -> {
+                livro.setTitulo(newLivro.getTitulo());
+                livro.setAutor(newLivro.getAutor());
+                livro.setEditora(newLivro.getEditora());
+                livro.setAno(newLivro.getAno());
+                livro.setPaginas(newLivro.getPaginas());
+                livro.setAssuntos(newLivro.getAssuntos());
+                livro.setEtiqueta(newLivro.getEtiqueta());
+                livro.setIsbn(newLivro.getIsbn());
+                livro.setImagem(newLivro.getImagem());
+                return livroRepository.save(livro);
+            });
     }
 
     @Override
     public void excluirLivro(String id) {
         logger.info("|--- Serviço - Excluindo livro ----|");
-        livroRepository.deleteById(id);
+
+        try{
+            livroRepository.deleteById(id);
+        }catch(Exception e){
+            logger.info("Não excluiu");
+        }
+
     }
-
-    @Override
-    public Optional<Livro> cadastrarLivro(Livro newLivro) {
-
-        logger.info("|---- Serviço - Cadastrando livro ----|");
-        return Optional.of(livroRepository.insert(newLivro));
-    }
-
 
 }

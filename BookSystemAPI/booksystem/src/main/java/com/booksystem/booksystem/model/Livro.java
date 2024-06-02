@@ -1,12 +1,12 @@
 package com.booksystem.booksystem.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.FieldType;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Document(collection = "livros")
@@ -33,6 +33,8 @@ public class Livro {
 
     private long isbn;
 
+    private Imagem imagem;
+    
     @Field(targetType = FieldType.STRING)
     private String status;
 
@@ -40,17 +42,18 @@ public class Livro {
     }
 
     public Livro(
-            String titulo,
-            String autor,
-            String editora,
-            int ano,
-            int edicao,
-            int paginas,
-            List<Assunto> assuntos,
-            String etiqueta,
-            long isbn,
-            String status
-    ) {
+        String titulo,
+        String autor,
+        String editora,
+        int ano,
+        int edicao,
+        int paginas,
+        List<Assunto> assuntos,
+        String etiqueta,
+        long isbn,
+        String status,
+        Imagem imagem
+    ){
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
@@ -61,6 +64,7 @@ public class Livro {
         this.etiqueta = etiqueta;
         this.isbn = isbn;
         this.status = status;
+        this.imagem = imagem;
     }
 
     public String getId() {
@@ -153,5 +157,12 @@ public class Livro {
         }
     }
 
+    public Imagem getImagem(){
+        return this.imagem;
+    }
+
+    public void setImagem(Imagem imagem){
+        this.imagem = imagem;
+    }
 
 }

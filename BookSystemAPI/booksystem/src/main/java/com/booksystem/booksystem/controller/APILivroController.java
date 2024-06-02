@@ -59,6 +59,12 @@ public class APILivroController {
         return ResponseEntity.ok().body(livroServico.consultarPorEditora(editora, ano, filtro, ordem));
     }
 
+    @GetMapping(value = "livros", params = "id")
+    public ResponseEntity<Object> consultarPorId(@RequestParam String id){
+        logger.info("api --> Consultar livro por ID");
+        return ResponseEntity.ok().body(livroServico.consultarPorId(id));
+    }
+
     @PostMapping("livros")
     public ResponseEntity<Object> cadastrarLivro(@RequestBody Livro livro) {
         logger.info("api --> Cadastrar livro");
@@ -66,5 +72,20 @@ public class APILivroController {
         return ResponseEntity.ok().body(livroServico.cadastrarLivro(livro));
     }
 
+    @PatchMapping("livros")
+    public ResponseEntity<Object> editarLivro(@RequestBody Livro livro){
+        logger.info("api --> Editar livro");
+
+        return ResponseEntity.ok().body(livroServico.editarLivro(livro));
+    }
+
+    @DeleteMapping("livros/{id}")
+    public ResponseEntity<Object> excluirLivro(@PathVariable("id") String id){
+        logger.info("api --> Excluir livro");
+
+        livroServico.excluirLivro(id);
+
+        return ResponseEntity.ok().body("Ok");
+    }
 
 }
