@@ -11,7 +11,7 @@ import DetalhesEmprestimo from '../../components/global/DetalhesEmprestimo'
 
 export default function Emprestimos() {
     const [aberto, setAberto] = useState(false)
-    
+    const [sort, setSort] = useState("arrow_upward_alt")
 
     const dados = [
         {
@@ -38,25 +38,27 @@ export default function Emprestimos() {
     ]
 
     let pesquisar = [
-        { valor: "titulo", texto: "Título" },
-        { valor: "isbn", texto: "ISBN" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" },
-        { valor: "assunto", texto: "Assunto" },
+        { valor: "nome", texto: "Nome" },
+        { valor: "email", texto: "Email" }
     ]
 
     let ordenar = [
-        { valor: "titulo", texto: "Título" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" },
-        { valor: "titulo", texto: "Título" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" }
+        { valor: "nome", texto: "Nome" },
+        { valor: "email", texto: "Email" },
+        { valor: "status", texto: "Status" }
     ]
+
+    function handleSort() {
+        if (sort === "arrow_upward_alt") {
+            setSort("arrow_downward_alt")
+        } else {
+            setSort("arrow_upward_alt")
+        }
+    }
 
     return (
         <EstruturaPagina>
-            <TopoPagina titulo="Empréstimos" subtitulo="Histórico"/>
+            <TopoPagina titulo="Empréstimos" subtitulo="Histórico" />
             <div className={styles.areaConteudo}>
                 <div className={styles.barraOpcoes}>
                     <div className={styles.containerPesquisa}>
@@ -67,8 +69,17 @@ export default function Emprestimos() {
                             </Button>
                         </div>
                         <div className={styles.blocoFiltro}>
-                            <Select selected="Filtrar" opcoes={pesquisar} />
-                            <Select selected="Ordenar" opcoes={ordenar} />
+                            <div>
+                                <label htmlFor="Pesquisar por" className={styles.selectLabel}>Pesquisar por</label>
+                                <Select name="Pesquisar por" opcoes={pesquisar} />
+                            </div>
+                            <div>
+                                <label htmlFor="Filtrar" className={styles.selectLabel}>Filtrar</label>
+                                <Select name="Filtrar" opcoes={ordenar} />
+                            </div>
+                            <Button icone={sort} onClick={() => handleSort()}>
+                                <span className='material-symbols-outlined'>sort</span>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -97,7 +108,7 @@ export default function Emprestimos() {
                 </div>
             </div>
             <Aside aberto={aberto} fechar={() => setAberto(false)} titulo={'Detalhes do empréstimo'}>
-                <DetalhesEmprestimo/>
+                <DetalhesEmprestimo />
             </Aside>
         </EstruturaPagina>
     )

@@ -16,6 +16,7 @@ export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
+    const [sort, setSort] = useState("arrow_upward_alt")
 
 
     const dados = [
@@ -54,6 +55,7 @@ export default function Home() {
     ]
 
     let pesquisar = [
+        { valor: "livre", texto: "Termo livre" },
         { valor: "titulo", texto: "Título" },
         { valor: "isbn", texto: "ISBN" },
         { valor: "autor", texto: "Autor" },
@@ -90,6 +92,14 @@ export default function Home() {
         }
     }
 
+    function handleSort() {
+        if (sort === "arrow_upward_alt") {
+            setSort("arrow_downward_alt")
+        } else {
+            setSort("arrow_upward_alt")
+        }
+    }
+
     return (
         <EstruturaPagina>
 
@@ -105,11 +115,20 @@ export default function Home() {
                         </Button>
                     </div>
                     <div className={styles.blocoFiltro}>
-                        <Select selected="Filtrar" opcoes={pesquisar} />
-                        <Select selected="Ordenar" opcoes={ordenar} />
+                        <div>
+                            <label htmlFor='pesquisarPor' className={styles.selectLabel}>Pesquisar por</label>
+                            <Select name={"pesquisarPor"} opcoes={pesquisar} />
+                        </div>
+                        <div>
+                            <label htmlFor='filtrarPor' className={styles.selectLabel}>Filtrar por</label>
+                            <Select name='filtrarPor' opcoes={ordenar} />
+                        </div>
                         <Input className={styles.barraAno} placeholder='Ano' />
+                        <Button icone={sort} onClick={() => handleSort()}>
+                            <span className='material-symbols-outlined'>sort</span>
+                        </Button>
                     </div>
-                </div>  
+                </div>
                 <span className={styles.linha} />
                 <div className={styles.containerBotoes}>
 
@@ -127,15 +146,15 @@ export default function Home() {
                             </Button>
                         </Link>
                         <Button tipoBotao="secundario" icone="info" onClick={() => setModalSelecionado('detalhes')} disabled={indiceSelecionado === null}>
-                        <p className={styles.action}>Detalhes</p>
+                            <p className={styles.action}>Detalhes</p>
                         </Button>
                         <Link to="/editar">
                             <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
-                            <p className={styles.action}>Editar</p>
+                                <p className={styles.action}>Editar</p>
                             </Button>
                         </Link>
                         <Button tipoBotao="secundario" icone="delete" onClick={() => setModalSelecionado('excluir')} disabled={indiceSelecionado === null}>
-                        <p className={styles.action}>Excluir</p>
+                            <p className={styles.action}>Excluir</p>
                         </Button>
                     </div>
 
@@ -186,12 +205,12 @@ export default function Home() {
                     </div>
                 ))}
             </div>
-            <Modal aberto={modalSelecionado === 'detalhes'} fechar={setModalSelecionado} 
-            backdropClose={setModalSelecionado} titulo={'Detalhes do livro'}>
+            <Modal aberto={modalSelecionado === 'detalhes'} fechar={setModalSelecionado}
+                backdropClose={setModalSelecionado} titulo={'Detalhes do livro'}>
                 <DetalhesLivro />
             </Modal>
-            <Modal aberto={modalSelecionado === 'excluir'} fechar={setModalSelecionado} 
-            backdropClose={setModalSelecionado} titulo={'Excluir livro'}>
+            <Modal aberto={modalSelecionado === 'excluir'} fechar={setModalSelecionado}
+                backdropClose={setModalSelecionado} titulo={'Excluir livro'}>
                 <ExcluirLivro />
             </Modal>
 

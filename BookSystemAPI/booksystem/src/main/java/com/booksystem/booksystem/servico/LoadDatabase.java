@@ -1,31 +1,28 @@
-package com.booksystem.booksystem.config;
+package com.booksystem.booksystem.servico;
 
-import com.booksystem.booksystem.model.*;
-import com.booksystem.booksystem.repository.*;
-
+import com.booksystem.booksystem.model.Assunto;
+import com.booksystem.booksystem.model.Livro;
+import com.booksystem.booksystem.model.repository.IAssuntoRepository;
+import com.booksystem.booksystem.model.repository.ILivroRepository;
+import com.booksystem.booksystem.model.Imagem;
+import com.booksystem.booksystem.model.Livro;
+import com.booksystem.booksystem.model.repository.ILivroRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.TextIndexDefinition;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Configuration
-public class LoadDatabase{
+public class LoadDatabase {
+
 
     @Bean
-    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository, ICredenciaisRepository credenciaisRepository,
-                                   IPerfilUsuarioRepository perfilUsuarioRepository, IPerfilFuncionarioRepository perfilFuncionarioRepository, IEmprestimoRepository emprestimoRepository) {
+    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository, MongoTemplate mongoTemplate) {
         return args -> {
-
-            assuntoRepository.deleteAll();
-            livroRepository.deleteAll();
-            credenciaisRepository.deleteAll();
-            perfilUsuarioRepository.deleteAll();
-            perfilFuncionarioRepository.deleteAll();
-            emprestimoRepository.deleteAll();
 
             Imagem img = new Imagem();
 
@@ -44,7 +41,9 @@ public class LoadDatabase{
 
             mongoTemplate.indexOps(Livro.class).ensureIndex(stringIndex);
 
+
             List<Assunto> lista = new ArrayList<>();
+
 
             Assunto literaturaEstrangeira = new Assunto("Literatura estrangeira");
             Assunto romance = new Assunto("Romance");
@@ -53,7 +52,10 @@ public class LoadDatabase{
             lista.add(literaturaEstrangeira);
             lista.add(romance);
 
+
             assuntoRepository.saveAll(lista);
+
+            // salvar infos de texto uppercase ou lowercase, senão tem que usar colation e index case insensitive
 
             Livro livro1 = new Livro("O Código Da Vinci",
                     "Dan Brown",
@@ -75,8 +77,7 @@ public class LoadDatabase{
             Livro livro4 = new Livro("Harry Potter e o Enigma do Principe", "J.K. Rowling3", "Editora Y",
                     1997, 1, 332, lista, "3C4D", 9780747532743L, "DISPONIVEL", img);
 
-            
-                    Livro livro5 = new Livro("Harry Potter e a Ordem da Feníx", "J.K. Rowling4", "Editora W",
+            Livro livro5 = new Livro("Harry Potter e a Ordem da Feníx", "J.K. Rowling4", "Editora W",
                     1998, 1, 332, lista, "3C4D", 9780747532743L, "DISPONIVEL", img);
 
             Livro livro6 = new Livro("Harry Potter e a Camara Secreta", "J.K. Rowling5", "Editora A",
@@ -94,7 +95,8 @@ public class LoadDatabase{
             Livro livro10 = new Livro("As Crônicas de Nárnia", "C.S. Lewis", "Lewis",
                     1950, 5, 767, lista, "1K2L", 9780066238500L, "DISPONIVEL", img);
 
-                    Livro livro11 = new Livro("Dom Quixote", "Miguel de Cervantes", "XPTO",
+
+            Livro livro11 = new Livro("Dom Quixote", "Miguel de Cervantes", "XPTO",
                     1605, 6, 863, lista, "3M4N", 9780199537891L, "INDISPONIVEL", img);
 
 
@@ -114,31 +116,10 @@ public class LoadDatabase{
             livroRepository.save(livro11);
             livroRepository.save(livro12);
 
-            Credenciais u1 = new Credenciais("romeu@fatec", "ABC123", RoleUsuario.ADMIN);
-            Credenciais u2 = new Credenciais("julieta@fatec", "ABC123", RoleUsuario.USER);
 
-            List<Credenciais> list = new ArrayList<>();
-            list.add(u1);
-            list.add(u2);
-
-            credenciaisRepository.insert(list);
-
-            PerfilFuncionario pf = new PerfilFuncionario("Romeu", u1.getUsername(), u1);
-
-            perfilFuncionarioRepository.insert(pf);
-
-            List<String> telefones = new ArrayList<>();
-            telefones.add("11988665533");
-            telefones.add("1144556677");
-
-            Optional<Credenciais> u3 = credenciaisRepository.findByUsername("julieta@fatec");
-
-            PerfilUsuario pu = new PerfilUsuario("Julieta", "julieta@fatec", u3.get(), "24095367800", telefones,
-                    "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
-
-            perfilUsuarioRepository.insert(pu);
 
         };
-
     }
+
+
 }
