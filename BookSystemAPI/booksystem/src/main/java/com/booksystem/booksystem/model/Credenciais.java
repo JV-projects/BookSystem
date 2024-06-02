@@ -3,32 +3,31 @@ package com.booksystem.booksystem.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-@Document(collection = "usuario")
-public class Usuario {
+import java.util.Collection;
+import java.util.List;
+
+@Document(collection = "credenciais_usuario")
+public class Credenciais implements UserDetails {
 
     @Id
     private String id;
 
-    private String nome;
-
     // Um username é tudo o que vem antes de '@gmail.com' - '@fatec.sp.gov.br' em um email
-    @Indexed
+    @Indexed(unique = true)
     private String username;
 
     private String senha;
 
     private RoleUsuario role;
 
-
-    public Usuario(String id, String nome, String username, String senha, RoleUsuario role) {
-        this.id = id;
-        this.nome = nome;
+    public Credenciais(String username, String senha, RoleUsuario role) {
         this.username = username;
         this.senha = senha;
         this.role = role;
     }
-
 
     public String getId() {
         return this.id;
@@ -36,18 +35,6 @@ public class Usuario {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getUsername() {
-        return this.username;
     }
 
     public void setUsername(String username) {
@@ -69,6 +56,38 @@ public class Usuario {
     public void setRole(RoleUsuario role) {
         this.role = role;
     }
-    
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }

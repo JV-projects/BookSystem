@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.booksystem.booksystem.model.Assunto;
-import com.booksystem.booksystem.servico.interfaces.IAssuntoServico;
+import com.booksystem.booksystem.service.IAssuntoServico;
 
 @RestController
 @RequestMapping("booksystem/api")

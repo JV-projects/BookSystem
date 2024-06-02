@@ -1,4 +1,4 @@
-package com.booksystem.booksystem.model.repository;
+package com.booksystem.booksystem.repository;
 
 import com.booksystem.booksystem.model.Livro;
 import org.springframework.data.domain.Sort;

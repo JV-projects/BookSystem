@@ -1,4 +1,4 @@
-package com.booksystem.booksystem.servico;
+package com.booksystem.booksystem.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 import com.booksystem.booksystem.model.Imagem;
 import com.booksystem.booksystem.model.Livro;
 import com.booksystem.booksystem.model.Status;
-import com.booksystem.booksystem.model.repository.ILivroRepository;
-import com.booksystem.booksystem.servico.interfaces.ILivroServico;
+import com.booksystem.booksystem.repository.ILivroRepository;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
