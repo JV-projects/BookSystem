@@ -3,7 +3,6 @@ import EstruturaPagina from "../../components/global/EstruturaPagina";
 import Input from "../../components/global/Input";
 import TopoPagina from "../../components/global/TopoPagina";
 import styles from './styles.module.css'
-import Select from '../../components/global/Select'
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Assunto from "../../components/global/Assunto";
@@ -23,18 +22,27 @@ export default function Criar() {
     let array = []
 
     console.log(uid)
-    
+
     useEffect(() => {
         if (typeof porta === "object") {
             setModalSelecionado("escanear")
             setTipoModal("escanear")
-        } 
-    },[porta])
+        }
+    }, [porta])
 
 
     function handleArquivo(e) {
         setArquivo(URL.createObjectURL(e.target.files[0]))
     }
+
+    let pesquisar = [
+        { valor: "livre", texto: "Termo livre" },
+        { valor: "titulo", texto: "Título" },
+        { valor: "isbn", texto: "ISBN" },
+        { valor: "autor", texto: "Autor" },
+        { valor: "editora", texto: "Editora" },
+        { valor: "assunto", texto: "Assunto" }
+    ]
 
 
     return (
@@ -82,7 +90,19 @@ export default function Criar() {
                     <div className={styles.blocoInput}>
                         <label htmlFor="assuntos">Assuntos</label>
                         <div className={styles.blocoInput2}>
-                            <Select name="assuntos" id="assuntos" selected="Selecione" opcoes={[]} />
+                            <div className={styles.container}>
+                                <select className={styles.select}>
+                                    <option selected disabled>Selecione</option>
+                                    {pesquisar.map((assunto, i) => {
+                                        return (
+                                            <option key={i} value={assunto.valor}>{assunto.texto}</option>
+                                        )
+                                    })}
+                                </select>
+                                <div className={styles.icon}>
+                                    <span className="material-symbols-outlined">expand_more</span>
+                                </div>
+                            </div>
                             <Button tipoBotao="primario">
                                 Adicionar
                             </Button>
@@ -111,7 +131,7 @@ export default function Criar() {
                         <label htmlFor="isbn">ISBN</label>
                         <Input name="isbn" id="isbn" />
                     </div>
-                    <div className={styles.blocoInput2 +" "+ styles.imagemArea}>
+                    <div className={styles.blocoInput2 + " " + styles.imagemArea}>
                         <div className={styles.blocoInput}>
                             <label>Carregar imagem do livro</label>
                             <label htmlFor="imagemLivro" className={styles.inputFile}>
@@ -119,7 +139,7 @@ export default function Criar() {
                             </label>
                             <input className={styles.inputFile} type="file" name="imagemLivro" id="imagemLivro" onChange={(e) => handleArquivo(e)} />
                         </div>
-                        <div className={styles.blocoInput +" "+ styles.imagem}>
+                        <div className={styles.blocoInput + " " + styles.imagem}>
                             <img src={arquivo} alt="Imagem do livro a ser carregada" />
                         </div>
 
@@ -139,10 +159,10 @@ export default function Criar() {
 
             </form>
             <Modal aberto={modalSelecionado === 'conectar'} fechar={setModalSelecionado} titulo={'Selecione a porta de comunicação'}>
-                <ModalPorta funcao={setPorta} porta={porta}/>
+                <ModalPorta funcao={setPorta} porta={porta} />
             </Modal>
             <Modal aberto={modalSelecionado === 'escanear'} fechar={setModalSelecionado} titulo={'Escanear a Tag RFID'}>
-                <ModalScan porta={porta} dados={setUid}/>
+                <ModalScan porta={porta} dados={setUid} />
             </Modal>
         </EstruturaPagina>
     )

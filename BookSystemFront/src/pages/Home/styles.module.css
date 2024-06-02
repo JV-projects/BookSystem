@@ -13,6 +13,7 @@
 
 .containerPesquisa {
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
 }
 
@@ -28,7 +29,14 @@
 
 .blocoFiltro{
     display: flex;
+    align-items: flex-end;
     gap: 0.5rem;
+}
+
+.selectLabel {
+    color: var(--primary-text-color);
+    padding: 0 0.15rem;
+    font-size: 0.9rem;
 }
 
 .areaBotoes{

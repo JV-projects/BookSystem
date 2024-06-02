@@ -6,13 +6,29 @@ import java.util.List;
 
 import com.booksystem.booksystem.model.Livro;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface ILivroServico {
-    
-    public List<Livro> consultarLivros();
-    public Optional<Livro> consultarPorId(String id);
-    public List<Livro> consultarPorIsbn(long isbn);
-    public Optional<Livro> cadastrarLivro(Livro livro);
-    public Optional<Livro> editarLivro(Livro livro);
-    public void excluirLivro(String id);
+
+    List<Livro> consultarLivros();
+
+    Optional<Livro> cadastrarLivro(Livro livro);
+
+    Optional<Livro> consultarPorId(String id);
+
+    List<Livro> consultarPorTitulo(String titulo, int ano, String filtro, int ordem);
+
+    List<Livro> consultarPorIsbn(long isbn);
+
+    List<Livro> consultarPorAutor(String autor, int ano, String filtro, int ordem);
+
+    List<Livro> consultarPorEditora(String editora, int ano, String filtro, int ordem);
+
+    Optional<Livro> editarLivro(Livro livro);
+
+    void excluirLivro(String id);
+
+
 
 }
