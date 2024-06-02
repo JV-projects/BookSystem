@@ -7,6 +7,6 @@ import com.booksystem.booksystem.model.Emprestimo;
 
 public interface IEmprestimoServico {
     public List<Emprestimo> consultarEmprestimos();
-    public Optional<Emprestimo> cadastrarEmprestimo(Emprestimo emprestimo);
-    public Optional<Emprestimo> renovarEmprestimo(Emprestimo emprestimo);
+    public Optional<Emprestimo> cadastrarEmprestimo(String username, Emprestimo emprestimo);
+
 }
