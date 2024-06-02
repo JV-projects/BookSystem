@@ -6,6 +6,7 @@
 
 .barraOpcoes {
     background-color: var(--primary-background-color);
+    display: flex;
     gap: 1.25rem;
     padding-block: 1.5rem;
     position: sticky;
@@ -15,6 +16,7 @@
 .containerPesquisa {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .containerBotoes {
@@ -54,6 +56,15 @@
 
 .containerCartoes {
     gap: 1.25rem;
+    min-height: 100%;
+}
+
+.areaTextoCentralizado {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
 }
 
 .cartao {
@@ -68,7 +79,6 @@
 }
 
 .paragrafo {
-    width: 150px;
     align-items: center;
     color: var(--tertiary-text-color);
     display: flex;
