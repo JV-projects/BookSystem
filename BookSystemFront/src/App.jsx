@@ -20,7 +20,7 @@ function App() {
         <Route path="/novoemprestimo" element={<NovoEmprestimo/>} />
         <Route path="/acessibilidade" element={<Acessibilidade/>} />
         <Route path="/criar" element={<Criar/>} />
-        <Route path="/editar" element={<Editar/>} />
+        <Route path="/editar/:id" element={<Editar/>} />
       </Routes>
     </BrowserRouter>
   )
