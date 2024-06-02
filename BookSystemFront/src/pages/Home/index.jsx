@@ -18,7 +18,7 @@ export default function Home() {
     const { data, error, isLoading } = useSWR('booksystem/api/livros', fetcher)
     
     const [pesquisa, setPesquisa] = useState("")
-    const [indiceSelecionado, setIndiceSelecionado] = useState(0)
+    const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
     const [lista, setLista] = useState(data)
 
@@ -89,7 +89,7 @@ export default function Home() {
                         <Button tipoBotao="secundario" icone="info" onClick={() => setModalSelecionado('detalhes')} disabled={indiceSelecionado === null}>
                             <p className={styles.action}>Detalhes</p>
                         </Button>
-                        <Link to="/editar">
+                        <Link to={`/editar/${data && lista[indiceSelecionado].id}`}>
                             <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
                                 <p className={styles.action}>Editar</p>
                             </Button>
