@@ -1,37 +1,30 @@
 package com.booksystem.booksystem.config;
 
-import com.booksystem.booksystem.model.Imagem;
-import com.booksystem.booksystem.model.Livro;
-import com.booksystem.booksystem.model.RoleUsuario;
-import com.booksystem.booksystem.model.Usuario;
-import com.booksystem.booksystem.model.UsuarioComum;
-import com.booksystem.booksystem.repository.IAssuntoRepository;
-import com.booksystem.booksystem.repository.ILivroRepository;
-import com.booksystem.booksystem.repository.IUsuarioComumRepository;
-import com.booksystem.booksystem.repository.IUsuarioRepository;
+import com.booksystem.booksystem.model.*;
+import com.booksystem.booksystem.repository.*;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.booksystem.booksystem.model.Assunto;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Configuration
 public class LoadDatabase{
 
     @Bean
-    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository, IUsuarioRepository usuarioRepository,
-    IUsuarioComumRepository usuarioComumRepository) {
+    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository, ICredenciaisRepository credenciaisRepository,
+                                   IPerfilUsuarioRepository perfilUsuarioRepository, IPerfilFuncionarioRepository perfilFuncionarioRepository, IEmprestimoRepository emprestimoRepository) {
         return args -> {
 
             assuntoRepository.deleteAll();
             livroRepository.deleteAll();
-            usuarioRepository.deleteAll();
-            usuarioComumRepository.deleteAll();
-
+            credenciaisRepository.deleteAll();
+            perfilUsuarioRepository.deleteAll();
+            perfilFuncionarioRepository.deleteAll();
+            emprestimoRepository.deleteAll();
 
             List<Assunto> lista = new ArrayList<>();
 
@@ -61,18 +54,30 @@ public class LoadDatabase{
             livroRepository.save(livro1);
             livroRepository.save(livro2);
 
-            Usuario usuario = new Usuario("Romeu", "romjulieta@gmail.com", "ABC123", RoleUsuario.USER);
-            Usuario usuario2 = new Usuario("Julieta", "jujulieta@gmail.com", "ABC123", RoleUsuario.USER);
 
-            List<Usuario> usuarios = new ArrayList<>();
-            usuarios.add(usuario);
-            usuarios.add(usuario2);
+            Credenciais u1 = new Credenciais("romeu@fatec", "ABC123", RoleUsuario.ADMIN);
+            Credenciais u2 = new Credenciais("julieta@fatec", "ABC123", RoleUsuario.USER);
 
-            UsuarioComum usuarioComum = new UsuarioComum(usuario.getId(), usuario, "12345678900");
+            List<Credenciais> list = new ArrayList<>();
+            list.add(u1);
+            list.add(u2);
 
-            usuarioRepository.saveAll(usuarios);
-            usuarioComumRepository.save(usuarioComum);
+            credenciaisRepository.insert(list);
 
+            PerfilFuncionario pf = new PerfilFuncionario("Romeu", u1.getUsername(), u1);
+
+            perfilFuncionarioRepository.insert(pf);
+
+            List<String> telefones = new ArrayList<>();
+            telefones.add("11988665533");
+            telefones.add("1144556677");
+
+            Optional<Credenciais> u3 = credenciaisRepository.findByUsername("julieta@fatec");
+
+            PerfilUsuario pu = new PerfilUsuario("Julieta", "julieta@fatec", u3.get(), "24095367800", telefones,
+                    "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
+
+            perfilUsuarioRepository.insert(pu);
 
         };
 
