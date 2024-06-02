@@ -58,6 +58,15 @@
 
 .containerCartoes {
     gap: 1.25rem;
+    min-height: 100%;
+}
+
+.areaTextoCentralizado {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
 }
 
 .cartaoNaoSelecionado {
