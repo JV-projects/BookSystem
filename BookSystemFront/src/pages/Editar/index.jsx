@@ -8,8 +8,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import livro from '/assets/images/livro.jpg'
 import Assunto from "../../components/global/Assunto";
+import { useParams } from 'react-router-dom'
+import useSWR from 'swr'
+import fetcher from '../../util/fetcher'
 
 export default function Editar() {
+    const { id } = useParams()
+
+    const { data, error, isLoading } = useSWR(`booksystem/api/livros/${id}`, fetcher)
 
     const [arquivo, setArquivo] = useState("/assets/images/livro.jpg")
 
@@ -17,23 +23,15 @@ export default function Editar() {
         setArquivo(URL.createObjectURL(e.target.files[0]))
     }
 
-    const livro = {
-        tituloSubtitulo: "Orgulho e Preconceito",
-        autor: "Jane Austen",
-        editora: "Martin Claret",
-        ano: "2012",
-        edicao: "1",
-        nPaginas: "424",
-        assuntos: [
-            {
-                assunto: "Literatura",
-                assunto: "Romance",
-            }
-        ],
-        etiqueta: "98765432100",
-        isbn: "9788483431078"
-    }
-
+    const [tituloSubtitulo, setTituloSubtitulo] = useState(data && data.tituloSubtitulo || '')
+    const [autor, setAutor] = useState(data && data.autor || '')
+    const [editora, setEditora] = useState(data && data.editora || '')
+    const [ano, setAno] = useState(data && data.ano || '')
+    const [edicao, setEdicao] = useState(data && data.edicao || '')
+    const [nPaginas, setNPaginas] = useState(data && data.nPaginas || '')
+    const [assuntos, setAssuntos] = useState(data && data.assuntos || [])
+    const [etiqueta, setEtiqueta] = useState(data && data.etiqueta || '')
+    const [isbn, setIsbn] = useState(data && data.isbn || '')
 
     return (
         <EstruturaPagina>
@@ -42,41 +40,34 @@ export default function Editar() {
                 subtitulo="Altere os campos desejados para atualizar os dados do livro"
                 link="/gerenciamento"
             />
-
             <form className={styles.containerArea}>
-
                 <div className={styles.form}>
                     <div className={styles.blocoInput}>
                         <label htmlFor="tituloSubtitulo">Título e subtítulo</label>
-                        <Input name="tituloSubtitulo" id="tituloSubtitulo" value={livro.tituloSubtitulo} />
+                        <Input name="tituloSubtitulo" id="tituloSubtitulo" value={tituloSubtitulo} onChange={(e) => setTituloSubtitulo(e.target.value)}/>
                     </div>
                     <div className={styles.blocoInput}>
                         <label htmlFor="autor">Autor</label>
-                        <Input name="autor" id="autor" value={livro.autor} />
+                        <Input name="autor" id="autor" value={autor} onChange={(e) => setAutor(e.target.value)}/>
                     </div>
                     <div className={styles.blocoInput}>
                         <label htmlFor="editora">Editora</label>
-                        <Input name="editora" id="editora" value={livro.editora} />
+                        <Input name="editora" id="editora" value={editora} onChange={(e) => setEditora(e.target.value)}/>
                     </div>
-
                     <div className={styles.blocoInput2}>
                         <div className={styles.blocoInput}>
                             <label htmlFor="ano">Ano</label>
-                            <Input type="number" name="ano" id="ano" value={livro.ano} />
+                            <Input type="number" name="ano" id="ano" value={ano} onChange={(e) => setAno(e.target.value)}/>
                         </div>
-
                         <div className={styles.blocoInput}>
                             <label htmlFor="edicao">Edição</label>
-                            <Input type="number" name="edicao" id="edicao" value={livro.edicao} />
+                            <Input type="number" name="edicao" id="edicao" value={edicao} onChange={(e) => setEdicao(e.target.value)}/>
                         </div>
-
                         <div className={styles.blocoInput}>
                             <label className={styles.label} htmlFor="nPaginas">N° de páginas</label>
-                            <Input type="number" name="nPaginas" id="nPaginas" value={livro.nPaginas} />
+                            <Input type="number" name="nPaginas" id="nPaginas" value={nPaginas} onChange={(e) => setNPaginas(e.target.value)}/>
                         </div>
-
                     </div>
-
                     <div className={styles.blocoInput}>
                         <label>Assuntos</label>
                         <div className={styles.blocoInput2}>
@@ -86,31 +77,27 @@ export default function Editar() {
                             </Button>
                         </div>
                         <div className={styles.areaAssunto}>
-                            <Assunto fechavel={true}>
-                                <p>Literatura estrangeira</p>
-                            </Assunto>
-                            <Assunto fechavel={true}>
-                                <p>Romance</p>
-                            </Assunto>
+                            {assuntos.map((assunto, i) => (
+                                <Assunto fechavel={true} key={i}>
+                                    <p>{assunto}</p>
+                                </Assunto>
+                            ))}
                         </div>
                     </div>
-
                 </div>
-
                 <div className={styles.form}>
                     <div className={styles.blocoInput}>
                         <label htmlFor="etiqueta">Etiqueta</label>
                         <div className={styles.blocoInput2}>
-                            <Input name="etiqueta" id="etiqueta" disabled="true" value={livro.etiqueta} />
+                            <Input name="etiqueta" id="etiqueta" disabled={true} value={etiqueta} onChange={(e) => setEtiqueta(e.target.value)}/>
                             <Button tipoBotao="primario">
                                 Escanear
                             </Button>
                         </div>
-
                     </div>
                     <div className={styles.blocoInput}>
                         <label htmlFor="isbn">ISBN</label>
-                        <Input name="isbn" id="isbn" value={livro.isbn} />
+                        <Input name="isbn" id="isbn" value={isbn} onChange={(e) => setIsbn(e.target.value)}/>
                     </div>
                     <div className={styles.blocoInput2 + " " + styles.imagemArea}>
                         <div className={styles.blocoInput}>
@@ -123,9 +110,7 @@ export default function Editar() {
                         <div className={styles.blocoInput + " " + styles.imagem}>
                             <img src={arquivo} alt="Imagem do livro a ser carregada" />
                         </div>
-
                     </div>
-
                     <div className={styles.blocoInput2}>
                         <div className={styles.blocoInput}>
                             <Button tipoBotao="terciarioCancela" type="button">
@@ -137,7 +122,6 @@ export default function Editar() {
                         </div>
                     </div>
                 </div>
-
             </form>
         </EstruturaPagina>
     )
