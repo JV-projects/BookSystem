@@ -6,6 +6,7 @@ import com.booksystem.booksystem.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.TextIndexDefinition;
 
 import java.util.ArrayList;
@@ -16,8 +17,12 @@ import java.util.Optional;
 public class LoadDatabase{
 
     @Bean
-    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository, ICredenciaisRepository credenciaisRepository,
-                                   IPerfilUsuarioRepository perfilUsuarioRepository, IPerfilFuncionarioRepository perfilFuncionarioRepository, IEmprestimoRepository emprestimoRepository) {
+    CommandLineRunner initDataBase(IAssuntoRepository assuntoRepository, ILivroRepository livroRepository,
+                                   ICredenciaisRepository credenciaisRepository,
+                                   IPerfilUsuarioRepository perfilUsuarioRepository,
+                                   IPerfilFuncionarioRepository perfilFuncionarioRepository,
+                                   IEmprestimoRepository emprestimoRepository,
+                                   MongoTemplate mongoTemplate) {
         return args -> {
 
             assuntoRepository.deleteAll();
@@ -116,10 +121,12 @@ public class LoadDatabase{
 
             Credenciais u1 = new Credenciais("romeu@fatec", "ABC123", RoleUsuario.ADMIN);
             Credenciais u2 = new Credenciais("julieta@fatec", "ABC123", RoleUsuario.USER);
+            Credenciais u3 = new Credenciais("carjooj@fatec", "ABC123", RoleUsuario.USER);
 
             List<Credenciais> list = new ArrayList<>();
             list.add(u1);
             list.add(u2);
+            list.add(u3);
 
             credenciaisRepository.insert(list);
 
@@ -131,9 +138,9 @@ public class LoadDatabase{
             telefones.add("11988665533");
             telefones.add("1144556677");
 
-            Optional<Credenciais> u3 = credenciaisRepository.findByUsername("julieta@fatec");
+            Optional<Credenciais> u4 = credenciaisRepository.findByUsername("julieta@fatec");
 
-            PerfilUsuario pu = new PerfilUsuario("Julieta", "julieta@fatec", u3.get(), "24095367800", telefones,
+            PerfilUsuario pu = new PerfilUsuario("Julieta", "julieta@fatec", u4.get(), "24095367800", telefones,
                     "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
 
             perfilUsuarioRepository.insert(pu);
