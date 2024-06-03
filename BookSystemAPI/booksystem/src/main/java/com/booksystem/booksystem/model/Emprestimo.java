@@ -22,7 +22,7 @@ public class Emprestimo {
 
     private String status;
 
-    @DocumentReference(collection = "perfil_usuario")
+    //@DocumentReference(collection = "perfil_usuario")
     private PerfilUsuario usuario;
 
     public Emprestimo() {
@@ -78,10 +78,6 @@ public class Emprestimo {
 
     public String getStatus() {
         return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public void setStatus(Status status) {
