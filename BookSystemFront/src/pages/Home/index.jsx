@@ -55,7 +55,6 @@ export default function Home() {
     ]
 
     let pesquisar = [
-        { valor: "livre", texto: "Termo livre" },
         { valor: "titulo", texto: "Título" },
         { valor: "isbn", texto: "ISBN" },
         { valor: "autor", texto: "Autor" },

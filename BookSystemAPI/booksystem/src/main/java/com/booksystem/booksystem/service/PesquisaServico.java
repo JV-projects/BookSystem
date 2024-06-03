@@ -1,6 +1,6 @@
-package com.booksystem.booksystem.servico;
+package com.booksystem.booksystem.service;
 
-import com.booksystem.booksystem.servico.interfaces.IPesquisaServico;
+import com.booksystem.booksystem.service.IPesquisaServico;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

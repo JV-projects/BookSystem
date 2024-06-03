@@ -1,4 +1,4 @@
-package com.booksystem.booksystem.servico.interfaces;
+package com.booksystem.booksystem.service;
 
 import org.springframework.data.domain.Sort;
 

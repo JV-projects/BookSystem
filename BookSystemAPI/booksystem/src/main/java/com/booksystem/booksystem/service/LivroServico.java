@@ -3,7 +3,7 @@ package com.booksystem.booksystem.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.booksystem.booksystem.servico.PesquisaServico;
+import com.booksystem.booksystem.service.PesquisaServico;
 import org.springframework.stereotype.Service;
 
 import com.booksystem.booksystem.model.Imagem;
