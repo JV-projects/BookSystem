@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class APILivroController {
     Logger logger = LogManager.getLogger(this.getClass());
 
-    private final ILivroServico livroServico;
+    private ILivroServico livroServico;
 
     public APILivroController(ILivroServico livroServico) {
         this.livroServico = livroServico;
