@@ -2,9 +2,25 @@ import styles from './styles.module.css'
 import Button from '../Button'
 import useSWR from 'swr'
 import fetcher from '../../../util/fetcher'
+import apiUrl from '../../../util/apiUrl'
 
-export default function ExcluirLivro({ id }) {
-    const { data, error, isLoading } = useSWR(`/booksystem/api/livros/${id}`, fetcher)
+export default function ExcluirLivro({ id, fechar }) {
+    const { data, error, isLoading } = useSWR(`${apiUrl}/livros/${id}`, fetcher)
+
+    const [errorMessage, setErrorMessage] = useState("")
+
+    const handleExcluir = async () => {
+        try {
+            const response = await fetch(`${apiUrl}/livros/${id}`, {
+                method: "DELETE"
+            })
+            if (!response.ok) {
+                throw new Error("Erro ao excluir o livro.")
+            }
+        } catch (error) {
+            setErrorMessage("Erro ao excluir o livro. Verifique os dados informados.")
+        }
+    }
 
     if (error) return (
         <div className={styles.areaTextoCentralizado}>
@@ -25,8 +41,8 @@ export default function ExcluirLivro({ id }) {
                 <p className={styles.destaque}>{data.autor}</p>
             </div>
             <div className={styles.areaBotoes}>
-                <Button tipoBotao={'terciarioCancela'}>Cancelar</Button>
-                <Button tipoBotao={'terciarioConfirma'}>Confirmar</Button>
+                <Button tipoBotao={'terciarioCancela'} onClick={fechar}>Cancelar</Button>
+                <Button tipoBotao={'terciarioConfirma'} onClick={handleExcluir}>Confirmar</Button>
             </div>
         </div>
     )
