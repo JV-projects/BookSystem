@@ -22,6 +22,17 @@ export default function Emprestimos() {
     const [lista, setLista] = useState(data)
     const [sort, setSort] = useState("arrow_upward_alt")
 
+    const handlePesquisar = () => {
+        pesquisa.length ? setLista(
+            data.filter(item =>
+                item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.ano.toLowerCase().includes(pesquisa.toLowerCase())
+            )
+        ) : setLista(data)
+    }
+
     let pesquisar = [
         { valor: "nome", texto: "Nome" },
         { valor: "email", texto: "Email" }
