@@ -7,7 +7,7 @@ import useSWR from 'swr'
 import fetcher from '../../../util/fetcher'
 
 export default function DetalhesLivro({ id }) {
-    const { data, error, isLoading } = useSWR(`booksystem/api/livros/${id}`, fetcher)
+    const { data, error, isLoading } = useSWR(`${apiUrl}/livros/${id}`, fetcher)
 
     if (error) return (
         <div className={styles.areaTextoCentralizado}>
