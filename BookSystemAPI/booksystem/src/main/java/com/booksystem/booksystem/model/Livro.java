@@ -38,13 +38,15 @@ public class Livro {
     @Field(targetType = FieldType.STRING)
     private String status;
 
-    public Livro(){}
+    public Livro() {
+    }
 
     public Livro(
         String titulo,
         String autor,
         String editora,
         int ano,
+        int edicao,
         int paginas,
         List<Assunto> assuntos,
         String etiqueta,
@@ -56,6 +58,7 @@ public class Livro {
         this.autor = autor;
         this.editora = editora;
         this.ano = ano;
+        this.edicao = edicao;
         this.paginas = paginas;
         this.assuntos = assuntos;
         this.etiqueta = etiqueta;
@@ -149,7 +152,7 @@ public class Livro {
     }
 
     public void setStatus(Status status) {
-        if(status != null){
+        if (status != null) {
             this.status = status.getStatus();
         }
     }

@@ -20,34 +20,49 @@ export default function Emprestimos() {
 
     const [pesquisa, setPesquisa] = useState("")
     const [lista, setLista] = useState(data)
+    const [sort, setSort] = useState("arrow_upward_alt")
+
+    const dados = [
+        {
+            "nome": "Jackeline Menezes",
+            "numeroTelefone": "(11) 98822-8833",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Em atraso",
+        },
+        {
+            "nome": "Yudi Tamashiro",
+            "numeroTelefone": "(11) 4002-8922",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Em andamento",
+        },
+        {
+            "nome": "Yudi Tamashiro",
+            "numeroTelefone": "(11) 4002-8922",
+            "dataEmprestimo": "21/04/2024",
+            "dataDevolucao": "21/05/2024",
+            "status": "Concluído",
+        }
+    ]
 
     let pesquisar = [
-        { valor: "titulo", texto: "Título" },
-        { valor: "isbn", texto: "ISBN" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" },
-        { valor: "assunto", texto: "Assunto" },
+        { valor: "nome", texto: "Nome" },
+        { valor: "email", texto: "Email" }
     ]
 
     let ordenar = [
-        { valor: "titulo", texto: "Título" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" },
-        { valor: "titulo", texto: "Título" },
-        { valor: "autor", texto: "Autor" },
-        { valor: "editora", texto: "Editora" }
+        { valor: "nome", texto: "Nome" },
+        { valor: "email", texto: "Email" },
+        { valor: "status", texto: "Status" }
     ]
 
-    const handlePesquisar = () => {
-        pesquisa.length ? setLista(
-            data.filter(item =>
-                item.nome.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.numeroTelefone.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.dataEmprestimo.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.dataDevolucao.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.status.toLowerCase().includes(pesquisa.toLowerCase())
-            )
-        ) : setLista(data)
+    function handleSort() {
+        if (sort === "arrow_upward_alt") {
+            setSort("arrow_downward_alt")
+        } else {
+            setSort("arrow_upward_alt")
+        }
     }
 
     return (
@@ -62,8 +77,17 @@ export default function Emprestimos() {
                             </Button>
                         </div>
                         <div className={styles.blocoFiltro}>
-                            <Select selected="Filtrar" opcoes={pesquisar} />
-                            <Select selected="Ordenar" opcoes={ordenar} />
+                            <div>
+                                <label htmlFor="Pesquisar por" className={styles.selectLabel}>Pesquisar por</label>
+                                <Select name="Pesquisar por" opcoes={pesquisar} />
+                            </div>
+                            <div>
+                                <label htmlFor="Filtrar" className={styles.selectLabel}>Filtrar</label>
+                                <Select name="Filtrar" opcoes={ordenar} />
+                            </div>
+                            <Button icone={sort} onClick={() => handleSort()}>
+                                <span className='material-symbols-outlined'>sort</span>
+                            </Button>
                         </div>
                     </div>
                 </div>

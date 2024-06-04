@@ -1,11 +1,9 @@
-package com.booksystem.booksystem.servico;
+package com.booksystem.booksystem.service;
 
 import com.booksystem.booksystem.model.Imagem;
-import com.booksystem.booksystem.model.repository.IImagemRepository;
-import com.booksystem.booksystem.servico.interfaces.IImagemServico;
+import com.booksystem.booksystem.repository.IImagemRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +24,7 @@ public class ImagemServico implements IImagemServico {
     public String verificarTamanhoImagem(String imagemByte) {
 
         if(imagemByte == null){
-            return imagemByte;
+            return null;
         }
 
         logger.info("|---- Serviço - Verificando imagem ----|");

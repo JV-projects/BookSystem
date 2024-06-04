@@ -1,41 +1,43 @@
 package com.booksystem.booksystem.model;
 
-import java.sql.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 @Document(collection = "emprestimos")
 public class Emprestimo {
+
     @Id
     private String id;
 
     private List<Livro> itensEmprestimo = new ArrayList<>();
 
-    private Date dataRetirada;
-    
-    private Date dataDevolucao;
+    private LocalDate dataRetirada;
+
+    private LocalDate dataDevolucao;
 
     private String status;
 
-    private String idUsuario;
+    //@DocumentReference(collection = "perfil_usuario")
+    private PerfilUsuario usuario;
 
-    public Emprestimo(){}
+    public Emprestimo() {
+    }
 
-    public Emprestimo(String id, List<Livro> itensEmprestimo, Date dataRetirada, Date dataDevolucao, String status, String idUsuario) {
-        this.id = id;
+    public Emprestimo(List<Livro> itensEmprestimo, LocalDate dataRetirada, LocalDate dataDevolucao, String status, PerfilUsuario usuario) {
         this.itensEmprestimo = itensEmprestimo;
         this.dataRetirada = dataRetirada;
         this.dataDevolucao = dataDevolucao;
         this.status = status;
-        this.idUsuario = idUsuario;
+        this.usuario = usuario;
     }
 
-
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -43,27 +45,35 @@ public class Emprestimo {
     }
 
     public List<Livro> getItensEmprestimo() {
-        return this.itensEmprestimo;
+        return itensEmprestimo;
     }
 
     public void setItensEmprestimo(List<Livro> itensEmprestimo) {
         this.itensEmprestimo = itensEmprestimo;
     }
 
-    public Date getDataRetirada() {
-        return this.dataRetirada;
+    public LocalDate getDataRetirada() {
+        return dataRetirada;
     }
 
-    public void setDataRetirada(Date dataRetirada) {
+    public void setDataRetirada(LocalDate dataRetirada) {
         this.dataRetirada = dataRetirada;
     }
 
-    public Date getDataDevolucao() {
-        return this.dataDevolucao;
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
     }
 
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+
+    public PerfilUsuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(PerfilUsuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getStatus() {
@@ -71,18 +81,10 @@ public class Emprestimo {
     }
 
     public void setStatus(Status status) {
-        if(status != null){
+        if (status != null) {
             this.status = status.getStatus();
         }
     }
 
-    public String getIdUsuario() {
-        return this.idUsuario;
-    }
 
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-    
-    
 }

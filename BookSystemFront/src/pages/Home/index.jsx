@@ -21,6 +21,43 @@ export default function Home() {
     const [pesquisa, setPesquisa] = useState("")
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
+    const [sort, setSort] = useState("arrow_upward_alt")
+
+
+    const dados = [
+        {
+            "id": 1,
+            "titulo": "Orgulho e Preconceito",
+            "autor": "Jane Austen",
+            "editora": "Martin Claret",
+            "ano": "2012",
+            "assuntos": [
+                {
+                    "id": 1,
+                    "assunto": "Literatura estrangeira"
+                },
+                {
+                    "id": 2,
+                    "assunto": "Romance"
+                }
+            ],
+            "status": "Disponível",
+        },
+        {
+            "id": 2,
+            "titulo": "Java®: Como Programar",
+            "autor": "Paul Deitel",
+            "editora": "Pearson Universidades",
+            "ano": "2016",
+            "assuntos": [
+                {
+                    "id": 3,
+                    "assunto": "Programação"
+                }
+            ],
+            "status": "Indisponível",
+        }
+    ]
     const [lista, setLista] = useState(data)
 
     let pesquisar = [
@@ -57,6 +94,14 @@ export default function Home() {
         }
     }
 
+    function handleSort() {
+        if (sort === "arrow_upward_alt") {
+            setSort("arrow_downward_alt")
+        } else {
+            setSort("arrow_upward_alt")
+        }
+    }
+
     return (
         <EstruturaPagina>
             <TopoPagina titulo="Gerenciamento" />
@@ -69,11 +114,20 @@ export default function Home() {
                         </Button>
                     </div>
                     <div className={styles.blocoFiltro}>
-                        <Select selected="Filtrar" opcoes={pesquisar} />
-                        <Select selected="Ordenar" opcoes={ordenar} />
+                        <div>
+                            <label htmlFor='pesquisarPor' className={styles.selectLabel}>Pesquisar por</label>
+                            <Select name={"pesquisarPor"} opcoes={pesquisar} />
+                        </div>
+                        <div>
+                            <label htmlFor='filtrarPor' className={styles.selectLabel}>Filtrar por</label>
+                            <Select name='filtrarPor' opcoes={ordenar} />
+                        </div>
                         <Input className={styles.barraAno} placeholder='Ano' />
+                        <Button icone={sort} onClick={() => handleSort()}>
+                            <span className='material-symbols-outlined'>sort</span>
+                        </Button>
                     </div>
-                </div>  
+                </div>
                 <span className={styles.linha} />
                 <div className={styles.containerBotoes}>
                     <Link to="/novoemprestimo">

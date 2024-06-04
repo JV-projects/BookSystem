@@ -109,3 +109,43 @@
     border-radius: 0.25rem;
     border: 1px solid var(--border-color);
 }
+
+.container {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    display: flex;
+    font-size: 0.875rem;
+    position: relative;
+    color: var(--tertiary-text-color);
+    max-width: 8rem;
+}
+
+.select {
+    font-size: 0.875rem;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding-block: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 2.5rem;
+    width: 100%;
+    z-index: 1;
+    color: var(--primary-text-color);
+}
+
+.select option {
+    font-size: 0.875rem;
+    color: var(--primary-text-color);
+    background-color: var(--primary-background-color);
+}
+
+
+.icon {
+    display: flex;
+    position: absolute;
+    right: 0.3rem;
+    top: 55%;
+    transform: translateY(-50%);
+    color: var(--primary-text-color);
+}

@@ -3,7 +3,6 @@ import EstruturaPagina from "../../components/global/EstruturaPagina";
 import Input from "../../components/global/Input";
 import TopoPagina from "../../components/global/TopoPagina";
 import styles from './styles.module.css'
-import Select from '../../components/global/Select'
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Assunto from "../../components/global/Assunto";
@@ -35,13 +34,13 @@ export default function Criar() {
     let array = []
 
     console.log(uid)
-    
+
     useEffect(() => {
         if (typeof porta === "object") {
             setModalSelecionado("escanear")
             setTipoModal("escanear")
-        } 
-    },[porta])
+        }
+    }, [porta])
 
 
     function handleArquivo(e) {
@@ -147,7 +146,7 @@ export default function Criar() {
                         <label htmlFor="isbn">ISBN</label>
                         <Input name="isbn" id="isbn" value={isbn} onChange={(e) => setIsbn(e.target.value)}/>
                     </div>
-                    <div className={styles.blocoInput2 +" "+ styles.imagemArea}>
+                    <div className={styles.blocoInput2 + " " + styles.imagemArea}>
                         <div className={styles.blocoInput}>
                             <label>Carregar imagem do livro</label>
                             <label htmlFor="imagemLivro" className={styles.inputFile}>
@@ -155,7 +154,7 @@ export default function Criar() {
                             </label>
                             <input className={styles.inputFile} type="file" name="imagemLivro" id="imagemLivro" onChange={e => handleArquivoe} />
                         </div>
-                        <div className={styles.blocoInput +" "+ styles.imagem}>
+                        <div className={styles.blocoInput + " " + styles.imagem}>
                             <img src={arquivo} alt="Imagem do livro a ser carregada" />
                         </div>
                     </div>
@@ -172,10 +171,10 @@ export default function Criar() {
                 </div>
             </form>
             <Modal aberto={modalSelecionado === 'conectar'} fechar={setModalSelecionado} titulo={'Selecione a porta de comunicação'}>
-                <ModalPorta funcao={setPorta} porta={porta}/>
+                <ModalPorta funcao={setPorta} porta={porta} />
             </Modal>
             <Modal aberto={modalSelecionado === 'escanear'} fechar={setModalSelecionado} titulo={'Escanear a Tag RFID'}>
-                <ModalScan porta={porta} dados={setUid}/>
+                <ModalScan porta={porta} dados={setUid} />
             </Modal>
         </EstruturaPagina>
     )

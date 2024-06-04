@@ -4,6 +4,12 @@
     color: var(--primary-text-color);
 }
 
+.selectLabel {
+    color: var(--primary-text-color);
+    padding: 0 0.15rem;
+    font-size: 0.8rem;
+}
+
 .barraOpcoes {
     background-color: var(--primary-background-color);
     display: flex;
@@ -15,6 +21,7 @@
 
 .containerPesquisa {
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
     width: 100%;
 }
@@ -31,6 +38,7 @@
 
 .blocoFiltro{
     display: flex;
+    align-items: flex-end;
     gap: 0.5rem;
 }
 
