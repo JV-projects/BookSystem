@@ -22,42 +22,6 @@ export default function Home() {
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
     const [sort, setSort] = useState("arrow_upward_alt")
-
-
-    const dados = [
-        {
-            "id": 1,
-            "titulo": "Orgulho e Preconceito",
-            "autor": "Jane Austen",
-            "editora": "Martin Claret",
-            "ano": "2012",
-            "assuntos": [
-                {
-                    "id": 1,
-                    "assunto": "Literatura estrangeira"
-                },
-                {
-                    "id": 2,
-                    "assunto": "Romance"
-                }
-            ],
-            "status": "Disponível",
-        },
-        {
-            "id": 2,
-            "titulo": "Java®: Como Programar",
-            "autor": "Paul Deitel",
-            "editora": "Pearson Universidades",
-            "ano": "2016",
-            "assuntos": [
-                {
-                    "id": 3,
-                    "assunto": "Programação"
-                }
-            ],
-            "status": "Indisponível",
-        }
-    ]
     const [lista, setLista] = useState(data)
 
     let pesquisar = [
@@ -84,7 +48,6 @@ export default function Home() {
             )
         ) : setLista(data)
     }
-
 
     const handleSelecionar = (indice) => {
         if (indiceSelecionado === indice) {
