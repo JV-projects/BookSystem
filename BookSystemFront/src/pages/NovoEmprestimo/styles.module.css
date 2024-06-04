@@ -64,13 +64,18 @@
     font-size: 1rem;
 }
 
-.dadosUsuario .usuarioContato{
+.areaDados {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.dadosUsuario {
     display: flex;
     gap: 2rem;
     margin-bottom: 2rem;
 }
 
-.dadosUsuario .usuarioContato p{
+.dadosUsuario {
     display: flex;
     gap: 0.1rem;
     font-size: 1rem;
@@ -90,14 +95,36 @@
     background-color: var(--tertiary-background-color)
 }
 
-.cardLivro .infoLivro{
+.areaTexto {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.infoLivro p{
+.titulo {
+    color: var(--primary-text-color);
     font-size: 1rem;
+}
+
+.destaque {
+    color: var(--primary-text-color);
+    font-size: 1rem;
+}
+
+.areaTextoCentralizado {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.paragrafo {
+    align-items: center;
+    color: var(--tertiary-text-color);
+    display: flex;
+    font-size: 0.875rem;
+    gap: 0.5rem;
 }
 
 .cardLivro button{
