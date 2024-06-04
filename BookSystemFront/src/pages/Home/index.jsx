@@ -13,9 +13,10 @@ import ExcluirLivro from '../../components/global/ExcluirLivro'
 import Assunto from '../../components/global/Assunto'
 import useSWR from 'swr'
 import fetcher from '../../util/fetcher'
+import apiUrl from '../../util/apiUrl'
 
 export default function Home() {
-    const { data, error, isLoading } = useSWR('booksystem/api/livros', fetcher)
+    const { data, error, isLoading } = useSWR(`${apiUrl}/livros`, fetcher)
     
     const [pesquisa, setPesquisa] = useState("")
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
@@ -62,7 +63,7 @@ export default function Home() {
             <div className={styles.barraOpcoes}>
                 <div className={styles.containerPesquisa}>
                     <div className={styles.blocoPesquisa + " " + styles.areaPesquisa}>
-                        <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
+                        <Input className={styles.barraPesquisa} value={pesquisa} onChange={e => setPesquisa(e.target.value)} placeholder='Pesquisar' />
                         <Button tipoBotao="primario" onClick={handlePesquisar}>
                             <span className="material-symbols-outlined">search</span>
                         </Button>
@@ -104,7 +105,7 @@ export default function Home() {
                 <div className={styles.areaTextoCentralizado}>
                     <p className={styles.paragrafo}>Ocorreu um erro.</p>
                 </div>
-            ): isLoading ? (
+            ) : isLoading ? (
                 <div className={styles.areaTextoCentralizado}>
                     <p className={styles.paragrafo}>Carregando...</p>
                 </div>
@@ -151,10 +152,10 @@ export default function Home() {
                 </div>
             )}
             <Modal aberto={modalSelecionado === 'detalhes'} fechar={() => setModalSelecionado(null)} titulo={'Detalhes do livro'}>
-                <DetalhesLivro id={data && lista[indiceSelecionado].id} />
+                <DetalhesLivro id={data && lista[indiceSelecionado].id}/>
             </Modal>
             <Modal aberto={modalSelecionado === 'excluir'} fechar={() => setModalSelecionado(null)} titulo={'Excluir livro'}>
-                <ExcluirLivro id={data && lista[indiceSelecionado].id} />
+                <ExcluirLivro id={data && lista[indiceSelecionado].id} fechar={() => setModalSelecionado(null)}/>
             </Modal>
         </EstruturaPagina>
     )
