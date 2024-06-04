@@ -1,5 +1,7 @@
 import styles from './styles.module.css'
 import Button from '../Button'
+import useSWR from 'swr'
+import fetcher from '../../../util/fetcher'
 import apiUrl from '../../../util/apiUrl'
 
 export default function DetalhesLivro({ id }) {
