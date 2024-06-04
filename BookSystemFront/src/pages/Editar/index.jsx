@@ -11,11 +11,13 @@ import Assunto from "../../components/global/Assunto";
 import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import fetcher from '../../util/fetcher'
+import apiUrl from '../../util/apiUrl'
+import assuntosPredefinidos from '../../util/assuntosPredefinidos'
 
 export default function Editar() {
     const { id } = useParams()
 
-    const { data, error, isLoading } = useSWR(`booksystem/api/livros/${id}`, fetcher)
+    const { data, error, isLoading } = useSWR(`${apiUrl}/livros/${id}`, fetcher)
 
     const [arquivo, setArquivo] = useState("/assets/images/livro.jpg")
 
@@ -32,6 +34,40 @@ export default function Editar() {
     const [assuntos, setAssuntos] = useState(data && data.assuntos || [])
     const [etiqueta, setEtiqueta] = useState(data && data.etiqueta || '')
     const [isbn, setIsbn] = useState(data && data.isbn || '')
+    const [novoAssunto, setNovoAssunto] = useState([])
+
+    const handleEditar = async () => {
+        const livro = {
+            tituloSubtitulo,
+            autor,
+            editora,
+            ano,
+            edicao,
+            nPaginas,
+            assuntos,
+            etiqueta,
+            isbn
+        }
+
+        try {
+            const response = await fetch(`${apiUrl}/livros/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(livro)
+            })
+            if (!response.ok) {
+                throw new Error("Erro ao editar o livro.")
+            }
+        } catch (error) {
+            setErrorMessage("Erro ao editar o livro. Verifique os dados informados.")
+        }
+    }
+
+    const handleFechar = (index) => {
+        setAssuntos(assuntos.filter((assunto, i) => i != index))
+    }
 
     return (
         <EstruturaPagina>
@@ -40,7 +76,7 @@ export default function Editar() {
                 subtitulo="Altere os campos desejados para atualizar os dados do livro"
                 link="/gerenciamento"
             />
-            <form className={styles.containerArea}>
+            <form className={styles.containerArea} onSubmit={handleEditar}>
                 <div className={styles.form}>
                     <div className={styles.blocoInput}>
                         <label htmlFor="tituloSubtitulo">Título e subtítulo</label>
@@ -71,15 +107,15 @@ export default function Editar() {
                     <div className={styles.blocoInput}>
                         <label>Assuntos</label>
                         <div className={styles.blocoInput2}>
-                            <Select name="assuntos" id="assuntos" selected="Selecione" opcoes={[]} />
-                            <Button tipoBotao="primario">
+                            <Select name="assuntos" id="assuntos" selected="Selecione" onChange={e => setNovoAssunto(e.target.value)} opcoes={assuntosPredefinidos} />
+                            <Button tipoBotao="primario" type="button" onClick={() => novoAssunto != '' && setAssuntos([...assuntos, novoAssunto])}>
                                 Adicionar
                             </Button>
                         </div>
                         <div className={styles.areaAssunto}>
                             {assuntos.map((assunto, i) => (
-                                <Assunto fechavel={true} key={i}>
-                                    <p>{assunto}</p>
+                                <Assunto fechavel={true} fechar={() => handleFechar(i)} key={i}>
+                                    {assunto}
                                 </Assunto>
                             ))}
                         </div>
@@ -89,7 +125,7 @@ export default function Editar() {
                     <div className={styles.blocoInput}>
                         <label htmlFor="etiqueta">Etiqueta</label>
                         <div className={styles.blocoInput2}>
-                            <Input name="etiqueta" id="etiqueta" disabled={true} value={etiqueta} onChange={(e) => setEtiqueta(e.target.value)}/>
+                            <Input name="etiqueta" id="etiqueta" value={etiqueta} disabled/>
                             <Button tipoBotao="primario">
                                 Escanear
                             </Button>
@@ -118,7 +154,7 @@ export default function Editar() {
                             </Button>
                         </div>
                         <div className={styles.blocoInput}>
-                            <Button tipoBotao="primario">Salvar</Button>
+                            <Button tipoBotao="primario" type="submit">Salvar</Button>
                         </div>
                     </div>
                 </div>
