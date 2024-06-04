@@ -13,7 +13,6 @@ export default function Button({ children, tipoBotao, icone, ...rest }) {
     })
 
     return (
-      
         <button className={estiloAplicado} {...rest}>
             {icone != null && <span className="material-symbols-outlined">{icone}</span>}
             {children}
