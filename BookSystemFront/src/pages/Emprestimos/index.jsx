@@ -22,30 +22,6 @@ export default function Emprestimos() {
     const [lista, setLista] = useState(data)
     const [sort, setSort] = useState("arrow_upward_alt")
 
-    const dados = [
-        {
-            "nome": "Jackeline Menezes",
-            "numeroTelefone": "(11) 98822-8833",
-            "dataEmprestimo": "21/04/2024",
-            "dataDevolucao": "21/05/2024",
-            "status": "Em atraso",
-        },
-        {
-            "nome": "Yudi Tamashiro",
-            "numeroTelefone": "(11) 4002-8922",
-            "dataEmprestimo": "21/04/2024",
-            "dataDevolucao": "21/05/2024",
-            "status": "Em andamento",
-        },
-        {
-            "nome": "Yudi Tamashiro",
-            "numeroTelefone": "(11) 4002-8922",
-            "dataEmprestimo": "21/04/2024",
-            "dataDevolucao": "21/05/2024",
-            "status": "Concluído",
-        }
-    ]
-
     let pesquisar = [
         { valor: "nome", texto: "Nome" },
         { valor: "email", texto: "Email" }
