@@ -50,14 +50,14 @@ export default function Header() {
                     </ul>
                 </div>
             </header>
-            <div className={styles.dropdownPerfil} id='dropdownPerfil'>
+            <ul className={styles.dropdownPerfil} id='dropdownPerfil'>
                 <li>
                     <Link to={"/"}>
                         <span className="material-symbols-outlined">logout</span>
                         <p>Sair</p>
                     </Link>
                 </li>
-            </div>
+            </ul>
         </>
     )
 }
