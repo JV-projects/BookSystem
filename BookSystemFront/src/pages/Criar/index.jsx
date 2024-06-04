@@ -10,6 +10,7 @@ import Modal from "../../components/global/Modal";
 import ModalPorta from "../../components/ModalPorta";
 import ModalScan from "../../components/ModalScan";
 import { arrayToString } from "../../../public/js/scanTag";
+import Select from "../../components/global/Select";
 import apiUrl from '../../util/apiUrl'
 import assuntosPredefinidos from '../../util/assuntosPredefinidos'
 
