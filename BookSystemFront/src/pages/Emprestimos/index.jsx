@@ -10,12 +10,16 @@ import Aside from '../../components/global/Aside'
 import DetalhesEmprestimo from '../../components/global/DetalhesEmprestimo'
 import useSWR from 'swr'
 import fetcher from '../../util/fetcher'
+import apiUrl from '../../util/apiUrl'
 
 export default function Emprestimos() {
-    const { data, error, isLoading } = useSWR('booksystem/api/livros', fetcher)
+    const { data, error, isLoading } = useSWR(`${apiUrl}/emprestimos`, fetcher)
 
     const [aberto, setAberto] = useState(false)
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
+
+    const [pesquisa, setPesquisa] = useState("")
+    const [lista, setLista] = useState(data)
 
     let pesquisar = [
         { valor: "titulo", texto: "Título" },
@@ -34,14 +38,26 @@ export default function Emprestimos() {
         { valor: "editora", texto: "Editora" }
     ]
 
+    const handlePesquisar = () => {
+        pesquisa.length ? setLista(
+            data.filter(item =>
+                item.nome.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.numeroTelefone.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.dataEmprestimo.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.dataDevolucao.toLowerCase().includes(pesquisa.toLowerCase()) ||
+                item.status.toLowerCase().includes(pesquisa.toLowerCase())
+            )
+        ) : setLista(data)
+    }
+
     return (
         <EstruturaPagina>
             <TopoPagina titulo="Empréstimos" subtitulo="Histórico"/>
                 <div className={styles.barraOpcoes}>
                     <div className={styles.containerPesquisa}>
                         <div className={styles.blocoPesquisa + " " + styles.areaPesquisa}>
-                            <Input className={styles.barraPesquisa} placeholder='Pesquisar' />
-                            <Button tipoBotao="primario">
+                            <Input className={styles.barraPesquisa} value={pesquisa} onChange={e => setPesquisa(e.target.value)} placeholder='Pesquisar' />
+                            <Button tipoBotao="primario" onClick={handlePesquisar}>
                                 <span className="material-symbols-outlined">search</span>
                             </Button>
                         </div>
@@ -59,13 +75,13 @@ export default function Emprestimos() {
                     <div className={styles.areaTextoCentralizado}>
                         <p className={styles.paragrafo}>Carregando...</p>
                     </div>
-                ) : !data ? (
+                ) : !lista ? (
                     <div className={styles.areaTextoCentralizado}>
                         <p className={styles.paragrafo}>Nenhum dado encontrado.</p>
                     </div>
                 ) : (
                     <div className={styles.containerCartoes}>
-                        {data.map((item, i) => (
+                        {lista.map((item, i) => (
                             <div className={styles.cartao} key={i}>
                                 <p className={styles.paragrafo}>{item.nome}</p>
                                 <p className={styles.paragrafo + " " + styles.tel}>
