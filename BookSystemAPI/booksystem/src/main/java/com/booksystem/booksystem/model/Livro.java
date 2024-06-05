@@ -31,33 +31,40 @@ public class Livro {
 
     private String etiqueta;
 
-    private Long isbn;
+    private long isbn;
+
+    private Imagem imagem;
     
     @Field(targetType = FieldType.STRING)
     private String status;
 
-    public Livro(){}
+    public Livro() {
+    }
 
     public Livro(
         String titulo,
         String autor,
         String editora,
         int ano,
+        int edicao,
         int paginas,
         List<Assunto> assuntos,
         String etiqueta,
-        Long isbn,
-        String status
+        long isbn,
+        String status,
+        Imagem imagem
     ){
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.ano = ano;
+        this.edicao = edicao;
         this.paginas = paginas;
         this.assuntos = assuntos;
         this.etiqueta = etiqueta;
         this.isbn = isbn;
         this.status = status;
+        this.imagem = imagem;
     }
 
     public String getId() {
@@ -132,11 +139,11 @@ public class Livro {
         this.etiqueta = etiqueta;
     }
 
-    public Long getIsbn() {
+    public long getIsbn() {
         return this.isbn;
     }
 
-    public void setIsbn(Long isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 
@@ -145,11 +152,17 @@ public class Livro {
     }
 
     public void setStatus(Status status) {
-        if(status != null){
+        if (status != null) {
             this.status = status.getStatus();
         }
     }
 
+    public Imagem getImagem(){
+        return this.imagem;
+    }
 
+    public void setImagem(Imagem imagem){
+        this.imagem = imagem;
+    }
 
 }

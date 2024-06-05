@@ -1,7 +1,5 @@
 package com.booksystem.booksystem.model;
 
-import java.util.Objects;
-
 
 public enum Status {
 

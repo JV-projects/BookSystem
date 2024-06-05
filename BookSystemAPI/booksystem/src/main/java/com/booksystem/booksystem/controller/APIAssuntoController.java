@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.booksystem.booksystem.model.Assunto;
-import com.booksystem.booksystem.servico.interfaces.IAssuntoServico;
+import com.booksystem.booksystem.service.IAssuntoServico;
 
 @RestController
 @RequestMapping("booksystem/api")
@@ -31,13 +31,6 @@ public class APIAssuntoController {
     public ResponseEntity<Object> consultarAssuntos(){
         logger.info("api --> Consultar assunto");
         return ResponseEntity.status(HttpStatus.OK).body(assuntoServico.consultarAssuntos());
-    }
-
-    @PostMapping("assuntos")
-    public ResponseEntity<Object> cadastrarAssuntos(@RequestBody Assunto assunto){
-        logger.info("api --> Cadastrar assunto");
-        
-        return ResponseEntity.status(HttpStatus.OK).body(assuntoServico.cadastrarAssunto(assunto));
     }
 
 

@@ -1,4 +1,4 @@
-package com.booksystem.booksystem.servico;
+package com.booksystem.booksystem.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,8 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.booksystem.booksystem.model.Assunto;
-import com.booksystem.booksystem.model.repository.IAssuntoRepository;
-import com.booksystem.booksystem.servico.interfaces.IAssuntoServico;
+import com.booksystem.booksystem.repository.IAssuntoRepository;
 
 @Service
 public class AssuntoServico implements IAssuntoServico{

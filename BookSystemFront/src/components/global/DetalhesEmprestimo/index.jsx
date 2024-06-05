@@ -54,8 +54,8 @@ export default function DetalhesLivro() {
                     <p className={styles.paragrafo}>00/00/0000</p>
                 </div>
             </div>
-            <Button tipoBotao={'terciarioConfirma'}>Confirmar</Button>
-            <Button tipoBotao={'terciarioCancela'}>Cancelar</Button>
+            <Button tipoBotao={'terciarioConfirma'}>Renovar</Button>
+            <Button tipoBotao={'terciarioCancela'}>Encerrar</Button>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-package com.booksystem.booksystem.model.repository;
+package com.booksystem.booksystem.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
