@@ -19,6 +19,7 @@ export default function Home() {
     const { data, error, isLoading } = useSWR(`${apiUrl}/livros`, fetcher)
     
     const [pesquisa, setPesquisa] = useState("")
+    const [idSelecionado, setIdSelecionado] = useState(null)
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
     const [sort, setSort] = useState("arrow_upward_alt")
@@ -49,11 +50,13 @@ export default function Home() {
         ) : setLista(data)
     }
 
-    const handleSelecionar = (indice) => {
+    const handleSelecionar = (indice, id) => {
         if (indiceSelecionado === indice) {
             setIndiceSelecionado(null)
+            setIdSelecionado(null)
         } else {
             setIndiceSelecionado(indice)
+            setIdSelecionado(id)
         }
     }
 
@@ -108,7 +111,7 @@ export default function Home() {
                         <Button tipoBotao="secundario" icone="info" onClick={() => setModalSelecionado('detalhes')} disabled={indiceSelecionado === null}>
                             <p className={styles.action}>Detalhes</p>
                         </Button>
-                        <Link to={`/editar/${lista && lista[indiceSelecionado].id}`}>
+                        <Link to={`/editar/${idSelecionado}`}>
                             <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
                                 <p className={styles.action}>Editar</p>
                             </Button>
@@ -134,7 +137,7 @@ export default function Home() {
             ) : (
                 <div className={styles.containerCartoes}>
                     {lista.map((item, i) => (
-                        <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i)} key={i}>
+                        <div className={indiceSelecionado == i ? styles.cartaoSelecionado : styles.cartaoNaoSelecionado} onClick={() => handleSelecionar(i, item.id)} key={i}>
                             <div className={styles.imagemCartao}>
                                 <img alt={`Foto do livro ${item.titulo}`} />
                             </div>
@@ -170,10 +173,10 @@ export default function Home() {
                 </div>
             )}
             <Modal aberto={modalSelecionado === 'detalhes'} fechar={() => setModalSelecionado(null)} titulo={'Detalhes do livro'}>
-                <DetalhesLivro id={lista && lista[indiceSelecionado].id}/>
+                <DetalhesLivro id={idSelecionado}/>
             </Modal>
             <Modal aberto={modalSelecionado === 'excluir'} fechar={() => setModalSelecionado(null)} titulo={'Excluir livro'}>
-                <ExcluirLivro id={lista && lista[indiceSelecionado].id} fechar={() => setModalSelecionado(null)}/>
+                <ExcluirLivro id={idSelecionado} fechar={() => setModalSelecionado(null)}/>
             </Modal>
         </EstruturaPagina>
     )
