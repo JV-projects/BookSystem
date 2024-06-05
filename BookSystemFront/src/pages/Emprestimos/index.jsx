@@ -16,14 +16,14 @@ export default function Emprestimos() {
     const { data, error, isLoading } = useSWR(`${apiUrl}/emprestimos`, fetcher)
 
     const [aberto, setAberto] = useState(false)
-    const [indiceSelecionado, setIndiceSelecionado] = useState(null)
+    const [idSelecionado, setIdSelecionado] = useState(null)
 
     const [pesquisa, setPesquisa] = useState("")
-    const [lista, setLista] = useState(data)
+    const [lista, setLista] = useState(data ? data : null)
     const [sort, setSort] = useState("arrow_upward_alt")
 
     const handlePesquisar = () => {
-        pesquisa.length ? setLista(
+        data && pesquisa.length ? setLista(
             data.filter(item =>
                 item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
@@ -108,15 +108,15 @@ export default function Emprestimos() {
                                     <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                                 </div>
                                 <Status status={item.status} />
-                                <Button onClick={() => {setIndiceSelecionado(i), setAberto(true)}}>
+                                <Button onClick={() => {setIdSelecionado(item.id), setAberto(true)}}>
                                     <span className="material-symbols-outlined">info</span>
                                 </Button>
                             </div>
                         ))}
                     </div>
                 )}
-            <Aside aberto={aberto} fechar={() => {setIndiceSelecionado(null), setAberto(false)}} titulo={'Detalhes do empréstimo'}>
-                <DetalhesEmprestimo id={data && data[indiceSelecionado].id}/>
+            <Aside aberto={aberto} fechar={() => {setIdSelecionado(null), setAberto(false)}} titulo={'Detalhes do empréstimo'}>
+                <DetalhesEmprestimo id={idSelecionado}/>
             </Aside>
         </EstruturaPagina>
     )
