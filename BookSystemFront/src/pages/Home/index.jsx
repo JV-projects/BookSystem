@@ -22,7 +22,7 @@ export default function Home() {
     const [indiceSelecionado, setIndiceSelecionado] = useState(null)
     const [modalSelecionado, setModalSelecionado] = useState(null)
     const [sort, setSort] = useState("arrow_upward_alt")
-    const [lista, setLista] = useState(data)
+    const [lista, setLista] = useState(data ? data : null)
 
     let pesquisar = [
         { valor: "titulo", texto: "Título" },
@@ -39,7 +39,7 @@ export default function Home() {
     ]
 
     const handlePesquisar = () => {
-        pesquisa.length ? setLista(
+        data && pesquisa.length ? setLista(
             data.filter(item =>
                 item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
@@ -64,6 +64,7 @@ export default function Home() {
             setSort("arrow_upward_alt")
         }
     }
+    console.log(lista)
 
     return (
         <EstruturaPagina>
@@ -107,7 +108,7 @@ export default function Home() {
                         <Button tipoBotao="secundario" icone="info" onClick={() => setModalSelecionado('detalhes')} disabled={indiceSelecionado === null}>
                             <p className={styles.action}>Detalhes</p>
                         </Button>
-                        <Link to={`/editar/${data && lista[indiceSelecionado].id}`}>
+                        <Link to={`/editar/${lista && lista[indiceSelecionado].id}`}>
                             <Button tipoBotao="secundario" icone="edit_square" disabled={indiceSelecionado === null}>
                                 <p className={styles.action}>Editar</p>
                             </Button>
@@ -126,7 +127,7 @@ export default function Home() {
                 <div className={styles.areaTextoCentralizado}>
                     <p className={styles.paragrafo}>Carregando...</p>
                 </div>
-            ) : !data ? (
+            ) : !lista ? (
                 <div className={styles.areaTextoCentralizado}>
                     <p className={styles.paragrafo}>Nenhum dado encontrado.</p>
                 </div>
@@ -159,7 +160,7 @@ export default function Home() {
                                 </div>
                                 <div className={styles.areaBotoes}>
                                     {item.assuntos.map((assunto, i) => (
-                                        <Assunto key={i}><p>{assunto.assunto}</p></Assunto>
+                                        <Assunto key={i}>{assunto.assunto}</Assunto>
                                     ))}
                                 </div>
                             </div>
@@ -169,10 +170,10 @@ export default function Home() {
                 </div>
             )}
             <Modal aberto={modalSelecionado === 'detalhes'} fechar={() => setModalSelecionado(null)} titulo={'Detalhes do livro'}>
-                <DetalhesLivro id={data && lista[indiceSelecionado].id}/>
+                <DetalhesLivro id={lista && lista[indiceSelecionado].id}/>
             </Modal>
             <Modal aberto={modalSelecionado === 'excluir'} fechar={() => setModalSelecionado(null)} titulo={'Excluir livro'}>
-                <ExcluirLivro id={data && lista[indiceSelecionado].id} fechar={() => setModalSelecionado(null)}/>
+                <ExcluirLivro id={lista && lista[indiceSelecionado].id} fechar={() => setModalSelecionado(null)}/>
             </Modal>
         </EstruturaPagina>
     )
