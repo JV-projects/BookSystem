@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.TextIndexDefinition;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -120,10 +121,12 @@ public class LoadDatabase{
             livroRepository.save(livro11);
             livroRepository.save(livro12);
 
-            Credenciais u1 = new Credenciais("romeu@fatec", "ABC123", RoleUsuario.ADMIN);
-            Credenciais u2 = new Credenciais("julieta2@fatec", "ABC123", RoleUsuario.USER);
-            Credenciais u3 = new Credenciais("carjooj@fatec", "ABC123", RoleUsuario.USER);
-            Credenciais u4 = new Credenciais("julieta1@fatec", "ABC123", RoleUsuario.USER);
+            String senha1 = new BCryptPasswordEncoder().encode("ABC123");
+
+            Credenciais u1 = new Credenciais("romeu@fatec", senha1, RoleUsuario.ADMIN);
+            Credenciais u2 = new Credenciais("julieta2@fatec", senha1, RoleUsuario.USER);
+            Credenciais u3 = new Credenciais("carjooj@fatec", senha1, RoleUsuario.USER);
+            Credenciais u4 = new Credenciais("julieta1@fatec", senha1, RoleUsuario.USER);
 
             List<Credenciais> list = new ArrayList<>();
             list.add(u1);
