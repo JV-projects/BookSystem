@@ -1,3 +1,3 @@
-const apiUrl = 'http://localhost:8080/booksystem/api'
+const apiUrl = 'http://localhost:8080/booksystem'
 
 export default apiUrl
