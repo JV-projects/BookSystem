@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.index.TextIndexDefinition;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +46,7 @@ public class LoadDatabase{
             TextIndexDefinition stringIndex = new TextIndexDefinition.TextIndexDefinitionBuilder()
                     .withDefaultLanguage("portuguese")
                     .named("string_index")
-                    .onFields("livro.titulo", "livro.autor", "livro.editora", "livro.assuntos")
+                    .onFields("titulo", "autor", "editora", "assuntos.nome")
                     .build();
 
             mongoTemplate.indexOps(Livro.class).ensureIndex(stringIndex);
@@ -123,13 +124,15 @@ public class LoadDatabase{
             String senha1 = new BCryptPasswordEncoder().encode("ABC123");
 
             Credenciais u1 = new Credenciais("romeu@fatec", senha1, RoleUsuario.ADMIN);
-            Credenciais u2 = new Credenciais("julieta@fatec", senha1, RoleUsuario.USER);
+            Credenciais u2 = new Credenciais("julieta2@fatec", senha1, RoleUsuario.USER);
             Credenciais u3 = new Credenciais("carjooj@fatec", senha1, RoleUsuario.USER);
+            Credenciais u4 = new Credenciais("julieta1@fatec", senha1, RoleUsuario.USER);
 
             List<Credenciais> list = new ArrayList<>();
             list.add(u1);
             list.add(u2);
             list.add(u3);
+            list.add(u4);
 
             credenciaisRepository.insert(list);
 
@@ -141,12 +144,45 @@ public class LoadDatabase{
             telefones.add("11988665533");
             telefones.add("1144556677");
 
-            Optional<Credenciais> u4 = credenciaisRepository.findByUsername("julieta@fatec");
+            Optional<Credenciais> c1 = credenciaisRepository.findByUsername("julieta2@fatec");
 
-            PerfilUsuario pu = new PerfilUsuario("Julieta", "julieta@fatec", u4.get(), "24095367800", telefones,
+            Optional<Credenciais> c2 = credenciaisRepository.findByUsername("carjooj@fatec");
+
+            Optional<Credenciais> c3 = credenciaisRepository.findByUsername("julieta1@fatec");
+
+            PerfilUsuario pu = new PerfilUsuario("Julieta Elieta", "julieta2@fatec", c1.get(), "24095367800", telefones,
+                    "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
+
+            PerfilUsuario pu1 = new PerfilUsuario("Carjooj", "carjooj@fatec", c2.get(), "24095367800", telefones,
+                    "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
+
+            PerfilUsuario pu2 = new PerfilUsuario("Julieta Jujeta", "julieta1@fatec", c3.get(), "24095367800", telefones,
                     "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
 
             perfilUsuarioRepository.insert(pu);
+            perfilUsuarioRepository.insert(pu1);
+            perfilUsuarioRepository.insert(pu2);
+
+            List<Livro> livroList = new ArrayList<>();
+            livroList.add(livro2);
+            livroList.add(livro3);
+            livroList.add(livro4);
+
+            LocalDate localDate = LocalDate.of(2024, 6, 2);
+            LocalDate localDate1 = LocalDate.of(2024, 5, 2);
+
+            Emprestimo emprestimo = new Emprestimo(livroList,localDate, localDate.plusDays(7), Status.CONCLUIDO.getStatus(), pu);
+
+            Emprestimo emprestimo1 = new Emprestimo(livroList, localDate1, localDate1.plusDays(7), Status.ANDAMENTO.getStatus(), pu1);
+
+            Emprestimo emprestimo2 = new Emprestimo(livroList,localDate, localDate.plusDays(7), Status.ATRASO.getStatus(), pu2);
+
+            Emprestimo emprestimo3 = new Emprestimo(livroList, localDate1, localDate1.plusDays(7), Status.CONCLUIDO.getStatus(), pu);
+
+            emprestimoRepository.save(emprestimo);
+            emprestimoRepository.save(emprestimo1);
+            emprestimoRepository.save(emprestimo2);
+            emprestimoRepository.save(emprestimo3);
 
         };
 

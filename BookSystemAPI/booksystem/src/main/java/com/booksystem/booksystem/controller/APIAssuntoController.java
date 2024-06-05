@@ -33,12 +33,5 @@ public class APIAssuntoController {
         return ResponseEntity.status(HttpStatus.OK).body(assuntoServico.consultarAssuntos());
     }
 
-    @PostMapping("assuntos")
-    public ResponseEntity<Object> cadastrarAssuntos(@RequestBody Assunto assunto){
-        logger.info("api --> Cadastrar assunto");
-        
-        return ResponseEntity.status(HttpStatus.OK).body(assuntoServico.cadastrarAssunto(assunto));
-    }
-
 
 }
