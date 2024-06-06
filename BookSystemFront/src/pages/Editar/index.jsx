@@ -149,9 +149,7 @@ export default function Editar() {
                     </div>
                     <div className={styles.blocoInput2}>
                         <div className={styles.blocoInput}>
-                            <Button tipoBotao="terciarioCancela" type="button">
-                                <Link to="/gerenciamento">Cancelar</Link>
-                            </Button>
+                            <Button tipoBotao="terciarioCancela" to="/gerenciamento" type="button">Cancelar</Button>
                         </div>
                         <div className={styles.blocoInput}>
                             <Button tipoBotao="primario" type="submit">Salvar</Button>
