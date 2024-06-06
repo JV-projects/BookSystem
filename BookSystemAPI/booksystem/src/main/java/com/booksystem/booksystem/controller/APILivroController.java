@@ -8,8 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("booksystem/api")
 public class APILivroController {
     Logger logger = LogManager.getLogger(this.getClass());
