@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select'
@@ -15,12 +15,18 @@ import apiUrl from '../../util/apiUrl'
 export default function Emprestimos() {
     const { data, error, isLoading } = useSWR(`${apiUrl}/emprestimos`, fetcher)
 
+    console.log(data, error, isLoading);
+
     const [aberto, setAberto] = useState(false)
     const [idSelecionado, setIdSelecionado] = useState(null)
 
     const [pesquisa, setPesquisa] = useState("")
     const [lista, setLista] = useState(data ? data : null)
     const [sort, setSort] = useState("arrow_upward_alt")
+
+    useEffect(() => {
+        setLista(data)
+    }, [data])
 
     const handlePesquisar = () => {
         data && pesquisa.length ? setLista(
@@ -51,6 +57,8 @@ export default function Emprestimos() {
             setSort("arrow_upward_alt")
         }
     }
+
+    console.log(lista)
 
     return (
         <EstruturaPagina>
@@ -94,21 +102,21 @@ export default function Emprestimos() {
                     <div className={styles.containerCartoes}>
                         {lista.map((item, i) => (
                             <div className={styles.cartao} key={i}>
-                                <p className={styles.paragrafo}>{item.nome}</p>
+                                <p className={styles.paragrafo}>{item.usuario.nome}</p>
                                 <p className={styles.paragrafo + " " + styles.tel}>
                                     <span className="material-symbols-outlined">call</span>
-                                    {item.numeroTelefone}
+                                    {item.usuario.telefones[0]}
                                 </p>
                                 <div className={styles.areaTexto + " " + styles.data}>
                                     <h2 className={styles.tituloSecundario}>Data de retirada</h2>
-                                    <p className={styles.paragrafo}>{item.dataEmprestimo}</p>
+                                    <p className={styles.paragrafo}>{item.dataRetirada}</p>
                                 </div>
                                 <div className={styles.areaTexto + " " + styles.data}>
                                     <h2 className={styles.tituloSecundario}>Data de devolução</h2>
                                     <p className={styles.paragrafo}>{item.dataDevolucao}</p>
                                 </div>
                                 <Status status={item.status} />
-                                <Button onClick={() => {setIdSelecionado(item.id), setAberto(true)}}>
+                                <Button onClick={() => {setIdSelecionado(item), setAberto(true)}}>
                                     <span className="material-symbols-outlined">info</span>
                                 </Button>
                             </div>
@@ -116,7 +124,7 @@ export default function Emprestimos() {
                     </div>
                 )}
             <Aside aberto={aberto} fechar={() => {setIdSelecionado(null), setAberto(false)}} titulo={'Detalhes do empréstimo'}>
-                <DetalhesEmprestimo id={idSelecionado}/>
+                <DetalhesEmprestimo data={idSelecionado}/>
             </Aside>
         </EstruturaPagina>
     )
