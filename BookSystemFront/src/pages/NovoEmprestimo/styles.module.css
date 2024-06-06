@@ -218,7 +218,7 @@
     width: 100%;
 }
 
-.containerBotoes button{
+.containerBotoes button, .containerBotoes a {
     width: 100%;
 }
 

@@ -172,9 +172,7 @@ export default function NovoEmprestimo() {
 						</div>
 					</div>
 					<div className={styles.containerBotoes}>
-						<Button tipoBotao="terciarioCancela" type='button'>
-							<Link to="/gerenciamento">Cancelar</Link>
-						</Button>
+						<Button tipoBotao="terciarioCancela" to="/gerenciamento" type='button'>Cancelar</Button>
 						<Button tipoBotao="terciarioConfirma" type='submit'>Finalizar</Button>
 					</div>
 				</div>
