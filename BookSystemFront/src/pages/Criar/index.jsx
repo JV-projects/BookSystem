@@ -126,9 +126,7 @@ export default function Criar() {
                         </div>
                         <div className={styles.areaAssunto}>
                             {assuntos.map((assunto, i) => (
-                                <Assunto fechavel={true} fechar={() => handleFechar(i)} key={i}>
-                                    {assunto}
-                                </Assunto>
+                                <Assunto fechavel={true} fechar={() => handleFechar(i)} key={i}>{assunto}</Assunto>
                             ))}
                         </div>
                     </div>
