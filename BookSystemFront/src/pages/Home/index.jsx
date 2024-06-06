@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 import EstruturaPagina from '../../components/global/EstruturaPagina'
 import Select from '../../components/global/Select'
@@ -17,6 +17,8 @@ import apiUrl from '../../util/apiUrl'
 
 export default function Home() {
     const { data, error, isLoading } = useSWR(`${apiUrl}/livros`, fetcher)
+
+    console.log(data, error, isLoading);
     
     const [pesquisa, setPesquisa] = useState("")
     const [idSelecionado, setIdSelecionado] = useState(null)
@@ -24,6 +26,10 @@ export default function Home() {
     const [modalSelecionado, setModalSelecionado] = useState(null)
     const [sort, setSort] = useState("arrow_upward_alt")
     const [lista, setLista] = useState(data ? data : null)
+
+    useEffect(() => {
+        setLista(data)
+    }, [data])
 
     let pesquisar = [
         { valor: "titulo", texto: "Título" },
@@ -45,7 +51,7 @@ export default function Home() {
                 item.titulo.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.autor.toLowerCase().includes(pesquisa.toLowerCase()) ||
                 item.editora.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                item.ano.toLowerCase().includes(pesquisa.toLowerCase())
+                item.ano.toString().toLowerCase().includes(pesquisa.toLowerCase())
             )
         ) : setLista(data)
     }
@@ -67,6 +73,7 @@ export default function Home() {
             setSort("arrow_upward_alt")
         }
     }
+    
     console.log(lista)
 
     return (
@@ -163,7 +170,7 @@ export default function Home() {
                                 </div>
                                 <div className={styles.areaBotoes}>
                                     {item.assuntos.map((assunto, i) => (
-                                        <Assunto key={i}>{assunto.assunto}</Assunto>
+                                        <Assunto key={i}>{assunto.nome}</Assunto>
                                     ))}
                                 </div>
                             </div>
