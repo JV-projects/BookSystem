@@ -5,6 +5,7 @@ import Status from '../Status'
 import Assunto from '../Assunto'
 import useSWR from 'swr'
 import fetcher from '../../../util/fetcher'
+import apiUrl from '../../../util/apiUrl'
 
 export default function DetalhesLivro({ id }) {
     const { data, error, isLoading } = useSWR(`${apiUrl}/livros/${id}`, fetcher)
