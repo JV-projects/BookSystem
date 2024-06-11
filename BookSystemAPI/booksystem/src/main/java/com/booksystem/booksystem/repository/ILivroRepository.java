@@ -29,4 +29,7 @@ public interface ILivroRepository extends MongoRepository<Livro, String> {
     @Query(value = "{ 'editora': { $regex: ?0, $options:'i' } }")
     List<Livro> findByEditora(String editora, Sort sort);
 
+    @Query(value = "{}", fields = "{'_id': 0, 'etiqueta': 1, 'status': 1}")
+    List<Livro> findAllTags();
+
 }

@@ -1,8 +1,8 @@
 package com.booksystem.booksystem.service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+import com.booksystem.booksystem.model.TagDTO;
 import com.booksystem.booksystem.service.PesquisaServico;
 import org.springframework.stereotype.Service;
 
@@ -141,5 +141,21 @@ public class LivroServico implements ILivroServico {
         }
 
     }
+
+    @Override
+    public List<TagDTO> consultarTags() {
+        logger.info("|--- Serviço - Consultando Tags ---|");
+        List<Livro> livros = livroRepository.findAllTags();
+        List<TagDTO> tags = new ArrayList<>();
+
+        livros.forEach(livro -> {
+            TagDTO tagDTO = new TagDTO(livro.getEtiqueta(), livro.getStatus());
+            tags.add(tagDTO);
+        });
+
+        return tags;
+
+    }
+
 
 }

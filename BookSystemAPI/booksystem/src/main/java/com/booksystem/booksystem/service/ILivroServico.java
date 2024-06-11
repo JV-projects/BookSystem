@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.List;
 
 import com.booksystem.booksystem.model.Livro;
+import com.booksystem.booksystem.model.TagDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,8 @@ public interface ILivroServico {
     Optional<Livro> editarLivro(Livro livro);
 
     void excluirLivro(String id);
+
+    List<TagDTO> consultarTags();
 
 
 
