@@ -34,6 +34,7 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers(HttpMethod.POST, "/booksystem/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/booksystem/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/booksystem/api/tags").permitAll()
                         .requestMatchers(HttpMethod.GET, "/booksystem/api/livros").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.GET, "/booksystem/api/emprestimos").hasRole("ADMIN")
                         .anyRequest().authenticated()
