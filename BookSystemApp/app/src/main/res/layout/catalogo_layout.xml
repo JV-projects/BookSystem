@@ -35,7 +35,7 @@
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:padding="10dp"
-                android:src="@drawable/ic_conta"
+
                 app:tint="#000000" />
         </LinearLayout>
 
@@ -43,7 +43,7 @@
             android:id="@+id/txtAviso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_aviso"
+
             android:drawableTint="#BDA871"
             android:paddingHorizontal="10dp"
             android:text="Complete seu cadastro para fazer empréstimos!"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="#f0f0f0"
-            android:drawableLeft="@drawable/ic_pesquisar"
+
             android:drawableTint="#828282"
             android:ems="10"
             android:hint="Pesquisar"
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:padding="10dp"
-                android:src="@drawable/ic_livro"
+
                 app:tint="#7F56D9" />
 
         </LinearLayout>
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:padding="10dp"
-                android:src="@drawable/ic_historico"
+
                 app:tint="#727272" />
         </LinearLayout>
 
