@@ -55,6 +55,14 @@ public class LivroServico implements ILivroServico {
         }
     }
 
+    @Override
+    public List<Livro> consultarPorTituloMobile(String titulo) {
+        logger.info("|--- Serviço - Consultando por Titulo no mobile ---|");
+
+        return livroRepository.findByTitulo(titulo);
+    }
+
+
     public Optional<Livro> consultarPorId(String id) {
         logger.info("|--- Serviço - Consultando livro por id ----|");
 

@@ -31,7 +31,7 @@ public class Livro {
 
     private String etiqueta;
 
-    private long isbn;
+    private String isbn;
 
     private Imagem imagem;
     
@@ -42,17 +42,17 @@ public class Livro {
     }
 
     public Livro(
-        String titulo,
-        String autor,
-        String editora,
-        int ano,
-        int edicao,
-        int paginas,
-        List<Assunto> assuntos,
-        String etiqueta,
-        long isbn,
-        String status,
-        Imagem imagem
+            String titulo,
+            String autor,
+            String editora,
+            int ano,
+            int edicao,
+            int paginas,
+            List<Assunto> assuntos,
+            String etiqueta,
+            String isbn,
+            String status,
+            Imagem imagem
     ){
         this.titulo = titulo;
         this.autor = autor;
@@ -139,11 +139,11 @@ public class Livro {
         this.etiqueta = etiqueta;
     }
 
-    public long getIsbn() {
+    public String getIsbn() {
         return this.isbn;
     }
 
-    public void setIsbn(long isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 

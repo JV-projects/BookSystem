@@ -20,6 +20,8 @@ public interface ILivroServico {
 
     List<Livro> consultarPorTitulo(String titulo, int ano, String filtro, int ordem);
 
+    List<Livro> consultarPorTituloMobile(String titulo);
+
     List<Livro> consultarPorIsbn(long isbn);
 
     List<Livro> consultarPorAutor(String autor, int ano, String filtro, int ordem);
