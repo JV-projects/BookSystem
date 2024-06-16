@@ -43,14 +43,14 @@ class CredenciaisRepository {
 
     }
 
-    fun login(credenciais: Credenciais){
+    fun login(credenciais: Credenciais, sucess: (Response, String) -> Unit, fail: (IOException) -> Unit){
         val json = gson.toJson(credenciais);
 
         val body = json.toRequestBody("application/json".toMediaTypeOrNull())
 
         val req = Request.Builder()
             .post(body)
-            .url("http://192.168.1.7:8080/booksystem/auth/login")
+            .url("/booksystem/auth/login")
             .build()
 
         val res = object : Callback{
@@ -59,12 +59,15 @@ class CredenciaisRepository {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val resposta = response.body
+                val resposta = response.body?.string().toString()
                 Log.i("sucess", "call $call | \n Resposta: ${resposta}")
+
+                sucess(response, resposta)
             }
         }
         okhttp.newCall(req).enqueue(res)
-        return res
+
+
 
     }
 
