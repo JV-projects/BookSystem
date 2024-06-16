@@ -18,14 +18,13 @@ class CredenciaisRepository {
     val okhttp = OkHttpClient()
     fun newCredenciais(credenciais: Credenciais){
 
-//        val c = Credenciais(credenciais.username, credenciais.senha)
         val json = gson.toJson(credenciais);
 
         val body = json.toRequestBody("application/json".toMediaTypeOrNull())
 
         val req = Request.Builder()
             .post(body)
-            .url("http://192.168.1.7:8080/booksystem/auth/register")
+            .url("/booksystem/auth/register")
             .build()
 
         val res = object : Callback {
@@ -41,6 +40,31 @@ class CredenciaisRepository {
         }
 
         okhttp.newCall(req).enqueue(res)
+
+    }
+
+    fun login(credenciais: Credenciais){
+        val json = gson.toJson(credenciais);
+
+        val body = json.toRequestBody("application/json".toMediaTypeOrNull())
+
+        val req = Request.Builder()
+            .post(body)
+            .url("http://192.168.1.7:8080/booksystem/auth/login")
+            .build()
+
+        val res = object : Callback{
+            override fun onFailure(call: Call, e: IOException) {
+                Log.i("fail", "call $call | Exception: ${e.localizedMessage}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val resposta = response.body
+                Log.i("sucess", "call $call | \n Resposta: ${resposta}")
+            }
+        }
+        okhttp.newCall(req).enqueue(res)
+        return res
 
     }
 
