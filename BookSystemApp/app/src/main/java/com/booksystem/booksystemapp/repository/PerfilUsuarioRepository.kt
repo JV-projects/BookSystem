@@ -23,7 +23,7 @@ class PerfilUsuarioRepository {
 
         val req = Request.Builder()
             .post(body)
-            .url("http://192.168.1.7:8080/booksystem/api/perfil")
+            .url("/booksystem/api/perfil")
             .build()
 
         val res = object : Callback{
