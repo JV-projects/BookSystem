@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:text="Catálogo de livros"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -36,7 +36,7 @@
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:padding="10dp"
-                app:tint="#000000" />
+                app:srcCompat="@drawable/baseline_account_circle_24" />
         </LinearLayout>
 
         <TextView
