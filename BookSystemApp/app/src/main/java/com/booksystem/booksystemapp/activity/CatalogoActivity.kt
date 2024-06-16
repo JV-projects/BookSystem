@@ -1,22 +1,18 @@
-package com.booksystem.booksystemapp
+package com.booksystem.booksystemapp.activity
 
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.booksystem.booksystemapp.LivroAdapter
+import com.booksystem.booksystemapp.R
 import com.booksystem.booksystemapp.model.Livro
 import com.booksystem.booksystemapp.repository.LivroRepository
 
-class CadastrarActivity : AppCompatActivity() {
-
+class CatalogoActivity : AppCompatActivity() {
     private val repository = LivroRepository()
     private val dados = ArrayList<Livro>()
     private lateinit var rcvLivro: RecyclerView
@@ -44,7 +40,7 @@ class CadastrarActivity : AppCompatActivity() {
             val textoPesquisa = edtPesquisa.text.toString()
             repository.findAllByTitulo(textoPesquisa, "a",
                 { _, livros ->
-                    this@CadastrarActivity.runOnUiThread {
+                    this@CatalogoActivity.runOnUiThread {
                         dados.clear()
                         dados.addAll(livros)
                         rcvLivro.adapter?.notifyDataSetChanged()

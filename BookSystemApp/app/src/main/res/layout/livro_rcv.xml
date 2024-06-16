@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtNome"
+            android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -34,11 +34,13 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/txtDisponibilidade"
+            android:id="@+id/txtStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Disponibilidade"
             android:textSize="14sp"
             android:textColor="#656565" />
+
     </LinearLayout>
 </LinearLayout>
