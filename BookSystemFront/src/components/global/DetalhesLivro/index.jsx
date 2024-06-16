@@ -13,7 +13,7 @@ export default function DetalhesLivro() {
                     <p className={styles.destaque}>Autor do livro</p>
                 </div>
                 <div className={styles.areaTexto + " " + styles.alinhamentoDireita}>
-                    <Status mensagem={"Disponível"} status={0} />
+                    <Status status={"Disponível"}/>
                     <Link to="/novoemprestimo">
                         <Button tipoBotao={'primario'}>
                             <p>Novo empréstimo</p>
@@ -31,10 +31,19 @@ export default function DetalhesLivro() {
                 <div className={styles.cartao}>
                     <div className={styles.areaConteudoCartao}>
                         <p className={styles.paragrafo}>Nome do dado</p>
+                        <p className={styles.paragrafo}>Titulo</p>
+                        <p className={styles.paragrafo}>Autor</p>
+                        <p className={styles.paragrafo}>Editora</p>
+                        <p className={styles.paragrafo}>Etiqueta</p>
+                        
                     </div>
                     <span className={styles.linhaVertical} />
                     <div className={styles.areaConteudoCartao + " " + styles.alinhamentoDireita}>
                         <p className={styles.paragrafo}>Dado</p>
+                        <p className={styles.paragrafo}>Orgulho e Preconceito</p>
+                        <p className={styles.paragrafo}>Jane Austen</p>
+                        <p className={styles.paragrafo}>Martin Claret</p>
+                        <p className={styles.paragrafo}>A3A73F25</p>
                     </div>
                 </div>
             </div>
