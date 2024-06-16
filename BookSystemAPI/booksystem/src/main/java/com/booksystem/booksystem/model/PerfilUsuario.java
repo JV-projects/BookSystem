@@ -24,7 +24,7 @@ public class PerfilUsuario {
 
     private String cpf;
 
-    private List<String> telefones = new ArrayList<>();
+    private String telefone;
     private String cep;
     private String rua;
     private int numero;
@@ -34,12 +34,12 @@ public class PerfilUsuario {
 
     public PerfilUsuario(){}
 
-    public PerfilUsuario(String nome, String username, Credenciais credenciais, String cpf, List<String> telefones, String cep, String rua, int numero, String bairro, String cidade, String estado) {
+    public PerfilUsuario(String nome, String username, Credenciais credenciais, String cpf, String telefone, String cep, String rua, int numero, String bairro, String cidade, String estado) {
         this.nome = nome;
         this.username = username;
         this.credenciais = credenciais;
         this.cpf = cpf;
-        this.telefones = telefones;
+        this.telefone = telefone;
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
@@ -88,12 +88,12 @@ public class PerfilUsuario {
         this.cpf = cpf;
     }
 
-    public List<String> getTelefones() {
-        return telefones;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setTelefones(List<String> telefones) {
-        this.telefones = telefones;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getCep() {
