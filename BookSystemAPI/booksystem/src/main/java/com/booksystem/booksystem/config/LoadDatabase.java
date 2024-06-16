@@ -73,43 +73,43 @@ public class LoadDatabase{
                     454,
                     lista,
                     "1A2B",
-                    9781234567890L,
+                    "9781234567890",
                     "DISPONIVEL", img);
 
             Livro livro2 = new Livro("Harry Potter e a Pedra Filosofal", "J.K. Rowling1", "Editora Z",
-                    1997, 1, 332, lista, "A3A73F25", 9780747532743L, "DISPONIVEL", img);
+                    1997, 1, 332, lista, "A3A73F25", "9780747532743", "DISPONIVEL", img);
 
             Livro livro3 = new Livro("Harry Potter e o Prisoneiro de Azkabam", "J.K. Rowling2", "Editora X",
-                    1997, 1, 332, lista, "A3A73F25", 9780747532743L, "DISPONIVEL", img);
+                    1997, 1, 332, lista, "A3A73F25", "9780747532743", "DISPONIVEL", img);
 
             Livro livro4 = new Livro("Harry Potter e o Enigma do Principe", "J.K. Rowling3", "Editora Y",
-                    1997, 1, 332, lista, "A3A73F25", 9780747532743L, "DISPONIVEL", img);
+                    1997, 1, 332, lista, "A3A73F25", "9780747532743", "DISPONIVEL", img);
 
             
                     Livro livro5 = new Livro("Harry Potter e a Ordem da Feníx", "J.K. Rowling4", "Editora W",
-                    1998, 1, 332, lista, "A3A73F25", 9780747532743L, "DISPONIVEL", img);
+                    1998, 1, 332, lista, "A3A73F25", "9780747532743", "DISPONIVEL", img);
 
             Livro livro6 = new Livro("Harry Potter e a Camara Secreta", "J.K. Rowling5", "Editora A",
-                    1998, 1, 332, lista, "A3A73F25", 9780747532743L, "DISPONIVEL", img);
+                    1998, 1, 332, lista, "A3A73F25", "9780747532743", "DISPONIVEL", img);
 
             Livro livro7 = new Livro("A Culpa é das Estrelas", "John Green", "Arqueiro",
-                    2012, 2, 313, lista, "A3A73F25", 9780789483673L, "DISPONIVEL", img);
+                    2012, 2, 313, lista, "A3A73F25", "9780789483673", "DISPONIVEL", img);
 
             Livro livro8 = new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Machado",
-                    1950, 3, 1178, lista, "F3DA9D0E", 9780544003415L, "INDISPONIVEL", img);
+                    1950, 3, 1178, lista, "F3DA9D0E", "9780544003415", "INDISPONIVEL", img);
 
             Livro livro9 = new Livro("1984", "George Orwell", "Editora V",
-                    1949, 4, 328, lista, "9I0J", 9780451524935L, "DISPONIVEL", img);
+                    1949, 4, 328, lista, "9I0J", "9780451524935", "DISPONIVEL", img);
 
             Livro livro10 = new Livro("As Crônicas de Nárnia", "C.S. Lewis", "Lewis",
-                    1950, 5, 767, lista, "1K2L", 9780066238500L, "DISPONIVEL", img);
+                    1950, 5, 767, lista, "1K2L", "9780066238500", "DISPONIVEL", img);
 
                     Livro livro11 = new Livro("Dom Quixote", "Miguel de Cervantes", "XPTO",
-                    1605, 6, 863, lista, "3M4N", 9780199537891L, "INDISPONIVEL", img);
+                    1605, 6, 863, lista, "3M4N", "9780199537891", "INDISPONIVEL", img);
 
 
             Livro livro12 = new Livro("Orgulho e Preconceito", "Jane Austen", "XYZ",
-                    1813, 7, 329, lista, "5O6P", 9780141439518L, "DISPONIVEL", img);
+                    1813, 7, 329, lista, "5O6P", "9780141439518", "DISPONIVEL", img);
 
             livroRepository.save(livro1);
             livroRepository.save(livro2);
