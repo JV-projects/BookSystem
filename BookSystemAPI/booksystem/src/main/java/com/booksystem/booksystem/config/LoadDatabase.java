@@ -143,23 +143,19 @@ public class LoadDatabase{
 
             perfilFuncionarioRepository.insert(pf);
 
-            List<String> telefones = new ArrayList<>();
-            telefones.add("11988665533");
-            telefones.add("1144556677");
-
             Optional<Credenciais> c1 = credenciaisRepository.findByUsername("julieta2@fatec");
 
             Optional<Credenciais> c2 = credenciaisRepository.findByUsername("carjooj@fatec");
 
             Optional<Credenciais> c3 = credenciaisRepository.findByUsername("julieta1@fatec");
 
-            PerfilUsuario pu = new PerfilUsuario("Julieta Elieta", "julieta2@fatec", c1.get(), "24095367800", telefones,
+            PerfilUsuario pu = new PerfilUsuario("Julieta Elieta", "julieta2@fatec", c1.get(), "24095367800", "11988665533",
                     "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
 
-            PerfilUsuario pu1 = new PerfilUsuario("Carjooj", "carjooj@fatec", c2.get(), "24095367800", telefones,
+            PerfilUsuario pu1 = new PerfilUsuario("Carjooj", "carjooj@fatec", c2.get(), "24095367800", "11988665533",
                     "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
 
-            PerfilUsuario pu2 = new PerfilUsuario("Julieta Jujeta", "julieta1@fatec", c3.get(), "24095367800", telefones,
+            PerfilUsuario pu2 = new PerfilUsuario("Julieta Jujeta", "julieta1@fatec", c3.get(), "24095367800", "11988665533",
                     "08565140", "Rua Book",55,  "System", "São Paulo", "São Paulo");
 
             perfilUsuarioRepository.insert(pu);
