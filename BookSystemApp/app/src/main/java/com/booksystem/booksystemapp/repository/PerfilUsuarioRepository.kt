@@ -13,6 +13,9 @@ import okhttp3.Response
 import java.io.IOException
 
 class PerfilUsuarioRepository {
+    var logtag: String = "PerfilUsuarioRepository"
+
+    private var localhost: String = "localhost"
     val okhttp = OkHttpClient()
     val gson = Gson()
     fun savePerfil(perfilUsuario: PerfilUsuario){
@@ -23,17 +26,17 @@ class PerfilUsuarioRepository {
 
         val req = Request.Builder()
             .post(body)
-            .url("/booksystem/api/perfil")
+            .url("http://${localhost}/booksystem/api/perfil")
             .build()
 
         val res = object : Callback{
             override fun onFailure(call: Call, e: IOException) {
-                Log.e("fail", "call $call | Exception: ${e.localizedMessage}")
+                Log.e(logtag, "call $call | Exception: ${e.localizedMessage}")
             }
 
             override fun onResponse(call: Call, response: Response) {
                 val resposta = response.body
-                Log.i("sucess", "call $call | \n Resposta: ${resposta}")
+                Log.i(logtag, "call $call | \n Resposta: ${resposta}")
             }
 
         }
@@ -46,17 +49,17 @@ class PerfilUsuarioRepository {
 
         val req = Request.Builder()
             .get()
-            .url("http://192.168.1.7:8080/booksystem/auth/perfil?username=${username}")
+            .url("http://${localhost}/booksystem/auth/perfil?username=${username}")
             .build()
 
         val res = object : Callback{
             override fun onFailure(call: Call, e: IOException) {
-                Log.e("fail", "call $call | Exception: ${e.localizedMessage}")
+                Log.e(logtag, "call $call | Exception: ${e.localizedMessage}")
             }
 
             override fun onResponse(call: Call, response: Response) {
                 val resposta = response.body
-                Log.i("sucess", "call $call | \n Resposta: ${resposta}")
+                Log.i(logtag, "call $call | \n Resposta: ${resposta}")
             }
 
         }
