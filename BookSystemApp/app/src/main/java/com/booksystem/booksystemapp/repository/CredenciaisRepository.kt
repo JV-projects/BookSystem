@@ -11,9 +11,12 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import java.io.IOException
+import kotlin.math.log
 
 class CredenciaisRepository {
 
+    var logtag: String = "CredenciaisRepository"
+    private var localhost: String = "localhost"
     val gson = Gson()
     val okhttp = OkHttpClient()
     fun newCredenciais(credenciais: Credenciais){
@@ -24,17 +27,17 @@ class CredenciaisRepository {
 
         val req = Request.Builder()
             .post(body)
-            .url("/booksystem/auth/register")
+            .url("http://${localhost}/booksystem/auth/register")
             .build()
 
         val res = object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.e("fail", "call $call | Exception: ${e.localizedMessage}")
+                Log.e(logtag, "call $call | Exception: ${e.localizedMessage}")
             }
 
             override fun onResponse(call: Call, response: Response) {
                 val resposta = response.body
-                Log.i("sucess", "call $call | \n Resposta: ${resposta}")
+                Log.i(logtag, "call $call | \n Resposta: ${resposta}")
             }
 
         }
@@ -50,17 +53,17 @@ class CredenciaisRepository {
 
         val req = Request.Builder()
             .post(body)
-            .url("/booksystem/auth/login")
+            .url("http://${localhost}/booksystem/auth/login")
             .build()
 
         val res = object : Callback{
             override fun onFailure(call: Call, e: IOException) {
-                Log.i("fail", "call $call | Exception: ${e.localizedMessage}")
+                Log.i(logtag, "call $call | Exception: ${e.localizedMessage}")
             }
 
             override fun onResponse(call: Call, response: Response) {
                 val resposta = response.body?.string().toString()
-                Log.i("sucess", "call $call | \n Resposta: ${resposta}")
+                Log.i(logtag, "call $call | \n Resposta: ${resposta}")
 
                 sucess(response, resposta)
             }

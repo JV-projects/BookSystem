@@ -12,11 +12,14 @@ import okhttp3.Response
 import java.io.IOException
 
 class LivroRepository {
+    var logtag: String = "LivroRepository"
+
+    private var localhost: String = "localhost"
     private val cliente = OkHttpClient()
     private val gson = Gson()
     fun findAllByTitulo(titulo: String, token: String, sucesso: (Response, ArrayList<Livro>) -> Unit,
                         falha: (IOException) -> Unit) {
-        val url = "/booksystem/api/livros?titulo=$titulo"
+        val url = "http://${localhost}/booksystem/api/livros?titulo=$titulo"
         var body: String = ""
         val listaLivro = ArrayList<Livro>()
         val requisicao = Request.Builder()
@@ -26,14 +29,14 @@ class LivroRepository {
 
         val resposta = object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                Log.e("LivroRepository",
+                Log.e(logtag,
                     "Falha ao carregar livros\ncall: $call\nException: ${e.localizedMessage}")
                 falha(e)
             }
 
             override fun onResponse(call: Call, response: Response) {
                 body = response.body?.string().toString()
-                Log.i("LivroRepository",
+                Log.i(logtag,
                     "Requisição bem sucedida\n" +
                             "Call: $call\n" +
                             "Resposta: $body")
