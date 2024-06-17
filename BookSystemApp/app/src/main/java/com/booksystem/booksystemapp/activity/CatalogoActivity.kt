@@ -1,13 +1,13 @@
 package com.booksystem.booksystemapp.activity
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.booksystem.booksystemapp.LivroAdapter
 import com.booksystem.booksystemapp.R
 import com.booksystem.booksystemapp.databinding.CatalogoLayoutBinding
@@ -29,7 +29,10 @@ class CatalogoActivity : AppCompatActivity() {
         val adapter = LivroAdapter(dados)
         binding.rcvLivros.adapter = adapter
 
-
+        binding.btnConta.setOnClickListener{
+            val intent = Intent(this, PerfilActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
