@@ -33,6 +33,7 @@ class TarefaAdapter(private val dados: ArrayList<Tarefa>): RecyclerView.Adapter<
                     snackbar.setBackgroundTint(Color.DKGRAY)
                     snackbar.show()
                     dados.remove(dados[position])
+                    notifyDataSetChanged()
                 }
             }, {exception ->
                     val snackbar = Snackbar.make(view,
