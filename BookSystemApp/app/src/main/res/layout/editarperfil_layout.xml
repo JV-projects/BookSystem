@@ -127,7 +127,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="#f0f0f0"
                 android:ems="10"
-                android:inputType="text|textPhonetic"
+                android:inputType="phone"
                 android:padding="10dp" />
 
             <LinearLayout

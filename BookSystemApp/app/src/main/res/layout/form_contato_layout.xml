@@ -110,17 +110,17 @@
         <Button
             android:id="@+id/btnSalvarContato"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_above="@id/btnVoltarContato"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="61dp"
             android:text="Salvar contato" />
 
         <Button
             android:id="@+id/btnVoltarContato"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="10dp"
             android:text="Voltar" />
