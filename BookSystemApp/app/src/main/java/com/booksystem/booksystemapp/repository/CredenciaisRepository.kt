@@ -11,7 +11,6 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import java.io.IOException
-import kotlin.math.log
 
 class CredenciaisRepository {
 
@@ -19,7 +18,7 @@ class CredenciaisRepository {
     private var localhost: String = "localhost"
     val gson = Gson()
     val okhttp = OkHttpClient()
-    fun newCredenciais(credenciais: Credenciais){
+    fun newCredenciais(credenciais: Credenciais) {
 
         val json = gson.toJson(credenciais);
 
@@ -46,7 +45,11 @@ class CredenciaisRepository {
 
     }
 
-    fun login(credenciais: Credenciais, sucess: (Response, String) -> Unit, fail: (IOException) -> Unit){
+    fun login(
+        credenciais: Credenciais,
+        sucess: (Response, String) -> Unit,
+        fail: (IOException) -> Unit
+    ) {
         val json = gson.toJson(credenciais);
 
         val body = json.toRequestBody("application/json".toMediaTypeOrNull())
@@ -56,7 +59,7 @@ class CredenciaisRepository {
             .url("http://${localhost}/booksystem/auth/login")
             .build()
 
-        val res = object : Callback{
+        val res = object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Log.i(logtag, "call $call | Exception: ${e.localizedMessage}")
             }
@@ -71,7 +74,27 @@ class CredenciaisRepository {
         okhttp.newCall(req).enqueue(res)
 
 
-
     }
 
+    fun deleteConta(username: String?) {
+
+        val req = Request.Builder()
+            .delete()
+            .url("http://${localhost}/booksystem/auth/credenciais?username=${username}")
+            .build()
+
+        val res = object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e(logtag, "call $call | Exception: ${e.localizedMessage}")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val resposta = response.body
+                Log.i(logtag, "call $call | \n Resposta: ${resposta}")
+            }
+
+        }
+
+        okhttp.newCall(req).enqueue(res)
+    }
 }
