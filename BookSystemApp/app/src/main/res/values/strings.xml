@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BookSystemApp</string>
+    <string name="jaaj">"@jackelinepaula"</string>
+    <string name="carjooj">"@carjooj"</string>
 </resources>
