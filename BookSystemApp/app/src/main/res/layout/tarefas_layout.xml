@@ -19,30 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/edtTarefa"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:layout_marginVertical="10dp"
-            android:layout_marginLeft="10dp"
-            android:hint="Escreva uma tarefa"
-            android:inputType="text" />
-
-        <ImageButton
-            android:id="@+id/btnAddTarefa"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:layout_marginRight="8dp"
-            android:layout_marginVertical="8dp"
-            android:backgroundTint="@color/purple_500"
-            app:srcCompat="@drawable/add" />
-
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_tarefas"
@@ -52,9 +29,17 @@
         android:layout_weight="1" />
 
     <Button
+        android:id="@+id/btnCriarTarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="Criar tarefa" />
+
+    <Button
         android:id="@+id/btnVoltar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:text="Voltar" />
+
 </LinearLayout>
