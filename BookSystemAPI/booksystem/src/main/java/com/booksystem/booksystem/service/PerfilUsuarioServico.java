@@ -28,7 +28,7 @@ public class PerfilUsuarioServico implements IPerfilUsuarioServico{
         Optional<PerfilUsuario> pu = perfilUsuarioRepository.findByUsername(perfilUsuario.getUsername());
 
         //Se não tiver o perfil, ele cria um
-        if(pu == null){
+        if(!pu.isPresent()){
 
             logger.info("|---- Serviço - Cadastrando perfil do usuário ----|");
 
@@ -66,6 +66,11 @@ public class PerfilUsuarioServico implements IPerfilUsuarioServico{
     @Override
     public Optional<PerfilUsuario> consultarPerfil(String username) {
         logger.info("|---- Serviço - Consultando usuário pelo username ---|");
-        return Optional.ofNullable(perfilUsuarioRepository.findByUsername(username).get());
+
+        if(perfilUsuarioRepository.findByUsername(username).isPresent()){
+            return Optional.ofNullable(perfilUsuarioRepository.findByUsername(username).get());
+        }
+
+        return null;
     }
 }
