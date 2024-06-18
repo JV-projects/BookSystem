@@ -22,9 +22,9 @@ class MenuCrudActivity : AppCompatActivity(){
         }
 
         binding.btnListaTarefas.setOnClickListener{
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(this, TarefaActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         binding.btnAgenda.setOnClickListener{
