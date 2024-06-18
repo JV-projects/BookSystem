@@ -2,10 +2,12 @@ package com.booksystem.booksystemapp.activity
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.MaskFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.widget.addTextChangedListener
 import com.booksystem.booksystemapp.R
 import com.booksystem.booksystemapp.databinding.FormTarefaLayoutBinding
 import com.booksystem.booksystemapp.model.Tarefa
