@@ -14,7 +14,7 @@ class TarefaActivity : AppCompatActivity() {
 
     private val repository = TarefaRepository()
     private val listaTarefas = ArrayList<Tarefa>()
-    private lateinit var binding : TarefasLayoutBinding
+    private lateinit var binding: TarefasLayoutBinding
 
 
     override fun onCreate(bundle: Bundle?) {
@@ -45,5 +45,5 @@ class TarefaActivity : AppCompatActivity() {
                 binding.rcvTarefas.adapter?.notifyDataSetChanged()
             }
         }, {})
-        }
+    }
 }
