@@ -48,13 +48,14 @@ class LoginActivity : AppCompatActivity(){
                         }else{
                             token = resToken
                             saveToken(token)
+                            saveUsername(username.text.toString())
                             toCatalogo()}
                         },
                     {})
             }
         }
 
-        binding.txtCadastrese.setOnClickListener{
+        binding.linkCadastrar.setOnClickListener{
             val intent = Intent(this, CadastrarActivity::class.java)
             startActivity(intent)
         }
@@ -64,6 +65,14 @@ class LoginActivity : AppCompatActivity(){
         val sp = getSharedPreferences("session", Context.MODE_PRIVATE)
         sp.edit().apply{
             putString("token", token)
+            commit()
+        }
+    }
+
+    fun saveUsername(username: String){
+        val sp = getSharedPreferences("session", Context.MODE_PRIVATE)
+        sp.edit().apply{
+            putString("username", username)
             commit()
         }
     }
