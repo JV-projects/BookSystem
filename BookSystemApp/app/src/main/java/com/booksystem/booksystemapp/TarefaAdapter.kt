@@ -1,4 +1,4 @@
-package com.booksystem.booksystemapp.activity
+package com.booksystem.booksystemapp
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -21,7 +21,9 @@ class TarefaAdapter(private val dados: ArrayList<Tarefa>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: TarefaViewHolder, position: Int) {
-        holder.txtTarefa.text = dados[position].descricao
+        holder.txtDescricao.text = dados[position].descricao
+        holder.txtPrioridade.text = dados[position].prioridade
+        holder.txtMarcador.text = dados[position].marcador
         holder.btnDeletar.setOnClickListener {view ->
             val tarefa = dados[position]
             repository.deletarTarefa(tarefa,

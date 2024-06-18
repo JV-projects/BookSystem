@@ -8,12 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TarefaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var checkTarefa: CheckBox
-    var txtTarefa: TextView
+    var txtDescricao: TextView
+    var txtPrioridade: TextView
+    var txtMarcador: TextView
     var btnDeletar: ImageButton
 
     init {
         checkTarefa = view.findViewById(R.id.checkTarefa)
-        txtTarefa = view.findViewById(R.id.txtTarefa)
+        txtDescricao = view.findViewById(R.id.txtDescricao)
+        txtPrioridade = view.findViewById(R.id.txtPrioridade)
+        txtMarcador = view.findViewById(R.id.txtMarcador)
         btnDeletar = view.findViewById(R.id.btnDeletar)
     }
 }
