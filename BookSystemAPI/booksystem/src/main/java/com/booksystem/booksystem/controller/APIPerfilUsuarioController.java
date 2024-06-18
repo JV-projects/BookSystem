@@ -22,7 +22,7 @@ public class APIPerfilUsuarioController {
     public ResponseEntity<Object> registerperfil(@RequestBody PerfilUsuario perfilUsuario){
 
         if(!credenciaisRepository.findByUsername(perfilUsuario.getUsername()).isPresent())
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body("Username inválido");
 
         perfilUsuarioServico.salvarPerfil(perfilUsuario);
 
@@ -34,7 +34,10 @@ public class APIPerfilUsuarioController {
         if(!credenciaisRepository.findByUsername(username).isPresent())
             return ResponseEntity.badRequest().body("Usuário não encontrado");
 
-        return ResponseEntity.status(HttpStatus.OK).body(perfilUsuarioServico.consultarPerfil(username));
+        if(perfilUsuarioServico.consultarPerfil(username) != null)
+            return ResponseEntity.status(HttpStatus.OK).body(perfilUsuarioServico.consultarPerfil(username));
+
+        return ResponseEntity.badRequest().body(null);
     }
 
 }

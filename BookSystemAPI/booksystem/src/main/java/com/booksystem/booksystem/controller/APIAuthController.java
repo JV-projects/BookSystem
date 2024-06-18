@@ -5,6 +5,7 @@ import com.booksystem.booksystem.config.seguranca.TokenService;
 import com.booksystem.booksystem.model.Credenciais;
 import com.booksystem.booksystem.model.PerfilUsuario;
 import com.booksystem.booksystem.model.RoleUsuario;
+import com.booksystem.booksystem.service.ICredenciaisServico;
 import com.booksystem.booksystem.service.IPerfilUsuarioServico;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,6 +30,9 @@ public class APIAuthController {
 
     @Autowired
     ICredenciaisRepository credenciaisRepository;
+
+    @Autowired
+    ICredenciaisServico credenciaisServico;
 
     @Autowired
     IPerfilUsuarioServico perfilUsuarioServico;
@@ -63,6 +67,15 @@ public class APIAuthController {
         credenciaisRepository.insert(credenciais);
 
         return ResponseEntity.status(HttpStatus.OK).body("Conta criada");
+    }
+
+    @DeleteMapping(value = "/credenciais", params = "username")
+    public ResponseEntity<Object> deletePerfil(@RequestParam String username){
+        if(!credenciaisRepository.findByUsername(username).isPresent())
+            return ResponseEntity.badRequest().body("Usuário não encontrado");
+
+        credenciaisServico.deleteCredenciais(username);
+        return ResponseEntity.status(HttpStatus.OK).body("Informações deletadas");
     }
 
 }
