@@ -32,7 +32,7 @@
         android:layout_marginBottom="15dp"
         android:background="#f0f0f0"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="text|textEmailAddress"
         android:padding="10dp" />
 
     <TextView
@@ -51,15 +51,15 @@
         android:layout_marginBottom="15dp"
         android:background="#f0f0f0"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="number|numberPassword"
         android:padding="10dp" />
 
     <Button
         android:id="@+id/btnCadastrar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginBottom="20dp"
-        android:background="#7F56D9"
+        android:backgroundTint="#7F56D9"
         android:padding="10dp"
         android:text="Cadastrar"
         android:textAllCaps="false"

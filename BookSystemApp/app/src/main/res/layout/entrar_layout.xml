@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="40dp">
+
+
 
     <TextView
         android:id="@+id/txtTitulo"
@@ -32,7 +36,7 @@
         android:layout_marginBottom="15dp"
         android:background="#f0f0f0"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="text|textEmailAddress"
         android:padding="10dp" />
 
     <TextView
@@ -51,15 +55,14 @@
         android:layout_marginBottom="15dp"
         android:background="#f0f0f0"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="number|numberPassword"
         android:padding="10dp" />
 
     <Button
         android:id="@+id/btnEntrar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginBottom="20dp"
-        android:background="#7F56D9"
         android:backgroundTint="#7F56D9"
         android:padding="10dp"
         android:text="Entrar"
@@ -80,11 +83,18 @@
             android:textColor="#656565" />
 
         <TextView
-            android:id="@+id/txtCadastrese"
+            android:id="@+id/linkCadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cadastre-se"
             android:textSize="14sp"
             android:textColor="#3882F6" />
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>
