@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:text="Adicionar gasto"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/Descrição"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="Valor"
+        android:textAlignment="viewStart"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtGasto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:ems="10"
+        android:hint="$"
+        android:inputType="number|numberDecimal"
+        android:maxLength="50" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="Natureza"
+        android:textAlignment="viewStart"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtNatureza"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:ems="10"
+        android:hint="Ex. Mercado, Remédios etc"
+        android:inputType="text"
+        android:maxLength="50" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="Data"
+        android:textAlignment="viewStart"
+
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:ems="10"
+        android:hint="00/00/0000"
+        android:inputType="datetime|date"
+        android:maxLength="11" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnSalvarGasto"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_above="@id/btnVoltarGasto"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="61dp"
+            android:text="Salvar" />
+
+        <Button
+            android:id="@+id/btnVoltarGasto"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="10dp"
+            android:text="Voltar" />
+
+    </RelativeLayout>
+
+</LinearLayout>
