@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.booksystem.booksystemapp.databinding.MenuCrudLayoutBinding
 
 
-class MenuCrudActivity : AppCompatActivity(){
+class MenuCrudActivity : AppCompatActivity() {
     private lateinit var binding: MenuCrudLayoutBinding
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
@@ -15,28 +15,28 @@ class MenuCrudActivity : AppCompatActivity(){
         binding = MenuCrudLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnBooksystem.setOnClickListener{
+        binding.btnBooksystem.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        binding.btnListaTarefas.setOnClickListener{
+        binding.btnListaTarefas.setOnClickListener {
             val intent = Intent(this, TarefaActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        binding.btnAgenda.setOnClickListener{
+        binding.btnAgenda.setOnClickListener {
             val intent = Intent(this, ContatoActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        binding.btnCrud.setOnClickListener{
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
+        binding.btnCrud.setOnClickListener {
+            val intent = Intent(this, GastoActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
     }

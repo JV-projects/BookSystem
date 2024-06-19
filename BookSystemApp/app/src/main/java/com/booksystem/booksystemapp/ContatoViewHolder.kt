@@ -17,7 +17,7 @@ class ContatoViewHolder (view: View) : RecyclerView.ViewHolder(view)  {
     init {
         txtNome = view.findViewById(R.id.txt_nome_contato)
         txtEmail = view.findViewById(R.id.txt_email_contato)
-        txtTelefone = view.findViewById(R.id.txt_email_contato)
+        txtTelefone = view.findViewById(R.id.txt_telefone_contato)
         txtGrupo = view.findViewById(R.id.txt_grupo_contato)
         btnDel = view.findViewById(R.id.btnDeletarContato)
     }
