@@ -11,5 +11,6 @@ import java.util.Optional;
 @Repository
 public interface ICredenciaisRepository extends MongoRepository<Credenciais, String> {
 
+    void deleteByUsername(String username);
     Optional<Credenciais> findByUsername(String s);
 }

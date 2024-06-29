@@ -1,8 +1,8 @@
 package com.booksystem.booksystem.service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+import com.booksystem.booksystem.model.TagDTO;
 import com.booksystem.booksystem.service.PesquisaServico;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +54,14 @@ public class LivroServico implements ILivroServico {
             return livroRepository.findByTitulo(titulo, sort);
         }
     }
+
+    @Override
+    public List<Livro> consultarPorTituloMobile(String titulo) {
+        logger.info("|--- Serviço - Consultando por Titulo no mobile ---|");
+
+        return livroRepository.findByTitulo(titulo);
+    }
+
 
     public Optional<Livro> consultarPorId(String id) {
         logger.info("|--- Serviço - Consultando livro por id ----|");
@@ -141,5 +149,21 @@ public class LivroServico implements ILivroServico {
         }
 
     }
+
+    @Override
+    public List<TagDTO> consultarTags() {
+        logger.info("|--- Serviço - Consultando Tags ---|");
+        List<Livro> livros = livroRepository.findAllTags();
+        List<TagDTO> tags = new ArrayList<>();
+
+        livros.forEach(livro -> {
+            TagDTO tagDTO = new TagDTO(livro.getEtiqueta(), livro.getStatus());
+            tags.add(tagDTO);
+        });
+
+        return tags;
+
+    }
+
 
 }

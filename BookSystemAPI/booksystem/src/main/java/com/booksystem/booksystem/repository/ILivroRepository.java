@@ -9,6 +9,10 @@ import java.util.List;
 
 public interface ILivroRepository extends MongoRepository<Livro, String> {
 
+    @Query(value = "{ 'titulo': { $regex: ?0, $options:'i'} }",
+            fields = "{'assuntos': 0, 'etiqueta': 0, 'imagem': 0}")
+    List<Livro> findByTitulo(String titulo);
+
     @Query(value = "{ 'titulo': { $regex: ?0, $options:'i' }, ano: ?1 }")
     List<Livro> findByTitulo(String titulo, int ano, Sort sort);
 
@@ -28,5 +32,8 @@ public interface ILivroRepository extends MongoRepository<Livro, String> {
 
     @Query(value = "{ 'editora': { $regex: ?0, $options:'i' } }")
     List<Livro> findByEditora(String editora, Sort sort);
+
+    @Query(value = "{}", fields = "{'_id': 0, 'etiqueta': 1, 'status': 1}")
+    List<Livro> findAllTags();
 
 }

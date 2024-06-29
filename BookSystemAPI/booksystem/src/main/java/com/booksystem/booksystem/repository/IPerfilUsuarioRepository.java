@@ -12,4 +12,6 @@ public interface IPerfilUsuarioRepository extends MongoRepository<PerfilUsuario,
     Optional<PerfilUsuario> findByCpf(String cpf);
 
     Optional<PerfilUsuario> findByUsername(String username);
+
+    void deleteByUsername(String username);
 }

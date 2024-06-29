@@ -1,10 +1,12 @@
 package com.booksystem.booksystem.controller;
 
-import com.booksystem.booksystem.config.seguranca.SecurityConfigurations;
+
 import com.booksystem.booksystem.config.seguranca.TokenService;
 import com.booksystem.booksystem.model.Credenciais;
-import com.booksystem.booksystem.repository.IPerfilFuncionarioRepository;
-import org.apache.coyote.Response;
+import com.booksystem.booksystem.model.PerfilUsuario;
+import com.booksystem.booksystem.model.RoleUsuario;
+import com.booksystem.booksystem.service.ICredenciaisServico;
+import com.booksystem.booksystem.service.IPerfilUsuarioServico;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +14,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import com.booksystem.booksystem.repository.IPerfilUsuarioRepository;
 import com.booksystem.booksystem.repository.ICredenciaisRepository;
 
 @RestController
 @RequestMapping("booksystem/auth/")
-public class APIUsuarioController {
+public class APIAuthController {
     Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired
@@ -30,6 +30,12 @@ public class APIUsuarioController {
 
     @Autowired
     ICredenciaisRepository credenciaisRepository;
+
+    @Autowired
+    ICredenciaisServico credenciaisServico;
+
+    @Autowired
+    IPerfilUsuarioServico perfilUsuarioServico;
 
     @Autowired
     private TokenService tokenService;
@@ -53,11 +59,23 @@ public class APIUsuarioController {
         String senhaEncrypted = new BCryptPasswordEncoder().encode(registrarDTO.senha());
         Credenciais credenciais = new Credenciais(registrarDTO.username(), senhaEncrypted, registrarDTO.role());
 
+
+        if(credenciais.getRole() == null) {
+            credenciais.setRole(RoleUsuario.USER);
+        }
+
         credenciaisRepository.insert(credenciais);
 
         return ResponseEntity.status(HttpStatus.OK).body("Conta criada");
     }
 
+    @DeleteMapping(value = "/credenciais", params = "username")
+    public ResponseEntity<Object> deletePerfil(@RequestParam String username){
+        if(!credenciaisRepository.findByUsername(username).isPresent())
+            return ResponseEntity.badRequest().body("Usuário não encontrado");
 
+        credenciaisServico.deleteCredenciais(username);
+        return ResponseEntity.status(HttpStatus.OK).body("Informações deletadas");
+    }
 
 }

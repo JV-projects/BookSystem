@@ -26,6 +26,7 @@ export default function Home() {
             "autor": "Jane Austen",
             "editora": "Martin Claret",
             "ano": "2012",
+            "etiqueta": "A3A73F25",
             "assuntos": [
                 {
                     "id": 1,
@@ -44,6 +45,7 @@ export default function Home() {
             "autor": "Paul Deitel",
             "editora": "Pearson Universidades",
             "ano": "2016",
+            "etiqueta": "F3DA9D0E",
             "assuntos": [
                 {
                     "id": 3,
@@ -189,6 +191,11 @@ export default function Home() {
                                     <div className={styles.grupoTexto}>
                                         <p className={styles.paragrafo}>Ano:</p>
                                         <span className={styles.destaque}>{item.ano}</span>
+                                    </div>
+
+                                    <div className={styles.grupoTexto}>
+                                        <p className={styles.paragrafo}>Etiqueta:</p>
+                                        <span className={styles.destaque}>{item.etiqueta}</span>
                                     </div>
 
 

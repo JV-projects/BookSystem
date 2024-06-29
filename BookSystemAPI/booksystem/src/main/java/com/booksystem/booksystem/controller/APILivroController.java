@@ -36,6 +36,12 @@ public class APILivroController {
         return ResponseEntity.ok().body(livroServico.consultarPorTitulo(titulo, ano, filtro, ordem));
     }
 
+    @GetMapping(value = "livros", params = "titulo")
+    public ResponseEntity<Object> consultaLivrosMobile(@RequestParam String titulo) {
+        logger.info("api --> Consulta livros mobile");
+        return ResponseEntity.ok().body(livroServico.consultarPorTituloMobile(titulo));
+    }
+
     @GetMapping(value = "livros", params = "isbn")
     public ResponseEntity<Object> consultarPorIsbn(@RequestParam long isbn) {
         logger.info("api --> Consulta por ISBN");

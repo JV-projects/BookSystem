@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.booksystem.booksystem.servico.AssuntoServico;
-import com.booksystem.booksystem.model.repository.IAssuntoRepository;
+import com.booksystem.booksystem.service.AssuntoServico;
+import com.booksystem.booksystem.repository.IAssuntoRepository;
 
 import java.util.List;
 

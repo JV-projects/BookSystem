@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.index.TextIndexDefinition;
 
-@Configuration
+//@Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
 
