@@ -78,7 +78,7 @@ Conseguimos prototipar e criar um MVP funcional utilizando alguns componentes el
 1. Clone o repositório
 
    ```bash
-   git clone https://github.com/JV-projects/chromodoro-app.git
+   git clone https://github.com/JV-projects/BookSystem.git
    ```
 
 2. Entre no repositório
