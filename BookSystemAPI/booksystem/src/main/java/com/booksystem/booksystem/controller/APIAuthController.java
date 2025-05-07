@@ -7,6 +7,8 @@ import com.booksystem.booksystem.model.PerfilUsuario;
 import com.booksystem.booksystem.model.RoleUsuario;
 import com.booksystem.booksystem.service.ICredenciaisServico;
 import com.booksystem.booksystem.service.IPerfilUsuarioServico;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import com.booksystem.booksystem.repository.ICredenciaisRepository;
 
 @RestController
 @RequestMapping("booksystem/auth/")
+@Tag(name = "API Autenticação", description = "Enpoints de cadastro e autenticação.")
 public class APIAuthController {
     Logger logger = LogManager.getLogger(this.getClass());
 
@@ -41,6 +44,7 @@ public class APIAuthController {
     private TokenService tokenService;
 
     @PostMapping("/login")
+    @Operation(summary = "Autenticação", description = "Autentica o usuário na API")
     public ResponseEntity<Object> login(@RequestBody CredenciaisDTO credenciaisDTO){
         var usernameSenha = new UsernamePasswordAuthenticationToken(credenciaisDTO.username(), credenciaisDTO.senha());
         var auth = this.authenticationManager.authenticate(usernameSenha);
@@ -51,6 +55,7 @@ public class APIAuthController {
     }
 
     @PostMapping("/register")
+    @Operation(summary = "Cadastro de usuário", description = "Cadastra um usuário na plataforma.")
     public ResponseEntity<Object> registrar(@RequestBody RegistrarDTO registrarDTO){
 
         if(credenciaisRepository.findByUsername(registrarDTO.username()).isPresent())
@@ -70,6 +75,7 @@ public class APIAuthController {
     }
 
     @DeleteMapping(value = "/credenciais", params = "username")
+    @Operation(summary = "Deletar credeciais", description = "Deletando usuário e suas credenciais")
     public ResponseEntity<Object> deletePerfil(@RequestParam String username){
         if(!credenciaisRepository.findByUsername(username).isPresent())
             return ResponseEntity.badRequest().body("Usuário não encontrado");

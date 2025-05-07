@@ -37,7 +37,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.GET, "/booksystem/api/tags").permitAll()
                         .requestMatchers(HttpMethod.GET, "/booksystem/api/livros").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.GET, "/booksystem/api/emprestimos").hasRole("ADMIN")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
